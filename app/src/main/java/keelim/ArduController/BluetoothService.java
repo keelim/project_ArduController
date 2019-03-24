@@ -53,11 +53,6 @@ public class BluetoothService {
         btAdapter = BluetoothAdapter.getDefaultAdapter();
     }
 
-    /**
-     * Check the Bluetooth support
-     *
-     * @return boolean
-     */
     public boolean getDeviceState() {
         Log.i(TAG, "Check the Bluetooth support");
 
@@ -73,9 +68,6 @@ public class BluetoothService {
         }
     }
 
-    /**
-     * Check the enabled Bluetooth
-     */
     public void enableBluetooth() {
         Log.i(TAG, "Check the enabled Bluetooth");
 
@@ -85,6 +77,7 @@ public class BluetoothService {
 
             // Next Step
             scanDevice();
+
         } else {
             // ����� ������� ���°� Off�� ���
             Log.d(TAG, "Bluetooth Enable Request");
@@ -94,9 +87,6 @@ public class BluetoothService {
         }
     }
 
-    /**
-     * Available device search
-     */
     public void scanDevice() {
         Log.d(TAG, "Scan Device");
 
@@ -104,11 +94,6 @@ public class BluetoothService {
         mActivity.startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
     }
 
-    /**
-     * after scanning and get device info
-     *
-     * @param data
-     */
     public void getDeviceInfo(Intent data) {
         // Get the device MAC address
         String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
@@ -247,7 +232,7 @@ public class BluetoothService {
 
     }
 
-    private class ConnectThread extends Thread {
+    private class ConnectThread extends Thread { //쓰레드 처리
         private final BluetoothSocket mmSocket;
         private final BluetoothDevice mmDevice;
 
@@ -293,7 +278,7 @@ public class BluetoothService {
                 }
                 // ������? Ȥ�� ���� �������� �޼ҵ带 ȣ���Ѵ�.
                 BluetoothService.this.start();
-                return;
+
             }
 
             // ConnectThread Ŭ������ reset�Ѵ�.
@@ -356,11 +341,6 @@ public class BluetoothService {
             }
         }
 
-        /**
-         * Write to the connected OutStream.
-         *
-         * @param buffer The bytes to write
-         */
         public void write(byte[] buffer) {
             try {
                 // ���� ���� �κ�(���� ������)
