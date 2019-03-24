@@ -1,3 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">ArduController</string>
+    <string name="action_settings">설정</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">디바이스 검색</string>
+    <string name="select_device">디바이스 선택</string>
+    <string name="none_paired">"연결 가능 기기가 없습니다. "</string>
+    <string name="none_found">"기기를 찾을 수 없습니다. "</string>
+    <string name="title_paired_devices">페어링 완료</string>
+    <string name="button_scan">기기 검색중</string>
+
+    <!-- Options Menu -->
+    <string name="secure_connect">안전 디바이스 검색</string>
+    <string name="insecure_connect">비안전 디바이스 검색</string>
+    <string name="discoverable">찾기 불가능 상태로 변경</string>
+    <string name="title_other_devices">"다른 디바이스를 찾습니다. "</string>
+
 </resources>

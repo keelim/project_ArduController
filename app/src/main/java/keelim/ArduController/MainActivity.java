@@ -5,45 +5,95 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import ssm.bluetooth.R;
+
+
+public class MainActivity extends Activity implements OnClickListener {
+    // Debugging
+    private static final String TAG = "Main";
+
+    // Intent request code
+    private static final int REQUEST_CONNECT_DEVICE = 1;
+    private static final int REQUEST_ENABLE_BT = 2;
+
+    // Layout
+    private Button btn_Connect;
+    private TextView txt_Result;
+
     private BluetoothService btService = null;
-    private final Handler mHandler = new Handler(){
+
+
+    private final Handler mHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
         }
+
     };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "onCreate");
+
         setContentView(R.layout.activity_main);
 
-        if(btService == null){
+        /** Main Layout **/
+        btn_Connect = (Button) findViewById(R.id.button);
+        txt_Result = (TextView) findViewById(R.id.result);
+
+        btn_Connect.setOnClickListener(this);
+
+        // BluetoothService Ŭ���� ����
+        if (btService == null) {
             btService = new BluetoothService(this, mHandler);
+        }
+
+        Toast.makeText(this, "블루투스 예제를 시작합니다. ", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (btService.getDeviceState()) {
+            // ��������� ���� ������ ����� ��
+            btService.enableBluetooth();
+        } else {
+            finish();
         }
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        switch (requestCode){
-            case 99:
-                if(resultCode == Activity.RESULT_OK){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "onActivityResult " + resultCode);
 
-                } else{
+        switch (requestCode) {
 
+            /** �߰��� �κ� ���� **/
+            case REQUEST_CONNECT_DEVICE:
+                // When DeviceListActivity returns with a device to connect
+                if (resultCode == Activity.RESULT_OK) {
+                    btService.getDeviceInfo(data);
+                }
+                break;
+            /** �߰��� �κ� �� **/
+            case REQUEST_ENABLE_BT:
+                // When the request to enable Bluetooth returns
+                if (resultCode == Activity.RESULT_OK) {
+                    // Next Step
+                    btService.scanDevice();
+                } else {
+
+                    Log.d(TAG, "Bluetooth is not enabled");
                 }
                 break;
         }
-
     }
-
-
-
-
 
 }
