@@ -56,7 +56,7 @@ public class MainActivity extends Activity implements OnClickListener {
         if (btService == null) {
             btService = new BluetoothService(this, mHandler);
         }
-        MobileAds.initialize(this, ca-app-pub-3940256099942544/6300978111)
+
         Toast.makeText(this, "블루투스 예제를 시작합니다. ", Toast.LENGTH_SHORT).show();
     }
 
