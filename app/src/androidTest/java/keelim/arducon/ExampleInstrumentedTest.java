@@ -1,4 +1,4 @@
-package keelim.ArduController;
+package keelim.arducon;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

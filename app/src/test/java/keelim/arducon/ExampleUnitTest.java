@@ -1,4 +1,4 @@
-package keelim.ArduController;
+package keelim.arducon;
 
 import org.junit.Test;
 

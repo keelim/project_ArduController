@@ -1,4 +1,4 @@
-package keelim.ArduController;
+package keelim.arducon;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;

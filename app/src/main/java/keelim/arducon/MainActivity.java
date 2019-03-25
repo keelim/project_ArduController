@@ -1,4 +1,4 @@
-package keelim.ArduController;
+package keelim.arducon;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import ssm.bluetooth.R;
 
@@ -26,6 +30,7 @@ public class MainActivity extends Activity implements OnClickListener {
     // Layout
     private Button btn_Connect;
     private TextView txt_Result;
+    private AdView mAdView;
 
     private BluetoothService btService = null;
 
@@ -48,7 +53,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
         /** Main Layout **/
         btn_Connect = (Button) findViewById(R.id.button);
-        txt_Result = (TextView) findViewById(R.id.result);
 
         btn_Connect.setOnClickListener(this);
 
@@ -56,8 +60,13 @@ public class MainActivity extends Activity implements OnClickListener {
         if (btService == null) {
             btService = new BluetoothService(this, mHandler);
         }
+        MobileAds.initialize(this, " ca-app-pub-3940256099942544~3347511713 ");
 
         Toast.makeText(this, "블루투스 예제를 시작합니다. ", Toast.LENGTH_SHORT).show();
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override

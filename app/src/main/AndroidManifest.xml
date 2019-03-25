@@ -15,8 +15,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="[ADMOB_APP_ID]"/>
+
         <activity
-            android:name="keelim.ArduController.MainActivity"
+            android:name="keelim.arducon.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +30,7 @@
         </activity>
 
         <activity
-            android:name="keelim.ArduController.DeviceListActivity"
+            android:name="keelim.arducon.DeviceListActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog" />
     </application>
 </manifest>
