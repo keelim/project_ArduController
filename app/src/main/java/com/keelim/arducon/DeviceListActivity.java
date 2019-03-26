@@ -35,8 +35,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.android.BluetoothChat.R;
-
 import java.util.Set;
 
 /**
