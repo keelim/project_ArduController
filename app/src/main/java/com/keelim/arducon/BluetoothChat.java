@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.BluetoothChat;
+package com.keelim.arducon;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -38,6 +38,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.android.BluetoothChat.R;
 
 /**
  * This is the main Activity that displays the current chat session.
