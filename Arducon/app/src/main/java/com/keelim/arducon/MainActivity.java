@@ -1,12 +1,14 @@
 package com.keelim.arducon;
 
 
-import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,15 +17,18 @@ import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-
-
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -40,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText editText;
     ImageView sendBtn;
 
-    ProgressDialog progressDialog;
 
     ArrayList<ChatMessage> list;
     ChatMyAdapter adapter;
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ReadThread readThread;
     WriteThread writeThread;
 
-    //add~~~~~~~~~~~~~
+
     BluetoothAdapter bluetoothAdapter;
     UUID MY_UUID;
     BluetoothDevice device;
@@ -72,12 +76,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_lab27_3);
-        Toast.makeText(this, "앱의 시작을 환영 합니다.", Toast.LENGTH_SHORT).show();
+        setContentView(R.layout.activity_list);
+        Toast.makeText(this, "앱의 시작을 환영 합니다.", Toast.LENGTH_SHORT).show(); // 임시 토스트 메시지
 
-        listView = (ListView) findViewById(R.id.lab3_list);
-        editText = (EditText) findViewById(R.id.lab3_send_text);
-        sendBtn = (ImageView) findViewById(R.id.lab3_send_btn);
+        listView = (ListView) findViewById(R.id.list_list);
+        editText = (EditText) findViewById(R.id.list_text);
+        sendBtn = (ImageView) findViewById(R.id.list_btn);
 
         sendBtn.setOnClickListener(this);
 
@@ -94,20 +98,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bluetoothEnable();
 
         // bluetooth server 로 동작할때 명시할 uuid 값.. 아무 id 값이나 적용.. uuid 생성기를 이용할수 있다.
+        // 임시 생성 UUID
         MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
         //server thread start
-        ServerThread serverThread = new ServerThread();
+        ServerThread serverThread = new ServerThread(); //서버 쓰레드? 블루 통신 쓰레드
         serverThread.start();
+
+        findViewById(R.id.menu_add);
 
     }
 
     private void addMessage(String who, String msg) {
-        Log.d("kkang", "addMessage...." + who + "..." + msg);
-        ChatMessage vo = new ChatMessage();
-        vo.who = who;
-        vo.msg = msg;
-        list.add(vo);
+        Log.d("KIM", "addMessage...." + who + "..." + msg);
+
+        ChatMessage chatMessage = new ChatMessage();
+        chatMessage.who = who;
+        chatMessage.msg = msg;
+
+        list.add(chatMessage);
         adapter.notifyDataSetChanged();
         listView.setSelection(list.size() - 1);
     }
@@ -119,10 +128,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (msg.what == 10) {
                 sendBtn.setEnabled(true);
                 editText.setEnabled(true);
+
             } else if (msg.what == 20) {
                 //connection fail~~~
                 sendBtn.setEnabled(false);
                 editText.setEnabled(false);
+
             } else if (msg.what == 30) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage("연결 요청이 들어왔습니다. \n 채팅을 허용하시겠습니까?");
@@ -130,26 +141,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 builder.setNegativeButton("거부", dialogListener);
                 serverDialog = builder.create();
                 serverDialog.show();
+
             } else if (msg.what == 40) {
                 isConnected = true;
                 editText.setEnabled(true);
                 sendBtn.setEnabled(true);
-                progressDialog.dismiss();
-                progressDialog.cancel();
+
+
             } else if (msg.what == 100) {
                 //message read....
                 addMessage("you", (String) msg.obj);
+
             } else if (msg.what == 200) {
                 //message write...
                 addMessage("me", (String) msg.obj);
+
             }
         }
     };
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_lab3, menu);
+    public boolean onCreateOptionsMenu(Menu menu) { //메뉴를 설정을 한다.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -176,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         for (BluetoothDevice device : devices) {
                             if (device.getName().equals(selectDeivceStr)) {
                                 MainActivity.this.device = device;
-                                showProgressDialgo(device.getName());
+
                                 ClientThread clientThread = new ClientThread();
                                 clientThread.start();
                             }
@@ -192,19 +206,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    private void showProgressDialgo(String name) {
-        progressDialog = ProgressDialog.show(this, "Waiting...", name + " 에 연결을 시도합니다.");
-    }
 
     @Override
     public void onClick(View v) {
+
+
         if (isConnected) {
+
             if (!editText.getText().toString().trim().equals("")) {
                 Message msg = new Message();
                 msg.obj = editText.getText().toString();
                 writeHandler.sendMessage(msg);
                 editText.setText("");
             }
+        } else {
+            Toast.makeText(this, "블루투스 연결이 되어 있지 않습니다. 재연결을 해주세요", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -242,6 +258,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     serverSocket.close();
                     isConnected = false;
                     isDialogOpened = false;
+
                 } catch (Exception e) {
                 }
 
@@ -279,7 +296,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Log.d("kkang", e.getMessage());
+                            Log.d("KIM", e.getMessage());
                         }
                         if (socket != null) {
                             try {
@@ -342,24 +359,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void run() {
             while (readFlag) {
+
                 try {
                     byte[] buffer = new byte[1024];
                     int bytes;
                     bytes = in.read(buffer);
                     String readStr = new String(buffer, 0, bytes);
+
                     if (readStr.equals("connect..")) {
                         Message msg1 = new Message();
                         msg1.what = 40;
                         mainHandler.sendMessage(msg1);
                     }
+
                     if (readStr.equals("destory..")) {
                         isConnected = false;
                         if (serverSocket != null) {
                             serverSocket.close();
                         }
+
                         if (socket != null) {
                             socket.close();
                         }
+
                         readFlag = false;
                         writeHandler.getLooper().quit();
                     }
@@ -415,12 +437,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         message.what = 200;
                         message.obj = msg.obj;
                         mainHandler.sendMessage(message);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                         isConnected = false;
                         writeHandler.getLooper().quit();
+
                         try {
                             readFlag = false;
+
                         } catch (Exception e1) {
 
                         }
@@ -429,6 +454,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             };
             Looper.loop();
+
         }
     }
 
@@ -448,6 +474,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
 
         }
+        Toast.makeText(this, "앱을 종료합니다. 감사합니다. !", Toast.LENGTH_SHORT).show();
+    }
+
+    static class ChatMyAdapter extends ArrayAdapter<ChatMessage> {
+        ArrayList<ChatMessage> list;
+        int resId;
+        Context context;
+
+        public ChatMyAdapter(Context context, int resId, ArrayList<ChatMessage> list) {
+            super(context, resId, list);
+            this.context = context;
+            this.resId = resId;
+            this.list = list;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(resId, null);
+
+
+            TextView msgView = (TextView) convertView.findViewById(R.id.mission2_item_msg);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) msgView
+                    .getLayoutParams();
+
+            ChatMessage msg = list.get(position);
+            if (msg.who.equals("me")) {
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,
+                        RelativeLayout.TRUE);
+                msgView.setTextColor(Color.WHITE);
+                msgView.setBackgroundResource(R.drawable.bg_right);
+            } else if (msg.who.equals("you")) {
+                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT,
+                        RelativeLayout.TRUE);
+                msgView.setBackgroundResource(R.drawable.bg_left);
+            }
+            msgView.setText(msg.msg);
+
+            return convertView;
+
+        }
+    }
+
+    static class ChatMessage {
+        String who;
+        String msg;
+        String handlecode;
     }
 }
 
