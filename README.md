@@ -38,7 +38,12 @@ app setiing
 5. firebase test
   
 
-## 2019 04 03
+## 2019 04 05
+1. controller xml 수정
+2. appBar 오버플로우 아이템 생성 --> 앱바의 사용은 무조건 오버플로우 액션으로
+3. 화면 간의 전환 액티비티를 사용
+4. manifest의 액티비티를 등록을 해야 작동을 한다. 
+5. 수정 사항 controller landscape 로 변경 할 것
 
 
 
