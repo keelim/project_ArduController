@@ -13,7 +13,7 @@
         android:title="Bluetooth"
         app:showAsAction="never" />
     <item
-        android:id="@+id/acton_controller"
+        android:id="@+id/action_controller"
         android:title="Controller"
         app:showAsAction="never"
         />
