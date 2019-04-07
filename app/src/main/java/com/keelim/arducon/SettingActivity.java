@@ -25,12 +25,12 @@ public class SettingActivity extends AppCompatActivity {
     final int REQUEST_ENABLE_BT = 1;
     ArrayAdapter<String> pairingAdapter, scanAdapter;
     ListView listView_pairing, listView_scan;
-    ArrayList<String> arrayList_scan = new ArrayList<String>();
+    ArrayList<String> arrayList_scan = new ArrayList<>();
     Button bt_scan;
     Switch switchOnOff;
     BluetoothAdapter myBluetoothAdapter;
     BluetoothDevice[] btArray = new BluetoothDevice[10];
-    ArrayList<BluetoothDevice> btArray_scan = new ArrayList<BluetoothDevice>();
+    ArrayList<BluetoothDevice> btArray_scan = new ArrayList<>();
 
 
     @Override
@@ -47,7 +47,7 @@ public class SettingActivity extends AppCompatActivity {
         Toolbar mysubToolbar = (Toolbar) findViewById(R.id.my_subtoolbar);
         mysubToolbar.setTitle("");
         mysubToolbar.setNavigationIcon(R.drawable.ic_mr_button_connecting_24_dark);
-        setSupportActionBar(mysubToolbar);
+
         //Toolbar Back Icon Click event
         mysubToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
