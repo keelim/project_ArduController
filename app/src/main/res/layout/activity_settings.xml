@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+        android:id="@+id/my_subtoolbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_scan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/my_subtoolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listview_pairing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/my_subtoolbar"
+        app:layout_constraintTop_toTopOf="@+id/my_subtoolbar">
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/listview_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/my_subtoolbar"
+        app:layout_constraintTop_toTopOf="@+id/my_subtoolbar">
+
+    </ListView>
+
+    <Switch
+        android:id="@+id/switchOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/my_subtoolbar"
+        app:layout_constraintTop_toTopOf="@+id/my_subtoolbar" />
+
+
+</android.support.constraint.ConstraintLayout>
