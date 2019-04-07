@@ -18,6 +18,13 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button button_change;
 
+    private static final String TAG = "MainActivity";
+    private static final int REQUEST_ENABLE_BT = 1;
+    private static final int MESSAGE_READ = 2;
+    private static final int CONNECT_FAILE = 3;
+    private static final int CONNECT_SUCESS = 4;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
