@@ -62,11 +62,11 @@ app setiing
     stringbuilder.appen("ABC");
     stringbuilder.appen("DEF");
     stringbuilder.toString(); //string 으로 변환을 시킨다. 
-    </code
+    </code>
     
 4. 블루투스 작동 구조
 5. Setting Activity  toolbar  --> action bar 대체를 할 것
 
-
+## 2019 04 09
 
 
