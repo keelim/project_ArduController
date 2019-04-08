@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        public void write(byte[] bytes) {
+        void write(byte[] bytes) {
             try {
                 outputStream.write(bytes);
             } catch (IOException e) {
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public void cancel() {
+        void cancel() {
             try {
                 mmsocket.close();
             } catch (IOException e) {
