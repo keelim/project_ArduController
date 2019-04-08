@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "블루투스 연결을 확인하여 주세요", Toast.LENGTH_SHORT).show();
                 } else {
                     clientConnected.write(string.getBytes());
-
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); //todo
                     inputMethodManager.hideSoftInputFromWindow(editText.getWindowToken(), 0); //todo?
 
@@ -85,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     Handler mHandler = new Handler(new Handler.Callback() { //todo 핸들링 하는 곳 같긴 한데
         @Override
         public boolean handleMessage(Message msg) {
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
             switch (msg.what) {
                 case MESSAGE_READ:
-                    byte[] readBuffer = (byte[]) msg.obj;
+                    byte[] readBuffer = (byte[]) msg.obj; //버퍼를 만든다.
                     String tempMessage = new String(readBuffer, 0, msg.arg1);
                     mMessage.append(tempMessage);
                     int endOfLineIndex = mMessage.indexOf("\n");//todo?
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) { // 메뉴를 선택할 수 있게 한다.
         getMenuInflater().inflate(R.menu.actionbar_actions, menu);
         return true;
-    }
+    } //액션바를 사용할 수 있게 한다.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -149,9 +149,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
-    }
+    } //액션바 옵셥 메뉴 선택 --> Onclick nono
 
-    private class ConnectThread extends Thread { //bluetooth thread
+    //innder class
+    private class ConnectThread extends Thread { //bluetooth thread 연결 쓰레드
         final BluetoothSocket mmsocket;
         final BluetoothDevice mmdevice;
 
@@ -206,7 +207,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class ConnectedThread extends Thread {
+    //inner class
+    private class ConnectedThread extends Thread { //연결되는 쓰레드
         final BluetoothSocket mmsocket;
         final InputStream inputStream;
         final OutputStream outputStream;
@@ -230,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void run() {
+        public void run() { //실행
             byte[] buffer = new byte[1024]; //버퍼를 만든다.
             int bytes;
 
@@ -276,5 +278,5 @@ public class MainActivity extends AppCompatActivity {
         if (clientConnected != null) {
             clientConnected.cancel();
         }
-    }
+    } //액티비티 종료 되면 호출
 }

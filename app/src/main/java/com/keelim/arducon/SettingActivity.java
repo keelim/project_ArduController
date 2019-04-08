@@ -46,7 +46,7 @@ public class SettingActivity extends AppCompatActivity {
         //Toolbar
         Toolbar mysubToolbar = (Toolbar) findViewById(R.id.my_subtoolbar);
         mysubToolbar.setTitle("");
-        mysubToolbar.setNavigationIcon(R.drawable.ic_mr_button_connecting_24_dark);
+        mysubToolbar.setNavigationIcon(R.drawable.ic_group_collapse_00);
 
         //Toolbar Back Icon Click event
         mysubToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -111,16 +111,16 @@ public class SettingActivity extends AppCompatActivity {
                 if (switchOnOff.isChecked()) { //ON일때
                     //블루투스를 활성화 합니다.
                     bluetoothEnable();
+                    Toast.makeText(SettingActivity.this, "블루투스카 켜졌습니다. ", Toast.LENGTH_SHORT).show();
                 } else { //OFF할때
                     if (myBluetoothAdapter.isEnabled()) {
                         myBluetoothAdapter.disable();
-                        Toast.makeText(getApplicationContext(), "블루투스가 꺼졌습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingActivity.this, "블루투스가 꺼졌습니다. ", Toast.LENGTH_SHORT).show();
                         //페어링목록과 검색목록을 크리어 해준다. 그런데 방법이 이게 맞는지 모르겠다.
                         //페어링된 리스트뷰 어답터 세팅
                         String[] strings = new String[0];
                         pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.listview, strings);
                         listView_pairing.setAdapter(pairingAdapter);
-
                         //검색 목록 초기화
                         arrayList_scan.clear();
                     }
@@ -227,7 +227,7 @@ public class SettingActivity extends AppCompatActivity {
             } else if (resultCode == RESULT_CANCELED) {
                 //사용자가 취소함
                 switchOnOff.setChecked(false);
-                Toast.makeText(getApplicationContext(), "취소되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "취소 되었습니다. ", Toast.LENGTH_SHORT).show();
             }
         }
     }

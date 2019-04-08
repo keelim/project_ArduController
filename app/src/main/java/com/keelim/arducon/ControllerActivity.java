@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,32 +52,22 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
         int id = v.getId();
         switch (id) {
             case R.id.button_up:
-                Log.d(TAG, "onClick: up");
-                Toast.makeText(getApplication(), "up", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button_down:
-                Toast.makeText(getApplicationContext(), "down", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button_left:
-                Toast.makeText(getApplicationContext(), "left", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button_right:
-                Toast.makeText(getApplicationContext(), "right", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button_center:
-                Toast.makeText(getApplicationContext(), "center", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bluetooth_on:
-                Toast.makeText(getApplicationContext(), "bluetooth on", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bluetooth_off:
-                Toast.makeText(getApplicationContext(), "bluetooth off", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bluetooth_connecting:
-                Toast.makeText(getApplicationContext(), "bluetooth connecting", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bluetooth_senddata:
-                Toast.makeText(getApplicationContext(), "bluetooth sendData", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
