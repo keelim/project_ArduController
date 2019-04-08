@@ -53,6 +53,17 @@ app setiing
     
 2. Handler 조정 방법
 3. StringBuilder
+    - String을 생성을 하여 두개를 합치는 것이 생각보다 비효율 적이다. 
+    - 문자열을 더할 때 객체를 생성하는 것이 아니라 기존의 데이터에서 더한다.
+    - 속도가 빠르다. 상대적 부하가 적다.
+    - 긴 문자열은 StringBuilder 가 효율적
+    <code>
+    Stringbuilder stringbuilder = new StringBuilder();
+    stringbuilder.appen("ABC");
+    stringbuilder.appen("DEF");
+    stringbuilder.toString(); //string 으로 변환을 시킨다. 
+    </code
+    
 4. 블루투스 작동 구조
 5. Setting Activity  toolbar  --> action bar 대체를 할 것
 

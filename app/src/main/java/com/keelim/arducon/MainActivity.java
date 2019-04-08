@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private ConnectedThread clientConnected;
     private BluetoothSocket bluetoothSocket; //socket check
-    private UUID uuid = UUID.randomUUID(); //uuid 설정 값?
+    private UUID uuid = UUID.randomUUID(); //uuid 앱의 특수한 아이디
 
 
     @Override
