@@ -47,11 +47,15 @@ app setiing
 
 ## 2019 04 08
 1. UUID ? 
+    - 간단한 유니크한 아이디
+    - 내부 저장소 에서 관리를 해야 한다.  
+    <code> String UUID = UUID.randomUUID().toString() </code>
+    
 2. Handler 조정 방법
 3. StringBuilder
 4. 블루투스 작동 구조
 5. Setting Activity  toolbar  --> action bar 대체를 할 것
-6.  
+
 
 
 

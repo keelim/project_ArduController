@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private ConnectedThread clientConnected;
     private BluetoothSocket bluetoothSocket; //socket check
-    private UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //uuid 설정 값?
+    private UUID uuid = UUID.randomUUID(); //uuid 설정 값?
 
 
     @Override
@@ -240,11 +240,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
             }
-
-
         }
 
         void write(byte[] bytes) {
