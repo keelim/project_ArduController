@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,27 +9,31 @@
         android:id="@+id/my_subtoolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
         android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/switchOnOff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_scan"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="6dp"
         android:text="Scan"
         app:layout_constraintBottom_toTopOf="@+id/listview_scan"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/switchOnOff"
-        app:layout_constraintTop_toBottomOf="@+id/my_subtoolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/my_subtoolbar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ListView
         android:id="@+id/listview_pairing"
-        android:layout_width="351dp"
+        android:layout_width="340dp"
         android:layout_height="290dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="348dp"
@@ -44,8 +49,8 @@
 
     <ListView
         android:id="@+id/listview_scan"
-        android:layout_width="342dp"
-        android:layout_height="198dp"
+        android:layout_width="340dp"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="8dp"
@@ -58,14 +63,40 @@
 
     <Switch
         android:id="@+id/switchOnOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="241dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="191dp"
+        android:layout_marginBottom="617dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bt_scan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_subtoolbar" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigationView"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#CC000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview_pairing"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/singleline"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/listview_pairing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview_scan" />
 
 
 </android.support.constraint.ConstraintLayout>
