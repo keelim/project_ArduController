@@ -25,23 +25,20 @@ import java.io.OutputStream;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-    Button button_change;
-
     private static final String TAG = "MainActivity";
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int MESSAGE_READ = 2;
     private static final int CONNECT_FAILE = 3;
     private static final int CONNECT_SUCESS = 4;
 
-    BluetoothAdapter bluetoothAdapter;
-    Button button_send;
-    EditText editText;
-    TextView textView;
-    ConnectedThread clientConnected;
-    BluetoothSocket bluetoothSocket; //socket check
-
-
-    UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //uuid 설정 값?
+    private Button button_change;
+    private BluetoothAdapter bluetoothAdapter;
+    private Button button_send;
+    private EditText editText;
+    private TextView textView;
+    private ConnectedThread clientConnected;
+    private BluetoothSocket bluetoothSocket; //socket check
+    private UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //uuid 설정 값?
 
 
     @Override
@@ -72,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (bluetoothSocket == null) {
                     Toast.makeText(MainActivity.this, "블루투스 연결을 확인하여 주세요", Toast.LENGTH_SHORT).show();
+
                 } else {
                     clientConnected.write(string.getBytes());
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); //todo
@@ -80,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
 
@@ -109,9 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 case CONNECT_SUCESS:
                     Toast.makeText(MainActivity.this, "연결 성공", Toast.LENGTH_SHORT).show();
                     break;
-
             }
-
             return true;
         }
     });

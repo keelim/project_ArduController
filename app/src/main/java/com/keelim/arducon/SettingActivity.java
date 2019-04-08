@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,16 +20,17 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class SettingActivity extends AppCompatActivity {
-    final String TAG = "SubActivity";
-    final int REQUEST_ENABLE_BT = 1;
-    ArrayAdapter<String> pairingAdapter, scanAdapter;
-    ListView listView_pairing, listView_scan;
-    ArrayList<String> arrayList_scan = new ArrayList<>();
-    Button bt_scan;
-    Switch switchOnOff;
-    BluetoothAdapter myBluetoothAdapter;
-    BluetoothDevice[] btArray = new BluetoothDevice[10];
-    ArrayList<BluetoothDevice> btArray_scan = new ArrayList<>();
+    public final int REQUEST_ENABLE_BT = 1;
+    private final String TAG = "SubActivity";
+
+    private ArrayAdapter<String> pairingAdapter, scanAdapter;
+    private ListView listView_pairing, listView_scan;
+    private Button bt_scan;
+    private Switch switchOnOff;
+    private BluetoothAdapter myBluetoothAdapter;
+    private BluetoothDevice[] btArray;
+    private ArrayList<String> arrayList_scan;
+    private ArrayList<BluetoothDevice> btArray_scan;
 
 
     @Override
@@ -42,19 +42,12 @@ public class SettingActivity extends AppCompatActivity {
         listView_pairing = (ListView) findViewById(R.id.listview_pairing);
         listView_scan = (ListView) findViewById(R.id.listview_scan);
         switchOnOff = (Switch) findViewById(R.id.switchOnOff);
+        arrayList_scan = new ArrayList<>();
+        btArray_scan = new ArrayList<>();
+        btArray = new BluetoothDevice[10];
 
-        //Toolbar
-        Toolbar mysubToolbar = (Toolbar) findViewById(R.id.my_subtoolbar);
-        mysubToolbar.setTitle("");
-        mysubToolbar.setNavigationIcon(R.drawable.ic_group_collapse_00);
 
-        //Toolbar Back Icon Click event
-        mysubToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        //todo 툴바 필요 없다. --> 액션바로 대체 navigation drawer 설정하기
 
         //블루투스 어답터
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -81,7 +74,7 @@ public class SettingActivity extends AppCompatActivity {
                     index++;
                 }
                 //페어링된 리스트뷰 어답터 세팅
-                pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.listview, strings);
+                pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_view, strings);
                 listView_pairing.setAdapter(pairingAdapter);
             }
         }
@@ -119,7 +112,7 @@ public class SettingActivity extends AppCompatActivity {
                         //페어링목록과 검색목록을 크리어 해준다. 그런데 방법이 이게 맞는지 모르겠다.
                         //페어링된 리스트뷰 어답터 세팅
                         String[] strings = new String[0];
-                        pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.listview, strings);
+                        pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_view, strings);
                         listView_pairing.setAdapter(pairingAdapter);
                         //검색 목록 초기화
                         arrayList_scan.clear();
@@ -143,7 +136,7 @@ public class SettingActivity extends AppCompatActivity {
                 myBluetoothAdapter.startDiscovery();
 
                 //새 기기 검색 리스트뷰 어답터 세팅
-                scanAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.listview, arrayList_scan);
+                scanAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_view, arrayList_scan);
                 listView_scan.setAdapter(scanAdapter);
 
                 if (!myBluetoothAdapter.isEnabled()) {
@@ -219,7 +212,7 @@ public class SettingActivity extends AppCompatActivity {
                         strings[index] = device.getName();//기기 이름과 맥어드레스를 추가한다.
                         index++;
                         //페어링된 리스트뷰 어답터 세팅
-                        pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.listview, strings);
+                        pairingAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_view, strings);
                         listView_pairing.setAdapter(pairingAdapter);
                     }
                 }
@@ -255,8 +248,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         //액티비티가 종료될때 등록한 리시버들을 해제 해 준다. 반드시 그래야 한다.
-        if (mBroadcastReceiver2 != null)
-            unregisterReceiver(mBroadcastReceiver2);
+        unregisterReceiver(mBroadcastReceiver2);
     }
 }
 
