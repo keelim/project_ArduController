@@ -7,8 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private Button button_send;
     private EditText editText;
     private TextView textView;
+    private Toolbar toolbar;
+
     private ConnectedThread clientConnected;
     private BluetoothSocket bluetoothSocket; //socket check
     private UUID uuid = UUID.randomUUID(); //uuid 앱의 특수한 아이디
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         button_send = (Button) findViewById(R.id.button_send_main);
         editText = (EditText) findViewById(R.id.editText);
         textView = (TextView) findViewById(R.id.textView);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
 
         button_change.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -78,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        setSupportActionBar(toolbar);
+        //setDisplayHomeAsUp Enabled
+
     }
 
 
@@ -111,39 +121,43 @@ public class MainActivity extends AppCompatActivity {
     });
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) { // 메뉴를 선택할 수 있게 한다.
-        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
-        return true;
-    } //액션바를 사용할 수 있게 한다.
+//    {
+//        @Override
+//
+//        public boolean onCreateOptionsMenu (Menu menu){ // 메뉴를 선택할 수 있게 한다.
+//        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
+//        return true;
+//    } //액션바를 사용할 수 있게 한다.
+//
+//        @Override
+//        public boolean onOptionsItemSelected (MenuItem item){
+//        Intent intent;
+//        int id = item.getItemId();
+//        switch (id) {
+//            case R.id.action_main:
+//                intent = new Intent(getApplicationContext(), MainActivity.class);
+//                Toast.makeText(this, "화면 전환을 실행 합니다.", Toast.LENGTH_SHORT).show();
+//                startActivity(intent);
+//                break;
+//            case R.id.action_controller:
+//                intent = new Intent(getApplicationContext(), ControllerActivity.class);
+//                Toast.makeText(this, "화면 전환을 실행 합니다. ", Toast.LENGTH_SHORT).show();
+//                startActivity(intent);
+//                break;
+//
+//            case R.id.action_bluetooth:
+//                intent = new Intent(MainActivity.this, SettingActivity.class);
+//                startActivityForResult(intent, REQUEST_ENABLE_BT); //todo?
+//
+//            case R.id.action_setting:
+//                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+//                break;
+//        }
+//
+//        return true;
+//    } //액션바 옵셥 메뉴 선택 --> Onclick nono
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_main:
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-                Toast.makeText(this, "화면 전환을 실행 합니다.", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-                break;
-            case R.id.action_controller:
-                intent = new Intent(getApplicationContext(), ControllerActivity.class);
-                Toast.makeText(this, "화면 전환을 실행 합니다. ", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-                break;
-
-            case R.id.action_bluetooth:
-                intent = new Intent(MainActivity.this, SettingActivity.class);
-                startActivityForResult(intent, REQUEST_ENABLE_BT); //todo?
-
-            case R.id.action_setting:
-                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        return true;
-    } //액션바 옵셥 메뉴 선택 --> Onclick nono
 
     //innder class
     private class ConnectThread extends Thread { //bluetooth thread 연결 쓰레드
