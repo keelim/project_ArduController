@@ -5,12 +5,15 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -27,7 +30,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int MESSAGE_READ = 2;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText;
     private TextView textView;
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
 
     private ConnectedThread clientConnected;
     private BluetoothSocket bluetoothSocket; //socket check
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText);
         textView = (TextView) findViewById(R.id.textView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
 
         button_change.setOnClickListener(new Button.OnClickListener() {
@@ -87,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
         });
         setSupportActionBar(toolbar);
         //setDisplayHomeAsUp Enabled
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //왼쪽 버튼 사용 여부
+        getSupportActionBar().setHomeAsUpIndicator(android.R.drawable.ic_input_add); //왼쪽 아이콘 설정
+        getSupportActionBar().setDisplayShowTitleEnabled(false);  //액티비티의 제목을 가린다.
 
     }
 
@@ -121,43 +130,58 @@ public class MainActivity extends AppCompatActivity {
     });
 
 
-//    {
-//        @Override
-//
-//        public boolean onCreateOptionsMenu (Menu menu){ // 메뉴를 선택할 수 있게 한다.
-//        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
-//        return true;
-//    } //액션바를 사용할 수 있게 한다.
-//
-//        @Override
-//        public boolean onOptionsItemSelected (MenuItem item){
-//        Intent intent;
-//        int id = item.getItemId();
-//        switch (id) {
-//            case R.id.action_main:
-//                intent = new Intent(getApplicationContext(), MainActivity.class);
-//                Toast.makeText(this, "화면 전환을 실행 합니다.", Toast.LENGTH_SHORT).show();
-//                startActivity(intent);
-//                break;
-//            case R.id.action_controller:
-//                intent = new Intent(getApplicationContext(), ControllerActivity.class);
-//                Toast.makeText(this, "화면 전환을 실행 합니다. ", Toast.LENGTH_SHORT).show();
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.action_bluetooth:
-//                intent = new Intent(MainActivity.this, SettingActivity.class);
-//                startActivityForResult(intent, REQUEST_ENABLE_BT); //todo?
-//
-//            case R.id.action_setting:
-//                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-//
-//        return true;
-//    } //액션바 옵셥 메뉴 선택 --> Onclick nono
-//    }
+    @Override
 
+    public boolean onCreateOptionsMenu(Menu menu) { // 메뉴를 선택할 수 있게 한다.
+        getMenuInflater().inflate(R.menu.main_navigation_menu, menu);
+        return true;
+    } //액션바를 사용할 수 있게 한다.
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case android.R.drawable.ic_input_add:
+                drawerLayout.openDrawer(GravityCompat.START); //네비게이션 버튼 열기
+                Snackbar.make(toolbar, "Menu pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_account:
+                Snackbar.make(toolbar, "account pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_setting:
+                Snackbar.make(toolbar, "setting pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_bugreport:
+                Snackbar.make(toolbar, "bugreport pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    } //액션바 옵셥 메뉴 선택 --> Onclick nono
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        switch (id) {
+            case R.id.drawer_account:
+                Snackbar.make(toolbar, "Navigation Account pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_setting:
+                Snackbar.make(toolbar, "Navigation Setting pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+        }
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        super.onBackPressed();
+    }
 
     //innder class
     private class ConnectThread extends Thread { //bluetooth thread 연결 쓰레드

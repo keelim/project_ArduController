@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,9 +16,7 @@
             android:layout_height="60dp"
             android:background="@color/colorPrimary"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-            tools:layout_editor_absoluteX="0dp" />
+            app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 
         <TextView
@@ -34,35 +27,33 @@
             android:layout_marginBottom="141dp"
             android:text="Main 화면"
             android:textAlignment="center"
-            android:textSize="60dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="60sp" />
 
         <Button
             android:id="@+id/button_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView_firstText"
+            android:layout_alignEnd="@+id/textView_firstText"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="193dp"
+            android:layout_marginEnd="93dp"
             android:layout_marginBottom="116dp"
             android:text="화면 전환 버튼"
             android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView_firstText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_send_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/textView_firstText"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="32dp"
             android:layout_marginTop="36dp"
-            android:text="Send Data"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_firstText" />
+            android:layout_marginBottom="252dp"
+            android:text="Send Data" />
 
         <TextView
             android:id="@+id/textView"
@@ -71,29 +62,31 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="75dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_firstText" />
+            android:text="TextView" />
 
         <EditText
             android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="524dp"
+            android:layout_marginEnd="93dp"
+            android:layout_marginBottom="162dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
-            app:layout_constraintStart_toStartOf="@+id/button_send_main"
-            app:layout_constraintTop_toBottomOf="@+id/button_send_main" />
+            android:text="Name" />
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigationview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        
         app:headerLayout="@layout/main_nav_header"
         app:menu="@menu/main_navigation_menu" />
 
