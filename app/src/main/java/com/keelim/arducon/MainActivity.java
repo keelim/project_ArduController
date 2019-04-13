@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         setSupportActionBar(toolbar);
-        //setDisplayHomeAsUp Enabled
+
 
     }
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     Handler mHandler = new Handler(new Handler.Callback() { //todo 핸들링 하는 곳 같긴 한데
         @Override
         public boolean handleMessage(Message msg) {
-            StringBuilder mMessage = new StringBuilder(); //todo StringBuilder?
+            StringBuilder mMessage = new StringBuilder();
 
             switch (msg.what) {
                 case MESSAGE_READ:
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     if (endOfLineIndex > 0) {
                         String sbprint = mMessage.substring(0, endOfLineIndex);
                         Log.d(TAG, "handleMessage: " + sbprint);
-                        textView.setText(sbprint); //todo String 가공 같은데
+                        textView.setText(sbprint);
                     }
                     break;
                 case CONNECT_FAILE:
@@ -121,42 +121,32 @@ public class MainActivity extends AppCompatActivity {
     });
 
 
-//    {
-//        @Override
-//
-//        public boolean onCreateOptionsMenu (Menu menu){ // 메뉴를 선택할 수 있게 한다.
-//        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
-//        return true;
-//    } //액션바를 사용할 수 있게 한다.
-//
-//        @Override
-//        public boolean onOptionsItemSelected (MenuItem item){
-//        Intent intent;
-//        int id = item.getItemId();
-//        switch (id) {
-//            case R.id.action_main:
-//                intent = new Intent(getApplicationContext(), MainActivity.class);
-//                Toast.makeText(this, "화면 전환을 실행 합니다.", Toast.LENGTH_SHORT).show();
-//                startActivity(intent);
-//                break;
-//            case R.id.action_controller:
-//                intent = new Intent(getApplicationContext(), ControllerActivity.class);
-//                Toast.makeText(this, "화면 전환을 실행 합니다. ", Toast.LENGTH_SHORT).show();
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.action_bluetooth:
-//                intent = new Intent(MainActivity.this, SettingActivity.class);
-//                startActivityForResult(intent, REQUEST_ENABLE_BT); //todo?
-//
-//            case R.id.action_setting:
-//                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-//
-//        return true;
-//    } //액션바 옵셥 메뉴 선택 --> Onclick nono
-//    }
+    @Override
+
+    public boolean onCreateOptionsMenu(Menu menu) { // 메뉴를 선택할 수 있게 한다.
+        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
+        return true;
+    }
+    //액션바를 사용할 수 있게 한다.
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_controller:
+                intent = new Intent(getApplicationContext(), ControllerActivity.class);
+                Toast.makeText(this, "화면 전환을 실행 합니다. ", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                break;
+
+            case R.id.action_setting:
+                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return true;
+    } //액션바 옵셥 메뉴 선택 --> Onclick nono
 
 
     //innder class

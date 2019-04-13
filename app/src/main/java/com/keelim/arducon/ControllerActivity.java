@@ -30,11 +30,7 @@ public class ControllerActivity extends AppCompatActivity {
         Intent intent;
         int id = item.getItemId();
         switch (id) {
-            case R.id.action_main:
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-                Toast.makeText(this, "화면 전환을 실행 합니다.", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-                break;
+
             case R.id.action_controller:
                 intent = new Intent(getApplicationContext(), ControllerActivity.class);
                 Toast.makeText(this, "화면 전환을 실행 합니다. ", Toast.LENGTH_SHORT).show();

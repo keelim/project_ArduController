@@ -2,24 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_bluetooth"
-        android:title="Bluetooth"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_controller"
-        android:title="Controller"
+        android:title="컨트롤러"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_setting"
-        android:title="setting"
+        android:title="환경설정"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_main"
-        android:title="Main"
-        app:showAsAction="never" />
 
 </menu>
