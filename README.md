@@ -83,8 +83,15 @@ app setiing
     - menu.xml를 작성
     - 툴바를 이용하여 setSupportActionbar() 를 통하여 잡아주고 --> code 적 이용방법 
     - 액션바의 설정을 이용을 한다. 
+    
 2. 드로어 레이아웃 설정
-    - 
+    - 드로어 레이아웃의 설정의 버튼 
+    - R.id.home 으로 표현을 한다.
+    <code>drawerLayout.openDrawer(GravityCompat.START);</code>
+    <code>drawerLayout.closeDrawers()</code>
+    드로어 레이아웃을 닫아준다. 
+     
 3. Toast 메시지 보다는 SnackBar 깔끔할 수 도 있을 것이라는 생각을 해본다.
     <code>SnackBar.make(Toolbae, "", Snackbar.SHORT").show</code>
+    
 4.  

@@ -9,10 +9,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuItemView;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(android.R.drawable.ic_dialog_alert);
         actionBar.setDisplayShowTitleEnabled(false);
+        //action bar setting
+
 
     }
 
@@ -111,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+            case R.id.home:
+                
+                Snackbar.make(toolbar, "Drawer button pressed", Snackbar.LENGTH_SHORT).show();
+                break;
             case R.id.menu_account:
                 Snackbar.make(toolbar, "MenuPressed", Snackbar.LENGTH_SHORT).show();
                 break;
@@ -120,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_setting:
                 Snackbar.make(toolbar, "setting Pressed", Snackbar.LENGTH_SHORT).show();
                 break;
-
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     // 블루투스 장치의 이름이 주어졌을때 해당 블루투스 장치 객체를 페어링 된 장치 목록에서 찾아내는 코드.
     public BluetoothDevice getDeviceFromBondedList(String name) {
@@ -368,5 +380,7 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 }
 
