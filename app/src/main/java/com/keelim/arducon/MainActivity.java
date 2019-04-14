@@ -1,7 +1,6 @@
 package com.keelim.arducon;
 // 1.JAVA I/O중 바이트 스트림에 관련된 최상위 클래스인 InputStream, OutputStream (영문1,한글 2바이트)
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -10,7 +9,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,7 +36,8 @@ import java.util.UUID;
 // 3. UUID : Universally Unique IDentifier, 범용 고유 실별자.import java.util.UUID;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
+
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     static final int REQUEST_ENABLE_BT = 10;
     int mPariedDeviceCount = 0;
@@ -58,8 +63,9 @@ public class MainActivity extends Activity {
     int readBufferPosition;
 
 
-    EditText mEditReceive, mEditSend;
-    Button mButtonSend;
+    private EditText mEditReceive, mEditSend;
+    private Button mButtonSend;
+    private Toolbar toolbar;
 
 
     @Override
@@ -78,13 +84,47 @@ public class MainActivity extends Activity {
                 // 문자열 전송하는 함수(쓰레드 사용 x)
                 sendData(mEditSend.getText().toString());
                 mEditSend.setText("");
+                // 블루투스 활성화 시키는 메소드
+                checkBluetooth();
             }
         });
 
-        // 블루투스 활성화 시키는 메소드
-        checkBluetooth();
+
+//        checkBluetooth(); //todo temp
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(android.R.drawable.ic_dialog_alert);
+        actionBar.setDisplayShowTitleEnabled(false);
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.menu_account:
+                Snackbar.make(toolbar, "MenuPressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.menu_search:
+                Snackbar.make(toolbar, "SearchPressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.menu_setting:
+                Snackbar.make(toolbar, "setting Pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     // 블루투스 장치의 이름이 주어졌을때 해당 블루투스 장치 객체를 페어링 된 장치 목록에서 찾아내는 코드.
     public BluetoothDevice getDeviceFromBondedList(String name) {

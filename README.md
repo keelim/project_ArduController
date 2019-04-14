@@ -74,5 +74,17 @@ app setiing
 
 ## 2019 04 13 
 1. 드로우 레이아웃 일단 제거를 할 것
-2. 
 
+## 2019 04 14
+1. 앱바 --> 액션바, 툴바 2가지로 구성을 할 수 있다. 
+    - Actionbar old version,  Toolbar latest version
+    - Toolbar > Actionbar
+    - 툴바를 잡아주고
+    - menu.xml를 작성
+    - 툴바를 이용하여 setSupportActionbar() 를 통하여 잡아주고 --> code 적 이용방법 
+    - 액션바의 설정을 이용을 한다. 
+2. 드로어 레이아웃 설정
+    - 
+3. Toast 메시지 보다는 SnackBar 깔끔할 수 도 있을 것이라는 생각을 해본다.
+    <code>SnackBar.make(Toolbae, "", Snackbar.SHORT").show</code>
+4.  
