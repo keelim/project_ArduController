@@ -42,7 +42,7 @@ import java.util.UUID;
 // 3. UUID : Universally Unique IDentifier, 범용 고유 실별자.import java.util.UUID;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     static final int REQUEST_ENABLE_BT = 10;
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditReceive, mEditSend;
     private Button mButtonSend;
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
 
 
     @Override
@@ -96,15 +97,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        checkBluetooth(); //todo temp
+//        checkBluetooth(); //
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(android.R.drawable.ic_dialog_alert);
         actionBar.setDisplayShowTitleEnabled(false);
+
         //action bar setting
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout); //드로어 레이아웃 셋팅
 
 
     }
@@ -120,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.home:
-                
                 Snackbar.make(toolbar, "Drawer button pressed", Snackbar.LENGTH_SHORT).show();
+                drawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.menu_account:
                 Snackbar.make(toolbar, "MenuPressed", Snackbar.LENGTH_SHORT).show();
@@ -135,6 +140,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        switch (id) {
+            case R.id.account:
+                Snackbar.make(toolbar, "Navigation Account pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.setting:
+                Snackbar.make(toolbar, "Navigation Setting pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+            default:
+                Snackbar.make(toolbar, "default pressed", Snackbar.LENGTH_SHORT).show();
+                break;
+        }
+        drawerLayout.closeDrawers();
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawers();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 
