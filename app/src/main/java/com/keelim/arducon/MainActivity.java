@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BluetoothSocket mSocket = null;
     OutputStream mOutputStream = null;
     InputStream mInputStream = null;
+
     String mStrDelimiter = "\n";
     char mCharDelimiter = '\n';
 
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //action bar setting
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout); //드로어 레이아웃 셋팅
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout); //드로어 레이아웃 셋팅
 
 
     }
