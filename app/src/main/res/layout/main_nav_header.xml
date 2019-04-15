@@ -7,36 +7,38 @@
     android:background="@color/colorPrimary">
 
     <ImageView
-        android:id="@+id/header_imageView"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/header_id_textview"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
-        android:text="keelim"
+        android:text="Keelim"
         android:textColor="#fff"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/header_id_textview2"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="kkk@kkk.com"
+        android:text="kiwinam@test.com"
         android:textColor="#fff"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/header_id_textview"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </android.support.constraint.ConstraintLayout>
+
+
