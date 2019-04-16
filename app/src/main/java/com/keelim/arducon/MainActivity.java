@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuItemView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.SnackbarContentLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -26,6 +27,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -42,7 +48,7 @@ import java.util.UUID;
 // 3. UUID : Universally Unique IDentifier, 범용 고유 실별자.import java.util.UUID;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     static final int REQUEST_ENABLE_BT = 10;
@@ -73,7 +79,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private EditText mEditReceive, mEditSend;
     private Button mButtonSend;
     private Toolbar toolbar;
+
+    private Button btnCloseDrawer;
+
+    private AdView mAdView;
+
     private DrawerLayout drawerLayout;
+    private View drawerView;
 
 
     @Override
@@ -102,19 +114,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
 
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(android.R.drawable.ic_dialog_alert);
-        actionBar.setDisplayShowTitleEnabled(false);
 
-        //action bar setting
+        //adMob
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //모바일 애드 initialize
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout); //드로어 레이아웃 셋팅
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
+        drawerView = (View) findViewById(R.id.drawer);
+
+
+        btnCloseDrawer = (Button) findViewById(R.id.btn_CloseDrawer);
+
+
+        // 드로어 닫는 버튼 리스너
+        btnCloseDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(drawerView);
+            }
+        });
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -126,50 +151,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.home:
-                Snackbar.make(toolbar, "Drawer button pressed", Snackbar.LENGTH_SHORT).show();
-                drawerLayout.openDrawer(GravityCompat.START);
+            case R.id.menu_draweropen:
+                drawerLayout.openDrawer(drawerView);
+                Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
-            case R.id.menu_account:
-                Snackbar.make(toolbar, "MenuPressed", Snackbar.LENGTH_SHORT).show();
-                break;
-            case R.id.menu_search:
-                Snackbar.make(toolbar, "SearchPressed", Snackbar.LENGTH_SHORT).show();
-                break;
+            
+
             case R.id.menu_setting:
-                Snackbar.make(toolbar, "setting Pressed", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(toolbar, "준비 중입니다. ", Snackbar.LENGTH_SHORT).show();
                 break;
+
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int id = menuItem.getItemId();
-        switch (id) {
-            case R.id.account:
-                Snackbar.make(toolbar, "Navigation Account pressed", Snackbar.LENGTH_SHORT).show();
-                break;
-            case R.id.setting:
-                Snackbar.make(toolbar, "Navigation Setting pressed", Snackbar.LENGTH_SHORT).show();
-                break;
-            default:
-                Snackbar.make(toolbar, "default pressed", Snackbar.LENGTH_SHORT).show();
-                break;
-        }
-        drawerLayout.closeDrawers();
-        return false;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawers();
-        } else {
-            super.onBackPressed();
-        }
     }
 
 

@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group >
         <item
-            android:id="@+id/account"
+            android:id="@+id/drawer_account"
 
             android:title="계정" />
         <item
-            android:id="@+id/star"
-
-            android:title="즐겨찾기" />
-        <item
-            android:id="@+id/cart"
-
-            android:title="장바구니" />
-    </group>
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/bug_report"
+            android:id="@+id/drawer_bug_report"
 
             android:title="버그 리포트" />
         <item
-            android:id="@+id/setting"
+            android:id="@+id/drawer_setting"
 
             android:title="설정" />
         <item
-            android:id="@+id/logout"
+            android:id="@+id/drawer_logout"
 
             android:title="로그아웃" />
     </group>

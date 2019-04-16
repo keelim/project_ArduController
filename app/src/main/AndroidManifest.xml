@@ -3,7 +3,7 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.keelim.arducon">
 
-    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 블루투스 허용 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
@@ -13,6 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/ADMOB_APP_ID"/>
+
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
 
 
         <activity android:name=".MainActivity">

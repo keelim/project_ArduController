@@ -100,9 +100,21 @@ app setiing
 1. temp drawer layout 
 2. ready to the other setting
     - 아이콘 생성 준비
-    - admob 연결 준비
     - 블루투스 코드 수정
     - 레이아웃 기능 최소화
     - 드로어 레이아웃 정리
     - component 확인
     - flow chart
+3. Test adMob setting 
+    - 출시 시 adMob id 변경을 할 것
+    - code, @string/addMobid 
+    
+## 2019 04 16
+1. drawer layout  --> 슬라이드 메뉴?
+    - drawer 레이아웃으로 적용 --> 드로어 레이아웃 정상 작동 확인 
+    - 드로어 레이아웃 수정을 할 것
+    - 드로어 레이아웃 수정 완료 --> 작동 확인
+    - R.id.home 사용을 하는 방법
+     <code> <include layout="@layout/apply_darwer" /> </code>
+2. 전체적인 레이아웃 수정 준비 --> 하나의 액티비티 수정을 할 필요가 있나?
+    - 

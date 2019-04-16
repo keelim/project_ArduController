@@ -2,22 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/menu_search"
-        android:title="search"
-        app:showAsAction="never" />
 
     <group>
-
-        <item
-            android:id="@+id/menu_account"
-            android:title="account"
-            app:showAsAction="never" />
-
+        
         <item
             android:id="@+id/menu_setting"
             android:title="setting"
             app:showAsAction="never" />
+
+        <item
+            android:id="@+id/menu_draweropen"
+            android:title="open"
+            app:showAsAction="ifRoom" />
     </group>
 
 </menu>

@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="kiwinam@test.com"
+        android:text="Keelim@Test.com"
         android:textColor="#fff"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
