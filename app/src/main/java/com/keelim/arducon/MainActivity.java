@@ -116,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         //adMob
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //모바일 애드 initialize
         mAdView = findViewById(R.id.adView);
@@ -151,11 +155,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(drawerView);
+                Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
+                break;
+
             case R.id.menu_draweropen:
                 drawerLayout.openDrawer(drawerView);
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
-            
 
             case R.id.menu_setting:
                 Snackbar.make(toolbar, "준비 중입니다. ", Snackbar.LENGTH_SHORT).show();
