@@ -117,4 +117,6 @@ app setiing
     - R.id.home 사용을 하는 방법
      <code> <include layout="@layout/apply_darwer" /> </code>
 2. 전체적인 레이아웃 수정 준비 --> 하나의 액티비티 수정을 할 필요가 있나?
-    - 
+    
+3. 드로어 레이아웃 홈버튼 활성화 완료
+    - android.R.id.home 으로 접근을 해야 할 수 있다는것을 기억을 할 것
