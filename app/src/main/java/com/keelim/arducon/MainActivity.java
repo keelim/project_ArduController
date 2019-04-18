@@ -38,6 +38,7 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -48,7 +49,7 @@ import java.util.UUID;
 // 3. UUID : Universally Unique IDentifier, 범용 고유 실별자.import java.util.UUID;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     static final int REQUEST_ENABLE_BT = 10;
@@ -80,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonSend;
     private Toolbar toolbar;
 
-    private Button btnCloseDrawer;
 
     private AdView mAdView;
 
@@ -97,17 +97,17 @@ public class MainActivity extends AppCompatActivity {
         mEditSend = (EditText) findViewById(R.id.sendString);
         mButtonSend = (Button) findViewById(R.id.sendButton);
 
-        mButtonSend.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // 문자열 전송하는 함수(쓰레드 사용 x)
-                sendData(mEditSend.getText().toString());
-                mEditSend.setText("");
-                // 블루투스 활성화 시키는 메소드
-                checkBluetooth();
-            }
-        });
+//        mButtonSend.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // 문자열 전송하는 함수(쓰레드 사용 x)
+//                sendData(mEditSend.getText().toString());
+//                mEditSend.setText("");
+//                // 블루투스 활성화 시키는 메소드
+//                checkBluetooth();
+//            }
+//        });
 
 
 //        checkBluetooth(); //
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -124,23 +124,10 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //모바일 애드 initialize
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);//adMob
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         drawerView = (View) findViewById(R.id.drawer);
-
-
-        btnCloseDrawer = (Button) findViewById(R.id.btn_CloseDrawer);
-
-
-        // 드로어 닫는 버튼 리스너
-        btnCloseDrawer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.closeDrawer(drawerView);
-            }
-        });
-
 
     }
 
@@ -419,4 +406,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.drawer_account:
+                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_bug_report:
+                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_logout:
+                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.drawer_setting:
+                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.sendButton:
+                sendData(mEditSend.getText().toString());
+                mEditSend.setText("");
+                checkBluetooth();
+                break;
+        }
+    }
 }
