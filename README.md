@@ -105,6 +105,7 @@ app setiing
     - 드로어 레이아웃 정리
     - component 확인
     - flow chart
+    x
 3. Test adMob setting 
     - 출시 시 adMob id 변경을 할 것
     - code, @string/addMobid 
@@ -127,3 +128,11 @@ app setiing
 2. 블루 투스 코드 수정
 3. drawerView 이벤트 리스터 작동을 할 것
 4. component 확인
+
+## 2019 04 18
+1. 아이콘 생성
+    - 딱히 생성을 할 게 있나?
+    - navigation view 는 설정을 하는 것이 좋을 것 같다.
+
+## 2019 04 19
+1.

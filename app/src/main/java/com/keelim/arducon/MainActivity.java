@@ -47,6 +47,7 @@ import java.util.UUID;
  * 배열은 같은 타입만 저장 가능하지만, 위의 인터페이스는 서로 다른 타입을 같은 List 안에 저장할 수 있다
  */
 // 3. UUID : Universally Unique IDentifier, 범용 고유 실별자.import java.util.UUID;
+// 고유 식별자가 무엇인가? -->
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
@@ -112,12 +113,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 //        checkBluetooth(); //
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-
-        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //adMob
@@ -126,8 +122,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
 
+//TOOLBAR
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
-        drawerView = (View) findViewById(R.id.drawer);
+        drawerView = (View) findViewById(R.id.drawer); //TOOLBAR
 
     }
 
@@ -155,14 +157,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             case R.id.menu_setting:
                 Snackbar.make(toolbar, "준비 중입니다. ", Snackbar.LENGTH_SHORT).show();
                 break;
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
-    // 블루투스 장치의 이름이 주어졌을때 해당 블루투스 장치 객체를 페어링 된 장치 목록에서 찾아내는 코드.
+
     public BluetoothDevice getDeviceFromBondedList(String name) {
         // BluetoothDevice : 페어링 된 기기 목록을 얻어옴.
         BluetoothDevice selectedDevice = null;
@@ -176,10 +176,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         }
         return selectedDevice;
-    }
+    }// 블루투스 장치의 이름이 주어졌을때 해당 블루투스 장치 객체를 페어링 된 장치 목록에서 찾아내는 코드.
 
 
-    // 문자열 전송하는 함수(쓰레드 사용 x)
+
     public void sendData(String msg) {
         msg += mStrDelimiter;  // 문자열 종료표시 (\n)
         try {
@@ -190,10 +190,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
             finish();  // App 종료
         }
-    }
+    } //문자열 전송 함수
 
-    //  connectToSelectedDevice() : 원격 장치와 연결하는 과정을 나타냄.
-    //        실제 데이터 송수신을 위해서는 소켓으로부터 입출력 스트림을 얻고 입출력 스트림을 이용하여 이루어 진다.
+
+    //  실제 데이터 송수신을 위해서는 소켓으로부터 입출력 스트림을 얻고 입출력 스트림을 이용하여 이루어 진다.
     public void connectToSelectedDevice(String selectedDeviceName) {
         // BluetoothDevice 원격 블루투스 기기를 나타냄.
         mRemoteDevie = getDeviceFromBondedList(selectedDeviceName);
@@ -221,9 +221,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
             finish();  // App 종료
         }
-    }
+    } //  connectToSelectedDevice() : 원격 장치와 연결하는 과정을 나타냄.
 
-    // 데이터 수신(쓰레드 사용 수신된 메시지를 계속 검사함)
+
     public void beginListenForData() {
         final Handler handler = new Handler();
 
@@ -280,9 +280,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         });
 
-    }
+    }// 데이터 수신(쓰레드 사용 수신된 메시지를 계속 검사함)
 
-    // 블루투스 지원하며 활성 상태인 경우.
+
     public void selectDevice() {
         // 블루투스 디바이스는 연결해서 사용하기 전에 먼저 페어링 되어야만 한다
         // getBondedDevices() : 페어링된 장치 목록 얻어오는 함수.
@@ -330,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         builder.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
         AlertDialog alert = builder.create();
         alert.show();
-    }
+    }// 블루투스 지원하며 활성 상태인 경우.
 
 
     void checkBluetooth() {
@@ -364,7 +364,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 
     // onDestroy() : 어플이 종료될때 호출 되는 함수.
-    //               블루투스 연결이 필요하지 않는 경우 입출력 스트림 소켓을 닫아줌.
+    //   블루투스 연결이 필요하지 않는 경우 입출력 스트림 소켓을 닫아줌.
     @Override
     protected void onDestroy() {
         try {

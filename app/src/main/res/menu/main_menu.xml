@@ -7,13 +7,6 @@
             android:id="@+id/menu_draweropen"
             android:title="open"
             app:showAsAction="ifRoom" />
-
-        <item
-            android:id="@+id/menu_setting"
-            android:title="setting"
-            app:showAsAction="ifRoom" />
-
-
     </group>
 
 </menu>
