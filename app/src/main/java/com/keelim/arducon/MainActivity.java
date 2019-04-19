@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     int readBufferPosition;
 
 
-    private EditText mEditReceive, mEditSend;
+    private EditText mEditSend, mEditReceive;
     private Button mButtonSend;
     private Toolbar toolbar;
 
@@ -94,26 +94,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mEditReceive = (EditText) findViewById(R.id.receiveString);
+
         mEditSend = (EditText) findViewById(R.id.sendString);
+        mEditReceive = (EditText) findViewById(R.id.reciveStrig);
         mButtonSend = (Button) findViewById(R.id.sendButton);
 
-//        mButtonSend.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                // 문자열 전송하는 함수(쓰레드 사용 x)
-//                sendData(mEditSend.getText().toString());
-//                mEditSend.setText("");
-//                // 블루투스 활성화 시키는 메소드
-//                checkBluetooth();
-//            }
-//        });
+        mButtonSend.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // 문자열 전송하는 함수(쓰레드 사용 x)
+                sendData(mEditSend.getText().toString());
+                mEditSend.setText("");
+                // 블루투스 활성화 시키는 메소드
+                checkBluetooth();
+            }
+        });
 
 
 //        checkBluetooth(); //
-
-
 
 
         //adMob
@@ -140,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -154,13 +154,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menu_setting:
-                Snackbar.make(toolbar, "준비 중입니다. ", Snackbar.LENGTH_SHORT).show();
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
     public BluetoothDevice getDeviceFromBondedList(String name) {
@@ -177,7 +173,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
         return selectedDevice;
     }// 블루투스 장치의 이름이 주어졌을때 해당 블루투스 장치 객체를 페어링 된 장치 목록에서 찾아내는 코드.
-
 
 
     public void sendData(String msg) {
@@ -374,7 +369,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
         super.onDestroy();
+
     }
 
 
@@ -411,21 +408,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.drawer_account:
-                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.drawer_bug_report:
-                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.drawer_logout:
-                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.drawer_setting:
-                Snackbar.make(drawerView, "준비중입니다. ", Snackbar.LENGTH_SHORT).show();
-                break;
-            case R.id.sendButton:
-                sendData(mEditSend.getText().toString());
-                mEditSend.setText("");
-                checkBluetooth();
+                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
