@@ -139,4 +139,13 @@ app setiing
 2. 지속적인 업데이트 진행
 3. 버전 코드 수정
     - app --> gradle version name and version
+4. 프로그램 개발 계획
+    - 블루 투스 코드 수정
+    - 충돌 볼고서 (Crashtyics의 상태 확인)
+    - 다른 컴포넌트 사용성 개선
+    - 색깔 전부 수정 --> 파란색으로
+    - 설정 기능 먼저 준비
+    - 릴리즈 노트 작성 
+    - developer console 수정
+    - 액티비티 기능들 준비 할 것
     
