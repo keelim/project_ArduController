@@ -137,4 +137,6 @@ app setiing
 ## 2019 04 20
 1. 개발 완료
 2. 지속적인 업데이트 진행
+3. 버전 코드 수정
+    - app --> gradle version name and version
     
