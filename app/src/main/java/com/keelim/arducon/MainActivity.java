@@ -100,15 +100,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 sendData(mEditSend.getText().toString());
                 mEditSend.setText("");
                 // 블루투스 활성
+                checkBluetooth();
             }
         });
 
 
-        checkBluetooth();
+
 
 
         //adMob
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713"); //모바일 애드 initialize
+        MobileAds.initialize(this, "ca-app-pub-3115620439518585~1159685929"); //모바일 애드 initialize
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
