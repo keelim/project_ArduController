@@ -42,22 +42,15 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-/**
- * 2. JAVA 에서는 배열보다는 Util 패키지의 List,Set,Map 인터페이스를 주요 사용한다.
- * 배열은 같은 타입만 저장 가능하지만, 위의 인터페이스는 서로 다른 타입을 같은 List 안에 저장할 수 있다
- */
-// 3. UUID : Universally Unique IDentifier, 범용 고유 실별자.import java.util.UUID;
-// 고유 식별자가 무엇인가? -->
-
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
+    private static final int REQUEST_ENABLE_BT = 10;
+    private int mPariedDeviceCount = 0;
 
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
-    static final int REQUEST_ENABLE_BT = 10;
-    int mPariedDeviceCount = 0;
-    Set<BluetoothDevice> mDevices;
-    // 폰의 블루투스 모듈을 사용하기 위한 오브젝트.
-    BluetoothAdapter mBluetoothAdapter;
+
+    private Set<BluetoothDevice> mDevices;
+    private BluetoothAdapter mBluetoothAdapter;
     /**
      * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다.
      * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
@@ -106,13 +99,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 // 문자열 전송하는 함수(쓰레드 사용 x)
                 sendData(mEditSend.getText().toString());
                 mEditSend.setText("");
-                // 블루투스 활성화 시키는 메소드
-                checkBluetooth();
+                // 블루투스 활성
             }
         });
 
 
-//        checkBluetooth(); //
+        checkBluetooth();
 
 
         //adMob
@@ -247,7 +239,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                                     //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
                                     //  readBuffer 배열을 처음 부터 끝까지 encodedBytes 배열로 복사.
                                     System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
-
                                     final String data = new String(encodedBytes, StandardCharsets.UTF_8);
                                     readBufferPosition = 0;
 
