@@ -1,8 +1,8 @@
 ## project Arducon project
 
 ## project manager: keelim
-## start date: June 1
-## complete date: May 30  
+## start date: March 1
+## complete date: June 30  
 
 - - -
 총 화면은 가지로 구성을 한다. 
@@ -108,6 +108,7 @@ app setiing
     x
 3. Test adMob setting 
     - 출시 시 adMob id 변경을 할 것
+    - xml도 변경을 해야지
     - code, @string/addMobid 
     
 ## 2019 04 16
