@@ -152,7 +152,14 @@ app setiing
 5. gradle 3.4.0 error
     - 이유를 모르겠다. 호환이 안되는 건가?
 6. 매주 목요일 업데이트
+7. drawer view snackbar.
+    - fragment로 작동을 시키기?
+    - implements OnNavigationItemSelectedListener
+8. Toggle?
+    - Boolean switch?
+    - Button?
     
-    
+## 2019 04 21
+1. 
 ### Realease note
 Version 1.2 
