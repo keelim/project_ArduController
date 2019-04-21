@@ -12,6 +12,10 @@
             android:id="@+id/menu_setting"
             android:title="setting"
             app:showAsAction="never" />
+        <item
+            android:id="@+id/exit"
+            android:title="exit"
+            app:showAsAction="never" />
 
     </group>
 

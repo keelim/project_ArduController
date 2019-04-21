@@ -12,6 +12,5 @@
     <!- -->
     <string name="ADMOB_APP_ID">ca-app-pub-3115620439518585~1159685929</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    
 </resources>

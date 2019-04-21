@@ -130,6 +130,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerLayout.openDrawer(drawerView);
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
+            case R.id.exit:
+                Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menu_setting:
+                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
+                break;
 
         }
         return super.onOptionsItemSelected(item);
@@ -180,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mOutputStream.write(msg.getBytes());  // 문자열 전송.
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
             Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
-            finish();  // App 종료
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     } //문자열 전송 함수
 
@@ -188,8 +194,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void connectToSelectedDevice(String selectedDeviceName) {
         // BluetoothDevice 원격 블루투스 기기를 나타냄.
         mRemoteDevie = getDeviceFromBondedList(selectedDeviceName);
-        // java.util.UUID.fromString : 자바에서 중복되지 않는 Unique 키 생성.
-        UUID uuid = java.util.UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+        UUID uuid = java.util.UUID.randomUUID(); //UUID 를 랜덤으로 만든다.
 
         try {
             // 소켓 생성, RFCOMM 채널을 통한 연결.
@@ -215,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     } //  connectToSelectedDevice() : 원격 장치와 연결하는 과정을 나타냄.
 
     public void beginListenForData() {
-        final Handler handler = new Handler();
+        final Handler handler = new Handler(); //readBuffer를 꼭 서야 하는가?
 
         readBufferPosition = 0;                 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = new byte[1024];            // 수신 버퍼.
@@ -235,8 +240,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             byte[] packetBytes = new byte[byteAvailable];
                             // read(buf[]) : 입력스트림에서 buf[] 크기만큼 읽어서 저장 없을 경우에 -1 리턴.
                             mInputStream.read(packetBytes);
+
                             for (int i = 0; i < byteAvailable; i++) {
                                 byte b = packetBytes[i];
+
                                 if (b == mCharDelimiter) {
                                     byte[] encodedBytes = new byte[readBufferPosition];
                                     //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
@@ -262,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     } catch (Exception e) {    // 데이터 수신 중 오류 발생.
                         Toast.makeText(getApplicationContext(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show();
-                        finish();            // App 종료.
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -279,45 +286,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (mPariedDeviceCount == 0) { // 페어링된 장치가 없는 경우.
             Toast.makeText(getApplicationContext(), "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show();
-            finish(); // App 종료.
-        }
-        // 페어링된 장치가 있는 경우.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("블루투스 장치 선택");
 
-        // 각 디바이스는 이름과(서로 다른) 주소를 가진다. 페어링 된 디바이스들을 표시한다.
-        List<String> listItems = new ArrayList<String>();
-        for (BluetoothDevice device : mDevices) {
-            // device.getName() : 단말기의 Bluetooth Adapter 이름을 반환.
-            listItems.add(device.getName());
-        }
-        listItems.add("취소");  // 취소 항목 추가.
+        } else {
+            // 페어링된 장치가 있는 경우.
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("블루투스 장치 선택");
 
-
-        // CharSequence : 변경 가능한 문자열.
-        // toArray : List형태로 넘어온것 배열로 바꿔서 처리하기 위한 toArray() 함수.
-        final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
-        // toArray 함수를 이용해서 size만큼 배열이 생성 되었다.
-        listItems.toArray(new CharSequence[listItems.size()]);
-
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-
-                if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
-                    Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
-                    finish();
-                } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
-                    connectToSelectedDevice(items[item].toString());
-                }
+            // 각 디바이스는 이름과(서로 다른) 주소를 가진다. 페어링 된 디바이스들을 표시한다.
+            List<String> listItems = new ArrayList<>();
+            for (BluetoothDevice device : mDevices) {
+                // device.getName() : 단말기의 Bluetooth Adapter 이름을 반환.
+                listItems.add(device.getName());
             }
+            listItems.add("취소");  // 취소 항목 추가.
 
-        });
 
-        builder.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
-        AlertDialog alert = builder.create();
-        alert.show();
+            // CharSequence : 변경 가능한 문자열.
+            // toArray : List형태로 넘어온것 배열로 바꿔서 처리하기 위한 toArray() 함수.
+            final CharSequence[] items = new CharSequence[listItems.size()];
+            for (int i = 0; i < listItems.size(); i++) {
+                items[i] = listItems.get(i);
+            }
+            // toArray 함수를 이용해서 size만큼 배열이 생성 되었다.
+
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
+                        Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
+                    } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
+                        connectToSelectedDevice(items[item].toString());
+                    }
+                }
+
+            });
+            builder.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
     }// 블루투스 지원하며 활성 상태인 경우.
 
     void checkBluetooth() {
@@ -328,7 +336,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {  // 블루투스 미지원
             Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
-            finish();  // 앱종료
+
         } else { // 블루투스 지원
 //            /** isEnable() : 블루투스 모듈이 활성화 되었는지 확인.
 //             *               true : 지원 ,  false : 미지원
@@ -344,25 +352,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                 선택 결과는 onActivityResult 콜백 함수에서 확인할 수 있다.
 //                 */
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-            } else // 블루투스 지원하며 활성 상태인 경우.
+            } else {// 블루투스 지원하며 활성 상태인 경우.
                 selectDevice();
+            }
+
         }
     }
 
-    // onDestroy() : 어플이 종료될때 호출 되는 함수.
-    //   블루투스 연결이 필요하지 않는 경우 입출력 스트림 소켓을 닫아줌.
-    @Override
-    protected void onDestroy() {
-        try {
-            mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
-            mInputStream.close();
-            mSocket.close();
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show(); //오류 정보 출력
-        }
-        super.onDestroy();
-
-    }
 
     // onActivityResult : 사용자의 선택결과 확인 (아니오, 예)
     // RESULT_OK: 블루투스가 활성화 상태로 변경된 경우. "예"
@@ -380,18 +376,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // startActivityForResult 를 여러번 사용할 땐 이런 식으로 switch 문을 사용하여 어떤 요청인지 구분하여 사용함.
         switch (requestCode) {
             case REQUEST_ENABLE_BT:
-                if (resultCode == RESULT_OK) { // 블루투스 활성화 상태
-                    selectDevice();
-                } else if (resultCode == RESULT_CANCELED) { // 블루투스 비활성화 상태 (종료)
-                    Toast.makeText(getApplicationContext(), "블루투수를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
-                    finish();
+                //
+                switch (resultCode) {
+                    case RESULT_OK: //블루 투스 활성
+                        selectDevice();
+                        break;
+                    case RESULT_CANCELED: //블루 투스 종료
+                        Toast.makeText(getApplicationContext(), "블루투수를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
+                        break;
                 }
-                break;
             case 1:
                 break;
-
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        try {
+            mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
+            mInputStream.close();
+            mSocket.close();
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show(); //오류 정보 출력
+        }
+        super.onDestroy();
+
     }
 
 
