@@ -45,23 +45,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
     //    /**
-//     * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다.
-//     * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
-//     * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
-//     */
-    BluetoothDevice mRemoteDevie;
+    //     * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다.
+    //     * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
+    //     * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
+    //     */
+    private BluetoothDevice mRemoteDevie;
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
-    BluetoothSocket mSocket = null;
-    OutputStream mOutputStream = null;
-    InputStream mInputStream = null;
+    private BluetoothSocket mSocket = null;
+    private OutputStream mOutputStream;
+    private InputStream mInputStream;
 
-    String mStrDelimiter = "\n";
-    char mCharDelimiter = '\n';
-
-    Thread mWorkerThread = null;
-    byte[] readBuffer;
-    int readBufferPosition;
-
+    private String mStrDelimiter = "\n";
+    private char mCharDelimiter = '\n';
+    //Thread
+    private Thread mWorkerThread;
+    private byte[] readBuffer;
+    private int readBufferPosition;
+    //component
     private EditText mEditSend, mEditReceive;
     private Button mButtonSend;
     private Toolbar toolbar;
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
 
-//TOOLBAR
+        //TOOLBAR
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
