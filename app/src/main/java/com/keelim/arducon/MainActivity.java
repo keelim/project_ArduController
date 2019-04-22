@@ -9,8 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +35,7 @@ import java.util.Set;
 import java.util.UUID;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 10;
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
@@ -140,28 +138,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int id = menuItem.getItemId();
-        switch (id) {
-            case R.id.drawer_account:
-                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.drawer_bug_report:
-                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.drawer_logout:
-                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.drawer_setting:
-                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
-                break;
-
-        }
-        return true;
-
-    }
-
     public BluetoothDevice getDeviceFromBondedList(String name) {
         // BluetoothDevice : 페어링 된 기기 목록을 얻어옴.
         BluetoothDevice selectedDevice = null;
@@ -214,12 +190,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } catch (Exception e) { // 블루투스 연결 중 오류 발생
             Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
-            finish();  // App 종료
         }
     } //  connectToSelectedDevice() : 원격 장치와 연결하는 과정을 나타냄.
 
     public void beginListenForData() {
-        final Handler handler = new Handler(); //readBuffer를 꼭 서야 하는가?
+        final Handler handler = new Handler(); //쓰레드 사용에 있어서 필요함
 
         readBufferPosition = 0;                 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = new byte[1024];            // 수신 버퍼.
@@ -268,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     } catch (Exception e) {    // 데이터 수신 중 오류 발생.
                         Toast.makeText(getApplicationContext(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show();
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -375,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // startActivityForResult 를 여러번 사용할 땐 이런 식으로 switch 문을 사용하여 어떤 요청인지 구분하여 사용함.
         switch (requestCode) {
             case REQUEST_ENABLE_BT:
-                //
+
                 switch (resultCode) {
                     case RESULT_OK: //블루 투스 활성
                         selectDevice();
@@ -384,8 +358,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Toast.makeText(getApplicationContext(), "블루투수를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
                         break;
                 }
-            case 1:
-                break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -397,10 +369,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mInputStream.close();
             mSocket.close();
         } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show(); //오류 정보 출력
+
         }
         super.onDestroy();
-
     }
 
 
