@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 
-public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다.
+public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다. //manifest  등록
     private Handler handler;
 
     Runnable runnable = new Runnable() {
