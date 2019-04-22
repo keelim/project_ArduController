@@ -6,10 +6,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="hello_world">Hello world!</string>
-    <!-- -
-        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
-        For more information, see https://support.google.com/admob/answer/3052638
-    <!- -->
     <string name="ADMOB_APP_ID">ca-app-pub-3115620439518585~1159685929</string>
 
     
