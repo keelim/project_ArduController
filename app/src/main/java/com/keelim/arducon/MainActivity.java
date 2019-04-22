@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.exit:
                 Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.menu_setting:
                 Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
