@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
-        //adMob 설정
+        //adMob 설정f
 
         //툴바 설정
         toolbar = (Toolbar) findViewById(R.id.toolbar);

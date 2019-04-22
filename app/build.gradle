@@ -15,10 +15,14 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+
         }
     }
+
 }
 
 dependencies {
@@ -37,5 +41,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.8'
 
 
-
 }
+
+
+
+
