@@ -40,7 +40,6 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int REQUEST_ENABLE_BT = 10;
     private int mPariedDeviceCount = 0;
-
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
@@ -91,25 +90,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        //adMob
+        //adMob 설정
         MobileAds.initialize(this, "ca-app-pub-3115620439518585~1159685929");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
+        //adMob 설정
 
-        //TOOLBAR
+        //툴바 설정
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //툴바 설정
 
+        //Navigation View
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         drawerView = (View) findViewById(R.id.drawer);
-        //TOOLBAR
+        //Navigation View
 
     }
 
-    //툴바를 inflate 한다.
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -126,10 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menu_draweropen:
-                drawerLayout.openDrawer(drawerView);
-                Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
-                break;
             case R.id.exit:
                 Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
                 finish();
