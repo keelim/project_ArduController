@@ -193,3 +193,13 @@ app setiing
     - 릴리즈 노트 작성 
     - developer console 수정
     - 액티비티 기능들 준비 할 것
+    
+## 2019 04 23
+<code>overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);</code>
+1. 애니메아션의 사용
+    - PendingTransition
+2. 기본적으로 개발에서 어떤 것을 사용을 하는가?
+3. fragment 사용?
+    - setting
+4. 
+    

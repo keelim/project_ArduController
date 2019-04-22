@@ -13,9 +13,9 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         @Override
         public void run() { //runable 작동을 하고 시작
             Intent intent = new Intent(IntroActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+            startActivity(intent); //인텐트를 넣어준다. intro -> main
+            finish(); //앱을 종료한다.
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right); //애니메이션을 넣어준다.
         }
     };
 
@@ -25,7 +25,7 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         setContentView(R.layout.activity_intro);
         init();
 
-        handler.postDelayed(runnable, 1000); //handler
+        handler.postDelayed(runnable, 1000); //handler를 통하여 사용
     }
 
     public void init() { //초기 이벤트 설정
