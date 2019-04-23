@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.menu_setting:
-                Toast.makeText(this, "준비 중 입니다. ", Toast.LENGTH_SHORT).show();
+                replaceSettingFragment(); //Fragment on? 작동이 될까?
                 break;
 
         }
@@ -369,6 +371,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         super.onDestroy();
+    }
+
+    private void replaceSettingFragment(){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction mTransaction = fm.beginTransaction();
+
+        mTransaction.replace(R.id.main_fragment, new SettingFragment());
+        mTransaction.commit();
     }
 
 
