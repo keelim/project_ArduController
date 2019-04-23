@@ -106,9 +106,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         drawerView = (View) findViewById(R.id.drawer);
         //Navigation View
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -125,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(drawerView);
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
-
             case R.id.exit:
                 Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
                 finish();
@@ -369,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
             mInputStream.close();
             mSocket.close();
         } catch (Exception e) {
-
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         super.onDestroy();
     }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 
 public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다. //manifest  등록
@@ -23,6 +24,7 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
     protected void onCreate(Bundle savedInstanceState) { //onCreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+        Toast.makeText(this, "실행을 환영 합니다. ", Toast.LENGTH_SHORT).show();
         init();
 
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
