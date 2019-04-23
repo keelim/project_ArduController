@@ -201,5 +201,4 @@ app setiing
 2. 기본적으로 개발에서 어떤 것을 사용을 하는가?
 3. fragment 사용?
     - setting
-4. 
-    
+    - Preference fragment 설정
