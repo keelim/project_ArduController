@@ -1,38 +1,38 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-        android:title="title">
+    <!--<PreferenceCategory-->
+        <!--android:title="title">-->
 
-        <CheckBoxPreference
-            android:key="checkbox_preference"
-            android:title="check"
-            android:defaultValue="default menu"/>
+        <!--<CheckBoxPreference-->
+            <!--android:key="checkbox_preference"-->
+            <!--android:title="check"-->
+            <!--android:defaultValue="default menu"/>-->
 
-        <EditTextPreference
-            android:key="edittext_preference"
-            android:title="title"
-            android:summary="summary"
-            android:dialogTitle="dialogtitile"
-            android:dependency="checkbox_preference" />
+        <!--<EditTextPreference-->
+            <!--android:key="edittext_preference"-->
+            <!--android:title="title"-->
+            <!--android:summary="summary"-->
+            <!--android:dialogTitle="dialogtitile"-->
+            <!--android:dependency="checkbox_preference" />-->
 
-    </PreferenceCategory>
+    <!--</PreferenceCategory>-->
 
-    <PreferenceCategory
-        android:title="scond titiel">
+    <!--<PreferenceCategory-->
+        <!--android:title="scond titiel">-->
 
-        <ListPreference
-            android:key="list_preference"
-            android:title="title"
-            android:dialogTitle="dialog title"
-            android:entries="entries"
-            android:entryValues="entryValue" />
+        <!--<ListPreference-->
+            <!--android:key="list_preference"-->
+            <!--android:title="title"-->
+            <!--android:dialogTitle="dialog title"-->
+            <!--android:entries="entries"-->
+            <!--android:entryValues="entryValue" />-->
 
-        <Preference
-            android:title="intent preference">
-            <intent android:action="android.intent.action.VIEW"
-                android:data="http://codepath.com/" />
-        </Preference>
+        <!--<Preference-->
+            <!--android:title="intent preference">-->
+            <!--<intent android:action="android.intent.action.VIEW"-->
+                <!--android:data="http://codepath.com/" />-->
+        <!--</Preference>-->
 
-    </PreferenceCategory>
+    <!--</PreferenceCategory>-->
 
 </PreferenceScreen>

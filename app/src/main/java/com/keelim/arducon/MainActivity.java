@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     //     * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
     //     * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
     //     */
-    private BluetoothDevice mRemoteDevie;
+    private BluetoothDevice mRemoteDevice;
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket = null;
     private OutputStream mOutputStream;
@@ -167,14 +167,14 @@ public class MainActivity extends AppCompatActivity {
     //  실제 데이터 송수신을 위해서는 소켓으로부터 입출력 스트림을 얻고 입출력 스트림을 이용하여 이루어 진다.
     public void connectToSelectedDevice(String selectedDeviceName) {
         // BluetoothDevice 원격 블루투스 기기를 나타냄.
-        mRemoteDevie = getDeviceFromBondedList(selectedDeviceName);
+        mRemoteDevice = getDeviceFromBondedList(selectedDeviceName);
         UUID uuid = java.util.UUID.randomUUID(); //UUID 를 랜덤으로 만든다.
 
         try {
             // 소켓 생성, RFCOMM 채널을 통한 연결.
             // createRfcommSocketToServiceRecord(uuid) : 이 함수를 사용하여 원격 블루투스 장치와 통신할 수 있는 소켓을 생성함.
             // 이 메소드가 성공하면 스마트폰과 페어링 된 디바이스간 통신 채널에 대응하는 BluetoothSocket 오브젝트를 리턴함.
-            mSocket = mRemoteDevie.createRfcommSocketToServiceRecord(uuid);
+            mSocket = mRemoteDevice.createRfcommSocketToServiceRecord(uuid);
             mSocket.connect(); // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
 
             // 데이터 송수신을 위한 스트림 얻기.
