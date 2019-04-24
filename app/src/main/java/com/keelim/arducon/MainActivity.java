@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             mOutputStream.write(msg.getBytes());  // 문자열 전송.
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
             Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
         }
     } //문자열 전송 함수
 
@@ -309,7 +309,8 @@ public class MainActivity extends AppCompatActivity {
         if (mBluetoothAdapter == null) {  // 블루투스 미지원
             Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
 
-        } else { // 블루투스 지원
+        } else {
+            // 블루투스 지원
 //            /** isEnable() : 블루투스 모듈이 활성화 되었는지 확인.
 //             *               true : 지원 ,  false : 미지원
 //             */
@@ -368,15 +369,14 @@ public class MainActivity extends AppCompatActivity {
             mInputStream.close();
             mSocket.close();
         } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            super.onDestroy();
         }
         super.onDestroy();
     }
 
-    private void replaceSettingFragment(){
+    private void replaceSettingFragment() { //Frgament manager not working and shutdown
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction mTransaction = fm.beginTransaction();
-
         mTransaction.replace(R.id.main_fragment, new SettingFragment());
         mTransaction.commit();
     }

@@ -205,4 +205,4 @@ app setiing
 4. 1.3 version release
 
 ## 2019 04 24
-1.     
+1. setting fragment 오류 개선 필요
