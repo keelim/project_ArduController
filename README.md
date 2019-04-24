@@ -202,3 +202,7 @@ app setiing
 3. fragment 사용?
     - setting
     - Preference fragment 설정
+4. 1.3 version release
+
+## 2019 04 24
+1.     
