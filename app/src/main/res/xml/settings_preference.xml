@@ -1,8 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-<SwitchPreferenceCompat
-    android:key="push_notification"
-    android:title="푸시 알람 on off"
-    />
+    <PreferenceCategory
+        android:title="title">
+
+        <CheckBoxPreference
+            android:key="checkbox_preference"
+            android:title="check"
+            android:defaultValue="default menu"/>
+
+        <EditTextPreference
+            android:key="edittext_preference"
+            android:title="title"
+            android:summary="summary"
+            android:dialogTitle="dialogtitile"
+            android:dependency="checkbox_preference" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="scond titiel">
+
+        <ListPreference
+            android:key="list_preference"
+            android:title="title"
+            android:dialogTitle="dialog title"
+            android:entries="entries"
+            android:entryValues="entryValue" />
+
+        <Preference
+            android:title="intent preference">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://codepath.com/" />
+        </Preference>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
