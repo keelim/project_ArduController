@@ -206,3 +206,17 @@ app setiing
 
 ## 2019 04 24
 1. setting fragment 오류 개선 필요
+    - 일단 코드 수정
+2. 더 추가적으로 해야 하는 상황
+    - 블루투스 코드 수정 
+    - adMob 안나오는 것 수정 unitID 가 따로 존재
+    - setting_preference 사용법 익힐 것
+    - UI, UX 개선 필요
+    - fragment의 활용
+    - 액티비티의 추가
+    - logger --> 
+    - 기능은 2가지
+        - 블루투스를 통한 통신
+        - logging 기능
+3. 난독화 proguard 를 통하여 사용을 할 수 없게 만든다. 
+    - 활용을 할 수 있는 방안?
