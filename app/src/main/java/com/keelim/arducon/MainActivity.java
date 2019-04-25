@@ -129,10 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
-            case R.id.menu_setting:
-                replaceSettingFragment(); //Fragment on? 작동이 될까?
-                break;
-
         }
         return super.onOptionsItemSelected(item);
     }
