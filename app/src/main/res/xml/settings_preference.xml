@@ -1,38 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<PreferenceCategory-->
-        <!--android:title="title">-->
+    <PreferenceCategory android:title="알림 설정">
+        <SwitchPreference
+            android:key="push"
+            android:title="푸쉬 알림" />
 
-        <!--<CheckBoxPreference-->
-            <!--android:key="checkbox_preference"-->
-            <!--android:title="check"-->
-            <!--android:defaultValue="default menu"/>-->
+        <PreferenceScreen
+            android:key="keyword_screen"
+            android:summary="사용안함"
+            android:title="키워드 알림">
 
-        <!--<EditTextPreference-->
-            <!--android:key="edittext_preference"-->
-            <!--android:title="title"-->
-            <!--android:summary="summary"-->
-            <!--android:dialogTitle="dialogtitile"-->
-            <!--android:dependency="checkbox_preference" />-->
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="keyword"
+                android:summary="등록된 키워드가 포함된 메시지는 채팅방 알림이 꺼져 있어도 푸시 알림을 받게 되어 키워드는 강조되어 보여 집니다."
+                android:title="키워드 알림" />
+            <ListPreference
+                android:dependency="keyword"
+                android:entries="@array/array_voice"
+                android:entryValues="@array/array_voice"
+                android:key="keyword_sound_list"
+                android:summary="1"
+                android:title="키워드 전용 알림음" />
 
-    <!--</PreferenceCategory>-->
+        </PreferenceScreen>
 
-    <!--<PreferenceCategory-->
-        <!--android:title="scond titiel">-->
+        <SwitchPreference
+            android:key="sound"
+            android:title="소리" />
+        <ListPreference
+            android:entries="@array/array_voice"
+            android:entryValues="@array/array_voice"
+            android:key="sound_list"
+            android:summary="1"
+            android:title="푸쉬 content 설정" />
 
-        <!--<ListPreference-->
-            <!--android:key="list_preference"-->
-            <!--android:title="title"-->
-            <!--android:dialogTitle="dialog title"-->
-            <!--android:entries="entries"-->
-            <!--android:entryValues="entryValue" />-->
-
-        <!--<Preference-->
-            <!--android:title="intent preference">-->
-            <!--<intent android:action="android.intent.action.VIEW"-->
-                <!--android:data="http://codepath.com/" />-->
-        <!--</Preference>-->
-
-    <!--</PreferenceCategory>-->
+    </PreferenceCategory>
 
 </PreferenceScreen>

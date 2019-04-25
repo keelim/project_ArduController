@@ -224,3 +224,12 @@ app setiing
 ## 2019 04 25
 1. firebase console check
 2. google play console
+3. design pattern check?
+    - logic --> business logic
+    - present --> View present 
+    - data --> database get data
+4. preference 재설정
+    - fragment와 액티비티를 연결을 하여 사용을 한다. 
+    - fragment는 하나의 레이아웃 파일을 포함해야 한다.
+    - 액티비티와 레이아웃을 연결을 한다. 
+    - 액티비티의 전환
