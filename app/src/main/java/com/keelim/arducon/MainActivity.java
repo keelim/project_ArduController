@@ -374,12 +374,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void replaceSettingFragment() { //Frgament manager not working and shutdown
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction mTransaction = fm.beginTransaction();
-        mTransaction.replace(R.id.main_fragment, new SettingFragment());
-        mTransaction.commit();
-    }
-
-
 }
