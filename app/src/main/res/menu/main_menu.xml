@@ -9,7 +9,7 @@
             android:title="setting"
             app:showAsAction="never" />
         <item
-            android:id="@+id/exit"
+            android:id="@+id/menu_exit"
             android:title="exit"
             app:showAsAction="never" />
 

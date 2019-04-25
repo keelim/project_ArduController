@@ -10,8 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -124,9 +122,14 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(drawerView);
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
-            case R.id.exit:
+            case R.id.menu_exit:
                 Toast.makeText(this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
                 finish();
+                break;
+            case R.id.menu_setting:
+                Toast.makeText(this, "설정 페이지로 이동합니다. ", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
