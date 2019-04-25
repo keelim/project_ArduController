@@ -220,3 +220,7 @@ app setiing
         - logging 기능
 3. 난독화 proguard 를 통하여 사용을 할 수 없게 만든다. 
     - 활용을 할 수 있는 방안?
+
+## 2019 04 25
+1. firebase console check
+2. google play console
