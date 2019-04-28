@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -65,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private DrawerLayout drawerLayout;
     private View drawerView;
+    private NavigationView navigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -106,7 +109,37 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         drawerView = (View) findViewById(R.id.drawer);
         //Navigation View
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                switch (id) {
+                    case R.id.drawer_account:
+                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.drawer_bug_report:
+                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.drawer_setting:
+                        Intent intent = new Intent(MainActivity.this, SettingActivity.class); //Setting Activity 로 넘어간다.
+                        startActivity(intent);
+
+                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.drawer_exit:
+                        Toast.makeText(MainActivity.this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
+                        finish();
+                        break;
+
+                }
+                return false;
+
+            }
+        });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
