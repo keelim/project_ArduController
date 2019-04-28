@@ -235,3 +235,11 @@ app setiing
     - 액티비티의 전환
     - 제트팩은 코틀린을 만져야 사용을 할 수 있다. 
     - ? 코틀린을 배워야 한다.?
+    
+## 2019 04 27 
+1. reset firebase provide error
+2. navigation drawer itemselected listener
+3. notification channel 다시 구현을 할 것
+    - 알림 채널 앱 구현 중 연속 실행을 할 것
+4. 블루투스 이상 유무 체크를 할 것
+    -  HC-06 bluetooth test
