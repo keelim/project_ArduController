@@ -243,3 +243,7 @@ app setiing
     - 알림 채널 앱 구현 중 연속 실행을 할 것
 4. 블루투스 이상 유무 체크를 할 것
     -  HC-06 bluetooth test
+    
+
+## 2019 04 29
+1. menu toolbar color change
