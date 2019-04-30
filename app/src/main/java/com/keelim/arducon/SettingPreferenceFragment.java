@@ -6,13 +6,13 @@ import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class SettingPreferenceFragment extends PreferenceFragment {
+public class SettingPreferenceFragment extends PreferenceFragment { //settingPreference 재설정
 
     SharedPreferences prefs;
 
