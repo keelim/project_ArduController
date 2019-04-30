@@ -247,3 +247,12 @@ app setiing
 
 ## 2019 04 29
 1. menu toolbar color change
+
+## 2019 04 30
+1. notification channel use
+    - 앱 실행중 계속 알림 창에 나타 날 것
+2. 버그 리포트 깃허브 페이지
+    - arducon release note 항목 혹은 버그 리포트 항목
+3. 계정 항목은 카카오톡이나 지메일로 한정
+    - 최대한 여러가지 기술을 사용을 해보도록 하자.
+    
