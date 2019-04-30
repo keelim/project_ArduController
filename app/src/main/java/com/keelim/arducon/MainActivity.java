@@ -2,14 +2,11 @@ package com.keelim.arducon;
 // 1.JAVA I/O중 바이트 스트림에 관련된 최상위 클래스인 InputStream, OutputStream (영문1,한글 2바이트)
 
 import android.app.AlertDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -18,7 +15,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View drawerView;
     private NavigationView navigationView;
+    private onKeyBackPressedListener mOnKeyBackPressedListener;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -120,15 +117,14 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.drawer_account:
-                        account_commit(); //프래그 먼트 실행
+//                        account_commit(); //프래그 먼트 실행 아직 출시 하면 안됨
+                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_bug_report:
-                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
+//                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
+                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_setting:
-                        Intent intent = new Intent(MainActivity.this, SettingActivity.class); //Setting Activity 로 넘어간다.
-                        startActivity(intent);
-
                         Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_exit:
@@ -160,10 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.menu_setting:
-                Toast.makeText(this, "설정 페이지로 이동합니다. ", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent);
+                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -406,12 +399,20 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void account_commit(){
+    private void account_commit() { //fragment 이용
         getSupportFragmentManager().beginTransaction().replace(R.id.drawerlayout, new Account()).commit();
     }
 
-    private void bugReport_commit(){
+    private void bugReport_commit() {
         getSupportFragmentManager().beginTransaction().replace(R.id.drawerlayout, new BugReport()).commit();
+    }
+
+    public interface onKeyBackPressedListener {
+        void onBackKey();
+    }
+
+    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener){
+        mOnKeyBackPressedListener = listener;
     }
 
 
