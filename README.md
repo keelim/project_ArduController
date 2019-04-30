@@ -271,4 +271,15 @@ app setiing
     -  초기 사용자 용으로도 사용을 할 수 도 있을 것 같다. 
     -  초기 사용자용 액티비티 구현? 
 
-    
+
+# Todo
+- Notification 
+    - 실행 중 알림창
+- SharedPreference 
+    - 설정, 초기 사용자
+- 블루투스 코드 체크
+- account fragment 
+    - 인증 부분?
+- bug report fragment 
+    - using the deep link?
+    - deep link?
