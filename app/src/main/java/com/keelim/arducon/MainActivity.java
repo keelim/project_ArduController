@@ -2,11 +2,14 @@ package com.keelim.arducon;
 // 1.JAVA I/O중 바이트 스트림에 관련된 최상위 클래스인 InputStream, OutputStream (영문1,한글 2바이트)
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -117,10 +120,10 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.drawer_account:
-                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        account_commit(); //프래그 먼트 실행
                         break;
                     case R.id.drawer_bug_report:
-                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
                         break;
                     case R.id.drawer_setting:
                         Intent intent = new Intent(MainActivity.this, SettingActivity.class); //Setting Activity 로 넘어간다.
@@ -384,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
                         selectDevice();
                         break;
                     case RESULT_CANCELED: //블루 투스 종료
-                        Toast.makeText(getApplicationContext(), "블루투수를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
                         break;
                 }
         }
@@ -402,5 +405,14 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onDestroy();
     }
+
+    private void account_commit(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.drawerlayout, new Account()).commit();
+    }
+
+    private void bugReport_commit(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.drawerlayout, new BugReport()).commit();
+    }
+
 
 }
