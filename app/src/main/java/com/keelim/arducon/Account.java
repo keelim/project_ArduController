@@ -13,13 +13,7 @@ import java.util.Objects;
 
 
 public class Account extends Fragment implements MainActivity.onKeyBackPressedListener {
-
-
-    public Account() {
-        // Required empty public constructor
-    }
-
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

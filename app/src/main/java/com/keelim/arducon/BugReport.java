@@ -3,6 +3,7 @@ package com.keelim.arducon;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,11 +14,6 @@ import java.util.Objects;
 
 
 public class BugReport extends Fragment implements MainActivity.onKeyBackPressedListener {
-
-
-    public BugReport() {
-        // Required empty public constructor
-    }
 
 
     @Override
