@@ -4,6 +4,14 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\h0033\\Desktop\\android key\\keystore.jks')
+            storePassword 'kimjaehyun08!'
+            keyAlias = 'upload'
+            keyPassword 'arducon!'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.keelim.arducon"

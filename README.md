@@ -271,6 +271,8 @@ app setiing
     -  초기 사용자 용으로도 사용을 할 수 도 있을 것 같다. 
     -  초기 사용자용 액티비티 구현? 
 
+## 2019 05 02
+1. 
 
 # Todo
 - Notification 
@@ -283,3 +285,5 @@ app setiing
 - bug report fragment 
     - using the deep link?
     - deep link?
+    
+    
