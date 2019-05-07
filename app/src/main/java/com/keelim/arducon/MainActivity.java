@@ -8,13 +8,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.NonNull;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
-    //    /**
-    //     * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다.
-    //     * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
-    //     * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
-    //     */
-    private BluetoothDevice mRemoteDevice;
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket = null;
     private OutputStream mOutputStream;
@@ -62,13 +60,9 @@ public class MainActivity extends AppCompatActivity {
     private int readBufferPosition;
     //component
     private EditText mEditSend, mEditReceive;
-    private Button mButtonSend;
     private Toolbar toolbar;
-    private AdView mAdView;
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private NavigationView navigationView;
-    private onKeyBackPressedListener mOnKeyBackPressedListener;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -76,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        mEditSend = (EditText) findViewById(R.id.sendString);
-        mEditReceive = (EditText) findViewById(R.id.reciveStrig);
-        mButtonSend = (Button) findViewById(R.id.sendButton);
+        mEditSend = findViewById(R.id.sendString);
+        mEditReceive = findViewById(R.id.reciveStrig);
+        Button mButtonSend = findViewById(R.id.sendButton);
 
         mButtonSend.setOnClickListener(new OnClickListener() {
 
@@ -94,23 +88,23 @@ public class MainActivity extends AppCompatActivity {
 
         //adMob 설정
         MobileAds.initialize(this, "ca-app-pub-3115620439518585~1159685929");
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
         //adMob 설정f
 
         //툴바 설정
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //툴바 설정
 
         //Navigation View
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
-        drawerView = (View) findViewById(R.id.drawer);
+        drawerLayout = findViewById(R.id.drawerlayout);
+        drawerView = findViewById(R.id.drawer);
         //Navigation View
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -192,7 +186,12 @@ public class MainActivity extends AppCompatActivity {
     //  실제 데이터 송수신을 위해서는 소켓으로부터 입출력 스트림을 얻고 입출력 스트림을 이용하여 이루어 진다.
     public void connectToSelectedDevice(String selectedDeviceName) {
         // BluetoothDevice 원격 블루투스 기기를 나타냄.
-        mRemoteDevice = getDeviceFromBondedList(selectedDeviceName);
+        //    /**
+        //     * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다.
+        //     * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
+        //     * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
+        //     */
+        BluetoothDevice mRemoteDevice = getDeviceFromBondedList(selectedDeviceName);
         UUID uuid = java.util.UUID.randomUUID(); //UUID 를 랜덤으로 만든다.
 
         try {
@@ -372,17 +371,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // startActivityForResult 를 여러번 사용할 땐 이런 식으로 switch 문을 사용하여 어떤 요청인지 구분하여 사용함.
-        switch (requestCode) {
-            case REQUEST_ENABLE_BT:
-
-                switch (resultCode) {
-                    case RESULT_OK: //블루 투스 활성
-                        selectDevice();
-                        break;
-                    case RESULT_CANCELED: //블루 투스 종료
-                        Toast.makeText(getApplicationContext(), "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
-                        break;
-                }
+        if (requestCode == REQUEST_ENABLE_BT) {
+            switch (resultCode) {
+                case RESULT_OK: //블루 투스 활성
+                    selectDevice();
+                    break;
+                case RESULT_CANCELED: //블루 투스 종료
+                    Toast.makeText(getApplicationContext(), "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
+                    break;
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -411,8 +408,8 @@ public class MainActivity extends AppCompatActivity {
         void onBackKey();
     }
 
-    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener){
-        mOnKeyBackPressedListener = listener;
+    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener) {
+        onKeyBackPressedListener mOnKeyBackPressedListener = listener;
     }
 
 
