@@ -274,6 +274,11 @@ app setiing
 ## 2019 05 07
 1. 키 오류로 인한 오류
     -  키관리는 항상 잘 할 것
+2. WebView 기본 setting
+    - 최적화 작업을 할 수 있는가?
+    - 크롬으로만 사용
+    - 기본 브라우저?
+3. 
 
 # Todo
 - Notification 
@@ -283,8 +288,6 @@ app setiing
 - 블루투스 코드 체크
 - account fragment 
     - 인증 부분?
-- bug report fragment 
-    - using the deep link?
-    - deep link?
+- WebView 최적화 작업
     
     
