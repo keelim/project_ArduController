@@ -292,6 +292,9 @@ app setiing
     - 특별히 사용을 할 필요는 없다.
 2. 설정 페이지를 다시 할 필요가 있다.
     - SharedPreference 설정
+    - 액티비티를 새로 사용을 해야 하는가?
+    - SettingActivity 사용
+
 
 # Todo
 - Notification 
@@ -302,5 +305,6 @@ app setiing
 - account fragment 
     - 인증 부분?
 - WebView 최적화 작업
+- 릴리즈 노트를 수정
     
     

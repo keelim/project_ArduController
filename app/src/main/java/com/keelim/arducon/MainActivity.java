@@ -124,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
-                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        Intent intent_setting = new Intent(getApplicationContext(), SettingsActivity.class);
+                        startActivity(intent_setting);
                         break;
                     case R.id.drawer_exit:
                         Toast.makeText(MainActivity.this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
@@ -139,8 +140,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
     @Override
@@ -158,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.menu_setting:
-                Toast.makeText(this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                Intent intent_setting = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent_setting);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -404,13 +404,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void account_commit() { //fragment 이용
-        getSupportFragmentManager().beginTransaction().replace(R.id.drawerlayout, new Account()).commit();
-    }
-
-    private void bugReport_commit() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.drawerlayout, new BugReport()).commit();
-    }
 
     public interface onKeyBackPressedListener {
         void onBackKey();
