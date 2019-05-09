@@ -128,17 +128,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent_setting);
                         break;
                     case R.id.drawer_exit:
-                        Toast.makeText(MainActivity.this, "앱을 종료합니다. ", Toast.LENGTH_SHORT).show();
                         finish();
                         break;
-
                 }
                 return false;
-
             }
         });
-
-
     }
 
 
@@ -154,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case android.R.id.home:
                 drawerLayout.openDrawer(drawerView);
-                Snackbar.make(toolbar, "Drawer Open", Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.menu_setting:
                 Intent intent_setting = new Intent(getApplicationContext(), SettingsActivity.class);
