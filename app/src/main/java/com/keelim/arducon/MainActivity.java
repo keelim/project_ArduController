@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private WebView webView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.drawer_bug_report:
 //                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
-                        Intent intent = new Intent(getApplicationContext(), BugReport.class);
+                        Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
                         startActivity(intent); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
@@ -138,14 +137,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //webView setting
-        webView = findViewById(R.id.webView);
-        webView.loadUrl(getString(R.string.BugUrl));
-        webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
 
     }
-
-
 
 
 
