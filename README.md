@@ -294,6 +294,9 @@ app setiing
     - SharedPreference 설정
     - 액티비티를 새로 사용을 해야 하는가?
     - SettingActivity 사용
+3. 안드로이드 In_app update 
+    - 어떻게 처리를 해야 하는 거야?
+    - 
 
 
 # Todo
