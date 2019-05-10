@@ -6,9 +6,18 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
+
 
 public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다. //manifest  등록
     private Handler handler;
+
+
 
     Runnable runnable = new Runnable() {
         @Override
@@ -20,12 +29,18 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate
+        inAppUpdate();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         init();
+
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
+    }
+
+    private void inAppUpdate() {
     }
 
     public void init() { //초기 이벤트 설정
