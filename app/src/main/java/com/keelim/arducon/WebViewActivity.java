@@ -9,10 +9,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends AppCompatActivity { //버그 리포트로 이동을 하는 액티비티
+    //개발자 개인 블로그로 이동을 한다.
 
     private WebView webView;
-    private WebSettings webSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

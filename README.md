@@ -296,7 +296,9 @@ app setiing
     - SettingActivity 사용
 3. 안드로이드 In_app update 
     - 어떻게 처리를 해야 하는 거야?
-    - 
+
+## 2019 05 12
+1. 
 
 
 # Todo
@@ -305,9 +307,8 @@ app setiing
 - SharedPreference 
     - 설정, 초기 사용자
 - 블루투스 코드 체크
-- account fragment 
-    - 인증 부분?
+- account activity  를 사용해도 좋을 것 같다.
 - WebView 최적화 작업
-- 릴리즈 노트를 수정
+- in app update api 사용 준비?
     
     
