@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.keelim.arducon.ui.login.LoginActivity;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -117,15 +118,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.drawer_account:
 //                        account_commit(); //프래그 먼트 실행 아직 출시 하면 안됨
                         Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        Intent intent_account = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent_account);
                         break;
                     case R.id.drawer_bug_report:
 //                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
-                        Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
-                        startActivity(intent); //webView page 이동을 할 것
+                        Intent intent_bugReport = new Intent(getApplicationContext(), WebViewActivity.class);
+                        startActivity(intent_bugReport); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
-                        Intent intent_setting = new Intent(getApplicationContext(), SettingsActivity.class);
-                        startActivity(intent_setting);
                         break;
                     case R.id.drawer_exit:
                         finish();
@@ -151,8 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(drawerView);
                 break;
             case R.id.menu_setting:
-                Intent intent_setting = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(intent_setting);
+                Toast.makeText(this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
