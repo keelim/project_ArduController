@@ -17,8 +17,6 @@ import com.google.android.play.core.tasks.Task;
 public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다. //manifest  등록
     private Handler handler;
 
-
-
     Runnable runnable = new Runnable() {
         @Override
         public void run() { //runable 작동을 하고 시작
