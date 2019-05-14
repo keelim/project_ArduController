@@ -18,6 +18,8 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
     private Handler handler;
 
 
+    //인앱 업데이트 어디서 등록을 해야 하는가?
+
 
     Runnable runnable = new Runnable() {
         @Override

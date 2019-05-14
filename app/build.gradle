@@ -4,6 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
+
     signingConfigs {
         release {
             storeFile file('C:\\Users\\h0033\\Desktop\\android key\\keystore.jks')
@@ -35,6 +36,7 @@ android {
 
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -59,5 +61,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0-alpha03'
     implementation 'androidx.navigation:navigation-ui:2.1.0-alpha03'
     implementation 'com.google.android.play:core:1.5.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
+    implementation 'com.google.android.gms:play-services-flags:16.0.1'
+    implementation 'com.google.android.gms:play-services-basement:16.2.0'
 
 }
