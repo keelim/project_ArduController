@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //adMob 설정
-        MobileAds.initialize(this, "ca-app-pub-3115620439518585~1159685929");
+        MobileAds.initialize(this, getString(R.string.mobileads));
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob

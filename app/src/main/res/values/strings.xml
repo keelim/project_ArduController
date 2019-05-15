@@ -34,6 +34,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="bugurl">https://keelim.github.io/</string>
+    <string name="loginsucess">성공 하였습니다.</string>
+    <string name="mobileads">ca-app-pub-3115620439518585~1159685929</string>
 
 
 </resources>

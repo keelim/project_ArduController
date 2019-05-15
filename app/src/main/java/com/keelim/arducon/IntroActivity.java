@@ -34,7 +34,6 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate
-        inAppUpdate();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         handler = new Handler();
@@ -42,8 +41,6 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
     }
 
-    private void inAppUpdate() {
-    }
 
     @Override
     public void onBackPressed() { //back 키 눌렀을 때
