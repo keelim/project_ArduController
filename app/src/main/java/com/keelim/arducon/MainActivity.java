@@ -109,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.drawer_account:
 //                        account_commit(); //프래그 먼트 실행 아직 출시 하면 안됨
                         Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
-                        Intent intent_account = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent_account);
                         break;
                     case R.id.drawer_bug_report:
 //                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
