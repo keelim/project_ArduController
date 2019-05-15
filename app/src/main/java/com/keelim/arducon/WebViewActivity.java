@@ -20,7 +20,7 @@ public class WebViewActivity extends AppCompatActivity { //버그 리포트로 �
         setContentView(R.layout.activity_web_view);
 
         webView = findViewById(R.id.webView);
-        webView.loadUrl("https://keelim.github.io/");
+        webView.loadUrl(getString(R.string.bugurl));
         webView.setWebViewClient(new WebViewClient()); // 클릭시 새창이 뜨지 않는다.?
         webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
 

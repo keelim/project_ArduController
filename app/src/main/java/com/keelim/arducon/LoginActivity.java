@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(this, "성공 하였습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.loginsucess), Toast.LENGTH_SHORT).show();
             }
         }
     }
