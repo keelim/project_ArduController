@@ -9,6 +9,4 @@
         <item name="preferenceTheme">@style/PreferenceFragmentList</item>
     </style>
 
-    <style name="PreferenceLocaleTheme" parent="@style/PreferenceThemeOverlay" />
-
 </resources>
