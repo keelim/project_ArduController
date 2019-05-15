@@ -35,10 +35,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+        
         SignInButton google_Login = findViewById(R.id.Google_Login);
         google_Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
+                Toast.makeText(this, "성공 하였습니다.", Toast.LENGTH_SHORT).show();
             }
         }
     }
