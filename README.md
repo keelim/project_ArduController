@@ -305,12 +305,31 @@ app setiing
     - 무슨 오류인지 파악도 안된다.
     - 일단 커밋은 남겨서 되돌릴 수는 있다.
     - 
-2. version 1.7  
+2. version 1.7 version 8 update
+
+## 2019 05 16 
+1. D8 warnings 가 왜 생기는지 이해가 안간다.? 
+    - Gradle 의 dependency 문제인 것 같은데 
+2. 충돌 보ㅣ고서도 일단 작동을 하지 않는 것 같다.  
+    - Gradle의 문제인 것 같기는 하다.
+3. Clean code 과정 수행 완료
+4. 
 
 ## 2019 05 16 
 1. 긴급 패치 필요할 것 갑자기 종료되는 문제 발생
-2. 
+2. 긴급 점검 완료
+    - 로그인 과정에서의 오류
+    - 우선 액티비티에서의 제거
+3. 버전 네이밍 변경 2.0.0
+4. 버그 리포트 작성 --> 사실상 개발일지
 
+
+## gradle spec 
+- 'com.android.tools.build:gradle:3.4.0'
+- 'com.google.gms:google-services:4.2.0'
+- 'com.google.firebase:firebase-plugins:1.2.0'
+
+버전을 바꾸는 경우 아예 빌드가 되지 않는다.
 
 # Todo
 - Notification 
@@ -318,8 +337,8 @@ app setiing
 - SharedPreference 
     - 설정, 초기 사용자
 - 블루투스 코드 체크
-- account activity  를 사용해도 좋을 것 같다.
-- WebView 최적화 작업
+- account activity 
+    - login Activity 구현 중 에러 발생 조치 필요
 - in app update api 사용 준비?
     
     
