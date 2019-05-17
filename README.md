@@ -342,8 +342,6 @@ app setiing
 - SharedPreference 
     - 설정, 초기 사용자
 - 블루투스 코드 체크
-- account activity 
-    - login Activity 구현 중 에러 발생 조치 필요
 - in app update api 사용 준비?
     
     
