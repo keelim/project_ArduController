@@ -313,7 +313,7 @@ app setiing
 2. 충돌 보ㅣ고서도 일단 작동을 하지 않는 것 같다.  
     - Gradle의 문제인 것 같기는 하다.
 3. Clean code 과정 수행 완료
-4. 
+4. version 1.8 update 
 
 ## 2019 05 16 
 1. 긴급 패치 필요할 것 갑자기 종료되는 문제 발생
@@ -322,6 +322,11 @@ app setiing
     - 우선 액티비티에서의 제거
 3. 버전 네이밍 변경 2.0.0
 4. 버그 리포트 작성 --> 사실상 개발일지
+
+## 2019 05 17
+1. version naming change 1.8 --> 2.0.0
+2. writing the bug report 2.0.0
+3.   
 
 
 ## gradle spec 
