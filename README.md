@@ -277,8 +277,7 @@ app setiing
 2. WebView 기본 setting
     - 최적화 작업을 할 수 있는가?
     - 크롬으로만 사용
-    - 기본 브라우저?
-3. 
+    - 기본 브라우저? 
 
 ## 2019 05 09 
 1. 긴급 오류 대응
@@ -297,9 +296,6 @@ app setiing
 3. 안드로이드 In_app update 
     - 어떻게 처리를 해야 하는 거야?
 
-## 2019 05 12
-
-1.
 ## 2019 05 15
 1. 크래쉬틱스 상태가 별로 안좋다.
     - 무슨 오류인지 파악도 안된다.
@@ -310,7 +306,7 @@ app setiing
 ## 2019 05 16 
 1. D8 warnings 가 왜 생기는지 이해가 안간다.? 
     - Gradle 의 dependency 문제인 것 같은데 
-2. 충돌 보ㅣ고서도 일단 작동을 하지 않는 것 같다.  
+2. 충돌 보고서도 일단 작동을 하지 않는 것 같다.  
     - Gradle의 문제인 것 같기는 하다.
 3. Clean code 과정 수행 완료
 4. version 1.8 update 
@@ -326,22 +322,25 @@ app setiing
 ## 2019 05 17
 1. version naming change 1.8 --> 2.0.0
 2. writing the bug report 2.0.0
-3.   
 
+## 2019 05 19
+1. 안드로이드 컴포넌트 및 블루투스 코드
+2. 버그 리포트 준비 2.0.1
+3. junit 및 안드로이드 에스프레소 작성 
+    - 활용법을 아직 모른다. 
+    - 어느 방식으로 작동을 하는가?
 
 ## gradle spec 
 - 'com.android.tools.build:gradle:3.4.0'
 - 'com.google.gms:google-services:4.2.0'
 - 'com.google.firebase:firebase-plugins:1.2.0'
 
-버전을 바꾸는 경우 아예 빌드가 되지 않는다.
-
 # Todo
+- 안드로이드 제트팩 작동
 - Notification 
-    - 실행 중 알림창
+- api 사용 준비 --> 여러가지 api
 - SharedPreference 
-    - 설정, 초기 사용자
 - 블루투스 코드 체크
-- in app update api 사용 준비?
+- in app update api
     
     
