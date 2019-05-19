@@ -27,6 +27,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -35,7 +36,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
-
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 10;
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     private int readBufferPosition;
     //component
     private EditText mEditSend, mEditReceive;
-    private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private View drawerView;
 
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mEditSend = findViewById(R.id.sendString);
-        mEditReceive = findViewById(R.id.reciveStrig);
+        mEditReceive = findViewById(R.id.receive_string);
         Button mButtonSend = findViewById(R.id.sendButton);
 
         mButtonSend.setOnClickListener(new OnClickListener() {
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         //adMob 설정f
 
         //툴바 설정
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -107,15 +106,14 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.drawer_account:
-//                        account_commit(); //프래그 먼트 실행 아직 출시 하면 안됨
-                        Toast.makeText(MainActivity.this, "준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "계정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_bug_report:
-//                        bugReport_commit(); //프래그 먼트 실행 -->버그 리포트는 어디서 만드는 것이 좋을까?
                         Intent intent_bugReport = new Intent(getApplicationContext(), WebViewActivity.class);
                         startActivity(intent_bugReport); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
+                        Toast.makeText(MainActivity.this, "설정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_exit:
                         finish();
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { //option flate
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
@@ -289,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
             }
             listItems.add("취소");  // 취소 항목 추가.
 
-
             // CharSequence : 변경 가능한 문자열.
             // toArray : List형태로 넘어온것 배열로 바꿔서 처리하기 위한 toArray() 함수.
             final CharSequence[] items = new CharSequence[listItems.size()];
@@ -327,6 +324,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
 
         } else {
+
             // 블루투스 지원
 //            /** isEnable() : 블루투스 모듈이 활성화 되었는지 확인.
 //             *               true : 지원 ,  false : 미지원
@@ -348,8 +346,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-
     // onActivityResult : 사용자의 선택결과 확인 (아니오, 예)
     // RESULT_OK: 블루투스가 활성화 상태로 변경된 경우. "예"
     // RESULT_CANCELED : 오류나 사용자의 "아니오" 선택으로 비활성 상태로 남아 있는 경우  RESULT_CANCELED
@@ -377,26 +373,20 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void TotalExit() throws IOException { //전체를 종료를 하는 로직
+        mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
+        mInputStream.close();
+        mSocket.close();
+    }
+
     @Override
     protected void onDestroy() {
         try {
-            mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
-            mInputStream.close();
-            mSocket.close();
+            TotalExit();
         } catch (Exception e) {
             super.onDestroy();
         }
         super.onDestroy();
     }
-
-
-    public interface onKeyBackPressedListener {
-        void onBackKey();
-    }
-
-    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener) {
-        onKeyBackPressedListener mOnKeyBackPressedListener = listener;
-    }
-
 
 }

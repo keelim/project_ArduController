@@ -15,7 +15,7 @@
 
 
         <EditText
-            android:id="@+id/reciveStrig"
+            android:id="@+id/receive_string"
             android:layout_width="316dp"
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
