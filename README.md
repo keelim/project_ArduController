@@ -341,12 +341,14 @@ app setiing
 - 'com.google.firebase:firebase-plugins:1.2.0'
 
 # Todo
-- 안드로이드 제트팩 작동
-- Notification 
-- api 사용 준비 --> 여러가지 api
+- 안드로이드 제트팩 
+- Notification (알림)
 - SharedPreference 
 - 블루투스 코드 체크
-- in app update api
-- glide 라이브러리를 사용하여 제작 준비
+- 인앱 업데이트
+- glide 라이브러리 사용
+- 안드로이드 유용 라이브러리
+- 오픈소스 API 사용을 하기
+
     
     
