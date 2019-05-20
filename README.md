@@ -329,6 +329,11 @@ app setiing
 3. junit 및 안드로이드 에스프레소 작성 
     - 활용법을 아직 모른다. 
     - 어느 방식으로 작동을 하는가?
+    
+## 2019 05 20
+1. gradle setting glide
+2. 
+
 
 ## gradle spec 
 - 'com.android.tools.build:gradle:3.4.0'
@@ -342,5 +347,6 @@ app setiing
 - SharedPreference 
 - 블루투스 코드 체크
 - in app update api
+- glide 라이브러리를 사용하여 제작 준비
     
     
