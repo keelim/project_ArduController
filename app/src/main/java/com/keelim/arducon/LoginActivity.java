@@ -32,9 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     // 파이어베이스 인증 객체 생성
     private FirebaseAuth firebaseAuth;
 
-    // 구글  로그인 버튼
-    private SignInButton buttonGoogle;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance();
-        buttonGoogle = findViewById(R.id.signInButton);
+        // 구글  로그인 버튼
+        SignInButton buttonGoogle = findViewById(R.id.signInButton);
 
         // Google 로그인을 앱에 통합
         // GoogleSignInOptions 개체를 구성할 때 requestIdToken을 호출
@@ -70,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 // 구글 로그인 성공
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                assert account != null;
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
 
