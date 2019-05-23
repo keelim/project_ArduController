@@ -14,5 +14,4 @@
         app:headerLayout="@layout/main_nav_header"
         app:menu="@menu/main_nav_menu" />
 
-
 </RelativeLayout>
