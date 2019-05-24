@@ -59,8 +59,8 @@ app setiing
     - 긴 문자열은 StringBuilder 가 효율적
     <code>
     Stringbuilder stringbuilder = new StringBuilder();
-    stringbuilder.appen("ABC");
-    stringbuilder.appen("DEF");
+    stringbuilder.append("ABC");
+    stringbuilder.append("DEF");
     stringbuilder.toString(); //string 으로 변환을 시킨다. 
     </code>
     
@@ -332,8 +332,10 @@ app setiing
     
 ## 2019 05 20
 1. gradle setting glide
-2. 
 
+## 2019 05 23
+1. 버그 리포트 작성
+2. 기타 추가 기능들 확정을 할 것 --> 일단 firebase auth 나 crashtytics 를 넣으면 오류가 나는 것은 확인 
 
 ## gradle spec 
 - 'com.android.tools.build:gradle:3.4.0'
@@ -345,6 +347,8 @@ app setiing
 - Notification (알림)
 - SharedPreference 
 - 블루투스 코드 체크
+    - ASYNCTASK 변경?
+- 인증 창 업데이트
 - 인앱 업데이트
 - glide 라이브러리 사용
 - 안드로이드 유용 라이브러리
