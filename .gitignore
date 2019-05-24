@@ -16,3 +16,4 @@
  1
 app/release/app.aab
 firebase-debug.log
+*.abb
