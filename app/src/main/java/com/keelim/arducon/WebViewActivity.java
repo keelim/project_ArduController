@@ -20,7 +20,6 @@ public class WebViewActivity extends AppCompatActivity { //버그 리포트로 �
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-
         webView = findViewById(R.id.webView);
         webView.loadUrl(getString(R.string.bugurl));
         webView.setWebViewClient(new WebViewClient()); // 클릭시 새창이 뜨지 않는다.?
