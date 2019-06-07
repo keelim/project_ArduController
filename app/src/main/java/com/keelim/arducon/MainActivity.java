@@ -81,19 +81,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //adMob 설정
         MobileAds.initialize(this, getString(R.string.mobileads));
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
-        //adMob 설정f
 
-        //툴바 설정
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //툴바 설정
 
         //Navigation View
         drawerLayout = findViewById(R.id.drawerlayout);
@@ -245,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             // mStrDelimiter = '\n';
-                                            mEditReceive.setText(mEditReceive.getText().toString() + data + mStrDelimiter);
+                                            mEditReceive.setText(new StringBuilder().append(mEditReceive.getText().toString()).append(data).append(mStrDelimiter).toString());
                                         }
 
                                     });
