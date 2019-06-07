@@ -343,16 +343,18 @@ app setiing
 - 'com.google.firebase:firebase-plugins:1.2.0'
 
 # Todo
-- 안드로이드 제트팩 
-- Notification (알림)
+- android jetpack
+- Notification 
 - SharedPreference 
-- 블루투스 코드 체크
+- Bluetooth code test
     - ASYNCTASK 변경?
-- 인증 창 업데이트
-- 인앱 업데이트
-- glide 라이브러리 사용
-- 안드로이드 유용 라이브러리
-- 오픈소스 API 사용을 하기
+- auth feature 
+- in app update 
+- android library
+    - glide
+    - material about
+- open source API
+- FCM
 
     
     
