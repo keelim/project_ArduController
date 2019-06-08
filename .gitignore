@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+/app/google-services.json
+.idea
+ 1
+sapp/release/app.aab
+firebase-debug.log
+*.aab
+
