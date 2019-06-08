@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,18 +45,19 @@ public class MainActivity extends AppCompatActivity {
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
-    private BluetoothSocket mSocket = null;
+    private BluetoothSocket mSocket;
     private OutputStream mOutputStream;
     private InputStream mInputStream;
 
     private String mStrDelimiter = "\n";
     private char mCharDelimiter = '\n';
-    //Thread
+    
     private Thread mWorkerThread;
     private byte[] readBuffer;
     private int readBufferPosition;
-    //component
-    private EditText mEditSend, mEditReceive;
+
+    private EditText mEditSend;
+    private TextView mEditReceive;
     private DrawerLayout drawerLayout;
     private View drawerView;
 
@@ -227,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
                             mInputStream.read(packetBytes);
 
                             for (int i = 0; i < byteAvailable; i++) {
-                                byte b = packetBytes[i];
+                                byte aByte = packetBytes[i];
 
-                                if (b == mCharDelimiter) {
+                                if (aByte == mCharDelimiter) {
                                     byte[] encodedBytes = new byte[readBufferPosition];
                                     //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
                                     //  readBuffer 배열을 처음 부터 끝까지 encodedBytes 배열로 복사.
@@ -242,12 +244,12 @@ public class MainActivity extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             // mStrDelimiter = '\n';
-                                            mEditReceive.setText(new StringBuilder().append(mEditReceive.getText().toString()).append(data).append(mStrDelimiter).toString());
+                                            mEditReceive.setText(data + mStrDelimiter);
                                         }
 
                                     });
                                 } else {
-                                    readBuffer[readBufferPosition++] = b;
+                                    readBuffer[readBufferPosition++] = aByte;
                                 }
                             }
                         }
@@ -312,10 +314,10 @@ public class MainActivity extends AppCompatActivity {
     }// 블루투스 지원하며 활성 상태인 경우.
 
     void checkBluetooth() {
-//        /**
-//         * getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
-//         이경우 Toast를 사용해 에러메시지를 표시하고 앱을 종료한다.
-//         */
+        /*
+          getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
+         이경우 Toast를 사용해 에러메시지를 표시하고 앱을 종료한다.
+         */
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {  // 블루투스 미지원
             Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
@@ -323,19 +325,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             // 블루투스 지원
-//            /** isEnable() : 블루투스 모듈이 활성화 되었는지 확인.
-//             *               true : 지원 ,  false : 미지원
-//             */
+            /* isEnable() : 블루투스 모듈이 활성화 되었는지 확인.
+                            true : 지원 ,  false : 미지원
+             */
             if (!mBluetoothAdapter.isEnabled()) { // 블루투스 지원하며 비활성 상태인 경우.
                 Toast.makeText(getApplicationContext(), "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show();
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 // REQUEST_ENABLE_BT : 블루투스 활성 상태의 변경 결과를 App 으로 알려줄 때 식별자로 사용(0이상)
-//                /**
-//                 startActivityForResult 함수 호출후 다이얼로그가 나타남
-//                 "예" 를 선택하면 시스템의 블루투스 장치를 활성화 시키고
-//                 "아니오" 를 선택하면 비활성화 상태를 유지 한다.
-//                 선택 결과는 onActivityResult 콜백 함수에서 확인할 수 있다.
-//                 */
+                /*
+                 startActivityForResult 함수 호출후 다이얼로그가 나타남
+                 "예" 를 선택하면 시스템의 블루투스 장치를 활성화 시키고
+                 "아니오" 를 선택하면 비활성화 상태를 유지 한다.
+                 선택 결과는 onActivityResult 콜백 함수에서 확인할 수 있다.
+                 */
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {// 블루투스 지원하며 활성 상태인 경우.
                 selectDevice();
@@ -347,12 +349,12 @@ public class MainActivity extends AppCompatActivity {
     // RESULT_OK: 블루투스가 활성화 상태로 변경된 경우. "예"
     // RESULT_CANCELED : 오류나 사용자의 "아니오" 선택으로 비활성 상태로 남아 있는 경우  RESULT_CANCELED
 
-//    /**
-//     * 사용자가 request를 허가(또는 거부)하면 안드로이드 앱의 onActivityResult 메소도를 호출해서 request의 허가/거부를 확인할수 있다.
-//     * 첫번째 requestCode : startActivityForResult 에서 사용했던 요청 코드. REQUEST_ENABLE_BT 값
-//     * 두번째 resultCode  : 종료된 액티비티가 setReuslt로 지정한 결과 코드. RESULT_OK, RESULT_CANCELED 값중 하나가 들어감.
-//     * 세번째 data        : 종료된 액티비티가 인테트를 첨부했을 경우, 그 인텐트가 들어있고 첨부하지 않으면 null
-//     */
+    /**
+     * 사용자가 request를 허가(또는 거부)하면 안드로이드 앱의 onActivityResult 메소도를 호출해서 request의 허가/거부를 확인할수 있다.
+     * 첫번째 requestCode : startActivityForResult 에서 사용했던 요청 코드. REQUEST_ENABLE_BT 값
+     * 두번째 resultCode  : 종료된 액티비티가 setReuslt로 지정한 결과 코드. RESULT_OK, RESULT_CANCELED 값중 하나가 들어감.
+     * 세번째 data        : 종료된 액티비티가 인테트를 첨부했을 경우, 그 인텐트가 들어있고 첨부하지 않으면 null
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
