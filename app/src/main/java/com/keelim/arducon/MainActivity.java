@@ -314,10 +314,8 @@ public class MainActivity extends AppCompatActivity {
     }// 블루투스 지원하며 활성 상태인 경우.
 
     void checkBluetooth() {
-        /*
-          getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
-         이경우 Toast를 사용해 에러메시지를 표시하고 앱을 종료한다.
-         */
+//          getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
+//         이경우 Toast 를 사용해 에러메시지를 표시하고 앱을 종료한다.
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {  // 블루투스 미지원
             Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
@@ -383,9 +381,11 @@ public class MainActivity extends AppCompatActivity {
         try {
             TotalExit();
         } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
             super.onDestroy();
         }
-        super.onDestroy();
+
     }
 
 }
