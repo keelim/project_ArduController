@@ -6,6 +6,10 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
+
 
 public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다. //manifest  등록
     private Handler handler;
@@ -24,6 +28,7 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_intro);
         handler = new Handler();
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
