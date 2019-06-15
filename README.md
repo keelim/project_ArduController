@@ -337,10 +337,16 @@ app setiing
 1. 버그 리포트 작성
 2. 기타 추가 기능들 확정을 할 것 --> 일단 firebase auth 나 crashtytics 를 넣으면 오류가 나는 것은 확인
 
+# 2019 06 15
+1. Crashtlytics setting complete
+2. 
+
 ## 2019 06 19
 1. developer page making 
 2. business logic plan making
 3. other feature
+
+
 
 
 ## gradle spec 
