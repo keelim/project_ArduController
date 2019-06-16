@@ -348,27 +348,17 @@ app setiing
 2. business logic plan making
 3. other feature
 
-
-
-
-## gradle spec 
-- 'com.android.tools.build:gradle:3.4.0'
-- 'com.google.gms:google-services:4.2.0'
-- 'com.google.firebase:firebase-plugins:1.2.0'
-
 # Todo
-- android jetpack
-- Notification 
-- SharedPreference 
-- Bluetooth code test
-    - ASYNCTASK 변경?
+- Gradle build optimize
+- Android Q
+- Noti  
 - auth feature 
 - in app update 
 - android library
     - glide
-    - material about
-- open source API
-- FCM
+    - material
+    - open source
+- FCM (Firebase Cloud Message)
 
     
     
