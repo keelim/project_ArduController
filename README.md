@@ -339,7 +339,9 @@ app setiing
 
 # 2019 06 15
 1. Crashtlytics setting complete
-2. 
+
+## 2019 06 16
+1. Linking firebase app 
 
 ## 2019 06 19
 1. developer page making 
