@@ -343,6 +343,11 @@ app setiing
 ## 2019 06 16
 1. Linking firebase app 
 
+## 2019 06 17
+1. ready to other new feature
+    - firebase setting is complete
+    - Authentication 
+
 ## 2019 06 19
 1. developer page making 
 2. business logic plan making
