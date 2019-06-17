@@ -360,5 +360,11 @@ app setiing
     - open source
 - FCM (Firebase Cloud Message)
 
+# Application Setting
+0. Application architect
+1. Firebase setting
+2. Server setting
+3. DB setting
+
     
     
