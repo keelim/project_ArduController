@@ -353,10 +353,14 @@ app setiing
 2. business logic plan making
 3. other feature
 
+## 2019 06 20
+1. firebase version 2.0.4 release
+2. code version change 2.0.5
+3. FCM main target
+
 # Todo
 - Gradle build optimize
 - Android Q
-- Noti  
 - auth feature 
 - in app update 
 - android library
