@@ -358,6 +358,9 @@ app setiing
 2. code version change 2.0.5
 3. FCM main target
 
+## 2019 06 26
+1. firebase clouding message (fcm) 만들어 보기
+
 # Todo
 - Gradle build optimize
 - Android Q
