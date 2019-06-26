@@ -94,6 +94,18 @@
             ads:layout_constraintHorizontal_bias="0.0"
             ads:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/log_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="log"
+            app:layout_constraintBottom_toTopOf="@+id/sendButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.074" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
