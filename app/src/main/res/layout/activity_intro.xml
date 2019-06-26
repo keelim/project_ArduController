@@ -5,10 +5,20 @@
     android:background="@android:color/holo_blue_dark">
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:src="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/intro" />
+        android:contentDescription="@string/intro"
+        android:src="@mipmap/ic_launcher_foreground" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:max="100"
+        android:progress="0" />
+
 
 </RelativeLayout>
