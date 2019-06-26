@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +28,11 @@ import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,6 +46,7 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 10;
+    private static final String TAG = "Keelim";
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     private Set<BluetoothDevice> mDevices;
@@ -61,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mEditReceive;
     private DrawerLayout drawerLayout;
     private View drawerView;
+    private Button logButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -70,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         mEditSend = findViewById(R.id.sendString);
         mEditReceive = findViewById(R.id.receive_string);
+        logButton = findViewById(R.id.log_button);
         Button mButtonSend = findViewById(R.id.sendButton);
 
         mButtonSend.setOnClickListener(new OnClickListener() {
@@ -121,6 +129,30 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 return false;
+            }
+        });
+
+        logButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.w(TAG, "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID token
+                                String token = task.getResult().getToken();
+
+                                // Log and toast
+
+
+                                Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
     }
