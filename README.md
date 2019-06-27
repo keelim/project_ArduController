@@ -361,22 +361,16 @@ app setiing
 ## 2019 06 26
 1. firebase clouding message (fcm) 만들어 보기
 
+## 2019 06 27
+1. Firebase Clouding Messaging ~ing
+2. deBugging drawer account 
+
 # Todo
 - Gradle build optimize
-- Android Q
 - auth feature 
-- in app update 
 - android library
-    - glide
-    - material
-    - open source
-- FCM (Firebase Cloud Message)
+- apply material design 
 
-# Application Setting
-0. Application architect
-1. Firebase setting
-2. Server setting
-3. DB setting
 
     
     

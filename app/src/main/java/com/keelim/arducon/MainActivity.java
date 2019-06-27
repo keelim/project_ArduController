@@ -24,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -115,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.drawer_account:
                         Toast.makeText(MainActivity.this, "계정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
-                        Crashlytics.getInstance().crash(); // Force a crash
                         break;
                     case R.id.drawer_bug_report:
                         Intent intent_bugReport = new Intent(getApplicationContext(), WebViewActivity.class);
