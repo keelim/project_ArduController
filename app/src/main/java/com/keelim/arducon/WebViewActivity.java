@@ -11,7 +11,6 @@ import android.webkit.WebViewClient;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WebViewActivity extends AppCompatActivity { //버그 리포트로 이동을 하는 액티비티
-    // 특별히 만질 것은 없을 것으로 생각한다.
     private WebView webView;
 
     @Override
