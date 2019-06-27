@@ -363,7 +363,8 @@ app setiing
 
 ## 2019 06 27
 1. Firebase Clouding Messaging ~ing
-2. deBugging drawer account 
+2. deBugging drawer account
+3. version 2.0.5 release 
 
 # Todo
 - Gradle build optimize
