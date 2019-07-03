@@ -43,17 +43,14 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
         }
     }
 
     flavorDimensions "stage"
     productFlavors {
-
         dev {
             dimension "stage"
             versionCode 100
-
             aaptOptions.cruncherEnabled = false
             resConfigs "ko", "xxxhdpi"
         }
