@@ -369,7 +369,12 @@ app setiing
 ## 2019 07 03
 1. plugins setting
 2. resource setting
-3.
+
+## 2019 07 04
+1. dark mode setting
+    - theme setting
+2. 
+
 
 # Todo
 - Gradle build optimize
