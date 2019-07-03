@@ -5,4 +5,7 @@
         <item name="preferenceTheme">@style/PreferenceFragmentList</item>
     </style>
 
+    <style name="AppTheme1" parent="Theme.AppCompat.DayNight"/>
+
+
 </resources>
