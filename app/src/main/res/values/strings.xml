@@ -9,5 +9,4 @@
     <string name="receive_instruction">받는 명령어</string>
     <string name="send_instruction">전송 명령어</string>
     <string name="send_button">Send Button</string>
-    <string name="log_button">log</string>
 </resources>
