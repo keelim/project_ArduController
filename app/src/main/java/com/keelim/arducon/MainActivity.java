@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         mEditReceive = findViewById(R.id.receive_string);
         Button logButton = findViewById(R.id.log_button);
         Button mButtonSend = findViewById(R.id.sendButton);
+        developerButton = findViewById(R.id.developer_button);
 
 
         mButtonSend.setOnClickListener(new OnClickListener() {
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                         });
             }
         });
+
 
         developerButton.setOnClickListener(new OnClickListener() {
             @Override
