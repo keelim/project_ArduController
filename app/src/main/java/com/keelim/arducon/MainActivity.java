@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mEditReceive;
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private Button logButton;
+    private ImageButton developerButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -76,8 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
         mEditSend = findViewById(R.id.sendString);
         mEditReceive = findViewById(R.id.receive_string);
-        logButton = findViewById(R.id.log_button);
+        Button logButton = findViewById(R.id.log_button);
         Button mButtonSend = findViewById(R.id.sendButton);
+
 
         mButtonSend.setOnClickListener(new OnClickListener() {
 
@@ -151,6 +153,14 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
                             }
                         });
+            }
+        });
+
+        developerButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperPageActivity.class);
+                startActivity(intent_developerIntent);
             }
         });
     }
