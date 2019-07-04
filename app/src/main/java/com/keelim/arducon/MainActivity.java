@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        MobileAds.initialize(this, getString(R.string.mobileads));
+        MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID));
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);//adMob
