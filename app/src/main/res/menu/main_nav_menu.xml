@@ -20,6 +20,8 @@
             android:id="@+id/drawer_exit"
             android:icon="@drawable/ic_arrow_back_black_24dp"
             android:title="종료" />
+
+
     </group>
 </menu>
 

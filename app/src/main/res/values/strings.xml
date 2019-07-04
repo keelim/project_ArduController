@@ -10,4 +10,6 @@
     <string name="send_instruction">전송 명령어</string>
     <string name="send_button">Send Button</string>
     <string name="arducon">arducon</string>
+    <string name="menu_setting">setting</string>
+    <string name="developer_description">developer description</string>
 </resources>
