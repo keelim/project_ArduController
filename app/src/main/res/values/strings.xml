@@ -3,7 +3,6 @@
     <string name="ADMOB_APP_ID">ca-app-pub-3115620439518585~1159685929</string>
     <string name="ADMOB_UNIT_ID">ca-app-pub-3115620439518585/1488178351</string>
     <string name="bugurl">https://keelim.github.io/</string>
-    <string name="mobileads">ca-app-pub-3115620439518585~1159685929</string>
     <string name="title_activity_login">Sign in</string>
     <string name="intro">Intro</string>
     <string name="receive_instruction">받는 명령어</string>

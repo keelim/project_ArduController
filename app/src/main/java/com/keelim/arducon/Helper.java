@@ -2,13 +2,12 @@ package com.keelim.arducon;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.vansuita.materialabout.builder.AboutBuilder;
 import com.vansuita.materialabout.views.AboutView;
 
-public class Helper implements View.OnClickListener {
+public class Helper {
 
     private Activity activity;
     private int theme = R.style.Theme_AppCompat_DayNight;
@@ -23,11 +22,6 @@ public class Helper implements View.OnClickListener {
 
     public Helper init() {
         activity.setTheme(theme);
-
-        activity.findViewById(R.id.dark).setOnClickListener(this);
-        activity.findViewById(R.id.light).setOnClickListener(this);
-        activity.findViewById(R.id.custom).setOnClickListener(this);
-
         return this;
     }
 
@@ -83,31 +77,4 @@ public class Helper implements View.OnClickListener {
     }
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.dark:
-                if (theme != R.style.Theme_AppCompat_DayNight) {
-                    theme = R.style.Theme_AppCompat_DayNight;
-                    activity.recreate();
-                }
-                break;
-            case R.id.light:
-                if (theme != R.style.Theme_AppCompat_DayNight) {
-                    theme = R.style.Theme_AppCompat_DayNight;
-                    activity.recreate();
-                }
-                break;
-
-            case R.id.custom:
-                if (theme != R.style.Theme_AppCompat_DayNight) {
-                    theme = R.style.Theme_AppCompat_DayNight;
-                    activity.recreate();
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
 }
