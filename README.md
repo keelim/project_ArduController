@@ -373,7 +373,10 @@ app setiing
 ## 2019 07 04
 1. dark mode setting
     - theme setting
-2. 
+
+## 2019 07 05
+1. developer page making complete
+
 
 
 # Todo
