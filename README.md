@@ -377,13 +377,9 @@ app setiing
 ## 2019 07 05
 1. developer page making complete
 
-
-
 # Todo
-- Gradle build optimize
+- gradle setting optimize
 - auth feature 
-- android library
-- apply material design 
 
 
     
