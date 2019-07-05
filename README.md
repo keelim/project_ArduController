@@ -4,19 +4,6 @@
 ## start date: March 1
 ## complete date: June 30  
 
-- - -
-총 화면은 가지로 구성을 한다. 
-main
-controller 
-Bluetooth setting 
-app setiing 
-
-## want adding skills
-1. app login
-2. adMob --> 광고 앱은 무료로 넣고 광고를 넣는 것이 현명할 것으로 사료
-3. apply material design 
-
-
 ## 2019 03 29
 1. sample 코드 
 2. 코드 분석
@@ -26,7 +13,7 @@ app setiing
 6. adMob 은 일단 미뤄두기
 
 ## 2019 03 30
-1.안드로이드 레이아웃 작성 
+1. 안드로이드 레이아웃 작성 
 2. 아이콘 만들기
 
 ## 2019 04 02
@@ -37,7 +24,6 @@ app setiing
 4. 블루투스 통신 모듈 준비 --> 아두이노.ino 파일 예제 작성
 5. firebase test
   
-
 ## 2019 04 05
 1. controller xml 수정
 2. appBar 오버플로우 아이템 생성 --> 앱바의 사용은 무조건 오버플로우 액션으로
@@ -75,8 +61,6 @@ app setiing
 ## 2019 04 13 
 1. 드로우 레이아웃 일단 제거를 할 것
 
-- - -
-
 ## 2019 04 14
 1. 앱바 --> 액션바, 툴바 2가지로 구성을 할 수 있다. 
     - Actionbar old version,  Toolbar latest version
@@ -95,7 +79,7 @@ app setiing
      
 3. Toast 메시지 보다는 SnackBar 깔끔할 수 도 있을 것이라는 생각을 해본다.
     <code>SnackBar.make(Toolbae, "", Snackbar.SHORT").show</code>
-- - -
+
 ## 2019 04 15
 1. temp drawer layout 
 2. ready to the other setting
@@ -122,8 +106,7 @@ app setiing
     
 3. 드로어 레이아웃 홈버튼 활성화 완료
     - android.R.id.home 으로 접근을 해야 할 수 있다는것을 기억을 할 것
-    
-    
+        
 ## 2019 04 17
 1. 아이콘 생성 준비
 2. 블루 투스 코드 수정
@@ -244,7 +227,6 @@ app setiing
 4. 블루투스 이상 유무 체크를 할 것
     -  HC-06 bluetooth test
     
-
 ## 2019 04 29
 1. menu toolbar color change
 
@@ -380,6 +362,7 @@ app setiing
 # Todo
 - gradle setting optimize
 - auth feature 
+- database setting // serverside?
 
 
     
