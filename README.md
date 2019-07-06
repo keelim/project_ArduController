@@ -359,10 +359,14 @@
 ## 2019 07 05
 1. developer page making complete
 
+## 2019 07 07 
+1. kakao sdk setting
+2. Generate kakao login feature
+3. Testing the kakao login button 
+
 # Todo
-- gradle setting optimize
 - auth feature 
-- database setting // serverside?
+
 
 
     
