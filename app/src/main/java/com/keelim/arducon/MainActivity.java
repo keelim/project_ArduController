@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View drawerView;
     private ImageButton developerButton;
+    private ImageButton loginTestButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Button logButton = findViewById(R.id.log_button);
         Button mButtonSend = findViewById(R.id.sendButton);
         developerButton = findViewById(R.id.developer_button);
+        loginTestButton = findViewById(R.id.login_test_button);
 
 
         mButtonSend.setOnClickListener(new OnClickListener() {
@@ -165,11 +167,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_developerIntent);
             }
         });
+
+        loginTestButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_loginTest = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent_loginTest);
+            }
+        });
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) { //option flate
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
