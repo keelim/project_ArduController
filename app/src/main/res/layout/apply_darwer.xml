@@ -27,6 +27,13 @@
             android:src="@drawable/ic_person_outline_black_24dp"
             android:contentDescription="@string/developer_description" />
 
+        <ImageButton
+            android:id="@+id/login_test_button"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_person_pin_black_24dp"
+            android:contentDescription="@string/developer_description" />
+
     </LinearLayout>
 
 

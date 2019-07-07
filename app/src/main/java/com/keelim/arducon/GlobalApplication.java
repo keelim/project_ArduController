@@ -8,11 +8,12 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
+import com.kakao.auth.KakaoSDK;
 
 public class GlobalApplication extends Application {
     private static GlobalApplication instance;
 
-    public static final GlobalApplication getGlobalApplicationContext() {
+    public static GlobalApplication getGlobalApplicationContext() {
         if (instance == null)
             throw new IllegalStateException("this application does not inherit com.kakao.GlobalApplication");
         return instance;
@@ -70,5 +71,6 @@ public class GlobalApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        KakaoSDK.init(new GlobalApplication.KakaoSDKAdapter());
     }
 }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.kakao.auth.ISessionCallback;
-import com.kakao.auth.KakaoSDK;
 import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
@@ -23,7 +22,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        KakaoSDK.init(new GlobalApplication.KakaoSDKAdapter());
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
