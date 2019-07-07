@@ -11,8 +11,6 @@ import com.kakao.auth.KakaoAdapter;
 
 
 public class KakaoSDKAdapter extends KakaoAdapter {
-
-
     // 로그인 시 사용 될, Session의 옵션 설정을 위한 인터페이스 입니다.
 
     @Override
@@ -57,14 +55,10 @@ public class KakaoSDKAdapter extends KakaoAdapter {
             @Override
 
             public boolean isSecureMode() {
-
                 return false;
-
             }
 
-
             // 일반 사용자가 아닌 Kakao와 제휴 된 앱에서 사용되는 값입니다.
-
             // 값을 지정하지 않을 경우, ApprovalType.INDIVIDUAL 값으로 사용됩니다.
 
             @Override
@@ -86,19 +80,12 @@ public class KakaoSDKAdapter extends KakaoAdapter {
     @Override
 
     public IApplicationConfig getApplicationConfig() {
-
         return new IApplicationConfig() {
 
             @Override
-
             public Context getApplicationContext() {
-
                 return GlobalApplication.getGlobalApplicationContext();
-
             }
-
         };
-
     }
-
 }
