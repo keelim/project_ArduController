@@ -362,7 +362,14 @@
 ## 2019 07 07 
 1. kakao sdk setting
 2. Generate kakao login feature
-3. Testing the kakao login button 
+3. Testing the kakao login button
+    -  kakao login button complete
+
+## 2019 07 08
+1. Google login button feature
+2. Generate Google login feature
+3. Testing the Google login button
+ 
 
 # Todo
 - auth feature 
