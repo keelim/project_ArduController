@@ -374,9 +374,15 @@
 1. dataBinding
     - Butter knife, data binding
     - dataBing gradle option
+    
+2. Preference
+    - fragment 아키텍트
+     
 
 # Todo
-- auth feature 
+- auth feature
+- dataBinding 
+- search android jetpack library
 
 
 
