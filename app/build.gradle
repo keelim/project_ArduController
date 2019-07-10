@@ -20,10 +20,6 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
-    dataBinding {
-        enabled = true
-    }
-
     signingConfigs {
         release {
             storeFile file('C:\\Users\\h0033\\Desktop\\android key\\keystore.jks')
@@ -84,6 +80,10 @@ android {
         }
 
         splits.abi.enable = (flavorName == 'prd')
+    }
+
+    dataBinding{
+        enabled = true
     }
 }
 
