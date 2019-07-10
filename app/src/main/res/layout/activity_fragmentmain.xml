@@ -23,6 +23,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        android:name="com.keelim.arducon.Setting"
+        tools:layout="@layout/fragment_setting" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
