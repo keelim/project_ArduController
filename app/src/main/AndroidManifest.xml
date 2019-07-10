@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FragmentActivity"></activity>
         <activity android:name=".DeveloperPageActivity" />
 
         <meta-data
@@ -22,11 +23,9 @@
         <meta-data
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="da093908abc28a1043cbc271323c4e202e13ec65" />
@@ -45,19 +44,16 @@
         </activity>
         <activity android:name=".WebViewActivity" />
         <activity android:name=".LoginActivity" />
-
         <activity
             android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

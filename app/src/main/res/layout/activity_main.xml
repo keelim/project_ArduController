@@ -43,7 +43,6 @@
 
 
         <EditText
-
             android:id="@+id/sendString"
             android:layout_width="316dp"
             android:layout_height="60dp"
