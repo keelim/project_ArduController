@@ -370,6 +370,10 @@
 2. Generate Google login feature
 3. Testing the Google login button
  
+## 2019 07 10
+1. dataBinding
+    - Butter knife, data binding
+    - dataBing gradle option
 
 # Todo
 - auth feature 

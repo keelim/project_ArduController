@@ -20,6 +20,9 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
+    dataBinding {
+        enabled = true
+    }
 
     signingConfigs {
         release {
