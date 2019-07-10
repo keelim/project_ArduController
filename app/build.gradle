@@ -82,7 +82,7 @@ android {
         splits.abi.enable = (flavorName == 'prd')
     }
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }

@@ -383,6 +383,7 @@
 - auth feature
 - dataBinding 
 - search android jetpack library
+- fragment
 
 
 

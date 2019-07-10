@@ -13,6 +13,8 @@
     <string name="developer_description">developer description</string>
     <string name="kakao_app_key">029c8e5d7cf1ea06510dd120f77ce203</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
