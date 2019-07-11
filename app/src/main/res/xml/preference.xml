@@ -41,11 +41,11 @@
             app:iconSpaceReserved="false"/>
 
         <PreferenceScreen
-            android:title="Go to android.com"
-            android:summary="browse android.com"
+            android:title="Developer android"
+            android:summary="Go to android developer site"
             app:iconSpaceReserved="false">
             <intent android:action="android.intent.action.VIEW"
-                android:data="http://www.android.com" />
+                android:data="http://developer.android.com" />
         </PreferenceScreen>
 
     </PreferenceCategory>
