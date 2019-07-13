@@ -12,4 +12,5 @@
 sapp/release/app.aab
 firebase-debug.log
 *.aab
+*.log
 
