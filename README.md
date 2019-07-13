@@ -379,6 +379,42 @@
     - fragment 아키텍트
      
 
+## 2019 07 13
+> FCM(Firebase Cloud Messaging)
+    
+    - 언제 일어날지 모름
+    - classic
+        - client - server - client
+        - 서버에서 친구한테 접속을 하기가 어려워 줬다.
+        - server는 친구와 연결 되어 있다는 것은 모호하다.
+        - server와 계속 연결이 되어 있으면 데이터가 무조건 나간다.
+
+> Cloud Messaging
+
+    - 앱 서버는 정보를 가공을 한다.
+    - 구글 서버로 클라이언트 고유 식별자를 보낸다.
+    - 구글 서버에서 클라이언트로 보낸다.
+    - 구글과는 약한 연결이 이어져 있다.
+    
+> Token 
+
+    - client - firebase/googel server - client
+    - 토큰을 요청을 한다. 고유한 것들을 등록을 해줌.
+    - app_server token 을 app_server 에 저장을 함
+    - id 와 token 값을 가짐
+    - http
+    - clent1 -> post -> app_server
+    - app_server -> google_server -> client2
+
+> xmpp
+    
+    - client1 -> google -> app server -> client
+    
+> DB server 관리를 하는 것은 서버 사이드에 부분이다.
+
+## 2019 07 14   
+    
+
 # Todo
 - auth feature
 - dataBinding 
