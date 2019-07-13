@@ -411,6 +411,8 @@
     - client1 -> google -> app server -> client
 
 > app server 가 있어야지만 사용이 가능
+
+## 2019 07 14
    
     
 
