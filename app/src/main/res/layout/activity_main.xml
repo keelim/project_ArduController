@@ -94,7 +94,7 @@
             android:id="@+id/log_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="log"
+            android:text="@string/btn_log"
             app:layout_constraintBottom_toTopOf="@+id/sendButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
@@ -104,9 +104,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <include layout="@layout/apply_darwer" />
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
