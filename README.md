@@ -409,10 +409,9 @@
 > xmpp
     
     - client1 -> google -> app server -> client
-    
-> DB server 관리를 하는 것은 서버 사이드에 부분이다.
 
-## 2019 07 14   
+> app server 가 있어야지만 사용이 가능
+   
     
 
 # Todo
