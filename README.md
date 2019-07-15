@@ -413,8 +413,30 @@
 > app server 가 있어야지만 사용이 가능
 
 ## 2019 07 14
-   
+> 데이터베이스 활용
     
+> 모두가 접근 수정 가능
+    
+    - 서버 api를 통해 간접적으로 접근
+    - 안드로이드 클라이언트, 서버, DB 구축
+    - SNS와 같은 방법
+    
+> 혼자만 쓰는 DB
+    
+    - 원본이 많이 만들어져 있는 경우
+    - 앱 내부의 SQLite 전부 복사
+    - SQLite 접근 --> 사용은 빠르게 접근을 할 수 있다.
+    - 안드로이드 공식 지원 SQLite
+    - Realm (자체 엔진, ORM 방식, 편리함)
+        - object relative mapping 
+    - 게임, 사전, 메모장, 스케줄
+    
+> DB의 필요성을 검증을 할 필요가 있다.
+
+    - File, SharedPreference 로 해도 상관 없는지 생각
+    - DB
+    - FIle
+    - Preference
 
 # Todo
 - auth feature
