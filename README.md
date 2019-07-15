@@ -439,20 +439,12 @@
     - Preference
     
 ## 2019 07 15
-> DB realm 
+> jetpack library
 
     - 
-    
-    
-    
     
 # Todo
 - auth feature
 - dataBinding 
 - search android jetpack library
-- fragment
-
-
-
-    
-    
+- fragment 
