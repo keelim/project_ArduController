@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mEditReceive;
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private ImageButton developerButton;
-    private ImageButton loginTestButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -80,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         mEditReceive = findViewById(R.id.receive_string);
         Button logButton = findViewById(R.id.log_button);
         Button mButtonSend = findViewById(R.id.sendButton);
-        developerButton = findViewById(R.id.developer_button);
-        loginTestButton = findViewById(R.id.login_test_button);
+        ImageButton developerButton = findViewById(R.id.developer_button);
+        ImageButton loginTestButton = findViewById(R.id.login_test_button);
 
 
         mButtonSend.setOnClickListener(new OnClickListener() {
