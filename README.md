@@ -439,9 +439,13 @@
     - Preference
     
 ## 2019 07 15
-> ~~
+> DB realm 
 
     - 
+    
+    
+    
+    
 # Todo
 - auth feature
 - dataBinding 
