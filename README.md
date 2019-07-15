@@ -441,7 +441,11 @@
 ## 2019 07 15
 > jetpack library
 
-    - 
+> adb device wifi connect
+
+## 2019 07 16
+> 
+ 
     
 # Todo
 - auth feature
