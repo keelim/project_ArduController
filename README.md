@@ -444,8 +444,23 @@
 > adb device wifi connect
 
 ## 2019 07 16
-> 
+> Fragment A
+    
+    - replace main fragment 
+    - confirm main activity feature
+    
+> Fragment B
+    
+    - setting preference 
+    - other native feature 
  
+> navigator feature using
+    
+    - setting activity --> main activity
+    - fragment A --> main
+    - frgament B --> Setting preference 
+    - developer_page_activity --> activity
+    - accout activity --> fragment
     
 # Todo
 - auth feature

@@ -7,16 +7,16 @@
         app:iconSpaceReserved="false">
 
         <CheckBoxPreference
-            android:key="key_add_shortcut"
-            android:title="Add shortcuts"
+            android:defaultValue="true"
             android:icon="@mipmap/ic_launcher"
-            android:defaultValue="true"/>
+            android:key="key_add_shortcut"
+            android:title="Add shortcuts" />
 
         <SwitchPreference
-            android:key="key_switch_on"
-            android:title="Screen on"
+            android:defaultValue="false"
             android:icon="@mipmap/ic_launcher"
-            android:defaultValue="false"/>
+            android:key="key_switch_on"
+            android:title="Screen on" />
 
     </PreferenceCategory>
 
@@ -25,26 +25,27 @@
         app:iconSpaceReserved="false">
 
         <EditTextPreference
-            android:key="key_edit_name"
-            android:title="Edit name"
-            android:summary="Edit your name"
             android:dialogTitle="Edit your name"
-            app:iconSpaceReserved="false"/>
+            android:key="key_edit_name"
+            android:summary="Edit your name"
+            android:title="Edit name"
+            app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:key="key_set_item"
-            android:title="Main action"
-            android:summary="set main action"
+            android:dialogTitle="set main action"
             android:entries="@array/action_list"
             android:entryValues="@array/action_values"
-            android:dialogTitle="set main action"
-            app:iconSpaceReserved="false"/>
+            android:key="key_set_item"
+            android:summary="set main action"
+            android:title="Main action"
+            app:iconSpaceReserved="false" />
 
         <PreferenceScreen
-            android:title="Developer android"
             android:summary="Go to android developer site"
+            android:title="Developer android"
             app:iconSpaceReserved="false">
-            <intent android:action="android.intent.action.VIEW"
+            <intent
+                android:action="android.intent.action.VIEW"
                 android:data="http://developer.android.com" />
         </PreferenceScreen>
 
