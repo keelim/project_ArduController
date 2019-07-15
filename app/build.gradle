@@ -34,7 +34,7 @@ android {
         minSdkVersion 26
         targetSdkVersion 29
         versionCode 17
-        versionName "2.0.8"
+        versionName "2.0.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -44,7 +44,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 
     flavorDimensions "stage"
     productFlavors {
@@ -103,10 +102,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha08'
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
     implementation 'androidx.mediarouter:mediarouter:1.0.0'
-    implementation 'com.google.firebase:firebase-ads:18.1.0'
-    implementation 'com.google.android.gms:play-services-ads:18.1.0'
+    implementation 'com.google.firebase:firebase-ads:18.0.0'
+    implementation 'com.google.android.gms:play-services-ads:18.0.0'
     implementation 'com.google.firebase:firebase-perf:18.0.1'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'androidx.preference:preference:1.0.0'
@@ -120,5 +119,4 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.github.jrvansuita:MaterialAbout:+'
     implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
-    implementation 'androidx.preference:preference:1.1.0-rc01'
 }
