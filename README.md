@@ -1,4 +1,4 @@
-## project Arducon project
+# project Arducon project
 
 ## project manager: keelim
 ## start date: March 1
@@ -437,7 +437,11 @@
     - DB
     - FIle
     - Preference
+    
+## 2019 07 15
+> ~~
 
+    - 
 # Todo
 - auth feature
 - dataBinding 
