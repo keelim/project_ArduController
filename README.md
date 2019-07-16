@@ -461,6 +461,14 @@
     - frgament B --> Setting preference 
     - developer_page_activity --> activity
     - accout activity --> fragment
+
+> 항상 gradle 설정의 유의를 할 것
+
+> navigator 사용법 알아보기
+    
+    - activity, fragment
+    - fragment를 잘 사용을 하는 것이 좋은 것인가?
+    - 
     
 # Todo
 - auth feature
