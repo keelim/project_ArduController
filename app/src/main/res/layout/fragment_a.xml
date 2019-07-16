@@ -21,19 +21,6 @@
         android:focusable="false"
         android:hint="@string/receive_instruction" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        app:contentInsetStart="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-
     <EditText
         android:id="@+id/sendString"
         app:layout_constraintBottom_toTopOf="@+id/adView"
