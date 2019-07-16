@@ -477,6 +477,29 @@
     
 # Todo
 - auth feature
+    - Google
+    - facebook
 - dataBinding 
-- search android jetpack library
-- fragment 
+    - gradle annotation
+    - Butter knife
+- jetpack compose
+    - UI
+    - architecture
+    - 
+    -      
+- fragment
+    - main
+    - setting
+- activity
+    - developer page
+    - auth activity
+- Database 
+    - android Sqlite
+    - realm open source library
+    
+- FCM (Firebase Clouding Message)
+    - App server
+    - Client side feature
+    
+     
+     
