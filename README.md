@@ -468,7 +468,12 @@
     
     - activity, fragment
     - fragment를 잘 사용을 하는 것이 좋은 것인가?
-    - 
+
+> preference resetting 
+    
+    - activity ? fragment 
+    - setting action 
+    - service?
     
 # Todo
 - auth feature
