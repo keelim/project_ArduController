@@ -500,6 +500,15 @@
 - FCM (Firebase Clouding Message)
     - App server
     - Client side feature
+- RxJava
+    - ?
+- mvp, mvvm, clean architecture
+    - design pattern 
+- ndk 활용
+- kotlin cororoutine
+- custom UI
+
+    
     
      
      
