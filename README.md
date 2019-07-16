@@ -475,6 +475,11 @@
     - setting action 
     - service?
     
+## 2019 07 17
+> 
+
+    
+
 # Todo
 - auth feature
     - Google
