@@ -476,42 +476,43 @@
     - service?
     
 ## 2019 07 17
+> version 2.0.7 release
+
+> version 2.0.8 change
+
+> navigator 활용
+
+
+## 2019 07 18
 > 
 
     
 
 # Todo
-- auth feature
-    - Google
-    - facebook
-- dataBinding 
-    - gradle annotation
-    - Butter knife
-- jetpack compose
+- Jetpack compose
     - UI
+        - fragment
+        - layout
     - architecture
-    - 
-    -      
-- fragment
-    - main
-    - setting
-- activity
-    - developer page
-    - auth activity
-- Database 
-    - android Sqlite
-    - realm open source library
-    
+        - room (sqlite)
+        - Databinding
+        - navigation
+    - foundation
+    - behavior
+        - notification
+        - preference
 - FCM (Firebase Clouding Message)
     - App server
     - Client side feature
 - RxJava
-    - ?
+    - reactive programming
 - mvp, mvvm, clean architecture
-    - design pattern 
+    - design pattern
+- auth feature
+    - Google
 - ndk 활용
 - kotlin cororoutine
-- custom UI
+- 커스텀 UI
 
     
     
