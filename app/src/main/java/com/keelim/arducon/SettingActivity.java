@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity { //fragment를 위한 액티비티 --> 추후 main으로 적용
     private DrawerLayout drawerLayout;
     private View drawerView;
 
