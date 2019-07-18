@@ -484,7 +484,9 @@
 
 
 ## 2019 07 18
-> 
+> 커스텀 UI
+
+> 레이아웃 정리
 
     
 
@@ -501,15 +503,20 @@
     - behavior
         - notification
         - preference
+        
 - FCM (Firebase Clouding Message)
     - App server
     - Client side feature
+    
 - RxJava
     - reactive programming
+    
 - mvp, mvvm, clean architecture
     - design pattern
+    
 - auth feature
     - Google
+    
 - ndk 활용
 - kotlin cororoutine
 - 커스텀 UI
