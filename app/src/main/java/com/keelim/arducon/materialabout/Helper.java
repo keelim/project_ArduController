@@ -1,7 +1,6 @@
 package com.keelim.arducon.materialabout;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.widget.FrameLayout;
 
 import com.keelim.arducon.R;
@@ -37,10 +36,10 @@ public class Helper {
                 .setLinksAnimated(true)
                 .setDividerDashGap(13)
                 .setName("Keelim")
-                .setSubTitle("Mobile Developer")
+                .setSubTitle("android Developer")
                 .setLinksColumnsCount(4)
                 .setBrief("Mobile developer")
-                .addGooglePlayStoreLink("8253364315283647351")
+//                .addGooglePlayStoreLink("8253364315283647351")
                 .addGitHubLink("keelim")
                 .addEmailLink("kimh00335@gmail.com")
                 .addFiveStarsAction()
@@ -48,15 +47,8 @@ public class Helper {
                 .setVersionNameAsAppSubTitle()
                 .addShareAction(R.string.app_name)
                 .addUpdateAction()
-                .setActionsColumnsCount(2)
-                .addFeedbackAction("kimh00335@gmail.com")
-                .addPrivacyPolicyAction("http")
-                .addIntroduceAction((Intent) null)
-                .addHelpAction((Intent) null)
-                .addChangeLogAction((Intent) null)
-                .addDonateAction((Intent) null)
-                .setWrapScrollView(true)
-                .setShowAsCard(true);
+                .setActionsColumnsCount(4)
+                .addFeedbackAction("kimh00335@gmail.com");
 
         AboutView view = builder.build();
 
