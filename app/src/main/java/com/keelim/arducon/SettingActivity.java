@@ -50,9 +50,7 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
                         startActivity(intent_bugReport); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
-                        Intent intent_setting = new Intent(getApplicationContext(), SettingActivity.class);
-                        startActivity(intent_setting);
-                        break;
+                        Toast.makeText(SettingActivity.this, "현재 사용 중", Toast.LENGTH_SHORT).show();
                     case R.id.drawer_exit:
                         finish();
                         break;
@@ -76,8 +74,7 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
                 drawerLayout.openDrawer(drawerView);
                 break;
             case R.id.menu_setting:
-                Intent intent_setting = new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent_setting);
+                Toast.makeText(this, "현재 사용 중", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

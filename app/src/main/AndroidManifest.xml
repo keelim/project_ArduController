@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".GlobalApplication"
+        android:name=".kakao.GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".DeveloperPageActivity" />
+        <activity android:name=".materialabout.DeveloperPageActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
