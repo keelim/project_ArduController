@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/receive_string"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
+        android:id="@+id/main_receive_string"
+        app:layout_constraintBottom_toTopOf="@+id/main_adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,8 @@
         android:hint="@string/receive_instruction" />
 
     <EditText
-        android:id="@+id/sendString"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
+        android:id="@+id/main_sendString"
+        app:layout_constraintBottom_toTopOf="@+id/main_adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +39,8 @@
         android:inputType="text" />
 
     <Button
-        android:id="@+id/sendButton"
-        app:layout_constraintBottom_toTopOf="@+id/sendString"
+        android:id="@+id/main_sendButton"
+        app:layout_constraintBottom_toTopOf="@+id/main_sendString"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:textStyle="bold" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+        android:id="@+id/main_adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -70,12 +70,12 @@
         ads:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/log_button"
+        android:id="@+id/main_log_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="176dp"
         android:text="@string/btn_log"
-        app:layout_constraintBottom_toTopOf="@+id/sendButton"
+        app:layout_constraintBottom_toTopOf="@+id/main_sendButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent" />
