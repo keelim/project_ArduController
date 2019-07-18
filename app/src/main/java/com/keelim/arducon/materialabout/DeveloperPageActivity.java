@@ -1,8 +1,10 @@
-package com.keelim.arducon;
+package com.keelim.arducon.materialabout;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.keelim.arducon.R;
 
 public class DeveloperPageActivity extends AppCompatActivity {
 

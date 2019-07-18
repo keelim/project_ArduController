@@ -1,9 +1,10 @@
-package com.keelim.arducon;
+package com.keelim.arducon.materialabout;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.FrameLayout;
 
+import com.keelim.arducon.R;
 import com.vansuita.materialabout.builder.AboutBuilder;
 import com.vansuita.materialabout.views.AboutView;
 
