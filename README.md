@@ -488,6 +488,21 @@
 
 > 레이아웃 정리
 
+
+## 2019 07 21
+> Fragment workflow
+    
+    - Activity에 frgament 추가
+        - xml frgamnet 표시
+    - xml 코드 작성 
+    - fragment class 구현
+        - class extends frgament
+    - activity onCrate() Fragment 초기화
+    - FragmentTransaction add()
+    - FragmentTransaction replace()
+     
+        
+        
     
 
 # Todo
@@ -519,7 +534,6 @@
     
 - ndk 활용
 - kotlin cororoutine
-- 커스텀 UI
 
     
     

@@ -7,17 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.keelim.arducon.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentB extends Fragment {
+public class FragmentSetting extends PreferenceFragmentCompat {
 
 
-    public FragmentB() {
+    public FragmentSetting() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.setting_preference, rootKey);
     }
 
 
@@ -25,7 +31,7 @@ public class FragmentB extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_b, container, false);
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 
 }
