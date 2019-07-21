@@ -26,7 +26,7 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_fgbasic);
         Toolbar toolbar = findViewById(R.id.toolbar_fragment);
 
         setSupportActionBar(toolbar);
