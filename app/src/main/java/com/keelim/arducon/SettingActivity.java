@@ -16,8 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.keelim.arducon.fragment.FragmentMain;
-
-import java.util.Objects;
+import com.keelim.arducon.fragment.FragmentSetting;
 
 public class SettingActivity extends AppCompatActivity { //fragment를 위한 액티비티 --> 추후 main으로 적용
     private DrawerLayout drawerLayout;
@@ -28,10 +27,10 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_fragment);
 
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Navigation View
@@ -53,7 +52,10 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
                         startActivity(intent_bugReport); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
-                        Toast.makeText(SettingActivity.this, "현재 사용 중", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_fragment, new FragmentSetting())
+                                .commit();
                     case R.id.drawer_exit:
                         finish();
                         break;
@@ -88,6 +90,8 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 
 }

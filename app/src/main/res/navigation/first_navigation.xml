@@ -22,9 +22,9 @@
         </fragment>
         <fragment
             android:id="@+id/fragmentB"
-            android:name="com.keelim.arducon.fragment.FragmentB"
+            android:name="com.keelim.arducon.fragment.FragmentSetting"
             android:label="fragment_b"
-            tools:layout="@layout/fragment_b" />
+            tools:layout="@layout/fragment_setting" />
         <activity
             android:id="@+id/loginActivity"
             android:name="com.keelim.arducon.LoginActivity"
