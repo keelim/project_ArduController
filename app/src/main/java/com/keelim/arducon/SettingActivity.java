@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+import com.keelim.arducon.fragment.FragmentMain;
 
 import java.util.Objects;
 
@@ -58,6 +61,12 @@ public class SettingActivity extends AppCompatActivity { //fragment를 위한 �
                 return false;
             }
         });
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.add(R.id.main_fragment, new FragmentMain());
+        fragmentTransaction.commit();
+
     }
 
     @Override
