@@ -532,6 +532,8 @@
 > 서버에서 데이터를 가지고 오는 법
     
     - okhttp
+    - try catch --> catch return null Log.d("error")  
+    
     
         
         
