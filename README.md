@@ -554,32 +554,28 @@
     - json을 자바 클래스로 변경 시켜주는 라이브러리
     - github.com/google/gson
 
+> preference setting
     
-    
-    
-    
+    - fragmnet preference 사용하기
+    - activity/activity_layout setting --> layout xml name, id
+    - fragment class/layout setting
+    - actiivty fragment manager, transaction begin --> replace --> commit    
         
-        
-    
-
+       
 # Todo
 - Jetpack compose
     - UI
         - fragment
         - layout
     - architecture
-        - room (sqlite)
+        - room (SqLite)
         - Databinding
         - navigation
     - foundation
     - behavior
         - notification
         - preference
-        
-- FCM (Firebase Clouding Message)
-    - App server
-    - Client side feature
-    
+           
 - RxJava
     - reactive programming
     
@@ -590,7 +586,8 @@
     - Google
     
 - ndk 활용
-- kotlin cororoutine
+
+- kotlin 
 
     
     
