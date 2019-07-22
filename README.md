@@ -500,7 +500,39 @@
     - activity onCrate() Fragment 초기화
     - FragmentTransaction add()
     - FragmentTransaction replace()
-     
+  
+## 2019 07 22   
+> server and client
+    
+    - android 는 클라이언트 개발자라고 할 수 있다.
+    - server+client
+    - client - server - db
+    - datastorage/cdn
+    - 대규모에서는 데이터베이스를 분리를 하는 것이 좋음
+    - data storage// cdn // data center
+    - netflix//youtube --> cdn
+
+> Request, Response
+    
+    - http > http://www.google.com
+    - http:// 통신 규약 (protocol)
+    - google.com -> server domain 주소
+    - game --> socket(실시간)
+    - HTTP Request - GET
+    - 주소에 파라미터를 정하여 보내는 것
+    - header meta informaion
+    - get --> server에 파라미터를 넣어서 있는 자료를 가지고 오는 것
+    - post --> 나의 자료를 보낼 때 (회원 가입)
+    - HTTP Response
+    - 200 OK 404 not Found
+    - header
+    - 포스트맨(postman)
+    - okhttp http://square.github.io/okhttp 
+    
+> 서버에서 데이터를 가지고 오는 법
+    
+    - okhttp
+    
         
         
     
