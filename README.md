@@ -551,6 +551,9 @@
     
 > gson 사용
 
+    - json을 자바 클래스로 변경 시켜주는 라이브러리
+    - github.com/google/gson
+
     
     
     

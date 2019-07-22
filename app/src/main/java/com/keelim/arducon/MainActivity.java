@@ -124,8 +124,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent_bugReport); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
-                        Intent intent_setting = new Intent(getApplicationContext(), SettingActivity.class);
-                        startActivity(intent_setting);
+                        Toast.makeText(MainActivity.this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.drawer_temp:
+                        Intent intent_temp = new Intent(getApplicationContext(), TempActivity.class);
+                        startActivity(intent_temp);
                         break;
                     case R.id.drawer_exit:
                         finish();
@@ -192,8 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(drawerView);
                 break;
             case R.id.menu_setting:
-                Intent intent_setting = new Intent(getApplicationContext(), SettingActivity.class);
-                startActivity(intent_setting);
+                Toast.makeText(this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
                 break;
 
 

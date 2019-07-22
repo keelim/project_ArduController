@@ -17,6 +17,12 @@
             android:title="설정" />
 
         <item
+            android:id="@+id/drawer_temp"
+            android:icon="@drawable/ic_dialog_close_dark"
+            android:title="임시"
+            />
+
+        <item
             android:id="@+id/drawer_exit"
             android:icon="@drawable/ic_arrow_back_black_24dp"
             android:title="종료" />
