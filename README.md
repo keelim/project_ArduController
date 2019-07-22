@@ -534,6 +534,26 @@
     - okhttp
     - try catch --> catch return null Log.d("error")  
     
+> json
+    
+    - 자료 교환 규약
+    - key - value
+    - 모바일 환경에서 선호
+    - preference 처럼 key value 구조
+    - 모바일은 데이터가 생명
+    - xml --> layout 잡을 때 사용
+
+> Parsing 
+    
+    - 어떻게 정보를 뺄 것 인가?
+    - 어떻게 클래스로 만들 것인가?
+    - 파싱을 쉽게 하는 법
+    
+> gson 사용
+
+    
+    
+    
     
         
         
