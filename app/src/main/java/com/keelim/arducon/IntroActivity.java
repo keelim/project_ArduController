@@ -40,6 +40,7 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         super.onBackPressed();
         handler.removeCallbacks(runnable);
     }
+
 }
 
 
