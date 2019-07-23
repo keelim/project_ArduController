@@ -559,11 +559,24 @@
     - fragmnet preference 사용하기
     - activity/activity_layout setting --> layout xml name, id
     - fragment class/layout setting
-    - actiivty fragment manager, transaction begin --> replace --> commit    
+    - actiivty fragment manager, transaction begin --> replace --> commit
+    
+
+## 2019 07 23
+> gson 
+    
+    - api에서 받을 수 있는 것은 미리 만드는 것이 좋음
+    - getter 만 가지고 오면 된다.
+
+> glide     
+    
+    - glide를 통하여 가지고 올 수 있다. 
+
         
        
 # Todo
-- Jetpack compose
+> Jetpack compose
+
     - UI
         - fragment
         - layout
@@ -576,18 +589,21 @@
         - notification
         - preference
            
-- RxJava
+> RxJava
+
     - reactive programming
     
-- mvp, mvvm, clean architecture
+> mvp, mvvm, clean architecture
+
     - design pattern
     
-- auth feature
+> auth feature
+
     - Google
     
-- ndk 활용
+> ndk 활용
 
-- kotlin 
+> kotlin 
 
     
     
