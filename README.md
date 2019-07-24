@@ -569,12 +569,21 @@
     - getter 만 가지고 오면 된다.
 
 > glide     
-    
     - glide를 통하여 가지고 올 수 있다. 
+    
+## 2019 07 24
+> version 2.0.9 release
+    - version 2.0.10 change
 
+> preparing 64 bit apk launch
+    
+    - ndk setting?
+    - 2019 8~~
+     
+## 2019 07 25
         
        
-# Todo
+bu# Todo
 > Jetpack compose
 
     - UI
