@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket;
     private OutputStream mOutputStream;
+
+
     private InputStream mInputStream;
 
     private String mStrDelimiter = "\n";
