@@ -43,7 +43,7 @@ public class Helper {
                 .addGitHubLink("keelim")
                 .addEmailLink("kimh00335@gmail.com")
                 .addFiveStarsAction()
-                .addMoreFromMeAction("Keelim")
+                .addMoreFromMeAction("keel_im")
                 .setVersionNameAsAppSubTitle()
                 .addShareAction(R.string.app_name)
                 .addUpdateAction()
