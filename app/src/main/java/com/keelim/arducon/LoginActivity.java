@@ -18,6 +18,7 @@ public class LoginActivity extends Activity {
      *
      * @param savedInstanceState 기존 session 정보가 저장된 객체
      */
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
