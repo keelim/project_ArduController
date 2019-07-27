@@ -1,4 +1,4 @@
-package com.keelim.arducon.materialabout;
+package com.keelim.arducon.utils;
 
 import android.app.Activity;
 import android.widget.FrameLayout;
@@ -7,20 +7,20 @@ import com.keelim.arducon.R;
 import com.vansuita.materialabout.builder.AboutBuilder;
 import com.vansuita.materialabout.views.AboutView;
 
-public class Helper {
+public class MaterialHelper {
 
     private Activity activity;
     private int theme = R.style.Theme_AppCompat_DayNight;
 
-    private Helper(Activity activity) {
+    private MaterialHelper(Activity activity) {
         this.activity = activity;
     }
 
-    public static Helper with(Activity activity) {
-        return new Helper(activity);
+    public static MaterialHelper with(Activity activity) {
+        return new MaterialHelper(activity);
     }
 
-    public Helper init() {
+    public MaterialHelper init() {
         activity.setTheme(theme);
         return this;
     }
@@ -39,7 +39,6 @@ public class Helper {
                 .setSubTitle("android Developer")
                 .setLinksColumnsCount(4)
                 .setBrief("Mobile developer")
-//                .addGooglePlayStoreLink("8253364315283647351")
                 .addGitHubLink("keelim")
                 .addEmailLink("kimh00335@gmail.com")
                 .addFiveStarsAction()
@@ -49,6 +48,7 @@ public class Helper {
                 .addUpdateAction()
                 .setActionsColumnsCount(4)
                 .addFeedbackAction("kimh00335@gmail.com");
+
 
         AboutView view = builder.build();
 

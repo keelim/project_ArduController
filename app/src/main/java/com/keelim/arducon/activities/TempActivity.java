@@ -1,10 +1,11 @@
-package com.keelim.arducon;
+package com.keelim.arducon.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.keelim.arducon.total_fragment.SettingFragmnet;
+import com.keelim.arducon.R;
+import com.keelim.arducon.fragments.SettingFragmnet;
 
 public class TempActivity extends AppCompatActivity {
 

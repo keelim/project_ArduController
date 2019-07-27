@@ -1,4 +1,4 @@
-package com.keelim.arducon;
+package com.keelim.arducon.activities;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -9,6 +9,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.keelim.arducon.R;
 
 public class WebViewActivity extends AppCompatActivity { //버그 리포트로 이동을 하는 액티비티
     private WebView webView;

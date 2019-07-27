@@ -1,8 +1,9 @@
-package com.keelim.arducon.kakao;
+package com.keelim.arducon.utils;
 
 import android.app.Application;
 
 import com.kakao.auth.KakaoSDK;
+import com.keelim.arducon.adapters.KakaoSDKAdapter;
 
 public class GlobalApplication extends Application {
     private static GlobalApplication instance;
