@@ -580,10 +580,11 @@
     - ndk setting?
     - 2019 8~~
      
-## 2019 07 25
+## 2019 07 26
+
+
         
        
-bu# Todo
 > Jetpack compose
 
     - UI
