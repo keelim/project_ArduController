@@ -1,4 +1,4 @@
-package com.keelim.arducon;
+package com.keelim.arducon.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.crashlytics.android.Crashlytics;
+import com.keelim.arducon.R;
 
 import io.fabric.sdk.android.Fabric;
 

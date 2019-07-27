@@ -27,7 +27,7 @@
             tools:layout="@layout/fragment_setting" />
         <activity
             android:id="@+id/loginActivity"
-            android:name="com.keelim.arducon.LoginActivity"
+            android:name="com.keelim.arducon.activities.LoginActivity"
             android:label="activity_login"
             tools:layout="@layout/activity_login" />
     </navigation>
