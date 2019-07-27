@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:iconSpaceReserved="false">
-    <PreferenceCategory
-        android:title="Functions"
-        app:iconSpaceReserved="false">
-
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:icon="@mipmap/ic_launcher"
-            android:key="key_add_shortcut"
-            android:title="Add shortcuts" />
-
-        <SwitchPreference
-            android:defaultValue="false"
-            android:icon="@mipmap/ic_launcher"
-            android:key="key_switch_on"
-            android:title="Screen on" />
-
-    </PreferenceCategory>
+    android:iconSpaceReserved="true">
 
     <PreferenceCategory
-        android:title="Options"
+        android:title="Setting"
         app:iconSpaceReserved="false">
 
         <EditTextPreference
@@ -48,6 +31,42 @@
                 android:action="android.intent.action.VIEW"
                 android:data="http://developer.android.com" />
         </PreferenceScreen>
+
+        <EditTextPreference
+            android:dialogTitle="Edit your name"
+            android:key="key_edit_name"
+            android:summary="Edit your name"
+            android:title="Edit name"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:dialogTitle="Edit your name"
+            android:key="key_edit_name"
+            android:summary="Edit your name"
+            android:title="Edit name"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:dialogTitle="Edit your name"
+            android:key="key_edit_name"
+            android:summary="Edit your name"
+            android:title="Edit name"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:dialogTitle="Edit your name"
+            android:key="key_edit_name"
+            android:summary="Edit your name"
+            android:title="Edit name"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:dialogTitle="Edit your name"
+            android:key="key_edit_name"
+            android:summary="Edit your name"
+            android:title="Edit name"
+            app:iconSpaceReserved="false" />
+
 
     </PreferenceCategory>
 
