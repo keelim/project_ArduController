@@ -10,7 +10,6 @@
 
 
     <com.kakao.usermgmt.LoginButton
-        android:id="@+id/com_kakao_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

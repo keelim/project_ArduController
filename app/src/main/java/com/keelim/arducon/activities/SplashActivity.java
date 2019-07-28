@@ -12,14 +12,14 @@ import com.keelim.arducon.R;
 import io.fabric.sdk.android.Fabric;
 
 
-public class IntroActivity extends AppCompatActivity { //인트로 액티비티를 생성한다.
+public class SplashActivity extends AppCompatActivity { //인트로 액티비티를 생성한다.
     private Handler handler;
 
     //인앱 업데이트 어디서 등록을 해야 하는가?
     Runnable runnable = new Runnable() {
         @Override
         public void run() { //runable 작동을 하고 시작
-            Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(intent); //인텐트를 넣어준다. intro -> main
             finish(); //앱을 종료한다.
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out); //애니메이션을 넣어준다.
@@ -31,6 +31,7 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_intro);
+
         handler = new Handler();
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
 
@@ -41,6 +42,8 @@ public class IntroActivity extends AppCompatActivity { //인트로 액티비티�
         super.onBackPressed();
         handler.removeCallbacks(runnable);
     }
+
+
 
 }
 
