@@ -23,6 +23,12 @@
             />
 
         <item
+            android:id="@+id/drawer_temp2"
+            android:icon="@android:drawable/ic_menu_report_image"
+            android:title="임시2"
+            />
+
+        <item
             android:id="@+id/drawer_exit"
             android:icon="@drawable/ic_arrow_back_black_24dp"
             android:title="종료" />
