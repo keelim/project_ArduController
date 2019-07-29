@@ -132,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent_temp = new Intent(getApplicationContext(), TempActivity.class);
                         startActivity(intent_temp);
                         break;
+                    case R.id.drawer_temp2:
+                        Intent intent_temp2 = new Intent(getApplicationContext(), Temp2Activity.class);
+                        startActivity(intent_temp2);
+                        break;
+
                     case R.id.drawer_exit:
                         finish();
                         break;
@@ -153,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 // Get new Instance ID token
-                                String token = task.getResult().getToken();
+                                String token = Objects.requireNonNull(task.getResult()).getToken();
 
                                 // Log and toast
 

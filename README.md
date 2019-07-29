@@ -580,7 +580,13 @@
     - ndk setting?
     - 2019 8~~
      
-## 2019 07 26
+## 2019 07 30
+> open source project code analyze
+
+> concept and library 
+
+## 2019 07 31
+
 
 
         
