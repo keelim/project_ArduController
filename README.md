@@ -586,7 +586,16 @@
 > concept and library 
 
 ## 2019 07 31
+> version 2.0.10 release
 
+> version change 2.0.11
+
+> google auth feature add
+
+> network 
+    
+    - socket
+    - http (okhttp) 
 
 
         
