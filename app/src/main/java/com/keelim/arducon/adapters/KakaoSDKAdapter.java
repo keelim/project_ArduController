@@ -8,7 +8,7 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
-import com.keelim.arducon.GlobalApplication;
+import com.keelim.arducon.MyApplication;
 
 
 public class KakaoSDKAdapter extends KakaoAdapter {
@@ -85,7 +85,7 @@ public class KakaoSDKAdapter extends KakaoAdapter {
 
             @Override
             public Context getApplicationContext() {
-                return GlobalApplication.getGlobalApplicationContext();
+                return MyApplication.getGlobalApplicationContext();
             }
         };
     }

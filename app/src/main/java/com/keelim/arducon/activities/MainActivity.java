@@ -1,12 +1,17 @@
 package com.keelim.arducon.activities;
 // 1.JAVA I/O중 바이트 스트림에 관련된 최상위 클래스인 InputStream, OutputStream (영문1,한글 2바이트)
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,6 +29,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.ads.AdRequest;
@@ -185,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_loginTest);
             }
         });
+
+        createNotification();
     }
 
 
@@ -447,6 +456,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         } finally {
+            removeNotification();
             super.onDestroy();
         }
 
@@ -455,5 +465,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+    }
+
+    private void createNotification() {
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
+
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle("알림 제목");
+        builder.setContentText("알람 세부 텍스트");
+
+        builder.setColor(Color.RED);
+        // 사용자가 탭을 클릭하면 자동 제거
+        builder.setAutoCancel(true);
+
+        // 알림 표시
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
+        }
+
+        // id값은
+        // 정의해야하는 각 알림의 고유한 int값
+        notificationManager.notify(1, builder.build());
+    }
+
+    private void removeNotification() {
+
+        // Notification 제거
+        NotificationManagerCompat.from(this).cancel(1);
     }
 }
