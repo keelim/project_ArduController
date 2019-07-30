@@ -3,17 +3,15 @@ package com.keelim.arducon;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.multidex.MultiDex;
-
 import com.kakao.auth.KakaoSDK;
 import com.keelim.arducon.adapters.KakaoSDKAdapter;
 
-public class GlobalApplication extends Application {
-    private static GlobalApplication instance;
+public class MyApplication extends Application {
+    private static MyApplication instance;
 
-    public static GlobalApplication getGlobalApplicationContext() {
+    public static MyApplication getGlobalApplicationContext() {
         if (instance == null) {
-            throw new IllegalStateException("This Application does not inherit com.kakao.GlobalApplication");
+            throw new IllegalStateException("This Application does not inherit com.kakao.MyApplication");
         }
         return instance;
     }
@@ -21,7 +19,6 @@ public class GlobalApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(this);
     }
 
     @Override
