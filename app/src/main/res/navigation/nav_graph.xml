@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/temp2_1Fragment">
 
+    <fragment
+        android:id="@+id/temp2_1Fragment"
+        android:name="com.keelim.arducon.fragments.temp2.Temp2_1Fragment"
+        android:label="fragment_temp2_1"
+        tools:layout="@layout/fragment_temp2_1" >
+        <action
+            android:id="@+id/action_temp2_1Fragment_to_temp2_2Fragment"
+            app:destination="@id/temp2_2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/temp2_2Fragment"
+        android:name="com.keelim.arducon.fragments.temp2.Temp2_2Fragment"
+        android:label="fragment_temp2_2"
+        tools:layout="@layout/fragment_temp2_2" >
+        <action
+            android:id="@+id/action_temp2_2Fragment_to_temp2_3Fragment"
+            app:destination="@id/temp2_3Fragment" />
+        <action
+            android:id="@+id/action_temp2_2Fragment_to_temp2_1Fragment"
+            app:destination="@id/temp2_1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/temp2_3Fragment"
+        android:name="com.keelim.arducon.fragments.temp2.Temp2_3Fragment"
+        android:label="fragment_temp2_3"
+        tools:layout="@layout/fragment_temp2_3" >
+        <action
+            android:id="@+id/action_temp2_3Fragment_to_temp2_1Fragment"
+            app:destination="@id/temp2_1Fragment" />
+    </fragment>
 </navigation>
