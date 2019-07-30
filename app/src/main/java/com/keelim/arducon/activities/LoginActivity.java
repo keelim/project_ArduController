@@ -45,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         Session.getCurrentSession().removeCallback(callback);
     }
 
+    
+
     private class SessionCallback implements ISessionCallback {
         @Override
         public void onSessionOpened() {
