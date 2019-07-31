@@ -597,6 +597,15 @@
     - socket
     - http (okhttp) 
 
+## 2019 08 01
+
+> auth feature 
+    
+    - google
+    
+> json, data, preference, room, sqlite
+
+    - saving data 
 
         
        
