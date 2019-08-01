@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View drawerView;
 
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createNotification();
+
+
     }
 
 
@@ -437,6 +440,8 @@ public class MainActivity extends AppCompatActivity {
                 case RESULT_CANCELED: //블루 투스 종료
                     Toast.makeText(getApplicationContext(), "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
                     break;
+
+
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
