@@ -605,9 +605,22 @@
     
 > json, data, preference, room, sqlite
 
-    - saving data 
+    - saving data
+    
+> service 
+    
+    - daemon
 
-        
+> intent, intent_filter
+
+> broadcast receiver
+
+> content provider
+    
+    - 앱 간의 공유에서 사용 
+
+## 2019 08 02
+
        
 > Jetpack compose
 
