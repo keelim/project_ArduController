@@ -35,7 +35,9 @@
 1. UUID ? 
     - 간단한 유니크한 아이디
     - 내부 저장소 에서 관리를 해야 한다.  
-    <code> String UUID = UUID.randomUUID().toString() </code>
+    ```java
+     String UUID = UUID.randomUUID().toString() 
+     ```
     
 2. Handler 조정 방법
 3. StringBuilder
@@ -43,12 +45,12 @@
     - 문자열을 더할 때 객체를 생성하는 것이 아니라 기존의 데이터에서 더한다.
     - 속도가 빠르다. 상대적 부하가 적다.
     - 긴 문자열은 StringBuilder 가 효율적
-    <code>
+    ```java
     Stringbuilder stringbuilder = new StringBuilder();
     stringbuilder.append("ABC");
     stringbuilder.append("DEF");
     stringbuilder.toString(); //string 으로 변환을 시킨다. 
-    </code>
+    ```
     
 4. 블루투스 작동 구조
 5. Setting Activity  toolbar  --> action bar 대체를 할 것
@@ -73,12 +75,17 @@
 2. 드로어 레이아웃 설정
     - 드로어 레이아웃의 설정의 버튼 
     - R.id.home 으로 표현을 한다.
-    <code>drawerLayout.openDrawer(GravityCompat.START);</code>
-    <code>drawerLayout.closeDrawers()</code>
+
+    ```java 
+    drawerLayout.openDrawer(GravityCompat.START);
+    drawerLayout.closeDrawers();
+    ```
     드로어 레이아웃을 닫아준다. 
      
 3. Toast 메시지 보다는 SnackBar 깔끔할 수 도 있을 것이라는 생각을 해본다.
-    <code>SnackBar.make(Toolbae, "", Snackbar.SHORT").show</code>
+    ```java
+     SnackBar.make(Toolbae, "", Snackbar.SHORT").show
+    ```
 
 ## 2019 04 15
 1. temp drawer layout 
@@ -101,7 +108,9 @@
     - 드로어 레이아웃 수정을 할 것
     - 드로어 레이아웃 수정 완료 --> 작동 확인
     - R.id.home 사용을 하는 방법
-     <code> <include layout="@layout/apply_darwer" /> </code>
+     ```xml 
+     <include layout="@layout/apply_darwer" /> 
+     ```
 2. 전체적인 레이아웃 수정 준비 --> 하나의 액티비티 수정을 할 필요가 있나?
     
 3. 드로어 레이아웃 홈버튼 활성화 완료
@@ -178,7 +187,10 @@
     - 액티비티 기능들 준비 할 것
     
 ## 2019 04 23
-<code>overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);</code>
+```java
+overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+```
+
 1. 애니메아션의 사용
     - PendingTransition
 2. 기본적으로 개발에서 어떤 것을 사용을 하는가?
