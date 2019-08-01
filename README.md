@@ -618,6 +618,8 @@
 > content provider
     
     - 앱 간의 공유에서 사용 
+    
+> in app update api
 
 ## 2019 08 02
 
