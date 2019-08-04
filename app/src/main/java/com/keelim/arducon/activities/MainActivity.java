@@ -201,9 +201,6 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 drawerLayout.openDrawer(drawerView);
                 break;
-            case R.id.menu_setting:
-                Toast.makeText(this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
