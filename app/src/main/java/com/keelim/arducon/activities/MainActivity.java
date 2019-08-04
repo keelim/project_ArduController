@@ -52,10 +52,11 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+import static com.keelim.arducon.app_interface.BluetoothStatus.REQUEST_ENABLE_BT;
+
 public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_ENABLE_BT = 10;
-    private static final String TAG = "Keelim";
+
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     private Set<BluetoothDevice> mDevices;
@@ -63,16 +64,12 @@ public class MainActivity extends AppCompatActivity {
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket;
     private OutputStream mOutputStream;
-
-
     private InputStream mInputStream;
-
     private String mStrDelimiter = "\n";
     private char mCharDelimiter = '\n';
     private Thread mWorkerThread;
     private byte[] readBuffer;
     private int readBufferPosition;
-
     private EditText mEditSend;
     private TextView mEditReceive;
     private DrawerLayout drawerLayout;
@@ -83,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         mEditSend = findViewById(R.id.sendString);
         mEditReceive = findViewById(R.id.receive_string);
@@ -161,22 +157,17 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<InstanceIdResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Log.w(TAG, "getInstanceId failed", task.getException());
+                                    Log.e("arducon error", "getInstanceId failed", task.getException());
                                     return;
                                 }
-
                                 // Get new Instance ID token
                                 String token = Objects.requireNonNull(task.getResult()).getToken();
-
                                 // Log and toast
-
-
-                                Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "logbutton click", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
         });
-
 
         developerButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -194,11 +185,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        createNotification();
-
-
+        createNotification(); //알림 채널 생성
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -216,8 +204,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_setting:
                 Toast.makeText(this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
                 break;
-
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -441,8 +427,6 @@ public class MainActivity extends AppCompatActivity {
                 case RESULT_CANCELED: //블루 투스 종료
                     Toast.makeText(getApplicationContext(), "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show();
                     break;
-
-
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -459,7 +443,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             TotalExit();
         } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
         } finally {
             removeNotification();
             super.onDestroy();
@@ -487,7 +471,6 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Objects.requireNonNull(notificationManager).createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
         }
-
         // id값은
         // 정의해야하는 각 알림의 고유한 int값
         Objects.requireNonNull(notificationManager).notify(1, builder.build());
