@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private InputStream mInputStream;
+
     private String mStrDelimiter = "\n";
     private char mCharDelimiter = '\n';
     private Thread mWorkerThread;
