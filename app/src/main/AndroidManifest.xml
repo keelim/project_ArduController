@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.Temp2Activity"></activity>
-        <activity android:name=".activities.TempActivity" />
+        <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.DeveloperPageActivity" />
 
         <meta-data
