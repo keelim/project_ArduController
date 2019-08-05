@@ -635,6 +635,14 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right
 
 ## 2019 08 02
 
+## 2019 08 04
+> daily open source app code 확인
+
+## 2019 08 06
+> 
+
+
+
        
 > Jetpack compose
 

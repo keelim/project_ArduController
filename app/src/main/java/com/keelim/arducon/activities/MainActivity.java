@@ -130,10 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent_bugReport); //webView page 이동을 할 것
                         break;
                     case R.id.drawer_setting:
-                        Toast.makeText(MainActivity.this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.drawer_temp:
-                        Intent intent_temp = new Intent(getApplicationContext(), TempActivity.class);
+                        Intent intent_temp = new Intent(getApplicationContext(), SettingActivity.class);
                         startActivity(intent_temp);
                         break;
                     case R.id.drawer_temp2:
@@ -453,6 +450,8 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
+
+
     private void createNotification() {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
@@ -477,4 +476,6 @@ public class MainActivity extends AppCompatActivity {
         // Notification 제거
         NotificationManagerCompat.from(this).cancel(1);
     }
+
 }
+
