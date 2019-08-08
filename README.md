@@ -639,7 +639,12 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right
 > daily open source app code 확인
 
 ## 2019 08 06
-> 
+> fake app ready 
+
+## 2019 8 08 
+> version 2.0.11 release
+
+> change version 2.0.12
 
 
 
