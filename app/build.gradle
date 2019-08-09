@@ -76,7 +76,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf:18.0.1'
     implementation 'com.google.firebase:firebase-auth:18.1.0'
     implementation 'com.google.android.gms:play-services-flags:17.0.0'
-    implementation 'com.google.android.gms:play-services-basement:17.0.0'
+    implementation 'com.google.android.gms:play-services-basement:17.1.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.android.play:core:1.6.1'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
