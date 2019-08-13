@@ -15,6 +15,7 @@ import com.keelim.arducon.R;
 public class LoginActivity extends AppCompatActivity {
     private SessionCallback callback;
 
+
     /**
      * 로그인 버튼을 클릭 했을시 access token을 요청하도록 설정한다.
      *

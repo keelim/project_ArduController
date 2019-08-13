@@ -13,6 +13,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -74,12 +76,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView mEditReceive;
     private DrawerLayout drawerLayout;
     private View drawerView;
+    private Vibrator vibrator;
 
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //vibrate
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        Objects.requireNonNull(vibrator).vibrate(VibrationEffect.createOneShot(150, 10));
 
         mEditSend = findViewById(R.id.sendString);
         mEditReceive = findViewById(R.id.receive_string);
@@ -437,9 +444,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             TotalExit();
         } catch (Exception e) {
-
+            Log.e("error", Objects.requireNonNull(e.getMessage()));
         } finally {
             removeNotification();
+            vibrator.vibrate(VibrationEffect.createOneShot(150, 10));
             super.onDestroy();
         }
 
