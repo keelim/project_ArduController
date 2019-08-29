@@ -1,8 +1,6 @@
 package com.keelim.arducon.activities;
 // 1.JAVA I/O중 바이트 스트림에 관련된 최상위 클래스인 InputStream, OutputStream (영문1,한글 2바이트)
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -10,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
@@ -30,18 +27,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.keelim.arducon.R;
 
 import java.io.IOException;
@@ -90,10 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
         mEditSend = findViewById(R.id.sendString);
         mEditReceive = findViewById(R.id.receive_string);
-        Button logButton = findViewById(R.id.log_button);
         Button mButtonSend = findViewById(R.id.sendButton);
         ImageButton developerButton = findViewById(R.id.developer_button);
-        ImageButton loginTestButton = findViewById(R.id.login_test_button);
 
 
         mButtonSend.setOnClickListener(new OnClickListener() {
@@ -140,38 +129,12 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent_temp = new Intent(getApplicationContext(), SettingActivity.class);
                         startActivity(intent_temp);
                         break;
-                    case R.id.drawer_temp2:
-                        Intent intent_temp2 = new Intent(getApplicationContext(), Temp2Activity.class);
-                        startActivity(intent_temp2);
-                        break;
-
-                    case R.id.drawer_exit:
-                        finish();
-                        break;
                 }
                 return false;
             }
         });
 
-        logButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseInstanceId.getInstance().getInstanceId()
-                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Log.e("arducon error", "getInstanceId failed", task.getException());
-                                    return;
-                                }
-                                // Get new Instance ID token
-                                String token = Objects.requireNonNull(task.getResult()).getToken();
-                                // Log and toast
-                                Toast.makeText(MainActivity.this, "logbutton click", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
-        });
+
 
         developerButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -181,15 +144,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        loginTestButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent_loginTest = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent_loginTest);
-            }
-        });
-
-        createNotification(); //알림 채널 생성
     }
 
     @Override
@@ -201,10 +155,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(drawerView);
-                break;
+        if (id == android.R.id.home) {
+            drawerLayout.openDrawer(drawerView);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -446,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("error", Objects.requireNonNull(e.getMessage()));
         } finally {
-            removeNotification();
+
             vibrator.vibrate(VibrationEffect.createOneShot(150, 10));
             super.onDestroy();
         }
@@ -458,32 +410,6 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
-
-
-    private void createNotification() {
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
-        builder.setSmallIcon(R.mipmap.ic_launcher_round);
-        builder.setShowWhen(false);
-        builder.setContentTitle("Arducon");
-        builder.setContentText("Arducon application running");
-        // 사용자가 탭을 클릭하면 자동 제거
-        builder.setAutoCancel(true);
-
-        // 알림 표시
-        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Objects.requireNonNull(notificationManager).createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
-        }
-        // id값은
-        // 정의해야하는 각 알림의 고유한 int값
-        Objects.requireNonNull(notificationManager).notify(1, builder.build());
-    }
-
-    private void removeNotification() {
-        // Notification 제거
-        NotificationManagerCompat.from(this).cancel(1);
-    }
 
 }
 

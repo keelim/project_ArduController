@@ -4,7 +4,6 @@
     android:layout_height="230dp"
     android:background="@android:color/holo_blue_dark">
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
