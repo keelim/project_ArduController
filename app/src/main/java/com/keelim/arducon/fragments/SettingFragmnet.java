@@ -9,7 +9,7 @@ import com.keelim.arducon.R;
 public class SettingFragmnet extends PreferenceFragmentCompat { //setting
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.setting_preference, rootKey);
+        addPreferencesFromResource(R.xml.setting_preference);
     }
 
 
