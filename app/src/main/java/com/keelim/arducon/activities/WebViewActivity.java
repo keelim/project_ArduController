@@ -1,5 +1,6 @@
 package com.keelim.arducon.activities;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.keelim.arducon.R;
@@ -15,6 +17,7 @@ import com.keelim.arducon.R;
 public class WebViewActivity extends AppCompatActivity { //버그 리포트로 이동을 하는 액티비티
     private WebView webView;
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,7 @@ public class WebViewActivity extends AppCompatActivity { //버그 리포트로 �
         webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
         WebSettings settings = webView.getSettings();
         settings.setLoadWithOverviewMode(true);
+        webView.setForceDarkAllowed(true);
         settings.setUseWideViewPort(true);
         settings.setSupportZoom(true);
         settings.setBuiltInZoomControls(false);
