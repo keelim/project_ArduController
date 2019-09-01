@@ -645,9 +645,6 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right
 > version 2.0.11 release
 
 > change version 2.0.12
-
-
-
        
 > Jetpack compose
 
@@ -679,7 +676,11 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right
 
 > kotlin 
 
+## 2019 09 01
+> dark mode setting
     
+    - utils dark mode
+    - resource-night generate
     
      
      
