@@ -5,16 +5,18 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.crashlytics.android.Crashlytics;
 import com.keelim.arducon.R;
+import com.keelim.arducon.databinding.ActivityIntroBinding;
 
 import io.fabric.sdk.android.Fabric;
 
 
 public class SplashActivity extends AppCompatActivity { //인트로 액티비티를 생성한다.
     private Handler handler;
-
+    private ActivityIntroBinding binding;
 
     //인앱 업데이트 어디서 등록을 해야 하는가?
     Runnable runnable = new Runnable() {
@@ -31,10 +33,8 @@ public class SplashActivity extends AppCompatActivity { //인트로 액티비티
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        setContentView(R.layout.activity_intro);
-
-
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_intro);
+        binding.setActivity(this);
         handler = new Handler();
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
 
@@ -45,9 +45,6 @@ public class SplashActivity extends AppCompatActivity { //인트로 액티비티
         super.onBackPressed();
         handler.removeCallbacks(runnable);
     }
-
-
-
 }
 
 

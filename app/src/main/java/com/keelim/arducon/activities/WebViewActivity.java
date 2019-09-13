@@ -11,10 +11,13 @@ import android.webkit.WebViewClient;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.keelim.arducon.R;
+import com.keelim.arducon.databinding.ActivityWebViewBinding;
 
 public class WebViewActivity extends AppCompatActivity { //버그 리포트로 이동을 하는 액티비티
+    private ActivityWebViewBinding binding;
     private WebView webView;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
