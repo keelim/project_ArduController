@@ -28,6 +28,9 @@ android {
         versionName "2.0.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    dataBinding{
+        enabled = true
+    }
     buildTypes {
         release {
             minifyEnabled true
@@ -39,7 +42,6 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-
 }
 
 
