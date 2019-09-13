@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.Configuration;
@@ -17,21 +16,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
@@ -41,6 +35,7 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
 import com.keelim.arducon.R;
+import com.keelim.arducon.databinding.ActivityMainBinding;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,8 +50,7 @@ import java.util.UUID;
 import static com.keelim.arducon.app_interface.BluetoothStatus.REQUEST_ENABLE_BT;
 
 public class MainActivity extends AppCompatActivity {
-
-
+    ActivityMainBinding binding;
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
     private Set<BluetoothDevice> mDevices;
@@ -70,9 +64,6 @@ public class MainActivity extends AppCompatActivity {
     private Thread mWorkerThread;
     private byte[] readBuffer;
     private int readBufferPosition;
-    private EditText mEditSend;
-    private TextView mEditReceive;
-    private DrawerLayout drawerLayout;
     private View drawerView;
     private Vibrator vibrator;
 
@@ -80,34 +71,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //binding
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setActivity(this);
 
         //vibrate
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         Objects.requireNonNull(vibrator).vibrate(VibrationEffect.createOneShot(150, 10));
 
-        mEditSend = findViewById(R.id.sendString);
-        mEditReceive = findViewById(R.id.receive_string);
-        Button mButtonSend = findViewById(R.id.sendButton);
-        ImageButton developerButton = findViewById(R.id.developer_button);
+        ImageButton developerButton = findViewById(R.id.developer_button); // -> View 따오기
 
-
-        mButtonSend.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // 문자열 전송하는 함수(쓰레드 사용 x)
-                sendData(mEditSend.getText().toString());
-                mEditSend.setText("");
-                // 블루투스 활성
-                checkBluetooth();
-            }
+        binding.sendButton.setOnClickListener(v -> {
+            // 문자열 전송하는 함수(쓰레드 사용 x)
+            sendData(binding.sendString.getText().toString());
+            binding.sendString.setText("");
+            // 블루투스 활성
+            checkBluetooth();
         });
 
         MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID));
-        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);//adMob
+        binding.adView.loadAd(adRequest);//adMob
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -116,39 +100,31 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Navigation View
-        drawerLayout = findViewById(R.id.drawerlayout);
         drawerView = findViewById(R.id.drawer);
         //Navigation View
         NavigationView navigationView = findViewById(R.id.navigationView);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                switch (id) {
-                    case R.id.drawer_account:
-                        Toast.makeText(MainActivity.this, "계정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.drawer_bug_report:
-                        Intent intent_bugReport = new Intent(getApplicationContext(), WebViewActivity.class);
-                        startActivity(intent_bugReport); //webView page 이동을 할 것
-                        break;
-                    case R.id.drawer_setting:
-                        Intent intent_temp = new Intent(getApplicationContext(), SettingActivity.class);
-                        startActivity(intent_temp);
-                        break;
-                }
-                return false;
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            int id = menuItem.getItemId();
+            switch (id) {
+                case R.id.drawer_account:
+                    Toast.makeText(MainActivity.this, "계정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.drawer_bug_report:
+                    Intent intent_bugReport = new Intent(getApplicationContext(), WebViewActivity.class);
+                    startActivity(intent_bugReport); //webView page 이동을 할 것
+                    break;
+                case R.id.drawer_setting:
+                    Intent intent_temp = new Intent(getApplicationContext(), SettingActivity.class);
+                    startActivity(intent_temp);
+                    break;
             }
+            return false;
         });
 
 
-
-        developerButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperPageActivity.class);
-                startActivity(intent_developerIntent);
-            }
+        developerButton.setOnClickListener(view -> {
+            Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperPageActivity.class);
+            startActivity(intent_developerIntent);
         });
 
         checkUpdate(this);
@@ -187,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            drawerLayout.openDrawer(drawerView);
+            binding.drawerlayout.openDrawer(drawerView);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -259,53 +235,45 @@ public class MainActivity extends AppCompatActivity {
         readBuffer = new byte[1024];            // 수신 버퍼.
 
         // 문자열 수신 쓰레드.
-        mWorkerThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // interrupt() 메소드를 이용 스레드를 종료시키는 예제이다.
-                // interrupt() 메소드는 하던 일을 멈추는 메소드이다.
-                // isInterrupted() 메소드를 사용하여 멈추었을 경우 반복문을 나가서 스레드가 종료하게 된다.
-                while (!Thread.currentThread().isInterrupted()) {
-                    try {
-                        // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.
-                        int byteAvailable = mInputStream.available();   // 수신 데이터 확인
-                        if (byteAvailable > 0) {                        // 데이터가 수신된 경우.
-                            byte[] packetBytes = new byte[byteAvailable];
-                            // read(buf[]) : 입력스트림에서 buf[] 크기만큼 읽어서 저장 없을 경우에 -1 리턴.
-                            mInputStream.read(packetBytes);
+        mWorkerThread = new Thread(() -> {
+            // interrupt() 메소드를 이용 스레드를 종료시키는 예제이다.
+            // interrupt() 메소드는 하던 일을 멈추는 메소드이다.
+            // isInterrupted() 메소드를 사용하여 멈추었을 경우 반복문을 나가서 스레드가 종료하게 된다.
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.
+                    int byteAvailable = mInputStream.available();   // 수신 데이터 확인
+                    if (byteAvailable > 0) {                        // 데이터가 수신된 경우.
+                        byte[] packetBytes = new byte[byteAvailable];
+                        // read(buf[]) : 입력스트림에서 buf[] 크기만큼 읽어서 저장 없을 경우에 -1 리턴.
+                        mInputStream.read(packetBytes);
 
-                            for (int i = 0; i < byteAvailable; i++) {
-                                byte aByte = packetBytes[i];
+                        for (int i = 0; i < byteAvailable; i++) {
+                            byte aByte = packetBytes[i];
 
-                                if (aByte == mCharDelimiter) {
-                                    byte[] encodedBytes = new byte[readBufferPosition];
-                                    //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
-                                    //  readBuffer 배열을 처음 부터 끝까지 encodedBytes 배열로 복사.
-                                    System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
-                                    final String data = new String(encodedBytes, StandardCharsets.UTF_8);
-                                    readBufferPosition = 0;
+                            if (aByte == mCharDelimiter) {
+                                byte[] encodedBytes = new byte[readBufferPosition];
+                                //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
+                                //  readBuffer 배열을 처음 부터 끝까지 encodedBytes 배열로 복사.
+                                System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
+                                final String data = new String(encodedBytes, StandardCharsets.UTF_8);
+                                readBufferPosition = 0;
 
-                                    handler.post(new Runnable() {
-                                        // 수신된 문자열 데이터에 대한 처리.
-                                        @Override
-                                        public void run() {
-                                            // mStrDelimiter = '\n';
-                                            mEditReceive.setText(data + mStrDelimiter);
-                                        }
-
-                                    });
-                                } else {
-                                    readBuffer[readBufferPosition++] = aByte;
-                                }
+                                // 수신된 문자열 데이터에 대한 처리.
+                                handler.post(() -> {
+                                    // mStrDelimiter = '\n';
+                                    binding.receiveString.setText(data + mStrDelimiter);
+                                });
+                            } else {
+                                readBuffer[readBufferPosition++] = aByte;
                             }
                         }
-
-                    } catch (Exception e) {    // 데이터 수신 중 오류 발생.
-                        Toast.makeText(getApplicationContext(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show();
                     }
+
+                } catch (Exception e) {    // 데이터 수신 중 오류 발생.
+                    Toast.makeText(getApplicationContext(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show();
                 }
             }
-
         });
 
     }// 데이터 수신(쓰레드 사용 수신된 메시지를 계속 검사함)
@@ -340,17 +308,12 @@ public class MainActivity extends AppCompatActivity {
             }
             // toArray 함수를 이용해서 size만큼 배열이 생성 되었다.
 
-            builder.setItems(items, new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int item) {
-                    if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
-                        Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
-                    } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
-                        connectToSelectedDevice(items[item].toString());
-                    }
+            builder.setItems(items, (dialog, item) -> {
+                if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
+                    Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
+                } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
+                    connectToSelectedDevice(items[item].toString());
                 }
-
             });
             builder.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
             AlertDialog alert = builder.create();
@@ -437,7 +400,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
 
