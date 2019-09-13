@@ -682,5 +682,11 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right
     - utils dark mode
     - resource-night generate
     
+## 2019 09 13
+> push update 
+
+    - Firebase push update
+    
+    
      
      
