@@ -11,6 +11,4 @@ public class SettingFragmnet extends PreferenceFragmentCompat { //setting
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.setting_preference);
     }
-
-
 }

@@ -19,6 +19,4 @@ public class DarkMode { // 임의적으로 다크모드를 지정하는 클래�
     public boolean isEnabled(Context context) {
         return (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
     }
-
-
 }

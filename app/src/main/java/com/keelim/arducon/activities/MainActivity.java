@@ -4,14 +4,9 @@ package com.keelim.arducon.activities;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +14,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -28,12 +22,6 @@ import androidx.databinding.DataBindingUtil;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.tasks.Task;
 import com.keelim.arducon.R;
 import com.keelim.arducon.databinding.ActivityMainBinding;
 
@@ -47,25 +35,29 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-import static com.keelim.arducon.app_interface.BluetoothStatus.REQUEST_ENABLE_BT;
+import static com.keelim.arducon.utils.BluetoothStatus.REQUEST_ENABLE_BT;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
+
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
+
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket;
     private OutputStream mOutputStream;
     private InputStream mInputStream;
     private String mStrDelimiter = "\n";
     private char mCharDelimiter = '\n';
+
     private Thread mWorkerThread;
     private byte[] readBuffer;
     private int readBufferPosition;
+
     private View drawerView;
-    private Vibrator vibrator;
 
 
     @Override
@@ -76,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
         binding.setActivity(this);
 
         //vibrate
-        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        Objects.requireNonNull(vibrator).vibrate(VibrationEffect.createOneShot(150, 10));
-
         ImageButton developerButton = findViewById(R.id.developer_button); // -> View 따오기
 
         binding.sendButton.setOnClickListener(v -> {
@@ -126,31 +115,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperPageActivity.class);
             startActivity(intent_developerIntent);
         });
-
-        checkUpdate(this);
-    }
-
-    public void checkUpdate(Context context) {
-        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(context);
-        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-
-        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) { //업데이트 상태인지를 확인하고 업데이트
-
-                try {
-                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo,
-                            AppUpdateType.FLEXIBLE,
-                            MainActivity.this,
-                            300);
-                } catch (IntentSender.SendIntentException e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                Log.d("Support in-app-update", "UPDATE_NOT_AVAILABLE");
-            }
-        });
-
     }
 
     @Override
@@ -162,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) {
+        if (id == android.R.id.home)
             binding.drawerlayout.openDrawer(drawerView);
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -188,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             // getBytes() : String을 byte로 변환
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
+
             mOutputStream.write(msg.getBytes());  // 문자열 전송.
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
             Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
-
         }
     } //문자열 전송 함수
 
@@ -205,21 +169,18 @@ public class MainActivity extends AppCompatActivity {
         //     */
         BluetoothDevice mRemoteDevice = getDeviceFromBondedList(selectedDeviceName);
         UUID uuid = java.util.UUID.randomUUID(); //UUID 를 랜덤으로 만든다.
-
         try {
             // 소켓 생성, RFCOMM 채널을 통한 연결.
             // createRfcommSocketToServiceRecord(uuid) : 이 함수를 사용하여 원격 블루투스 장치와 통신할 수 있는 소켓을 생성함.
             // 이 메소드가 성공하면 스마트폰과 페어링 된 디바이스간 통신 채널에 대응하는 BluetoothSocket 오브젝트를 리턴함.
             mSocket = mRemoteDevice.createRfcommSocketToServiceRecord(uuid);
             mSocket.connect(); // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
-
             // 데이터 송수신을 위한 스트림 얻기.
             // BluetoothSocket 오브젝트는 두개의 Stream을 제공한다.
             // 1. 데이터를 보내기 위한 OutputStrem
             // 2. 데이터를 받기 위한 InputStream
             mOutputStream = mSocket.getOutputStream();
             mInputStream = mSocket.getInputStream();
-
             // 데이터 수신 준비.
             beginListenForData();
 
@@ -230,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void beginListenForData() {
         final Handler handler = new Handler(); //쓰레드 사용에 있어서 필요함
-
         readBufferPosition = 0;                 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = new byte[1024];            // 수신 버퍼.
 
@@ -250,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
 
                         for (int i = 0; i < byteAvailable; i++) {
                             byte aByte = packetBytes[i];
-
                             if (aByte == mCharDelimiter) {
                                 byte[] encodedBytes = new byte[readBufferPosition];
                                 //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
@@ -284,14 +243,10 @@ public class MainActivity extends AppCompatActivity {
         mDevices = mBluetoothAdapter.getBondedDevices();
         mPariedDeviceCount = mDevices.size();
 
-        if (mPariedDeviceCount == 0) { // 페어링된 장치가 없는 경우.
+        if (mPariedDeviceCount == 0)  // 페어링된 장치가 없는 경우.
             Toast.makeText(getApplicationContext(), "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show();
-
-        } else {
+        else {
             // 페어링된 장치가 있는 경우.
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("블루투스 장치 선택");
-
             // 각 디바이스는 이름과(서로 다른) 주소를 가진다. 페어링 된 디바이스들을 표시한다.
             List<String> listItems = new ArrayList<>();
             for (BluetoothDevice device : mDevices) {
@@ -308,27 +263,27 @@ public class MainActivity extends AppCompatActivity {
             }
             // toArray 함수를 이용해서 size만큼 배열이 생성 되었다.
 
-            builder.setItems(items, (dialog, item) -> {
-                if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
-                    Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
-                } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
-                    connectToSelectedDevice(items[item].toString());
-                }
-            });
-            builder.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
-            AlertDialog alert = builder.create();
-            alert.show();
+            new AlertDialog.Builder(this)
+                    .setTitle("블루투스 장치 선택")
+                    .setItems(items, (dialog, item) -> {
+                        if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
+                            Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
+                        } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
+                            connectToSelectedDevice(items[item].toString());
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
         }
 
     }// 블루투스 지원하며 활성 상태인 경우.
 
     void checkBluetooth() {
-//          getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
-//         이경우 Toast 를 사용해 에러메시지를 표시하고 앱을 종료한다.
+/*          getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
+        이경우 Toast 를 사용해 에러메시지를 표시하고 앱을 종료한다.*/
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {  // 블루투스 미지원
             Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
-
         } else {
 
             // 블루투스 지원
@@ -339,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show();
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 // REQUEST_ENABLE_BT : 블루투스 활성 상태의 변경 결과를 App 으로 알려줄 때 식별자로 사용(0이상)
+
                 /*
                  startActivityForResult 함수 호출후 다이얼로그가 나타남
                  "예" 를 선택하면 시스템의 블루투스 장치를 활성화 시키고
@@ -349,9 +305,9 @@ public class MainActivity extends AppCompatActivity {
             } else {// 블루투스 지원하며 활성 상태인 경우.
                 selectDevice();
             }
-
         }
     }
+
     // onActivityResult : 사용자의 선택결과 확인 (아니오, 예)
     // RESULT_OK: 블루투스가 활성화 상태로 변경된 경우. "예"
     // RESULT_CANCELED : 오류나 사용자의 "아니오" 선택으로 비활성 상태로 남아 있는 경우  RESULT_CANCELED
@@ -390,20 +346,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             TotalExit();
         } catch (Exception e) {
-            Log.e("error", Objects.requireNonNull(e.getMessage()));
+            Log.e("Error", "socket terminating error");
         } finally {
-
-            vibrator.vibrate(VibrationEffect.createOneShot(150, 10));
             super.onDestroy();
         }
-
     }
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
-
-
 }
 
