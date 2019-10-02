@@ -4,4 +4,15 @@
 /app/google-services.json
 .idea
 *.aab
+/gradle
+*.gradle
+*.properties
+gradlew
+gradlew.bat
+gradle.properties
+app/.gitignore
+app/src/test
+app/src/androidTest
+*.pro
+
 
