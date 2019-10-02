@@ -1,7 +1,2 @@
-*.iml
-.gradle
-/local.properties
-/app/google-services.json
-.idea
-*.aab
-
+.vs
+.vscode
