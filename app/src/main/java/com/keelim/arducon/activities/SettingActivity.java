@@ -17,6 +17,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_setting);
         binding.setActivity(this);
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new SettingFragmnet())

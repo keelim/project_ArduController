@@ -7,10 +7,8 @@ import com.keelim.arducon.R;
 import com.vansuita.materialabout.builder.AboutBuilder;
 import com.vansuita.materialabout.views.AboutView;
 
-public class MaterialHelper {
-
+public class MaterialHelper { //아마 영구적으로 사용할 수 있을 것 같다.
     private Activity activity;
-    private int theme = R.style.Theme_AppCompat_DayNight;
 
     private MaterialHelper(Activity activity) {
         this.activity = activity;
@@ -21,6 +19,7 @@ public class MaterialHelper {
     }
 
     public MaterialHelper init() {
+        int theme = R.style.Theme_AppCompat_DayNight;
         activity.setTheme(theme);
         return this;
     }
@@ -51,9 +50,6 @@ public class MaterialHelper {
 
 
         AboutView view = builder.build();
-
         flHolder.addView(view);
     }
-
-
 }
