@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.SettingActivity" />
-        <activity android:name=".activities.DeveloperPageActivity" />
+        <activity android:name=".activities.DeveloperActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

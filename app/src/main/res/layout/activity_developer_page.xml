@@ -4,7 +4,7 @@
     <data>
         <variable
             name="activity"
-            type="com.keelim.arducon.activities.DeveloperPageActivity" />
+            type="com.keelim.arducon.activities.DeveloperActivity" />
     </data>
 
     <LinearLayout
