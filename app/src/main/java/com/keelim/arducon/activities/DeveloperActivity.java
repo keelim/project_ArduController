@@ -9,7 +9,7 @@ import com.keelim.arducon.R;
 import com.keelim.arducon.databinding.ActivityDeveloperPageBinding;
 import com.keelim.arducon.utils.MaterialHelper;
 
-public class DeveloperPageActivity extends AppCompatActivity {
+public class DeveloperActivity extends AppCompatActivity {
     ActivityDeveloperPageBinding binding;
 
     @Override

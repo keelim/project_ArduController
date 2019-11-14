@@ -35,7 +35,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-import static com.keelim.arducon.utils.BluetoothStatus.REQUEST_ENABLE_BT;
+import static BluetoothStatus.REQUEST_ENABLE_BT;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         developerButton.setOnClickListener(view -> {
-            Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperPageActivity.class);
+            Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperActivity.class);
             startActivity(intent_developerIntent);
         });
     }

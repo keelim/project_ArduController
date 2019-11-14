@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.keelim.arducon.R;
 import com.keelim.arducon.databinding.ActivitySettingBinding;
-import com.keelim.arducon.fragments.SettingFragmnet;
+import com.keelim.arducon.fragments.SettingFragment;
 
 public class SettingActivity extends AppCompatActivity {
     ActivitySettingBinding binding;
@@ -20,7 +20,7 @@ public class SettingActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, new SettingFragmnet())
+                .replace(R.id.fragment_container, new SettingFragment())
                 .commit();
     }
 }
