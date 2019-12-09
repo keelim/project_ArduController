@@ -687,6 +687,13 @@ overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right
 
     - Firebase push update
     
+## 2019 11 29 
+> IoT mapper
+ 
+    - 연동하는 것도 괜찮을 것 같음
+    
+> IoT mapper 세션으로 가기 
+    
     
      
      
