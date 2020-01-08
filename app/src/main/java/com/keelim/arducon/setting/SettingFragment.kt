@@ -1,4 +1,4 @@
-package com.keelim.arducon.fragments
+package com.keelim.arducon.setting
 
 import android.os.Bundle
 import android.widget.Toast

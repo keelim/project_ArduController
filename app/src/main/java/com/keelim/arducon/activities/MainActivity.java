@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 import com.keelim.arducon.R;
+import com.keelim.arducon.setting.SettingActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
