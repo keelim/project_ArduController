@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +35,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
-
-import static com.keelim.arducon.activities.BluetoothStatus.REQUEST_ENABLE_BT;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -302,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                  "아니오" 를 선택하면 비활성화 상태를 유지 한다.
                  선택 결과는 onActivityResult 콜백 함수에서 확인할 수 있다.
                  */
-                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                startActivityForResult(enableBtIntent, 1);
             } else {// 블루투스 지원하며 활성 상태인 경우.
                 selectDevice();
             }
@@ -323,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // startActivityForResult 를 여러번 사용할 땐 이런 식으로 switch 문을 사용하여 어떤 요청인지 구분하여 사용함.
-        if (requestCode == REQUEST_ENABLE_BT) {
+        if (requestCode == 1) {
             switch (resultCode) {
                 case RESULT_OK: //블루 투스 활성
                     selectDevice();
