@@ -25,7 +25,11 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 import com.keelim.arducon.R;
+import com.keelim.arducon.controller.ControllerActivity;
+import com.keelim.arducon.devices.DeviceActivity;
 import com.keelim.arducon.setting.SettingActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +43,6 @@ import java.util.UUID;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
 
@@ -65,37 +68,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding
         setContentView(R.layout.activity_main);
-        //vibrate
         Button sendButton = findViewById(R.id.sendButton);
         TextView sendString = findViewById(R.id.sendString);
         receiveString = findViewById(R.id.receive_string);
         drawerlayout = findViewById(R.id.drawerlayout);
+        drawerView = findViewById(R.id.drawer);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        AdView adView = findViewById(R.id.adView);
+        NavigationView navigationView = findViewById(R.id.navigationView);
 
         sendButton.setOnClickListener(v -> {
-            // 문자열 전송하는 함수(쓰레드 사용 x)
             sendData(sendString.getText().toString());
             sendString.setText("");
-            // 블루투스 활성
             checkBluetooth();
         });
 
         MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID));
         AdRequest adRequest = new AdRequest.Builder().build();
-        AdView adView = findViewById(R.id.adView);
         adView.loadAd(adRequest);//adMob
 
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Navigation View
-        drawerView = findViewById(R.id.drawer);
-        //Navigation View
-        NavigationView navigationView = findViewById(R.id.navigationView);
+
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
             switch (id) {
@@ -103,33 +100,25 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "계정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.drawer_bug_report:
-                    Intent intent_bugReport = new Intent(getApplicationContext(), WebViewActivity.class);
+                    Intent intent_bugReport = new Intent(this, WebViewActivity.class);
                     startActivity(intent_bugReport); //webView page 이동을 할 것
                     break;
                 case R.id.drawer_setting:
-                    Intent intent_temp = new Intent(getApplicationContext(), SettingActivity.class);
+                    Intent intent_temp = new Intent(this, SettingActivity.class);
                     startActivity(intent_temp);
                     break;
+                case R.id.drawer_controller:
+                    Intent controller = new Intent(this, ControllerActivity.class);
+                    startActivity(controller);
+                    break;
+                case R.id.drawer_devices:
+                    Intent devices = new Intent(this, DeviceActivity.class);
+                    startActivity(devices);
             }
             return false;
         });
-
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home)
-            drawerlayout.openDrawer(drawerView);
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public BluetoothDevice getDeviceFromBondedList(String name) {
         // BluetoothDevice : 페어링 된 기기 목록을 얻어옴.
@@ -137,21 +126,19 @@ public class MainActivity extends AppCompatActivity {
         // getBondedDevices 함수가 반환하는 페어링 된 기기 목록은 Set 형식이며,
         // Set 형식에서는 n 번째 원소를 얻어오는 방법이 없으므로 주어진 이름과 비교해서 찾는다.
         for (BluetoothDevice deivce : mDevices) {
-            // getName() : 단말기의 Bluetooth Adapter 이름을 반환
             if (name.equals(deivce.getName())) {
                 selectedDevice = deivce;
                 break;
             }
         }
         return selectedDevice;
-    }// 블루투스 장치의 이름이 주어졌을때 해당 블루투스 장치 객체를 페어링 된 장치 목록에서 찾아내는 코드.
+    }
 
     public void sendData(String msg) {
         msg += mStrDelimiter;  // 문자열 종료표시 (\n)
         try {
             // getBytes() : String을 byte로 변환
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
-
             mOutputStream.write(msg.getBytes());  // 문자열 전송.
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
             Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
@@ -216,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
                                 System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
                                 final String data = new String(encodedBytes, StandardCharsets.UTF_8);
                                 readBufferPosition = 0;
-
                                 // 수신된 문자열 데이터에 대한 처리.
                                 handler.post(() -> {
                                     // mStrDelimiter = '\n';
@@ -241,9 +227,8 @@ public class MainActivity extends AppCompatActivity {
         // getBondedDevices() : 페어링된 장치 목록 얻어오는 함수.
         mDevices = mBluetoothAdapter.getBondedDevices();
         mPariedDeviceCount = mDevices.size();
-
         if (mPariedDeviceCount == 0)  // 페어링된 장치가 없는 경우.
-            Toast.makeText(getApplicationContext(), "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show();
         else {
             // 페어링된 장치가 있는 경우.
             // 각 디바이스는 이름과(서로 다른) 주소를 가진다. 페어링 된 디바이스들을 표시한다.
@@ -253,20 +238,19 @@ public class MainActivity extends AppCompatActivity {
                 listItems.add(device.getName());
             }
             listItems.add("취소");  // 취소 항목 추가.
-
             // CharSequence : 변경 가능한 문자열.
             // toArray : List형태로 넘어온것 배열로 바꿔서 처리하기 위한 toArray() 함수.
-            final CharSequence[] items = new CharSequence[listItems.size()];
+            String[] items = new String[listItems.size()];
             for (int i = 0; i < listItems.size(); i++) {
                 items[i] = listItems.get(i);
             }
             // toArray 함수를 이용해서 size만큼 배열이 생성 되었다.
-
             new AlertDialog.Builder(this)
                     .setTitle("블루투스 장치 선택")
                     .setItems(items, (dialog, item) -> {
                         if (item == mPariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
-                            Toast.makeText(getApplicationContext(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show();
+
                         } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
                             connectToSelectedDevice(items[item].toString());
                         }
@@ -277,29 +261,15 @@ public class MainActivity extends AppCompatActivity {
 
     }// 블루투스 지원하며 활성 상태인 경우.
 
-    void checkBluetooth() {
-/*          getDefaultAdapter() : 만일 폰에 블루투스 모듈이 없으면 null 을 리턴한다.
-        이경우 Toast 를 사용해 에러메시지를 표시하고 앱을 종료한다.*/
+    public void checkBluetooth() { //블루투스가 활성화 되어 있는 지를 확인
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {  // 블루투스 미지원
-            Toast.makeText(getApplicationContext(), "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "기기가 블루투스를 지원하지 않습니다.", Toast.LENGTH_LONG).show();
         } else {
-
-            // 블루투스 지원
-            /* isEnable() : 블루투스 모듈이 활성화 되었는지 확인.
-                            true : 지원 ,  false : 미지원
-             */
             if (!mBluetoothAdapter.isEnabled()) { // 블루투스 지원하며 비활성 상태인 경우.
-                Toast.makeText(getApplicationContext(), "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show();
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                // REQUEST_ENABLE_BT : 블루투스 활성 상태의 변경 결과를 App 으로 알려줄 때 식별자로 사용(0이상)
+                Toast.makeText(this, "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show();
 
-                /*
-                 startActivityForResult 함수 호출후 다이얼로그가 나타남
-                 "예" 를 선택하면 시스템의 블루투스 장치를 활성화 시키고
-                 "아니오" 를 선택하면 비활성화 상태를 유지 한다.
-                 선택 결과는 onActivityResult 콜백 함수에서 확인할 수 있다.
-                 */
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE); // 블루투스 어댑터로 인텐트를 보낸다.
                 startActivityForResult(enableBtIntent, 1);
             } else {// 블루투스 지원하며 활성 상태인 경우.
                 selectDevice();
@@ -307,19 +277,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // onActivityResult : 사용자의 선택결과 확인 (아니오, 예)
-    // RESULT_OK: 블루투스가 활성화 상태로 변경된 경우. "예"
-    // RESULT_CANCELED : 오류나 사용자의 "아니오" 선택으로 비활성 상태로 남아 있는 경우  RESULT_CANCELED
-
-    /**
-     * 사용자가 request를 허가(또는 거부)하면 안드로이드 앱의 onActivityResult 메소도를 호출해서 request의 허가/거부를 확인할수 있다.
-     * 첫번째 requestCode : startActivityForResult 에서 사용했던 요청 코드. REQUEST_ENABLE_BT 값
-     * 두번째 resultCode  : 종료된 액티비티가 setReuslt로 지정한 결과 코드. RESULT_OK, RESULT_CANCELED 값중 하나가 들어감.
-     * 세번째 data        : 종료된 액티비티가 인테트를 첨부했을 경우, 그 인텐트가 들어있고 첨부하지 않으면 null
-     */
+    private void TotalExit() { //전체를 종료를 하는 로직
+        mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
+        try {
+            mInputStream.close();
+            mSocket.close();
+        } catch (IOException e) {
+            Log.e("Error", e.getMessage());
+        }
+    }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //액티비티 결과를 보여준다.
         // startActivityForResult 를 여러번 사용할 땐 이런 식으로 switch 문을 사용하여 어떤 요청인지 구분하여 사용함.
         if (requestCode == 1) {
             switch (resultCode) {
@@ -334,21 +303,26 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void TotalExit() throws IOException { //전체를 종료를 하는 로직
-        mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
-        mInputStream.close();
-        mSocket.close();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) { // menu  만들기
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NotNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home)
+            drawerlayout.openDrawer(drawerView);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onDestroy() {
-        try {
-            TotalExit();
-        } catch (Exception e) {
-            Log.e("Error", "socket terminating error");
-        } finally {
-            super.onDestroy();
-        }
+        TotalExit();
+        super.onDestroy();
     }
+
+
 }
 
