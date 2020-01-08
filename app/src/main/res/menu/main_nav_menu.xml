@@ -3,17 +3,14 @@
     <group>
         <item
             android:id="@+id/drawer_account"
-            android:icon="@drawable/ic_account_circle_black_24dp"
-            android:title="계정" />
+            android:title="마이메뉴" />
 
         <item
             android:id="@+id/drawer_bug_report"
-            android:icon="@drawable/ic_bug_report_black_24dp"
-            android:title="버그 리포트" />
+            android:title="버그리포트" />
 
         <item
             android:id="@+id/drawer_setting"
-            android:icon="@drawable/ic_settings_bluetooth_black_24dp"
             android:title="설정" />
 
     </group>

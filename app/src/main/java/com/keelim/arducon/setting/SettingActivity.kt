@@ -1,9 +1,9 @@
-package com.keelim.arducon.activities
+package com.keelim.arducon.setting
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.arducon.R
-import com.keelim.arducon.fragments.SettingFragment
+import com.keelim.arducon.setting.SettingFragment
 
 class SettingActivity : AppCompatActivity() {
 
