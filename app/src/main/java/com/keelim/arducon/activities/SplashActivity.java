@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 
 import com.crashlytics.android.Crashlytics;
 import com.keelim.arducon.R;
-import com.keelim.arducon.databinding.ActivityIntroBinding;
 
 import io.fabric.sdk.android.Fabric;
 

@@ -20,7 +20,6 @@ import com.keelim.arducon.activities.MainActivity;
 
 public class FirebaseInstanceIDService extends FirebaseMessagingService {
 
-
     @Override
     public void onNewToken(String s) {
         super.onNewToken(s);

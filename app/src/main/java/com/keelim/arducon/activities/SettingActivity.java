@@ -10,7 +10,6 @@ import com.keelim.arducon.databinding.ActivitySettingBinding;
 import com.keelim.arducon.fragments.SettingFragment;
 
 public class SettingActivity extends AppCompatActivity {
-    ActivitySettingBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //fragment 설정을 위한 activity

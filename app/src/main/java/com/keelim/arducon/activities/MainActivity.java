@@ -11,18 +11,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 import com.keelim.arducon.R;
-import com.keelim.arducon.databinding.ActivityMainBinding;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,13 +41,13 @@ import static com.keelim.arducon.activities.BluetoothStatus.REQUEST_ENABLE_BT;
 
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
 
     private int mPariedDeviceCount = 0;
     // 사용자 정의 함수로 블루투스 활성 상태의 변경 결과를 App으로 알려줄때 식별자로 사용됨 (0보다 커야함)
 
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
+    private DrawerLayout drawerlayout;
 
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private int readBufferPosition;
 
     private View drawerView;
+    private TextView receiveString;
 
 
     @Override
@@ -66,19 +70,23 @@ public class MainActivity extends AppCompatActivity {
         //binding
         setContentView(R.layout.activity_main);
         //vibrate
-        ImageButton developerButton = findViewById(R.id.developer_button); // -> View 따오기
+        Button sendButton = findViewById(R.id.sendButton);
+        TextView sendString = findViewById(R.id.sendString);
+        receiveString = findViewById(R.id.receive_string);
+        drawerlayout = findViewById(R.id.drawerlayout);
 
-        binding.sendButton.setOnClickListener(v -> {
+        sendButton.setOnClickListener(v -> {
             // 문자열 전송하는 함수(쓰레드 사용 x)
-            sendData(binding.sendString.getText().toString());
-            binding.sendString.setText("");
+            sendData(sendString.getText().toString());
+            sendString.setText("");
             // 블루투스 활성
             checkBluetooth();
         });
 
         MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID));
         AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adView.loadAd(adRequest);//adMob
+        AdView adView = findViewById(R.id.adView);
+        adView.loadAd(adRequest);//adMob
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -120,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home)
-            binding.drawerlayout.openDrawer(drawerView);
+            drawerlayout.openDrawer(drawerView);
 
         return super.onOptionsItemSelected(item);
     }
@@ -214,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                                 // 수신된 문자열 데이터에 대한 처리.
                                 handler.post(() -> {
                                     // mStrDelimiter = '\n';
-                                    binding.receiveString.setText(data + mStrDelimiter);
+                                    receiveString.setText(data + mStrDelimiter);
                                 });
                             } else {
                                 readBuffer[readBufferPosition++] = aByte;

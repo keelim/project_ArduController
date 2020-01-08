@@ -17,11 +17,10 @@ public class SettingFragment extends PreferenceFragmentCompat { //setting
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         String key = preference.getKey();
-        if (key.equals("developer")) {
-            Intent intent_developer = new Intent(getContext(), DeveloperActivity.class);
-            startActivity(intent_developer);
-            return true;
-        }
+//        switch (key){
+//            case default:
+//                break;
+//        }
         return false;
     }
 }
