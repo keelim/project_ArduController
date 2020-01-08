@@ -16,7 +16,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends AppCompatActivity { //인트로 액티비티를 생성한다.
     private Handler handler;
-    private ActivityIntroBinding binding;
 
     //인앱 업데이트 어디서 등록을 해야 하는가?
     Runnable runnable = () -> { //runable 작동을 하고 시작
@@ -30,8 +29,7 @@ public class SplashActivity extends AppCompatActivity { //인트로 액티비티
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_intro);
-        binding.setActivity(this);
+        setContentView(R.layout.activity_intro);
         handler = new Handler();
         handler.postDelayed(runnable, 1000); //handler를 통하여 사용
     }

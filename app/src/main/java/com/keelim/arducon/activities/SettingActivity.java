@@ -15,8 +15,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) { //fragment 설정을 위한 activity
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_setting);
-        binding.setActivity(this);
+        setContentView(R.layout.activity_setting);
 
         getSupportFragmentManager()
                 .beginTransaction()
