@@ -17,7 +17,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -65,9 +64,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //binding
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setActivity(this);
-
+        setContentView(R.layout.activity_main);
         //vibrate
         ImageButton developerButton = findViewById(R.id.developer_button); // -> View 따오기
 
@@ -111,11 +108,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-
-        developerButton.setOnClickListener(view -> {
-            Intent intent_developerIntent = new Intent(getApplicationContext(), DeveloperActivity.class);
-            startActivity(intent_developerIntent);
-        });
     }
 
     @Override

@@ -7,7 +7,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.keelim.arducon.R;
-import com.keelim.arducon.activities.DeveloperActivity;
 
 public class SettingFragment extends PreferenceFragmentCompat { //setting
     @Override
