@@ -27,6 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.WebViewActivity" />
+        <activity android:name=".controller.ControllerActivity" />
+        <activity android:name=".devices.DeviceActivity" />
 
         <service
             android:name=".services.FirebaseInstanceIDService"
@@ -45,7 +47,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="da093908abc28a1043cbc271323c4e202e13ec65" />
-
     </application>
 
 </manifest>
