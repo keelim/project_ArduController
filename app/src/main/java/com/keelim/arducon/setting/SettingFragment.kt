@@ -16,6 +16,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         val key = preference.key
         when(key){
             "developer" -> Toast.makeText(context, "개발 진행 중입니다.", Toast.LENGTH_SHORT).show()
+
         }
         return super.onPreferenceTreeClick(preference)
     }
