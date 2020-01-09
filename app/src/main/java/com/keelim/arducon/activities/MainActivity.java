@@ -25,9 +25,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 import com.keelim.arducon.R;
-import com.keelim.arducon.controller.ControllerActivity;
-import com.keelim.arducon.devices.DeviceActivity;
-import com.keelim.arducon.setting.SettingActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +34,6 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -48,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Set<BluetoothDevice> mDevices;
     private BluetoothAdapter mBluetoothAdapter;
-    private DrawerLayout drawerlayout;
+
 
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     private BluetoothSocket mSocket;
@@ -62,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private int readBufferPosition;
 
     private View drawerView;
+    private DrawerLayout drawerLayout;
     private TextView receiveString;
 
 
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Button sendButton = findViewById(R.id.sendButton);
         TextView sendString = findViewById(R.id.sendString);
         receiveString = findViewById(R.id.receive_string);
-        drawerlayout = findViewById(R.id.drawerlayout);
+        drawerLayout = findViewById(R.id.drawerlayout);
         drawerView = findViewById(R.id.drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
         AdView adView = findViewById(R.id.adView);
@@ -97,23 +94,28 @@ public class MainActivity extends AppCompatActivity {
             int id = menuItem.getItemId();
             switch (id) {
                 case R.id.drawer_account:
-                    Toast.makeText(MainActivity.this, "계정 창 준비 중입니다. ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "기능 준비 중입니다", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.drawer_bug_report:
-                    Intent intent_bugReport = new Intent(this, WebViewActivity.class);
-                    startActivity(intent_bugReport); //webView page 이동을 할 것
+//                    Intent intent_bugReport = new Intent(this, WebViewActivity.class);
+//                    startActivity(intent_bugReport); //webView page 이동을 할 것
+                    Toast.makeText(MainActivity.this, "기능 준비 중입니다", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.drawer_setting:
-                    Intent intent_temp = new Intent(this, SettingActivity.class);
-                    startActivity(intent_temp);
+//                    Intent intent_temp = new Intent(this, SettingActivity.class);
+//                    startActivity(intent_temp);
+                    Toast.makeText(MainActivity.this, "기능 준비 중입니다", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.drawer_controller:
-                    Intent controller = new Intent(this, ControllerActivity.class);
-                    startActivity(controller);
+//                    Intent controller = new Intent(this, ControllerActivity.class);
+//                    startActivity(controller);
+                    Toast.makeText(MainActivity.this, "기능 준비 중입니다", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.drawer_devices:
-                    Intent devices = new Intent(this, DeviceActivity.class);
-                    startActivity(devices);
+//                    Intent devices = new Intent(this, DeviceActivity.class);
+//                    startActivity(devices);
+                    Toast.makeText(MainActivity.this, "기능 준비 중입니다", Toast.LENGTH_SHORT).show();
+                    break;
             }
             return false;
         });
@@ -313,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NotNull MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home)
-            drawerlayout.openDrawer(drawerView);
+            drawerLayout.openDrawer(drawerView);
         return super.onOptionsItemSelected(item);
     }
 
