@@ -1,4 +1,4 @@
-package com.keelim.arducon.setting
+package com.keelim.arducon.view.setting
 
 import android.os.Bundle
 import android.widget.Toast
