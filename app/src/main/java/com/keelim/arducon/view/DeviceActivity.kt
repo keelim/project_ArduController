@@ -5,7 +5,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.arducon.R
-import com.keelim.arducon.model.Data
 import com.keelim.arducon.model.RecyclerAdapter
 import kotlinx.android.synthetic.main.activity_device.*
 
@@ -15,16 +14,19 @@ class DeviceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_device)
-        Toast.makeText(this, "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
 
+        Toast.makeText(this, "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
         init()
         getData()
     }
 
     private fun init() {
         val linearLayoutManager = LinearLayoutManager(this)
-        device_recycler.layoutManager = linearLayoutManager
-        device_recycler.adapter = adapter
+        device_recycler.run {
+            layoutManager = linearLayoutManager
+            adapter = adapter
+        }
+
     }
 
     private fun getData() {
@@ -49,15 +51,14 @@ class DeviceActivity : AppCompatActivity() {
                 "이 꽃은 튤립입니다.")
 
         for (i in 0..listTitle.size) {
-            val data = Data(title = listTitle.get(i), content = listContent.get(i))
-            adapter.addItem(data)
-
-            //어댑터의 값이 변경되었음을 알려준다.
-            adapter.notifyDataSetChanged()
-
+            val data = RecyclerAdapter.Data(title = listTitle.get(i), content = listContent.get(i))
+            adapter.run {
+                addItem(data)
+                notifyDataSetChanged()
+            }
         }
-    }
 
+    }
 }
 
 
