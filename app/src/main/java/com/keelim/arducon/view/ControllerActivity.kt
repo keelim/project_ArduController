@@ -1,4 +1,4 @@
-package com.keelim.arducon.controller
+package com.keelim.arducon.view
 
 import android.os.Bundle
 import android.view.View

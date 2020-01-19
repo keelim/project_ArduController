@@ -1,4 +1,4 @@
-package com.keelim.arducon.activities
+package com.keelim.arducon.view
 
 import android.content.Intent
 import android.os.Bundle

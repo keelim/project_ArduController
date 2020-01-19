@@ -1,10 +1,12 @@
-package com.keelim.arducon.devices
+package com.keelim.arducon.view
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.arducon.R
+import com.keelim.arducon.model.Data
+import com.keelim.arducon.model.RecyclerAdapter
 import kotlinx.android.synthetic.main.activity_device.*
 
 class DeviceActivity : AppCompatActivity() {
