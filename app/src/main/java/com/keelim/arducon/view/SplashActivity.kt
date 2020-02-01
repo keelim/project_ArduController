@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.crashlytics.android.Crashlytics
+import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.R
 import io.fabric.sdk.android.Fabric
+import kotlinx.android.synthetic.main.activity_intro.*
 
 class SplashActivity : AppCompatActivity() {
     //인트로 액티비티를 생성한다.
@@ -22,8 +24,8 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Fabric.with(this, Crashlytics())
         setContentView(R.layout.activity_intro)
+        Snackbar.make(container_splash, "아두콘에 오신 것을 환영 합니다.", Snackbar.LENGTH_SHORT).show()
         handler.postDelayed(runnable, 1000) //handler를 통하여 사용
     }
 
