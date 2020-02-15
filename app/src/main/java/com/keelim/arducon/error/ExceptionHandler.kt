@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Process
 import java.io.PrintWriter
 import java.io.StringWriter
+import kotlin.system.exitProcess
 
 class ExceptionHandler(
         application: Application,
@@ -52,7 +53,7 @@ class ExceptionHandler(
     private fun isSkipActivity(activity: Activity) = activity is ErrorActivity
 
     override fun uncaughtException(thread: Thread?, throwable: Throwable) {
-        fabricExceptionHandler.uncaughtException(thread, throwable)
+        fabricExceptionHandler.uncaughtException(thread!!, throwable)
         lastActivity?.run {
             val stringWriter = StringWriter()
             throwable.printStackTrace(PrintWriter(stringWriter))
@@ -61,7 +62,7 @@ class ExceptionHandler(
         } ?: defaultExceptionHandler.uncaughtException(thread, throwable)
 
         Process.killProcess(Process.myPid())
-        System.exit(-1)
+        exitProcess(-1)
     }
 
     private fun startErrorActivity(activity: Activity, errorText: String) = activity.run {

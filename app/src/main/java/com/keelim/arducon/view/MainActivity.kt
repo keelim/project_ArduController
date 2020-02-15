@@ -20,7 +20,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.R
 import com.keelim.arducon.view.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.apply_darwer.*
+
+import kotlinx.android.synthetic.main.layout_drawer.*
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
