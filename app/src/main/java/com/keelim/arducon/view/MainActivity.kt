@@ -10,10 +10,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.snackbar.Snackbar
@@ -43,14 +43,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sendButton.setOnClickListener {
-            sendData(sendString.text.toString())
+        main_sendButton.setOnClickListener {
+            sendData(main_sendString.text.toString())
             checkBluetooth()
         }
         MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID))
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest) //adMob
-        setSupportActionBar(toolbar)
+        setSupportActionBar(main_toolbar)
 
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                                 readBufferPosition = 0
                                 // 수신된 문자열 데이터에 대한 처리.
                                 handler.post {
-                                    receive_string.text = data + "\n"
+                                    main_receive_string.text = data + "\n"
                                 }
                             } else {
                                 readBuffer[readBufferPosition++] = aByte
@@ -189,7 +189,6 @@ class MainActivity : AppCompatActivity() {
                     .setItems(items) { _: DialogInterface?, item: Int ->
                         if (item == pariedDeviceCount) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
                             Toast.makeText(this, "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show()
-
                         } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
                             connectToSelectedDevice(items[item].toString())
                         }
@@ -237,10 +236,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
-        if (id == android.R.id.home)
-            drawerlayout.openDrawer(drawer)
-
+        if (id == android.R.id.home) {
+            if (drawerlayout.isDrawerOpen(GravityCompat.START))
+                drawerlayout.closeDrawer(GravityCompat.START)
+        }
         return super.onOptionsItemSelected(item)
     }
 

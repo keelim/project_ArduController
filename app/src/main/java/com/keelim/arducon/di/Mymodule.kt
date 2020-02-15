@@ -1,4 +1,4 @@
-package com.keelim.cnubus.di
+package com.keelim.arducon.di
 
 import org.koin.dsl.module
 

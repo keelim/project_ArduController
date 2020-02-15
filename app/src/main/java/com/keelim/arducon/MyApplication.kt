@@ -2,7 +2,7 @@ package com.keelim.arducon
 
 import android.app.Application
 import com.crashlytics.android.Crashlytics
-import com.keelim.cnubus.di.myDiModule
+import com.keelim.arducon.di.myDiModule
 import com.keelim.nandadiagnosis.error.ExceptionHandler
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.koin.androidContext
