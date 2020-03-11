@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun beginListenForData() {
-        val handler = Handler() //쓰레드 사용에 있어서 필요함
+        val handler = Handler(mainLooper) //쓰레드 사용에 있어서 필요함
         readBufferPosition = 0 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = ByteArray(1024) // 수신 버퍼.
         // 문자열 수신 쓰레드.
