@@ -2,7 +2,7 @@ package com.keelim.arducon
 
 import android.app.Application
 import com.keelim.arducon.di.myDiModule
-import com.keelim.nandadiagnosis.error.ExceptionHandler
+import com.keelim.arducon.error.ExceptionHandler
 
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

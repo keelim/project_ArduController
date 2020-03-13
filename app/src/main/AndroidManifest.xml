@@ -30,7 +30,7 @@
         <activity android:name=".view.WebViewActivity" />
         <activity android:name=".view.ControllerActivity" />
         <activity android:name=".view.DeviceActivity" />
-        <activity android:name="com.keelim.nandadiagnosis.error.ErrorActivity" />
+        <activity android:name=".error.ErrorActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

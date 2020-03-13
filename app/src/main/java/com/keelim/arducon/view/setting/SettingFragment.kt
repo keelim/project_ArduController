@@ -13,8 +13,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
-        val key = preference.key
-        when(key){
+        when(preference.key){
             "developer" -> Toast.makeText(context, "개발 진행 중입니다.", Toast.LENGTH_SHORT).show()
 
         }

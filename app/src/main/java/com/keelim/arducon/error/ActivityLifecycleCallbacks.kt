@@ -1,4 +1,4 @@
-package com.keelim.nandadiagnosis.error
+package com.keelim.arducon.error
 
 import android.app.Activity
 import android.app.Application
