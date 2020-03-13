@@ -1,16 +1,14 @@
 package com.keelim.arducon.view
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.arducon.R
 import kotlinx.android.synthetic.main.activity_controller.*
 
-class ControllerActivity : AppCompatActivity() {
+class ControllerActivity : AppCompatActivity(R.layout.activity_controller) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_controller)
         Toast.makeText(this, "컨트롤러 설정 입니다.", Toast.LENGTH_SHORT).show()
 
         bt_center.setOnClickListener {

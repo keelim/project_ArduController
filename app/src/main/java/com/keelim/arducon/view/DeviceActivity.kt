@@ -8,25 +8,20 @@ import com.keelim.arducon.R
 import com.keelim.arducon.model.RecyclerAdapter
 import kotlinx.android.synthetic.main.activity_device.*
 
-class DeviceActivity : AppCompatActivity() {
+class DeviceActivity : AppCompatActivity(R.layout.activity_device) {
     private val adapter = RecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_device)
 
         Toast.makeText(this, "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
-        init()
-        getData()
-    }
 
-    private fun init() {
-        val linearLayoutManager = LinearLayoutManager(this)
         device_recycler.run {
-            layoutManager = linearLayoutManager
+            layoutManager = LinearLayoutManager(this@DeviceActivity)
             adapter = adapter
         }
 
+        getData()
     }
 
     private fun getData() {
@@ -51,7 +46,7 @@ class DeviceActivity : AppCompatActivity() {
                 "이 꽃은 튤립입니다.")
 
         for (i in 0..listTitle.size) {
-            val data = RecyclerAdapter.Data(title = listTitle.get(i), content = listContent.get(i))
+            val data = RecyclerAdapter.Data(title = listTitle[i], content = listContent[i])
             adapter.run {
                 addItem(data)
                 notifyDataSetChanged()

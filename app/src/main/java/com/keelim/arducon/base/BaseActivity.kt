@@ -1,4 +1,4 @@
-/*
+package com.keelim.arducon.base/*
 package com.keelim.cnubus.base
 
 import android.os.Bundle

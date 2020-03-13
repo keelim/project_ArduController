@@ -17,21 +17,21 @@ import kotlinx.android.synthetic.main.activity_intro.*
 class SplashActivity : AppCompatActivity() {
     private lateinit var appUpdateManager: AppUpdateManager
     //인트로 액티비티를 생성한다.
-    private var handler: Handler = Handler()
+    private var handler: Handler = Handler(mainLooper)
     //인앱 업데이트 어디서 등록을 해야 하는가?
     private var runnable = Runnable {
         //runable 작동을 하고 시작
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent) //인텐트를 넣어준다. intro -> main
-        finish() //앱을 종료한다.
+        Intent(this, MainActivity::class.java).apply {
+            startActivity(this)
+        } //인텐트를 넣어준다. intro -> main
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out) //애니메이션을 넣어준다.
+        finish() //앱을 종료한다.
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
         Snackbar.make(container_splash, "아두콘에 오신 것을 환영 합니다.", Snackbar.LENGTH_SHORT).show()
-        //appUpdate
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
@@ -53,9 +53,7 @@ class SplashActivity : AppCompatActivity() {
             } else Snackbar.make(container_splash, "최신 버전 어플리케이션 사용해주셔서 감사합니다.", Snackbar.LENGTH_SHORT).show()
         }
 
-
-        Thread.sleep(3000)
-        handler.postDelayed(runnable, 1000) //handler를 통하여 사용
+        handler.postDelayed(runnable, 3000) //handler를 통하여 사용
     }
 
     override fun onBackPressed() { //back 키 눌렀을 때
@@ -82,9 +80,7 @@ class SplashActivity : AppCompatActivity() {
 
 
     private fun popupSnackbarForCompleteUpdate() {
-        Snackbar.make(
-                container_splash, "업데이트를 다운로드 하고 있습니다.", Snackbar.LENGTH_INDEFINITE
-        ).apply {
+        Snackbar.make(container_splash, "업데이트를 다운로드 하고 있습니다.", Snackbar.LENGTH_INDEFINITE).apply {
             setAction("RESTART") { appUpdateManager.completeUpdate() }
             setActionTextColor(resources.getColor(R.color.colorAccent, this@SplashActivity.theme))
             show()

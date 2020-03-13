@@ -20,15 +20,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.R
 import com.keelim.arducon.view.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
-
 import kotlinx.android.synthetic.main.layout_drawer.*
-import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private var pariedDeviceCount = 0
     private lateinit var mDevices: Set<BluetoothDevice>
     private lateinit var mBluetoothAdapter: BluetoothAdapter
@@ -42,19 +40,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID))
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest) //adMob
+
+        setSupportActionBar(main_toolbar)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         main_sendButton.setOnClickListener {
             sendData(main_sendString.text.toString())
             checkBluetooth()
         }
-        MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID))
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest) //adMob
-        setSupportActionBar(main_toolbar)
 
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         navigationView.setNavigationItemSelectedListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
@@ -129,8 +128,7 @@ class MainActivity : AppCompatActivity() {
         val handler = Handler(mainLooper) //쓰레드 사용에 있어서 필요함
         readBufferPosition = 0 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = ByteArray(1024) // 수신 버퍼.
-        // 문자열 수신 쓰레드.
-        mWorkerThread = Thread(Runnable {
+        mWorkerThread = Thread(Runnable {  // 문자열 수신 쓰레드.
 
             while (!Thread.currentThread().isInterrupted) {
                 try { // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.
@@ -209,16 +207,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun totalExit() { //전체를 종료를 하는 로직
-        mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
-        try {
-            mInputStream.close()
-            mSocket.close()
-            finish()
-        } catch (e: IOException) {
-        }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 1) {
             when (resultCode) {
@@ -236,16 +224,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == android.R.id.home) {
-            if (drawerlayout.isDrawerOpen(GravityCompat.START))
-                drawerlayout.closeDrawer(GravityCompat.START)
+        when (item.itemId) {
+            android.R.id.home -> {
+                if (drawerlayout.isDrawerOpen(GravityCompat.START))
+                    drawerlayout.closeDrawer(GravityCompat.START)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {
-        totalExit()
+        mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
+        mInputStream.close()
+        mSocket.close()
+
+        finish()
         super.onDestroy()
     }
 }
