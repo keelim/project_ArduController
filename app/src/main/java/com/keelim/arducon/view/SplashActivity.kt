@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManager
@@ -14,10 +15,10 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.keelim.arducon.R
 import kotlinx.android.synthetic.main.activity_intro.*
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     private lateinit var appUpdateManager: AppUpdateManager
     //인트로 액티비티를 생성한다.
-    private var handler: Handler = Handler(mainLooper)
+    private var handler: Handler = Handler(Looper.getMainLooper())
     //인앱 업데이트 어디서 등록을 해야 하는가?
     private var runnable = Runnable {
         //runable 작동을 하고 시작
@@ -30,7 +31,6 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro)
         Snackbar.make(container_splash, "아두콘에 오신 것을 환영 합니다.", Snackbar.LENGTH_SHORT).show()
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
