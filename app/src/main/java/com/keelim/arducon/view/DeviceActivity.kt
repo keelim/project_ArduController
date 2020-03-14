@@ -18,7 +18,6 @@ class DeviceActivity : AppCompatActivity(R.layout.activity_device) {
 
         device_recycler.run {
             layoutManager = LinearLayoutManager(this@DeviceActivity)
-            adapter = adapter
         }
 
         getData()
