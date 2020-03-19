@@ -9,7 +9,7 @@
     tools:context=".view.ControllerActivity" >
 
     <Button
-        android:id="@+id/bt_center"
+        android:id="@+id/center_bt"
         android:layout_width="147dp"
         android:layout_height="149dp"
         android:text="Center"
