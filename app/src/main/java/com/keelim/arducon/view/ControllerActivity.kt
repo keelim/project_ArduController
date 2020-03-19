@@ -11,7 +11,7 @@ class ControllerActivity : AppCompatActivity(R.layout.activity_controller) {
         super.onCreate(savedInstanceState)
         Toast.makeText(this, "컨트롤러 설정 입니다.", Toast.LENGTH_SHORT).show()
 
-        bt_center.setOnClickListener {
+        center_bt.setOnClickListener {
             Toast.makeText(this, "center 버튼을 클릭하였습니다.", Toast.LENGTH_SHORT).show()
         }
     }
