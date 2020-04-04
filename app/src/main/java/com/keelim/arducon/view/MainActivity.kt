@@ -59,11 +59,18 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
                 R.id.drawer_bug_report ->  startActivity(Intent(this, WebViewActivity::class.java))
 
-                R.id.drawer_setting -> startActivity(Intent(this, SettingActivity::class.java))
+                R.id.drawer_setting -> {
+                    Toast.makeText(this, " 기능 준비 중입니다.", Toast.LENGTH_SHORT).show()
+
+                    startActivity(Intent(this, SettingActivity::class.java))
+                }
 
                 R.id.drawer_controller -> startActivity(Intent(this, ControllerActivity::class.java))
 
-                R.id.drawer_devices -> startActivity(Intent(this, DeviceActivity::class.java))
+                R.id.drawer_devices -> {
+                    Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
+                    /*startActivity(Intent(this, DeviceActivity::class.java))*/
+                }
             }
             false
         }

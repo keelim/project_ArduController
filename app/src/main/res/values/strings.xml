@@ -6,4 +6,5 @@
     <string name="receive_instruction">받는 명령어</string>
     <string name="send_instruction">전송 명령어</string>
     <string name="send_button">Send Button</string>
+    <string name="appcenter">d3b773ac-2485-4dd8-b061-40abd842a05e</string>
 </resources>

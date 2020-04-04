@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -12,7 +13,11 @@ import com.google.android.play.core.install.model.ActivityResult
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.keelim.arducon.R
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.android.synthetic.main.activity_intro.*
+
 
 class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     private lateinit var appUpdateManager: AppUpdateManager
@@ -20,6 +25,11 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Snackbar.make(container_splash, "아두콘에 오신 것을 환영 합니다.", Snackbar.LENGTH_SHORT).show()
+
+        AppCenter.start(application, getString(R.string.appcenter),
+                Analytics::class.java, Crashes::class.java)
+
+
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
@@ -38,6 +48,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
                         2
                 )
                 Snackbar.make(container_splash, "업데이트를 시작합니다.", Snackbar.LENGTH_SHORT).show()
+                popupSnackbarForCompleteUpdate()
             } else
                 Snackbar.make(container_splash, "최신 버전 어플리케이션 사용해주셔서 감사합니다.", Snackbar.LENGTH_SHORT).show()
         }
