@@ -1,9 +1,11 @@
 package com.keelim.arducon.view
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.material.snackbar.Snackbar
@@ -12,15 +14,29 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.ActivityResult
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.TedPermission
+import com.gun0912.tedpermission.TedPermissionActivity
 import com.keelim.arducon.R
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.android.synthetic.main.activity_intro.*
+import java.util.ArrayList
 
 
 class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     private lateinit var appUpdateManager: AppUpdateManager
+
+    var listener = object : PermissionListener {
+        override fun onPermissionGranted() {
+            Snackbar.make(container_splash, "모든 권한이 승인 되었습니다. ", Snackbar.LENGTH_SHORT).show()
+        }
+
+        override fun onPermissionDenied(deniedPermissions: ArrayList<String>?) {
+            Toast.makeText(this@SplashActivity, deniedPermissions.toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +44,6 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
 
         AppCenter.start(application, getString(R.string.appcenter),
                 Analytics::class.java, Crashes::class.java)
-
 
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
@@ -53,6 +68,14 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
                 Snackbar.make(container_splash, "최신 버전 어플리케이션 사용해주셔서 감사합니다.", Snackbar.LENGTH_SHORT).show()
         }
 
+
+        TedPermission.with(this)
+                .setPermissionListener(listener)
+                .setRationaleMessage("앱의 기능을 사용하기 위해서는 권한이 필요합니다.")
+                .setDeniedMessage("[설정] > [권한] 에서 권한을 허용할 수 있습니다.")
+                .setPermissions(android.Manifest.permission.INTERNET,android.Manifest.permission.BLUETOOTH, android.Manifest.permission.BLUETOOTH_ADMIN)
+                .check()
+
         Handler().postDelayed({
             Intent(this, MainActivity::class.java).apply {
                 startActivity(this)
@@ -61,6 +84,8 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
             finish()
         }, 3000)
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

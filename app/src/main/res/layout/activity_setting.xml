@@ -7,9 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".view.SettingActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/fragment_container"
-        android:name="com.keelim.arducon.view.setting.SettingFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
