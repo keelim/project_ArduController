@@ -13,4 +13,17 @@ public class Test2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
     }
+
+    private void test2Start(){
+
+    }
+
+    private void measureTest2(){
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

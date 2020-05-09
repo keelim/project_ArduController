@@ -3,6 +3,7 @@ package com.keelim.testing.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this, "버튼을 입력을 해주세요", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, Test1Activity.class);
                 startActivity(intent);
                 break;
+
             case R.id.btn_test2:
                 Intent intent2 = new Intent(this, Test2Activity.class);
                 startActivity(intent2);
