@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public class Test1Adapter extends BaseAdapter {
+    int test1Count;
+
     @Override
     public int getCount() {
         return 0;

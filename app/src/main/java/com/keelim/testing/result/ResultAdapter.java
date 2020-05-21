@@ -4,7 +4,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.keelim.testing.test1.Test1Model;
+
 public class ResultAdapter extends BaseAdapter {
+    int resultCount;
+    Test1Model model;
     @Override
     public int getCount() {
         return 0;
