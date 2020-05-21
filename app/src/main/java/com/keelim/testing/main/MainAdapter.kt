@@ -1,28 +1,28 @@
-package com.keelim.testing.main;
+package com.keelim.testing.main
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
 
-public class MainAdapter extends BaseAdapter{
-    int mainCount;
-    @Override
-    public int getCount() {
-        return 0;
+class MainAdapter : BaseAdapter() {
+    var mainCount = 0
+    override fun getCount(): Int {
+        return 0
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
+    override fun getItem(position: Int): Any {
+        return null
     }
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
+    override fun getItemId(position: Int): Long {
+        return 0
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+    override fun getView(
+        position: Int,
+        convertView: View,
+        parent: ViewGroup
+    ): View {
+        return null
     }
 }

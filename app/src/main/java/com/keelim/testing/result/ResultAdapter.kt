@@ -1,31 +1,30 @@
-package com.keelim.testing.result;
+package com.keelim.testing.result
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
+import com.keelim.testing.test1.Test1Model
 
-import com.keelim.testing.test1.Test1Model;
-
-public class ResultAdapter extends BaseAdapter {
-    int resultCount;
-    Test1Model model;
-    @Override
-    public int getCount() {
-        return 0;
+class ResultAdapter : BaseAdapter() {
+    var resultCount = 0
+    var model: Test1Model? = null
+    override fun getCount(): Int {
+        return 0
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
+    override fun getItem(position: Int): Any {
+        return null
     }
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
+    override fun getItemId(position: Int): Long {
+        return 0
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+    override fun getView(
+        position: Int,
+        convertView: View,
+        parent: ViewGroup
+    ): View {
+        return null
     }
 }
