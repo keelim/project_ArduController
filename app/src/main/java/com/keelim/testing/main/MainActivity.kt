@@ -1,6 +1,5 @@
 package com.keelim.testing.main
 
-import MainAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -64,19 +63,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        val id = v.id
-        when (id) {
+        when (v.id) {
             R.id.btn_test1 -> {
                 val test1 = Intent(this, Test1Activity::class.java)
-                test1.flags()
-                test1.flags()
                 startActivity(test1)
                 finish()
             }
             R.id.btn_test2 -> {
                 val test2 = Intent(this, Test2Activity::class.java)
-                intent.flags()
-                intent.flags()
                 startActivity(test2)
                 finish()
             }

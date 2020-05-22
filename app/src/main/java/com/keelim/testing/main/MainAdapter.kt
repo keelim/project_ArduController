@@ -1,3 +1,5 @@
+package com.keelim.testing.main
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.keelim.testing.R
 import kotlinx.android.synthetic.main.content_main_recycler_item.view.*
+
 
 
 class MainAdapter internal constructor(list: ArrayList<String>?) :
