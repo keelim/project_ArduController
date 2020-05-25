@@ -13,7 +13,10 @@ class Test2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_test2)
     }
 
-    private fun test2Start() {}
+    private fun test2Start() {
+
+    }
+
     private fun measureTest2() {
         var test2Intent = Intent(this@Test2Activity, ResultActivity::class.java).apply {
             putExtra("test2", "data2")
