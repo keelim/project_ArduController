@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.testing.R
+import com.keelim.testing.utils.BackPressCloseHandler
 
 class ResultActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        BackPressCloseHandler(this).onBackPressed()
     }
 
     override fun onClick(v: View) {}

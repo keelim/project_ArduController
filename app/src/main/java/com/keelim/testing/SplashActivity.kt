@@ -3,6 +3,7 @@ package com.keelim.testing
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.main.MainActivity
@@ -20,11 +21,12 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun loading() {
-        val handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
             {
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             , 3000
         )

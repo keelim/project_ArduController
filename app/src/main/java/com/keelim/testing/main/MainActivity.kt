@@ -12,6 +12,7 @@ import com.gun0912.tedpermission.TedPermission
 import com.keelim.testing.R
 import com.keelim.testing.test1.Test1Activity
 import com.keelim.testing.test2.Test2Activity
+import com.keelim.testing.utils.BackPressCloseHandler
 import java.util.*
 
 
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Toast.makeText(this, "권한 확인 중입니다.", Toast.LENGTH_SHORT).show()
 
         TedPermission.with(this)
             .setPermissionListener(permissionListener)
@@ -75,5 +78,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        BackPressCloseHandler(this).onBackPressed()
     }
 }
