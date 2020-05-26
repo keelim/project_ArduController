@@ -2,10 +2,8 @@ package com.keelim.testing.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -13,10 +11,11 @@ import com.keelim.testing.R
 import com.keelim.testing.test1.Test1Activity
 import com.keelim.testing.test2.Test2Activity
 import com.keelim.testing.utils.BackPressCloseHandler
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private val permissionListener = object : PermissionListener {
         override fun onPermissionGranted() {
@@ -38,12 +37,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         Toast.makeText(this, "권한 확인 중입니다.", Toast.LENGTH_SHORT).show()
 
+
         TedPermission.with(this)
             .setPermissionListener(permissionListener)
             .setDeniedMessage("권한을 승인하지 않으시면 어플리케이션이 종료됩니다.")
             .setPermissions(android.Manifest.permission.INTERNET)
             .check()
-
 
 
         val list = ArrayList<String>()
@@ -55,29 +54,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         val recyclerView = findViewById<RecyclerView>(R.id.main_recycler)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//
+//        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
+//
+//        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
+//        val adapter = MainAdapter(list)b
+//        recyclerView.adapter = adapter
 
-        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
+        btn_test1.setOnClickListener {
+            val test1 = Intent(this, Test1Activity::class.java)
+            startActivity(test1)
+            finish()
 
-        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-        val adapter = MainAdapter(list)
-        recyclerView.adapter = adapter
-
-    }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btn_test1 -> {
-                val test1 = Intent(this, Test1Activity::class.java)
-                startActivity(test1)
-                finish()
-            }
-            R.id.btn_test2 -> {
-                val test2 = Intent(this, Test2Activity::class.java)
-                startActivity(test2)
-                finish()
-            }
         }
+
+        btn_test2.setOnClickListener {
+            val test2 = Intent(this, Test2Activity::class.java)
+            startActivity(test2)
+            finish()
+
+        }
+
     }
 
     override fun onBackPressed() {
