@@ -18,6 +18,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.R
+import com.keelim.arducon.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_drawer.*
 import java.io.InputStream
@@ -239,6 +240,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         if (drawerlayout.isDrawerOpen(GravityCompat.START)) {
             drawerlayout.closeDrawer(GravityCompat.START)
         } else
-            super.onBackPressed()
+            BackPressCloseHandler(this).onBackPressed()
     }
 }
