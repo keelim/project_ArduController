@@ -9,12 +9,12 @@ class BackPressCloseHandler(private val activity: Activity) {
     private lateinit var toast: Toast
 
     fun onBackPressed() {
-        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+        if (System.currentTimeMillis() > backKeyPressedTime + 3000) {
             backKeyPressedTime = System.currentTimeMillis()
             showGuide()
             return
         }
-        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+        if (System.currentTimeMillis() <= backKeyPressedTime + 3000) {
             activity.finish()
             toast.cancel()
         }
@@ -27,5 +27,4 @@ class BackPressCloseHandler(private val activity: Activity) {
         )
         toast.show()
     }
-
 }

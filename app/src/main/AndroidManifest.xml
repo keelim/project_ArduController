@@ -3,6 +3,7 @@
     package="com.keelim.testing">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -11,16 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.AppBarOverlay" />
+        <service
+            android:name="MyService"
+            android:enabled="true"
+            android:permission="android.permission.SYSTEM_ALERT_WINDOW" />
+
         <activity android:name=".result.ResultActivity" />
         <activity android:name=".test2.Test2Activity" />
         <activity android:name=".test1.Test1Activity" />
-        <activity android:name=".main.MainActivity"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            />
+        <activity
+            android:name=".main.MainActivity"
+            android:theme="@style/AppTheme.AppBarOverlay" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,30 +2,61 @@ package com.keelim.testing.test1
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.R
 import com.keelim.testing.result.ResultActivity
 import com.keelim.testing.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_test1.*
 
 class Test1Activity : AppCompatActivity() {
+    lateinit var test1Adapter: Test1Adapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
         Toast.makeText(this, "테스트1 액티비티 입니다.", Toast.LENGTH_SHORT).show()
 
+        test1Adapter = Test1Adapter(arrayListOf())
+
         btn_result1.setOnClickListener {
-            measureTest1()
+            test1Start()
         }
     }
 
     private fun test1Start() {
-        Toast.makeText(this, "테스트 1 을 시작합니다.", Toast.LENGTH_SHORT).show()
+        Snackbar.make(test1_container, "테스트1를 시작 합니다.", Snackbar.LENGTH_SHORT).show()
         measureTest1()
     }
 
     private fun measureTest1() {
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+        for (x in 0..10000) {
+
+            val start = System.currentTimeMillis()
+            Log.d("test1_start", "dialog start time: $start")
+            val alert = AlertDialog.Builder(this)
+                .create()
+            alert.show()
+            alert.dismiss()
+            val end = System.currentTimeMillis()
+            Log.d("test1_start", "dialog end time: $end")
+
+            val time = end - start
+            Log.d("test1 time", "test1 time:$time")
+
+            Thread.sleep(100)
+        }
+
+        Snackbar.make(test1_container, "테스트를 종료 합니다. ", Snackbar.LENGTH_SHORT).show()
+        Thread.sleep(1000);
+
+        endTest()
+    }
+
+    private fun endTest() {
         Intent(this, ResultActivity::class.java).apply {
             putExtra("test1", "data1")
             startActivity(this)
@@ -36,20 +67,5 @@ class Test1Activity : AppCompatActivity() {
     override fun onBackPressed() {
         BackPressCloseHandler(this).onBackPressed()
     }
-
-
-//    fun setup() {
-//        val job = GlobalScope.launch(Dispatchers.Main) { // launch coroutine in the main thread
-//            delay(1000)
-//            for (i in 10 downTo 1) { // countdown from 10 to 1
-//                tv_message.text = "Countdown $i ..." // update text
-//                delay(500) // wait half a second
-//            }
-//            tv_message.text = "Done!"
-//        }
-//        fab.setOnClickListener {
-//            job.cancel() // cancel coroutine on click
-//        }
-//    }
 
 }

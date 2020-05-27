@@ -15,7 +15,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         loading()
 
-        Snackbar.make(splash_container, "AOSP(Android Open Source Project) 개선 프로젝트 측정.", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            splash_container,
+            "AOSP(Android Open Source Project) 개선 프로젝트 측정.",
+            Snackbar.LENGTH_SHORT
+        ).show()
         // 안내 페이지 표시
         // progress bar 자동으로 표시
     }
@@ -30,5 +34,9 @@ class SplashActivity : AppCompatActivity() {
             }
             , 3000
         )
+    }
+
+    override fun onBackPressed() {
+
     }
 }
