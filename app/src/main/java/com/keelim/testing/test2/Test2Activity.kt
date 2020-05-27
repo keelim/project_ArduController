@@ -16,12 +16,13 @@ class Test2Activity : AppCompatActivity() {
         Toast.makeText(this, "테스트2 액티비티 입니다.", Toast.LENGTH_SHORT).show()
 
         btn_result2.setOnClickListener {
-            measureTest2()
+            test2Start()
         }
     }
 
     private fun test2Start() {
-
+        Toast.makeText(this, "측정을 시작합니다.", Toast.LENGTH_SHORT).show()
+        measureTest2()
     }
 
     private fun measureTest2() {

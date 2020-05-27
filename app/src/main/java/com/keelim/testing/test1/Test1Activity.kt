@@ -21,7 +21,8 @@ class Test1Activity : AppCompatActivity() {
     }
 
     private fun test1Start() {
-
+        Toast.makeText(this, "테스트 1 을 시작합니다.", Toast.LENGTH_SHORT).show()
+        measureTest1()
     }
 
     private fun measureTest1() {

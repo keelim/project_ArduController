@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.testing.R
@@ -15,13 +16,14 @@ class ResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
 
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this) // Dialog 를 띄웁니다.
             .setMessage("결과를 전송")
             .setNegativeButton("아니오") { _, _ ->
-
+                Toast.makeText(this, "결과를 취소 합니다.", Toast.LENGTH_SHORT).show()
+                finish()
             }
             .setPositiveButton("예") { _, _ ->
-
+                Toast.makeText(this, "결과를 확인 합니다. ", Toast.LENGTH_SHORT).show()
             }
             .create()
             .show()
