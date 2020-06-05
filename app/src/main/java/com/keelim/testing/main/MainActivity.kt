@@ -1,6 +1,5 @@
 package com.keelim.testing.main
 
-import MyService
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -112,8 +111,6 @@ class MainActivity : AppCompatActivity() {
                 Thread.sleep(3000)
                 finish()
 
-            } else {
-                startService(Intent(this@MainActivity, MyService::class.java))
             }
         }
     }
