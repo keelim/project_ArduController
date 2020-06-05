@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_test2.*
 
 class Test2Activity : AppCompatActivity() {
     lateinit var test2Adapter: Test2Adapter
+    var result_array = ArrayList<Long>()
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -45,8 +46,10 @@ class Test2Activity : AppCompatActivity() {
             Log.d("test1_start", "dialog end time: $end")
 
             val time = end - start
+            val meanTime = time*1000
+            Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             Log.d("test1 time", "test1 time:$time")
-
+            result_array.add(time);
             Thread.sleep(100)
         }
 
@@ -59,6 +62,7 @@ class Test2Activity : AppCompatActivity() {
     private fun endTest() {
         Intent(this, ResultActivity::class.java).apply {
             putExtra("test2", "data2")
+            putExtra("result", result_array)
             startActivity(this)
             finish()
         }

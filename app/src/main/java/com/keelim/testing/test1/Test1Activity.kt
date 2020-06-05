@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_test1.*
 
 class Test1Activity : AppCompatActivity() {
     lateinit var test1Adapter: Test1Adapter
+    var result_array = ArrayList<Long>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
@@ -46,8 +47,10 @@ class Test1Activity : AppCompatActivity() {
 
             val time = end - start
             Log.d("test1 time", "test1 time:$time")
-
+            val meanTime = time * 1000
+            Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             Thread.sleep(100)
+            result_array.add(time);
         }
 
         Snackbar.make(test1_container, "테스트를 종료 합니다. ", Snackbar.LENGTH_SHORT).show()
@@ -59,6 +62,7 @@ class Test1Activity : AppCompatActivity() {
     private fun endTest() {
         Intent(this, ResultActivity::class.java).apply {
             putExtra("test1", "data1")
+            putExtra("result", result_array)
             startActivity(this)
             finish()
         }
