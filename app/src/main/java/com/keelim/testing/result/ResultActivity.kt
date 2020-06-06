@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,13 +16,12 @@ import java.util.*
 
 class ResultActivity : AppCompatActivity() {
     lateinit var resultArray: ArrayList<Long>
-    val foldername: String =
-        android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/TestLog";
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
-
+        result_progress.visibility = View.GONE
 
         AlertDialog.Builder(this) // Dialog 를 띄웁니다.
             .setMessage("결과를 전송")
@@ -44,6 +44,7 @@ class ResultActivity : AppCompatActivity() {
 
 
     private fun checkIntent() {
+        result_progress.visibility = View.VISIBLE
         resultArray = intent.getSerializableExtra("result") as ArrayList<Long>
         Snackbar.make(result_container, "화면이 가만히 있을 때까지 만지지 말아주세요", Snackbar.LENGTH_SHORT).show()
         for (x in resultArray) {
@@ -51,6 +52,8 @@ class ResultActivity : AppCompatActivity() {
             Thread.sleep(10)
         }
         Snackbar.make(result_container, "검증 완료 했습니다.", Snackbar.LENGTH_SHORT).show()
+
+        result_progress.visibility = View.GONE
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

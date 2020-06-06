@@ -3,6 +3,7 @@ package com.keelim.testing.test1
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,9 @@ class Test1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
+        test1_progress.visibility = View.GONE
         Toast.makeText(this, "테스트1 액티비티 입니다.", Toast.LENGTH_SHORT).show()
+
 
         test1Adapter = Test1Adapter(arrayListOf())
 
@@ -29,7 +32,9 @@ class Test1Activity : AppCompatActivity() {
 
     private fun test1Start() {
         Snackbar.make(test1_container, "테스트1를 시작 합니다.", Snackbar.LENGTH_SHORT).show()
+        test1_progress.visibility = View.VISIBLE
         measureTest1()
+        test1_progress.visibility = View.GONE
     }
 
     private fun measureTest1() {
