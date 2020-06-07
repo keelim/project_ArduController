@@ -19,22 +19,23 @@ class Test1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
-        test1_progress.visibility = View.GONE
+
         Toast.makeText(this, "테스트1 액티비티 입니다.", Toast.LENGTH_SHORT).show()
-
-
         test1Adapter = Test1Adapter(arrayListOf())
+        test1_progress.visibility = View.GONE
+
 
         btn_result1.setOnClickListener {
+            switch()
             test1Start()
+            switch()
         }
     }
 
     private fun test1Start() {
         Snackbar.make(test1_container, "테스트1를 시작 합니다.", Snackbar.LENGTH_SHORT).show()
-        test1_progress.visibility = View.VISIBLE
         measureTest1()
-        test1_progress.visibility = View.GONE
+
     }
 
     private fun measureTest1() {
@@ -43,15 +44,19 @@ class Test1Activity : AppCompatActivity() {
 
             val start = System.currentTimeMillis()
             Log.d("test1_start", "dialog start time: $start")
+
             val alert = AlertDialog.Builder(this)
                 .create()
             alert.show()
+
+            Thread.sleep(100)
             alert.dismiss()
             val end = System.currentTimeMillis()
             Log.d("test1_start", "dialog end time: $end")
 
             val time = end - start
             Log.d("test1 time", "test1 time:$time")
+
             val meanTime = time * 1000
             Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             Thread.sleep(100)
@@ -59,7 +64,7 @@ class Test1Activity : AppCompatActivity() {
         }
 
         Snackbar.make(test1_container, "테스트를 종료 합니다. ", Snackbar.LENGTH_SHORT).show()
-        Thread.sleep(1000);
+        Thread.sleep(100);
 
         endTest()
     }
@@ -75,6 +80,14 @@ class Test1Activity : AppCompatActivity() {
 
     override fun onBackPressed() {
         BackPressCloseHandler(this).onBackPressed()
+    }
+
+    private fun switch(){
+        if (test1_progress.visibility == View.GONE) {
+            test1_progress.visibility = View.VISIBLE;
+        } else {
+            test1_progress.visibility = View.GONE;
+        }
     }
 
 }

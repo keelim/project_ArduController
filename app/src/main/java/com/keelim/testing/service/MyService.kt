@@ -30,7 +30,7 @@ class MyService : Service() {
                         or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                 PixelFormat.TRANSLUCENT
             )
-        params.gravity = Gravity.LEFT or Gravity.TOP
+        params.gravity = Gravity.START or  Gravity.TOP
         mView = inflate.inflate(R.layout.view_in_service, null)
         val textView = mView!!.findViewById<View>(R.id.textView) as TextView
         val bt = mView!!.findViewById<View>(R.id.bt) as ImageButton

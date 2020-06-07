@@ -20,9 +20,7 @@ class Test2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test2)
 
-        test2_progress.visibility = View.GONE
         Toast.makeText(this, "테스트2 액티비티 입니다.", Toast.LENGTH_SHORT).show()
-
         test2Adapter = Test2Adapter(arrayListOf())
 
         btn_result2.setOnClickListener {
@@ -43,7 +41,7 @@ class Test2Activity : AppCompatActivity() {
             Log.d("test2_start", "dialog start time: $start")
 
             startService(Intent(this@Test2Activity, MyService::class.java))
-            Thread.sleep(100)
+            Thread.sleep(1000)
             stopService(Intent(this@Test2Activity, MyService::class.java))
 
             val end = System.currentTimeMillis()
