@@ -38,7 +38,7 @@ class MyService : Service() {
             bt.setImageResource(R.mipmap.ic_launcher_round)
             textView.text = "on click!!"
         }
-        wm!!.addView(mView, params)
+        wm!!.addView(mView, params) // getSystemService
     }
 
     override fun onDestroy() {

@@ -15,11 +15,14 @@ import kotlinx.android.synthetic.main.activity_test2.*
 
 class Test2Activity : AppCompatActivity() {
     lateinit var test2Adapter: Test2Adapter
+    lateinit var backPressCloseHandler: BackPressCloseHandler
     var result_array = ArrayList<Long>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test2)
 
+        backPressCloseHandler = BackPressCloseHandler(this)
         Toast.makeText(this, "테스트2 액티비티 입니다.", Toast.LENGTH_SHORT).show()
         test2Adapter = Test2Adapter(arrayListOf())
 
@@ -71,6 +74,6 @@ class Test2Activity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        BackPressCloseHandler(this).onBackPressed()
+        backPressCloseHandler.onBackPressed()
     }
 }

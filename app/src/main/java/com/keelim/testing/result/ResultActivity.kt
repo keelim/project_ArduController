@@ -16,11 +16,13 @@ import java.util.*
 
 class ResultActivity : AppCompatActivity() {
     lateinit var resultArray: ArrayList<Long>
+    lateinit var backPressCloseHandler: BackPressCloseHandler
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+        backPressCloseHandler = BackPressCloseHandler(this)
         result_progress.visibility = View.GONE
 
         AlertDialog.Builder(this) // Dialog 를 띄웁니다.
@@ -65,7 +67,7 @@ class ResultActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        BackPressCloseHandler(this).onBackPressed()
+        backPressCloseHandler.onBackPressed()
     }
 
 

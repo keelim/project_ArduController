@@ -3,7 +3,6 @@ package com.keelim.testing.test1
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -13,30 +12,60 @@ import com.keelim.testing.result.ResultActivity
 import com.keelim.testing.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_test1.*
 
+
 class Test1Activity : AppCompatActivity() {
     lateinit var test1Adapter: Test1Adapter
-    var result_array = ArrayList<Long>()
+    lateinit var sampleDialog: AlertDialog
+    lateinit var backPressCloseHandler: BackPressCloseHandler
+    var resultArray = ArrayList<Long>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
+        backPressCloseHandler = BackPressCloseHandler(this)
+        Toast.makeText(this, "샘플 버튼을 눌러 기능을 확인 하세요", Toast.LENGTH_SHORT).show()
 
-        Toast.makeText(this, "테스트1 액티비티 입니다.", Toast.LENGTH_SHORT).show()
         test1Adapter = Test1Adapter(arrayListOf())
-        test1_progress.visibility = View.GONE
+        sampleDialog = AlertDialog.Builder(this)
+            .setMessage("샘플 메시지를 눌려주셔서 감사합니다")
+            .setPositiveButton("YES"){_, _ ->
+                run {
+
+                }
+            }
+            .setNegativeButton("No"){
+                _, _ ->
+                run {
+                    Snackbar.make(test1_container, "샘플 다이알로그를 종료 합니다", Snackbar.LENGTH_SHORT).show()
+                    sampleDialog.dismiss()
+                }
+            }
+            .create()
+
 
 
         btn_result1.setOnClickListener {
-            switch()
+            Toast.makeText(this, "3초 뒤 테스트를 시작합니다.", Toast.LENGTH_SHORT).show()
+            Thread.sleep(3000)
             test1Start()
-            switch()
         }
+
+        btn_result2.setOnClickListener {
+            Snackbar.make(test1_container, "샘플 다이알로그를 실행 합니다.", Snackbar.LENGTH_SHORT).show()
+            sampleDialog.show()
+        }
+
+        btn_result3.setOnClickListener {
+            Snackbar.make(test1_container, "샘플 다이알로그를 종료 합니다", Snackbar.LENGTH_SHORT).show()
+            sampleDialog.dismiss()
+        }
+
     }
 
     private fun test1Start() {
         Snackbar.make(test1_container, "테스트1를 시작 합니다.", Snackbar.LENGTH_SHORT).show()
         measureTest1()
-
     }
+
 
     private fun measureTest1() {
         Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
@@ -46,6 +75,7 @@ class Test1Activity : AppCompatActivity() {
             Log.d("test1_start", "dialog start time: $start")
 
             val alert = AlertDialog.Builder(this)
+                .setMessage("테스트 진행 중 $x")
                 .create()
             alert.show()
 
@@ -60,7 +90,7 @@ class Test1Activity : AppCompatActivity() {
             val meanTime = time * 1000
             Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             Thread.sleep(100)
-            result_array.add(time);
+            resultArray.add(time);
         }
 
         Snackbar.make(test1_container, "테스트를 종료 합니다. ", Snackbar.LENGTH_SHORT).show()
@@ -72,22 +102,15 @@ class Test1Activity : AppCompatActivity() {
     private fun endTest() {
         Intent(this, ResultActivity::class.java).apply {
             putExtra("test1", "data1")
-            putExtra("result", result_array)
+            putExtra("result", resultArray)
             startActivity(this)
             finish()
         }
     }
 
     override fun onBackPressed() {
-        BackPressCloseHandler(this).onBackPressed()
+        backPressCloseHandler.onBackPressed()
     }
 
-    private fun switch(){
-        if (test1_progress.visibility == View.GONE) {
-            test1_progress.visibility = View.VISIBLE;
-        } else {
-            test1_progress.visibility = View.GONE;
-        }
-    }
 
 }

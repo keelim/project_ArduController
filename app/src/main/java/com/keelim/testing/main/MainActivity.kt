@@ -19,6 +19,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1
+    lateinit var backPressCloseHandler: BackPressCloseHandler
 
     private val permissionListener = object : PermissionListener {
         override fun onPermissionGranted() {
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        backPressCloseHandler = BackPressCloseHandler(this)
         Toast.makeText(this, "권한 확인 중입니다.", Toast.LENGTH_SHORT).show()
 
 
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        BackPressCloseHandler(this).onBackPressed()
+        backPressCloseHandler.onBackPressed()
     }
 
     private fun overayCheck(){
