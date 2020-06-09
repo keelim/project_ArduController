@@ -28,9 +28,14 @@ class SplashActivity : AppCompatActivity() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
             {
-                val intent = Intent(this@SplashActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+                Intent(this@SplashActivity, MainActivity::class.java).apply {
+                    startActivity(this)
+                    overridePendingTransition(
+                        R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_right
+                    );
+                    finish()
+                }
             }
             , 3000
         )

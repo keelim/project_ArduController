@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             .setDeniedMessage("권한을 승인하지 않으시면 어플리케이션이 종료됩니다.")
             .setPermissions(android.Manifest.permission.INTERNET)
             .setPermissions(android.Manifest.permission.SYSTEM_ALERT_WINDOW)
+            .setPermissions(android.Manifest.permission.FOREGROUND_SERVICE)
             .check()
 
         overayCheck()
@@ -79,6 +80,9 @@ class MainActivity : AppCompatActivity() {
         btn_test2.setOnClickListener {
             val test2 = Intent(this, Test2Activity::class.java)
             startActivity(test2)
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+
+
             finish()
 
         }

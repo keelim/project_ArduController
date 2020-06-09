@@ -104,6 +104,7 @@ class Test1Activity : AppCompatActivity() {
             putExtra("test1", "data1")
             putExtra("result", resultArray)
             startActivity(this)
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
             finish()
         }
     }

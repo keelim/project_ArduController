@@ -1,15 +1,14 @@
 package com.keelim.testing.test2
 
-import MyService
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.R
 import com.keelim.testing.result.ResultActivity
+import com.keelim.testing.service.AWindowService
 import com.keelim.testing.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_test2.*
 
@@ -29,23 +28,35 @@ class Test2Activity : AppCompatActivity() {
         btn_result2.setOnClickListener {
             test2Start()
         }
+
+        btn_test2_sample1.setOnClickListener {
+            Toast.makeText(this, "샘플 테스트를 시작합니다. adb shell 을 확인해주세요", Toast.LENGTH_SHORT).show()
+            startForegroundService(Intent(this, AWindowService::class.java))
+        }
+
+        btn_test2_sample2.setOnClickListener {
+            Toast.makeText(this, "샘플 테스트를 종료 합니다.  adb shell 을 확인해주세요", Toast.LENGTH_SHORT).show()
+            handleService()
+        }
+
+
     }
 
     private fun test2Start() {
         Snackbar.make(test2_container, "테스트2를 시작 합니다.", Snackbar.LENGTH_SHORT).show()
-        test2_progress.visibility = View.VISIBLE
         measureTest2()
-        test2_progress.visibility = View.GONE
     }
+
 
     private fun measureTest2() {
         for (x in 1..10000) {
             val start = System.currentTimeMillis()
             Log.d("test2_start", "dialog start time: $start")
 
-            startService(Intent(this@Test2Activity, MyService::class.java))
+
+            startForegroundService(Intent(this, AWindowService::class.java))
             Thread.sleep(1000)
-            stopService(Intent(this@Test2Activity, MyService::class.java))
+            handleService()
 
             val end = System.currentTimeMillis()
             Log.d("test1_start", "dialog end time: $end")
@@ -69,11 +80,17 @@ class Test2Activity : AppCompatActivity() {
             putExtra("test2", "data2")
             putExtra("result", result_array)
             startActivity(this)
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
             finish()
         }
     }
 
     override fun onBackPressed() {
         backPressCloseHandler.onBackPressed()
+    }
+
+    private fun handleService() {
+        val intent = Intent(this, AWindowService::class.java)
+        stopService(intent)
     }
 }
