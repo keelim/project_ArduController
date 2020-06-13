@@ -3,7 +3,6 @@ package com.keelim.hardware.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.keelim.hardware.MainActivity
 import com.keelim.hardware.R
 
 class SplashActivity : Activity() {
