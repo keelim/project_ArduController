@@ -1,4 +1,4 @@
-package com.keelim.arducon.utils
+package com.keelim.hardware.utils
 
 import android.app.Activity
 import android.widget.Toast

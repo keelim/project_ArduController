@@ -1,12 +1,13 @@
 package com.keelim.hardware.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.keelim.hardware.R
 
-class SplashActivity : Activity() {
+
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

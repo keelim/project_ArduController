@@ -1,15 +1,14 @@
 package com.keelim.hardware.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import com.felipecsl.asymmetricgridview.library.Utils
-import com.keelim.arducon.utils.BackPressCloseHandler
-import com.keelim.hardware.*
+import androidx.appcompat.app.AppCompatActivity
+import com.keelim.hardware.R
+import com.keelim.hardware.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
     //AutoCompleteTextView act;
 
     //Spinner spn;
@@ -18,7 +17,7 @@ class MainActivity : Activity() {
             , "Phone Buttons", "Speaker Test", "Wi-Fi Address", "Bluetooth Address", "Gravity sensor", "Magnetic Sensor", "Headphone",
             "Gyroscope", "GPS Location", "Battery Indicator", "Accelarometer")
 
-    lateinit var backPressCloseHandler: BackPressCloseHandler
+    private lateinit var backPressCloseHandler: BackPressCloseHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,84 +46,84 @@ class MainActivity : Activity() {
                 }
                 1 -> {
                     //not whole info
-                    Intent(applicationContext, SystemInfoActivity::class.java).apply {
+                    Intent(this, SystemInfoActivity::class.java).apply {
                         startActivity(this)
                     }
 
                 }
                 3 -> {
-                    Intent(applicationContext, ProximitySensorActivity::class.java)
+                    Intent(this, ProximitySensorActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 4 -> {
                     //not working
-                    Intent(applicationContext, FlashActivity::class.java)
-                            .apply { startActivity(this) }
+//                    Intent(this, FlashActivity::class.java)
+//                            .apply { startActivity(this) }
                 }
                 5 -> {
-                    Intent(applicationContext, TouchSensorActivity::class.java)
+                    Intent(this, TouchSensorActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 6 -> {
                     //display multiple lighting
-                    Intent(applicationContext, DisplayActivity::class.java)
+                    Intent(this, DisplayActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 7 -> {
                     //light sensor display of dac values
-                    Intent(applicationContext, LightSensorActivity::class.java)
+                    Intent(this, LightSensorActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 8 -> {
-                    Intent(applicationContext, PressureActivity::class.java)
+                    Intent(this, PressureActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 9 -> {
                     //wrong the volume buttons,home,menu etc has to be checked here
-                    Intent(applicationContext, ButtonTestingActivity::class.java)
+                    Intent(this, ButtonTestingActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 10 -> {
                     //wrong should have done that while taking calling position we here our voice
-                    Intent(applicationContext, MicTestingActivity::class.java)
+                    Intent(this, MicTestingActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 11 -> {
-                    Intent(applicationContext, WifiAddressActivity::class.java)
+                    Intent(this, WifiAddressActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 12 -> {
-                    Intent(applicationContext, BluetoothAddActivity::class.java)
+                    Intent(this, BluetoothAddActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 13 -> {
-                    Intent(applicationContext, GravitySensorActivity::class.java)
+                    Intent(this, GravitySensorActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 14 -> {
-                    Intent(applicationContext, MagneticSensorActivity::class.java)
+                    Intent(this, MagneticSensorActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 15 -> {
                     //not working
-                    Intent(applicationContext, HeadphoneActivity::class.java)
+                    Intent(this, HeadphoneActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 16 -> {
-                    Intent(applicationContext, GyroscopeActivity::class.java)
+                    Intent(this, GyroscopeActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 17 -> {
                     //test again
-                    Intent(applicationContext, GpslocActivity::class.java)
+                    Intent(this, GpslocActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 18 -> {
-                    Intent(applicationContext, BatteryindicatorActivity::class.java)
+                    Intent(this, BatteryindicatorActivity::class.java)
                             .apply { startActivity(this) }
                 }
                 19 -> {
-                    Intent(applicationContext, AccelarometerActivity::class.java)
+                    Intent(this, AccelarometerActivity::class.java)
                             .apply { startActivity(this) }
                 }
 

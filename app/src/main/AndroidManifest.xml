@@ -32,10 +32,10 @@
             android:name="com.keelim.hardware.activity.MainActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="com.keelim.hardware.AccelarometerActivity"
+            android:name="com.keelim.hardware.activity.AccelarometerActivity"
             android:label="@string/title_activity_accelarometer" />
         <activity
-            android:name="com.keelim.hardware.MagneticSensorActivity"
+            android:name="com.keelim.hardware.activity.MagneticSensorActivity"
             android:label="@string/title_activity_magneticsensor">
 
             <intent-filter>
@@ -46,62 +46,62 @@
         </activity>
 
         <activity
-            android:name="com.keelim.hardware.GyroscopeActivity"
+            android:name="com.keelim.hardware.activity.GyroscopeActivity"
             android:label="@string/title_activity_gyroscope" />
         <activity
-            android:name="com.keelim.hardware.BatteryindicatorActivity"
+            android:name="com.keelim.hardware.activity.BatteryindicatorActivity"
             android:label="@string/title_activity_batteryindicator" />
 
         <activity
-            android:name="com.keelim.hardware.GpslocActivity"
+            android:name="com.keelim.hardware.activity.GpslocActivity"
             android:label="@string/title_activity_gpsloc" />
         <activity
-            android:name="com.keelim.hardware.WifiAddressActivity"
+            android:name="com.keelim.hardware.activity.WifiAddressActivity"
             android:label="@string/title_activity_wifiaddress" />
         <activity
-            android:name="com.keelim.hardware.BluetoothAddActivity"
+            android:name="com.keelim.hardware.activity.BluetoothAddActivity"
             android:label="@string/title_activity_blueadd" />
         <activity
-            android:name="com.keelim.hardware.HeadphoneActivity"
+            android:name="com.keelim.hardware.activity.HeadphoneActivity"
             android:label="@string/title_activity_headphone" />
         <activity
-            android:name="com.keelim.hardware.VibrationActivity"
+            android:name="com.keelim.hardware.activity.VibrationActivity"
             android:label="@string/title_activity_vibration" />
         <activity
-            android:name="com.keelim.hardware.TeleActivity"
+            android:name="com.keelim.hardware.activity.TeleActivity"
             android:label="@string/title_activity_tele" />
         <activity
-            android:name="com.keelim.hardware.SystemInfoActivity"
+            android:name="com.keelim.hardware.activity.SystemInfoActivity"
             android:label="@string/title_activity_systeminfo" />
 
         <activity
-            android:name="com.keelim.hardware.TouchSensorActivity"
+            android:name="com.keelim.hardware.activity.TouchSensorActivity"
             android:label="@string/title_activity_touch_sensor" />
         <activity
-            android:name="com.keelim.hardware.DisplayActivity"
+            android:name="com.keelim.hardware.activity.DisplayActivity"
             android:label="@string/title_activity_button" />
         <activity
-            android:name="com.keelim.hardware.ProximitySensorActivity"
+            android:name="com.keelim.hardware.activity.ProximitySensorActivity"
             android:label="@string/title_activity_proximity_sensor" />
         <activity
-            android:name="com.keelim.hardware.LightSensorActivity"
+            android:name="com.keelim.hardware.activity.LightSensorActivity"
             android:label="@string/title_activity_lightsensor" />
         <activity
-            android:name="com.keelim.hardware.ButtonTestingActivity"
+            android:name="com.keelim.hardware.activity.ButtonTestingActivity"
             android:label="@string/title_activity_buttontesting" />
         <activity
-            android:name="com.keelim.hardware.MicTestingActivity"
+            android:name="com.keelim.hardware.activity.MicTestingActivity"
             android:label="@string/title_activity_mictesting" />
         <activity
-            android:name="com.keelim.hardware.PressureActivity"
+            android:name="com.keelim.hardware.activity.PressureActivity"
             android:label="@string/title_activity_pressure" />
         <activity
-            android:name="com.keelim.hardware.FlashActivity"
+            android:name="com.keelim.hardware.activity.FlashActivity"
             android:label="@string/title_activity_flash" />
 
 
         <activity
-            android:name="com.keelim.hardware.GravitySensorActivity"
+            android:name="com.keelim.hardware.activity.GravitySensorActivity"
             android:label="@string/title_activity_gravitysensor" />
     </application>
 
