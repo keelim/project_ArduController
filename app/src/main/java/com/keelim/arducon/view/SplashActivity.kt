@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -73,7 +74,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
                 .setPermissions(android.Manifest.permission.INTERNET,android.Manifest.permission.BLUETOOTH, android.Manifest.permission.BLUETOOTH_ADMIN)
                 .check()
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             Intent(this, MainActivity::class.java).apply {
                 startActivity(this)
             }
@@ -111,7 +112,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     }
 
     override fun onBackPressed() {
-        
+
     }
 }
 
