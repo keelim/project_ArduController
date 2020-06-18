@@ -2,8 +2,10 @@ package com.keelim.arducon
 
 import android.app.Application
 import com.keelim.arducon.error.ExceptionHandler
+import dagger.hilt.android.HiltAndroidApp
 
 
+@HiltAndroidApp
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
