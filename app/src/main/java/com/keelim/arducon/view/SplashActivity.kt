@@ -1,13 +1,11 @@
 package com.keelim.arducon.view
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -16,13 +14,12 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
-import com.gun0912.tedpermission.TedPermissionActivity
 import com.keelim.arducon.R
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.android.synthetic.main.activity_intro.*
-import java.util.ArrayList
+import java.util.*
 
 
 class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
@@ -63,7 +60,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
                         2
                 )
                 Snackbar.make(container_splash, "업데이트를 시작합니다.", Snackbar.LENGTH_SHORT).show()
-                popupSnackbarForCompleteUpdate()
+                popupSnackBarForCompleteUpdate()
             } else
                 Snackbar.make(container_splash, "최신 버전 어플리케이션 사용해주셔서 감사합니다.", Snackbar.LENGTH_SHORT).show()
         }
@@ -105,12 +102,16 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     }
 
 
-    private fun popupSnackbarForCompleteUpdate() {
+    private fun popupSnackBarForCompleteUpdate() {
         Snackbar.make(container_splash, "업데이트를 다운로드 하고 있습니다.", Snackbar.LENGTH_INDEFINITE).apply {
             setAction("RESTART") { appUpdateManager.completeUpdate() }
             setActionTextColor(resources.getColor(R.color.colorAccent, this@SplashActivity.theme))
             show()
         }
+    }
+
+    override fun onBackPressed() {
+        
     }
 }
 
