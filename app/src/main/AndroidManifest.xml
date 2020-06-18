@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.keelim.arducon">
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="remove" />
+
 
     <application
         android:name=".MyApplication"
@@ -14,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".view.SettingActivity" />
         <activity android:name=".view.SplashActivity">
             <intent-filter>
@@ -39,7 +43,7 @@
             android:value="true" />
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="da093908abc28a1043cbc271323c4e202e13ec65" />
+            android:value="@string/api" />
     </application>
 
 </manifest>
