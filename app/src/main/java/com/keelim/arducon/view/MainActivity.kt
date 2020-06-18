@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.R
 import com.keelim.arducon.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
@@ -35,12 +34,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var mCharDelimiter: String
     private lateinit var mWorkerThread: Thread
     private lateinit var readBuffer: ByteArray
+    private lateinit var backPressCloseHandler: BackPressCloseHandler
     private var readBufferPosition = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        backPressCloseHandler = BackPressCloseHandler(this)
 
-        MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID))
+        MobileAds.initialize(this) {
+            Toast.makeText(this, "complete loading ads", Toast.LENGTH_SHORT).show()
+        }
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
 
@@ -240,6 +244,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         if (drawerlayout.isDrawerOpen(GravityCompat.START)) {
             drawerlayout.closeDrawer(GravityCompat.START)
         } else
-            BackPressCloseHandler(this).onBackPressed()
+            backPressCloseHandler.onBackPressed()
     }
 }
