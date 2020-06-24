@@ -1,15 +1,15 @@
 package com.keelim.hardware.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.hardware.R
 import com.keelim.hardware.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     //AutoCompleteTextView act;
+
 
     //Spinner spn;
     var items = arrayOf("Vibration Test", "Check Version Info", "SIM Card", "Proximity Sensor",
@@ -25,8 +25,21 @@ class MainActivity : AppCompatActivity() {
 
         backPressCloseHandler = BackPressCloseHandler(this)
 
-        val adapt = ArrayAdapter(this, R.layout.extraa, items) //리싸이클러로 변경
-        listView1.adapter = adapt
+        recycler1.layoutManager = LinearLayoutManager(this)
+        val arrayList = ArrayList<String>()
+        for(a in items ){
+            arrayList.add(a)
+        }
+
+
+        val adapter = SimpleTextAdapter(this, arrayList)
+        recycler1.adapter = adapter
+
+
+
+
+//        val adapt = ArrayAdapter(this, R.layout.extraa, items) //리싸이클러로 변경
+/*        listView1.adapter = adapt
 
 
         listView1.setOnItemClickListener { _, _, position, _ ->
@@ -127,12 +140,13 @@ class MainActivity : AppCompatActivity() {
                             .apply { startActivity(this) }
                 }
 
-            }
-        }
+            }*/
     }
+
 
     override fun onBackPressed() {
         backPressCloseHandler.onBackPressed()
     }
+
 
 }

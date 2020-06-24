@@ -47,7 +47,7 @@ class ProximitySensorActivity : AppCompatActivity(), SensorEventListener {
         // The Proximity sensor returns a single value either 0 or 5(also 1 depends on Sensor manufacturer).
         // 0 for near and 5 for far 
         if (event.sensor.type == Sensor.TYPE_PROXIMITY) {
-            if (event.values[0].equals(0)) {
+            if (event.values[0].equals(0.0f)) {
                 tVProximity!!.text = "You are Near: " + event.values[0]
             } else {
                 tVProximity!!.text = "You are Far: " + event.values[0]

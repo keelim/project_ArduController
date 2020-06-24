@@ -42,6 +42,5 @@ class ButtonTestingActivity : AppCompatActivity(), OnTouchListener {
         return false
     }
 
-    companion object {
-    }
+    companion object
 }

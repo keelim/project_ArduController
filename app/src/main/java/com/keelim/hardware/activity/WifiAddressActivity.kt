@@ -18,7 +18,8 @@ class WifiAddressActivity : AppCompatActivity() {
         setContentView(R.layout.activity_wifiaddress)
         t = findViewById(R.id.textView32)
         v = findViewById(R.id.textView30)
-        val wifiManager = getSystemService(Context.WIFI_SERVICE) as WifiManager
+        val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+
         val wInfo = wifiManager.connectionInfo
         var macAddress = wInfo.macAddress
         val n = WifiInfo.LINK_SPEED_UNITS
@@ -26,8 +27,8 @@ class WifiAddressActivity : AppCompatActivity() {
         if (macAddress == null) {
             macAddress = "Device don't have mac address or wi-fi is disabled"
         }
-        t.setText("mac address $macAddress")
-        v.setText("ssid $y")
+        t!!.text = "mac address $macAddress"
+        v!!.text = "ssid $y"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -11,7 +11,7 @@ import com.keelim.hardware.R
 class BluetoothAddActivity : AppCompatActivity() {
     private var mBluetoothAdapter: BluetoothAdapter? = null
     lateinit var r: TextView
-    lateinit var t: TextView
+    private lateinit var t: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

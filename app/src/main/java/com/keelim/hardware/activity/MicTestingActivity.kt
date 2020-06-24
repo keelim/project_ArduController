@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
@@ -26,7 +25,9 @@ class MicTestingActivity : AppCompatActivity(), OnInitListener {
         // The button is disabled in the layout.
         // It will be enabled upon initialization of the TTS engine.
         mAgainButton = findViewById(R.id.again_button)
-        mAgainButton.setOnClickListener(View.OnClickListener { v: View? -> sayHello() })
+        mAgainButton!!.setOnClickListener {
+            sayHello()
+        }
     }
 
     public override fun onDestroy() {

@@ -2,12 +2,11 @@ package com.keelim.hardware.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.keelim.hardware.R
 
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -15,6 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
         val timer = Thread(Runnable {
             try {
+
                 Thread.sleep(5000)
             } catch (e: InterruptedException) {
                 e.printStackTrace()

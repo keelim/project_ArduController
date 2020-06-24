@@ -1,4 +1,4 @@
-//package com.keelim.hardware.activity
+package com.keelim.hardware.activity//package com.keelim.hardware.activity
 //
 //import android.app.AlertDialog
 //import android.content.DialogInterface
