@@ -3,13 +3,13 @@ package com.keelim.hardware.activity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.hardware.R
+import com.keelim.hardware.model.SimpleTextAdapter
 import com.keelim.hardware.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : BaseActivity() {
     //AutoCompleteTextView act;
-
 
     //Spinner spn;
     var items = arrayOf("Vibration Test", "Check Version Info", "SIM Card", "Proximity Sensor",

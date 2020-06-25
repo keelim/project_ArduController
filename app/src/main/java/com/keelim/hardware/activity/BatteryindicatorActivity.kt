@@ -5,12 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_batteryindicator.*
 
-class BatteryindicatorActivity : AppCompatActivity() {
+class BatteryindicatorActivity : AppCompatActivity(R.layout.activity_batteryindicator) {
     //Create Broadcast Receiver Object along with class definition
     private val mBatInfoReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         //When Event is published, onReceive method is called
@@ -18,22 +17,17 @@ class BatteryindicatorActivity : AppCompatActivity() {
             //Get Battery %
             val level = i.getIntExtra("level", 0)
             //Find the progressbar creating in main.xml
-            val pb = findViewById<ProgressBar>(R.id.progressbar)
             //Set progress level with battery % value
-            pb.progress = level
+            progressbar.progress = level
             //Find textview control created in main.xml
-            val tv = findViewById<TextView>(R.id.textfield)
             //Set TextView with text
-            tv.text = "Battery Level: $level%"
+            textfield.text = "Battery Level: $level%"
         }
     }
 
     /** Called when the activity is first created.  */
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Set layout we created
-        setContentView(R.layout.activity_batteryindicator)
-        registerReceiver(mBatInfoReceiver, IntentFilter(
-                Intent.ACTION_BATTERY_CHANGED))
+        registerReceiver(mBatInfoReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
     }
 }

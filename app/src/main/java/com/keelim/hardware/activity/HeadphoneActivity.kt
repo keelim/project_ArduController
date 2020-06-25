@@ -7,17 +7,17 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_headphone.*
 
 class HeadphoneActivity : AppCompatActivity() {
     private var myReceiver: MusicIntentReceiver? = null
-    var s: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_headphone)
-        s = findViewById(R.id.textView14)
+
         myReceiver = MusicIntentReceiver()
     }
 
@@ -31,9 +31,9 @@ class HeadphoneActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == Intent.ACTION_HEADSET_PLUG) {
                 when (intent.getIntExtra("state", -1)) {
-                    0 -> s!!.text = "Headset is unplugged"
-                    1 -> s!!.text = "Headset is plugged"
-                    else -> s!!.text = "Plugin the headset"
+                    0 -> head_tv1!!.text = "Headset is unplugged"
+                    1 -> head_tv1!!.text = "Headset is plugged"
+                    else -> head_tv1!!.text = "Plugin the headset"
                 }
             }
         }
@@ -45,15 +45,11 @@ class HeadphoneActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.headphone, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
         return if (id == R.id.action_settings) {
             true

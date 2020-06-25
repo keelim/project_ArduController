@@ -3,17 +3,16 @@ package com.keelim.hardware.activity
 import android.graphics.Color
 import android.os.Bundle
 import android.view.MotionEvent
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_display.*
 
 class DisplayActivity : AppCompatActivity() {
     lateinit var a: IntArray
-    var r: RelativeLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display)
-        r = findViewById(R.id.rr)
+
         a = IntArray(10)
         a[0] = Color.parseColor("#f4c2c6")
         a[1] = Color.parseColor("#c7afce")
@@ -29,7 +28,7 @@ class DisplayActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val x = (Math.random() * 10).toInt()
-        r!!.setBackgroundColor(a[x])
+        display_layout!!.setBackgroundColor(a[x])
         return false
     }
 }

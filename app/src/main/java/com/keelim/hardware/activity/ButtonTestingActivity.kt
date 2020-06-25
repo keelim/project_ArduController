@@ -38,9 +38,8 @@ class ButtonTestingActivity : AppCompatActivity(), OnTouchListener {
     }
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
-        // TODO Auto-generated method stub
+
         return false
     }
 
-    companion object
 }

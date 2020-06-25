@@ -6,23 +6,22 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_proximity_sensor.*
 
 class ProximitySensorActivity : AppCompatActivity(), SensorEventListener {
     private var sensorManager: SensorManager? = null
-    private var tVProximity: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_proximity_sensor)
-        tVProximity = findViewById(R.id.tVProximity)
         //create instance of sensor manager and get system service to interact with Sensor
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val proximitySensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_PROXIMITY)
         if (proximitySensor == null) {
-            Toast.makeText(this@ProximitySensorActivity, "No Proximity Sensor Found! ", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "No Proximity Sensor Found! ", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -42,15 +41,13 @@ class ProximitySensorActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
 
-    // called when sensor value have changed
+
     override fun onSensorChanged(event: SensorEvent) {
-        // The Proximity sensor returns a single value either 0 or 5(also 1 depends on Sensor manufacturer).
-        // 0 for near and 5 for far 
         if (event.sensor.type == Sensor.TYPE_PROXIMITY) {
             if (event.values[0].equals(0.0f)) {
-                tVProximity!!.text = "You are Near: " + event.values[0]
+                prox_tv1!!.text = "You are Near: ${event.values[0]}"
             } else {
-                tVProximity!!.text = "You are Far: " + event.values[0]
+                prox_tv1!!.text = "You are Far: ${event.values[0]}"
             }
         }
     }

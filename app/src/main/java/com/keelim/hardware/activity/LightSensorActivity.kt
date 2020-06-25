@@ -8,33 +8,27 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_lightsensor.*
 
 class LightSensorActivity : AppCompatActivity(), SensorEventListener {
-    private var tvx: TextView? = null
-    private var sensmgr: SensorManager? = null
+        private var sensmgr: SensorManager? = null
     private var accsensor: Sensor? = null
     private lateinit var sensorvalues: FloatArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lightsensor)
-        tvx = findViewById(R.id.textView51)
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_LIGHT)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.lightsensor, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
         return if (id == R.id.action_settings) {
             true
@@ -44,7 +38,7 @@ class LightSensorActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent) {
         sensorvalues = event.values
         val x = sensorvalues[0]
-        tvx!!.text = "DAC $x luxes"
+        light_tv1!!.text = "DAC $x luxes"
     }
 
     override fun onResume() {
@@ -58,6 +52,6 @@ class LightSensorActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
-        // TODO Auto-generated method stub
+
     }
 }

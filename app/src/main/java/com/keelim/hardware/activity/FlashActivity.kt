@@ -130,7 +130,7 @@ package com.keelim.hardware.activity//package com.keelim.hardware.activity
 //        } else {
 //            MediaPlayer.create(this@FlashActivity, R.raw.light_switch_on)
 //        }
-//        // TODO Auto-generated method stub
+//
 //        mp.setOnCompletionListener(OnCompletionListener { obj: MediaPlayer -> obj.release() })
 //        mp.start()
 //    }

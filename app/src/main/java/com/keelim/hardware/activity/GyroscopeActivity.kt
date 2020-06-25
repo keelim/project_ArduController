@@ -8,37 +8,29 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_gyroscope.*
 
 class GyroscopeActivity : AppCompatActivity(), SensorEventListener {
-    private var tvx: TextView? = null
-    private var tvy: TextView? = null
-    private var tvz: TextView? = null
     private var sensmgr: SensorManager? = null
     private var gyrosensor: Sensor? = null
     private lateinit var sensorvalues: FloatArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gyroscope)
-        tvx = findViewById(R.id.textView8)
-        tvy = findViewById(R.id.textView9)
-        tvz = findViewById(R.id.textView10)
+
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         gyrosensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.gyroscope, menu)
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
         return if (id == R.id.action_settings) {
             true
@@ -50,9 +42,9 @@ class GyroscopeActivity : AppCompatActivity(), SensorEventListener {
         val x = sensorvalues[0]
         val y = sensorvalues[1]
         val z = sensorvalues[2]
-        tvx!!.text = "x $x rad/sec"
-        tvy!!.text = "y $y rad/sec"
-        tvz!!.text = "z $z rad/sec"
+        gyr_tv1!!.text = "x $x rad/sec"
+        gyr_tv2!!.text = "y $y rad/sec"
+        gyr_tv3!!.text = "z $z rad/sec"
     }
 
     override fun onResume() {
@@ -66,6 +58,6 @@ class GyroscopeActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
-        // TODO Auto-generated method stub
+        
     }
 }

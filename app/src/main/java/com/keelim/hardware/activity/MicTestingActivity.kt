@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
+import kotlinx.android.synthetic.main.activity_mictesting.*
 import java.util.*
 
 class MicTestingActivity : AppCompatActivity(), OnInitListener {
     private var mTts: TextToSpeech? = null
-    private var mAgainButton: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mictesting)
-
         // Initialize text-to-speech. This is an asynchronous operation.
         // The OnInitListener (second argument) is called after initialization completes.
         mTts = TextToSpeech(this,
@@ -24,8 +23,8 @@ class MicTestingActivity : AppCompatActivity(), OnInitListener {
 
         // The button is disabled in the layout.
         // It will be enabled upon initialization of the TTS engine.
-        mAgainButton = findViewById(R.id.again_button)
-        mAgainButton!!.setOnClickListener {
+
+        mic_bt1!!.setOnClickListener {
             sayHello()
         }
     }
@@ -59,7 +58,7 @@ class MicTestingActivity : AppCompatActivity(), OnInitListener {
 
                 // The TTS engine has been successfully initialized.
                 // Allow the user to press the button for the app to speak again.
-                mAgainButton!!.isEnabled = true
+                mic_bt1!!.isEnabled = true
                 // Greet the user.
                 sayHello()
             }
