@@ -1,4 +1,4 @@
-package com.keelim.hardware.activity
+package com.keelim.hardware.activity.customs
 
 import android.content.Context
 import android.graphics.Canvas
@@ -25,7 +25,7 @@ class SingleTouchEventView(context: Context?, attrs: AttributeSet?) : View(conte
             MotionEvent.ACTION_DOWN -> {
                 path.moveTo(eventX, eventY)
                 mVelocityTracker = VelocityTracker.obtain()
-//                mVelocityTracker.addMovement(event)
+                mVelocityTracker!!.addMovement(event)
                 return true
             }
             MotionEvent.ACTION_MOVE -> path.lineTo(eventX, eventY)
