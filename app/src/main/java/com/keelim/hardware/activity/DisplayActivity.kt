@@ -8,7 +8,7 @@ import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_display.*
 
 class DisplayActivity : AppCompatActivity() {
-    lateinit var a: IntArray
+    private lateinit var a: IntArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display)

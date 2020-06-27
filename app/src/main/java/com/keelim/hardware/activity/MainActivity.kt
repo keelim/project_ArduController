@@ -10,10 +10,10 @@ import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    var items = arrayOf("Vibration Test", "Check Version Info", "SIM Card", "Proximity Sensor",
+    private var items = arrayOf("Vibration Test", "Check Version Info", "SIM Card", "Proximity Sensor",
             "Flash Light", "Touch Sensor", "Display", "Light Sensor", "Pressure Sensor"
             , "Phone Buttons", "Speaker Test", "Wi-Fi Address", "Bluetooth Address", "Gravity sensor", "Magnetic Sensor", "Headphone",
-            "Gyroscope", "GPS Location", "Battery Indicator", "Accelarometer")
+            "Gyroscope", "GPS Location", "Battery Indicator", "Accelarometer", "LAB Activity")
 
     private lateinit var backPressCloseHandler: BackPressCloseHandler
 

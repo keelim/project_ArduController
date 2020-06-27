@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_systeminfo.*
 
-class SystemInfoActivity : AppCompatActivity() { //todo 여기부터 수정을 할 것
+class SystemInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_systeminfo)

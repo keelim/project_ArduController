@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +15,7 @@ import com.keelim.hardware.activity.BatteryindicatorActivity;
 import com.keelim.hardware.activity.BluetoothAddActivity;
 import com.keelim.hardware.activity.ButtonTestingActivity;
 import com.keelim.hardware.activity.DisplayActivity;
+import com.keelim.hardware.activity.FlashActivity;
 import com.keelim.hardware.activity.GpslocActivity;
 import com.keelim.hardware.activity.GravitySensorActivity;
 import com.keelim.hardware.activity.GyroscopeActivity;
@@ -44,10 +44,11 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         final TextView textView1;
 
-        ViewHolder(View itemView) {
-            super(itemView);
+        ViewHolder(View view) {
+            super(view);
 
-            itemView.setOnClickListener(v -> {
+
+            view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION) {
                     mData.set(pos, "item clicked. pos=" + pos);
@@ -73,9 +74,8 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
 
                         case 4:
                             //not working
-//                    Intent  new Intent(context, FlashActivity::class.java)
-//                            ; mcontext.startActivity(intent) }
-                            Toast.makeText(context, "testing ...", Toast.LENGTH_SHORT).show();
+                            mContext.startActivity(new Intent(context, FlashActivity.class));
+                            break;
 
                         case 5:
                             mContext.startActivity(new Intent(context, TouchSensorActivity.class));
@@ -156,14 +156,13 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
                         case 19:
                             mContext.startActivity(new Intent(context, AccelarometerActivity.class));
                             break;
-
                     }
                     notifyItemChanged(pos);
                 }
             });
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            textView1 = itemView.findViewById(R.id.text1);
+            textView1 = view.findViewById(R.id.text1);
         }
     }
 
