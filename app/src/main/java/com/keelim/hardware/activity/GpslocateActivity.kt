@@ -163,13 +163,11 @@ class GpslocateActivity(private val mContext: Context) : Service(), LocationList
     companion object {
         // The minimum distance to change Updates in meters
         private const val MIN_DISTANCE_CHANGE_FOR_UPDATES: Long = 10 // 10 meters
-
         // The minimum time between updates in milliseconds
-        private const val MIN_TIME_BW_UPDATES = 1000 * 60 // 1 minute
-                .toLong()
+        private const val MIN_TIME_BW_UPDATES = 1000 * 60.toLong()
     }
 
     init {
-        getLocation()
+
     }
 }

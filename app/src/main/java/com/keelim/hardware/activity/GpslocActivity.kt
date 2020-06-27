@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_gpsloc.*
 
-class GpslocActivity : AppCompatActivity() {
+class GpslocActivity : AppCompatActivity(R.layout.activity_gpsloc) { // 무슨 관계인지 확인 해보기
     private var latitude = 0.0
     private var longitude = 0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gpsloc)
+        
         val gps = GpslocateActivity(this)
         latitude = gps.getLatitude()
         longitude = gps.getLongitude()

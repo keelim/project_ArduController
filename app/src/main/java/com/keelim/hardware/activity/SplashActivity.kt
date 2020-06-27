@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.keelim.hardware.R
+import com.keelim.hardware.activity.base.BaseActivity
 
 
 class SplashActivity : BaseActivity() {

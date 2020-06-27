@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -59,7 +60,7 @@
             android:name=".activity.GpslocActivity"
             android:label="@string/title_activity_gpsloc" />
         <activity
-            android:name=".activity.WifiAddressActivity"
+            android:name=".activity.WifiActivity"
             android:label="@string/title_activity_wifiaddress" />
         <activity
             android:name=".activity.BluetoothAddActivity"
@@ -89,10 +90,10 @@
             android:name=".activity.LightSensorActivity"
             android:label="@string/title_activity_lightsensor" />
         <activity
-            android:name=".activity.ButtonTestingActivity"
+            android:name=".activity.ButtonTestActivity"
             android:label="@string/title_activity_buttontesting" />
         <activity
-            android:name=".activity.MicTestingActivity"
+            android:name=".activity.MicTestActivity"
             android:label="@string/title_activity_mictesting" />
         <activity
             android:name=".activity.PressureActivity"

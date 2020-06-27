@@ -13,7 +13,7 @@ import com.keelim.hardware.R;
 import com.keelim.hardware.activity.AccelarometerActivity;
 import com.keelim.hardware.activity.BatteryindicatorActivity;
 import com.keelim.hardware.activity.BluetoothAddActivity;
-import com.keelim.hardware.activity.ButtonTestingActivity;
+import com.keelim.hardware.activity.ButtonTestActivity;
 import com.keelim.hardware.activity.DisplayActivity;
 import com.keelim.hardware.activity.FlashActivity;
 import com.keelim.hardware.activity.GpslocActivity;
@@ -22,14 +22,14 @@ import com.keelim.hardware.activity.GyroscopeActivity;
 import com.keelim.hardware.activity.HeadphoneActivity;
 import com.keelim.hardware.activity.LightSensorActivity;
 import com.keelim.hardware.activity.MagneticSensorActivity;
-import com.keelim.hardware.activity.MicTestingActivity;
+import com.keelim.hardware.activity.MicTestActivity;
 import com.keelim.hardware.activity.PressureActivity;
 import com.keelim.hardware.activity.ProximitySensorActivity;
 import com.keelim.hardware.activity.SystemInfoActivity;
 import com.keelim.hardware.activity.TeleActivity;
 import com.keelim.hardware.activity.TouchSensorActivity;
 import com.keelim.hardware.activity.VibrationActivity;
-import com.keelim.hardware.activity.WifiAddressActivity;
+import com.keelim.hardware.activity.WifiActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -99,18 +99,18 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
 
 
                         case 9:
-                            mContext.startActivity(new Intent(context, ButtonTestingActivity.class));
+                            mContext.startActivity(new Intent(context, ButtonTestActivity.class));
                             break;
 
 
                         case 10:
                             //wrong should have done that while taking calling position we here our voice
-                            mContext.startActivity(new Intent(context, MicTestingActivity.class));
+                            mContext.startActivity(new Intent(context, MicTestActivity.class));
                             break;
 
 
                         case 11:
-                            mContext.startActivity(new Intent(context, WifiAddressActivity.class));
+                            mContext.startActivity(new Intent(context, WifiActivity.class));
                             break;
 
 

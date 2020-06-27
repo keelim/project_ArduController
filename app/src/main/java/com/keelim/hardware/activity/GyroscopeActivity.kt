@@ -6,8 +6,6 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_gyroscope.*
@@ -24,18 +22,6 @@ class GyroscopeActivity : AppCompatActivity(), SensorEventListener {
         gyrosensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.gyroscope, menu)
-        return true
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
 
     override fun onSensorChanged(event: SensorEvent) {
         sensorvalues = event.values

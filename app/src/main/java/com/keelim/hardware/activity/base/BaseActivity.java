@@ -1,4 +1,4 @@
-package com.keelim.hardware.activity;
+package com.keelim.hardware.activity.base;
 
 import androidx.appcompat.app.AppCompatActivity;
 

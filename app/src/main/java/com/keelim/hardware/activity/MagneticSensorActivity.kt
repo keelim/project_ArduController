@@ -6,35 +6,21 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_magneticsensor.*
 
-class MagneticSensorActivity : AppCompatActivity(), SensorEventListener {
-
-    private var sensmgr: SensorManager? = null
-    private var magsensor: Sensor? = null
+class MagneticSensorActivity : AppCompatActivity(R.layout.activity_magneticsensor),
+    SensorEventListener {
+    private lateinit var sensmgr: SensorManager
+    private lateinit var magsensor: Sensor
     private lateinit var sensorvalues: FloatArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_magneticsensor)
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        magsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+        magsensor = sensmgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.magneticsensor, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
 
     override fun onSensorChanged(event: SensorEvent) {
         sensorvalues = event.values
@@ -47,12 +33,12 @@ class MagneticSensorActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onResume() {
-        sensmgr!!.registerListener(this, magsensor, SensorManager.SENSOR_DELAY_NORMAL)
+        sensmgr.registerListener(this, magsensor, SensorManager.SENSOR_DELAY_NORMAL)
         super.onResume()
     }
 
     override fun onPause() {
-        sensmgr!!.unregisterListener(this)
+        sensmgr.unregisterListener(this)
         super.onPause()
     }
 

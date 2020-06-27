@@ -3,6 +3,7 @@ package com.keelim.hardware.activity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.hardware.R
+import com.keelim.hardware.activity.base.BaseActivity
 import com.keelim.hardware.model.SimpleTextAdapter
 import com.keelim.hardware.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +21,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         backPressCloseHandler = BackPressCloseHandler(this)
 
         recycler1.layoutManager = LinearLayoutManager(this)
@@ -37,6 +37,4 @@ class MainActivity : BaseActivity() {
     override fun onBackPressed() {
         backPressCloseHandler.onBackPressed()
     }
-
-
 }

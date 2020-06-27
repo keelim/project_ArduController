@@ -1,7 +1,10 @@
 package com.keelim.hardware.activity
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.telephony.TelephonyManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_systeminfo.*
@@ -10,9 +13,7 @@ class SystemInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_systeminfo)
-    }
 
-    override fun onStart() {
         val release = Build.VERSION.RELEASE
         val sdkVersion = Build.VERSION.SDK_INT
         val q = Build.VERSION.CODENAME
@@ -34,13 +35,13 @@ class SystemInfoActivity : AppCompatActivity() {
         info_tv7!!.text = "Name of the ternel $z"
         info_tv8!!.text = "Manufacturer of the product$c"
         info_tv9!!.text = "Hardware serial number $b"
+    }
 
+    override fun onStart() {
         super.onStart()
-
-        /* final TelephonyManager tm =(TelephonyManager)getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
-
-			  String deviceid = tm.getDeviceId();
-			   int phone = tm.getPhoneType();
-Toast.makeText(getthis(),deviceid +"and"+ phone,Toast.LENGTH_SHORT).show();*/
+        val tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        var deviceid = tm!!.deviceId
+        var phone = tm.phoneType
+        Toast.makeText(this, deviceid + "and" + phone, Toast.LENGTH_SHORT).show();
     }
 }

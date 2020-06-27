@@ -29,12 +29,7 @@ class AccelarometerActivity : AppCompatActivity(R.layout.activity_accelarometer)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
+
 
 
     override fun onSensorChanged(event: SensorEvent) {

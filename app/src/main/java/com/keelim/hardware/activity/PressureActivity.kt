@@ -6,8 +6,6 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_pressure.*
@@ -24,18 +22,6 @@ class PressureActivity : AppCompatActivity(), SensorEventListener {
 
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_PRESSURE)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.pressure, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
     }
 
     override fun onSensorChanged(event: SensorEvent) {
