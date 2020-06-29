@@ -1,5 +1,6 @@
 package com.keelim.hardware.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
@@ -9,7 +10,8 @@ import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_wifiaddress.*
 
 class WifiActivity : AppCompatActivity(R.layout.activity_wifiaddress) {
-    
+
+    @SuppressLint("HardwareIds")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
