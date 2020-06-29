@@ -13,7 +13,7 @@ import com.keelim.hardware.R;
 import com.keelim.hardware.activity.AccelarometerActivity;
 import com.keelim.hardware.activity.BatteryindicatorActivity;
 import com.keelim.hardware.activity.BluetoothAddActivity;
-import com.keelim.hardware.activity.ButtonTestActivity;
+import com.keelim.hardware.activity.SoundButtonActivity;
 import com.keelim.hardware.activity.DisplayActivity;
 import com.keelim.hardware.activity.FlashActivity;
 import com.keelim.hardware.activity.GpslocActivity;
@@ -22,7 +22,7 @@ import com.keelim.hardware.activity.GyroscopeActivity;
 import com.keelim.hardware.activity.HeadphoneActivity;
 import com.keelim.hardware.activity.LightSensorActivity;
 import com.keelim.hardware.activity.MagneticSensorActivity;
-import com.keelim.hardware.activity.MicTestActivity;
+import com.keelim.hardware.activity.MicActivity;
 import com.keelim.hardware.activity.PressureActivity;
 import com.keelim.hardware.activity.ProximitySensorActivity;
 import com.keelim.hardware.activity.SystemInfoActivity;
@@ -99,13 +99,13 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Vi
 
 
                         case 9:
-                            mContext.startActivity(new Intent(context, ButtonTestActivity.class));
+                            mContext.startActivity(new Intent(context, SoundButtonActivity.class));
                             break;
 
 
                         case 10:
                             //wrong should have done that while taking calling position we here our voice
-                            mContext.startActivity(new Intent(context, MicTestActivity.class));
+                            mContext.startActivity(new Intent(context, MicActivity.class));
                             break;
 
 

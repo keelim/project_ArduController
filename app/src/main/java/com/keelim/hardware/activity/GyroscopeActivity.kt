@@ -10,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_gyroscope.*
 
-class GyroscopeActivity : AppCompatActivity(), SensorEventListener {
+class GyroscopeActivity : AppCompatActivity(R.layout.activity_gyroscope), SensorEventListener {
     private var sensmgr: SensorManager? = null
     private var gyrosensor: Sensor? = null
     private lateinit var sensorvalues: FloatArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gyroscope)
 
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         gyrosensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)

@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_systeminfo.*
 
-class SystemInfoActivity : AppCompatActivity() {
+class SystemInfoActivity : AppCompatActivity(R.layout.activity_systeminfo) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_systeminfo)
+
 
         val release = Build.VERSION.RELEASE
         val sdkVersion = Build.VERSION.SDK_INT

@@ -6,8 +6,6 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
@@ -23,14 +21,6 @@ class AccelarometerActivity : AppCompatActivity(R.layout.activity_accelarometer)
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.accelarometer, menu)
-        return true
-    }
-
-
-
 
     override fun onSensorChanged(event: SensorEvent) {
         sensorValue = event.values

@@ -90,10 +90,10 @@
             android:name=".activity.LightSensorActivity"
             android:label="@string/title_activity_lightsensor" />
         <activity
-            android:name=".activity.ButtonTestActivity"
+            android:name=".activity.SoundButtonActivity"
             android:label="@string/title_activity_buttontesting" />
         <activity
-            android:name=".activity.MicTestActivity"
+            android:name=".activity.MicActivity"
             android:label="@string/title_activity_mictesting" />
         <activity
             android:name=".activity.PressureActivity"

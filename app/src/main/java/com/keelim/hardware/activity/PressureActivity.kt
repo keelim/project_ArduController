@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_pressure.*
 
-class PressureActivity : AppCompatActivity(), SensorEventListener {
+class PressureActivity : AppCompatActivity(R.layout.activity_pressure), SensorEventListener {
 
     private var sensmgr: SensorManager? = null
     private var accsensor: Sensor? = null
@@ -18,7 +18,6 @@ class PressureActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pressure)
 
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_PRESSURE)

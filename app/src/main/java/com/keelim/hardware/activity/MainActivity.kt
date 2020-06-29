@@ -21,6 +21,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         backPressCloseHandler = BackPressCloseHandler(this)
 
         recycler1.layoutManager = LinearLayoutManager(this)

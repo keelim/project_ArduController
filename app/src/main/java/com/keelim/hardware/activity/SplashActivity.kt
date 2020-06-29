@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.keelim.hardware.BuildConfig
 import com.keelim.hardware.R
 import com.keelim.hardware.activity.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 
 
 class SplashActivity : BaseActivity() {
@@ -19,8 +21,10 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
         FirebaseAnalytics.getInstance(this)
 
+        splash_tv2.text = BuildConfig.VERSION_NAME
         Handler(Looper.getMainLooper()).postDelayed(runnable, 500)
     }
 

@@ -5,8 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 
-class ButtonTestActivity : AppCompatActivity(R.layout.activity_buttontesting) {
-    // TODO 인터페이스를 추가를 할 것
+class SoundButtonActivity : AppCompatActivity(R.layout.activity_buttontesting) {
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         val action = event.action
@@ -17,6 +16,7 @@ class ButtonTestActivity : AppCompatActivity(R.layout.activity_buttontesting) {
                 }
                 true
             }
+
             KeyEvent.KEYCODE_VOLUME_DOWN -> {
                 if (action == KeyEvent.ACTION_DOWN) {
                     Toast.makeText(this, "볼륨 다운 버튼이 정상 작동 합니다.", Toast.LENGTH_SHORT).show()

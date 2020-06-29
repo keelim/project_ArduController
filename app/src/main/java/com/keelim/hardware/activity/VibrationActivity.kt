@@ -10,12 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_vibration.*
 
-class VibrationActivity : AppCompatActivity() {
-
+class VibrationActivity : AppCompatActivity(R.layout.activity_vibration) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vibration)
 
         val v1 = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 

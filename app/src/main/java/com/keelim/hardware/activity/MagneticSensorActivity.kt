@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_magneticsensor.*
 
-class MagneticSensorActivity : AppCompatActivity(R.layout.activity_magneticsensor),
-    SensorEventListener {
+class MagneticSensorActivity : AppCompatActivity(R.layout.activity_magneticsensor), SensorEventListener {
     private lateinit var sensmgr: SensorManager
     private lateinit var magsensor: Sensor
     private lateinit var sensorvalues: FloatArray
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager

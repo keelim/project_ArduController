@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_wifiaddress.*
 
-class WifiActivity : AppCompatActivity() {
-
+class WifiActivity : AppCompatActivity(R.layout.activity_wifiaddress) {
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wifiaddress)
+
         val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 
         val wInfo = wifiManager.connectionInfo

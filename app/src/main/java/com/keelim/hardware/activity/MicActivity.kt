@@ -9,7 +9,7 @@ import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_mictesting.*
 import java.util.*
 
-class MicTestActivity : AppCompatActivity(R.layout.activity_mictesting), OnInitListener {
+class MicActivity : AppCompatActivity(R.layout.activity_mictesting), OnInitListener {
     private lateinit var mTts: TextToSpeech
     private val RANDOM = Random()
     private val HELLOS = arrayOf(

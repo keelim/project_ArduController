@@ -10,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_gravitysensor.*
 
-class GravitySensorActivity : AppCompatActivity(), SensorEventListener {
+class GravitySensorActivity : AppCompatActivity(R.layout.activity_gravitysensor), SensorEventListener {
     private var sensmgr: SensorManager? = null
     private var accsensor: Sensor? = null
     private lateinit var sensorvalues: FloatArray
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gravitysensor)
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_GRAVITY)
     }

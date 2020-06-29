@@ -11,14 +11,15 @@ import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_lightsensor.*
 
 class LightSensorActivity : AppCompatActivity(), SensorEventListener {
-        private var sensmgr: SensorManager? = null
-    private var accsensor: Sensor? = null
+    private lateinit var sensmgr: SensorManager
+    private lateinit var accsensor: Sensor
     private lateinit var sensorvalues: FloatArray
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lightsensor)
         sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_LIGHT)
+        accsensor = sensmgr.getDefaultSensor(Sensor.TYPE_LIGHT)
     }
 
     override fun onSensorChanged(event: SensorEvent) {
@@ -28,12 +29,12 @@ class LightSensorActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onResume() {
-        sensmgr!!.registerListener(this, accsensor, SensorManager.SENSOR_DELAY_NORMAL)
+        sensmgr.registerListener(this, accsensor, SensorManager.SENSOR_DELAY_NORMAL)
         super.onResume()
     }
 
     override fun onPause() {
-        sensmgr!!.unregisterListener(this)
+        sensmgr.unregisterListener(this)
         super.onPause()
     }
 

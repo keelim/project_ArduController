@@ -11,14 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_proximity_sensor.*
 
-class ProximitySensorActivity : AppCompatActivity(), SensorEventListener {
+class ProximitySensorActivity : AppCompatActivity(R.layout.activity_proximity_sensor), SensorEventListener {
     private var sensorManager: SensorManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_proximity_sensor)
         //create instance of sensor manager and get system service to interact with Sensor
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
         val proximitySensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_PROXIMITY)
         if (proximitySensor == null) {
             Toast.makeText(this, "No Proximity Sensor Found! ", Toast.LENGTH_LONG).show()
