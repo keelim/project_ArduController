@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
 
-class SoundButtonActivity : AppCompatActivity(R.layout.activity_buttontesting) {
+class SoundButtonActivity : AppCompatActivity(R.layout.activity_soundbutton) {
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         val action = event.action

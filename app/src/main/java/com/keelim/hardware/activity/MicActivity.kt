@@ -6,10 +6,11 @@ import android.speech.tts.TextToSpeech.OnInitListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hardware.R
-import kotlinx.android.synthetic.main.activity_mictesting.*
+import kotlinx.android.synthetic.main.activity_mic.*
+
 import java.util.*
 
-class MicActivity : AppCompatActivity(R.layout.activity_mictesting), OnInitListener {
+class MicActivity : AppCompatActivity(R.layout.activity_mic), OnInitListener {
     private lateinit var mTts: TextToSpeech
     private val RANDOM = Random()
     private val HELLOS = arrayOf(

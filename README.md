@@ -25,3 +25,14 @@ utils -  like BackPressController and other library
 ### 어플리케이션 UI 개선 할 것 전체
 ### 오픈소스 jitpack io build 찾아보기
 
+## 2020 06 29
+
+### Builder pattern 으로 클래스 구성 (SYSTEM, BUILD , WIFI 등) --> 추가계획
+### ListView 나 RecyclerView 를 통하여 화면 구성 -> CustomView 작성할 것
+### Builder Pattern 으로 구성된 -> 적용할 수 있는 Adapter 만들기
+### 디자인 검토하기
+
+
+
+
+

@@ -14,6 +14,7 @@ class TeleActivity : AppCompatActivity(R.layout.activity_tele) {
 
         val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
+
         when (telephonyManager.simState) {
             TelephonyManager.SIM_STATE_ABSENT -> Toast.makeText(this, "Sim State Absent", Toast.LENGTH_SHORT).show()
             TelephonyManager.SIM_STATE_NETWORK_LOCKED -> Toast.makeText(this, "Sim State Network Locked", Toast.LENGTH_SHORT).show() // do something

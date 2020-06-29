@@ -21,6 +21,7 @@ class WifiActivity : AppCompatActivity(R.layout.activity_wifiaddress) {
         var macAddress = wInfo.macAddress
         val n = WifiInfo.LINK_SPEED_UNITS
         val y = wInfo.ssid
+
         if (macAddress == null) {
             macAddress = "Device don't have mac address or wi-fi is disabled"
         }

@@ -1,127 +1,105 @@
 package com.keelim.hardware.making;
 
 public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스템 정보만
-    //required parameters
-    private String RELEASE;
-    private String SDK_INT;
-    private String VERSION_CODENAME;
-    private String VERSION_INCREMENTAL;
-    private String BOARD;
-    private String BOOTLOADER;
-    private String DEVICE;
-    private String HARDWARE;
-    private String MANUFACTURER;
+    //SYSTEM
+    private String SYSTEM_RELEASE;
+    private String SYSTEM_SDK_INT;
+    private String SYSTEM_VERSION_CODENAME;
+    private String SYSTEM_VERSION_INCREMENTAL;
+    private String SYSTEM_BOARD;
+    private String SYSTEM_BOOTLOADER;
+    private String SYSTEM_DEVICE;
+    private String SYSTEM_HARDWARE;
+    private String SYSTEM_MANUFACTURER;
 
-    public String getRELEASE() {
-        return RELEASE;
-    }
+    /*WIFI*/
+    private String WIFI_CONNECTION_INFO;
+    private String WIFI_LINK_SPEED_UNITS;
+    private String WIFI_SSID;
 
-    public String getSDK_INT() {
-        return SDK_INT;
-    }
+    /*BUILDCONFIG*/
+    private String BUILD_APPLICATION_ID;
+    private String BUILD_TYPE;
+    private String BUILD_VERSION_CODE;
+    private String BUILD_VERSION_NAME;
 
-    public String getVERSION_CODENAME() {
-        return VERSION_CODENAME;
-    }
 
-    public String getVERSION_INCREMENTAL() {
-        return VERSION_INCREMENTAL;
-    }
 
-    public String getBOARD() {
-        return BOARD;
-    }
-
-    public String getBOOTLOADER() {
-        return BOOTLOADER;
-    }
-
-    public String getDEVICE() {
-        return DEVICE;
-    }
-
-    public String getHARDWARE() {
-        return HARDWARE;
-    }
-
-    public String getMANUFACTURER() {
-        return MANUFACTURER;
-    }
 
     public Open(OpenBuilder builder) {
-        this.RELEASE = RELEASE;
-        this.SDK_INT = SDK_INT;
-        this.VERSION_CODENAME = VERSION_CODENAME;
-        this.VERSION_INCREMENTAL = VERSION_INCREMENTAL;
-        this.BOARD = BOARD;
-        this.BOOTLOADER = BOOTLOADER;
-        this.DEVICE = DEVICE;
-        this.HARDWARE = HARDWARE;
-        this.MANUFACTURER = MANUFACTURER;
+        this.SYSTEM_RELEASE = SYSTEM_RELEASE;
+        this.SYSTEM_SDK_INT = SYSTEM_SDK_INT;
+        this.SYSTEM_VERSION_CODENAME = SYSTEM_VERSION_CODENAME;
+        this.SYSTEM_VERSION_INCREMENTAL = SYSTEM_VERSION_INCREMENTAL;
+        this.SYSTEM_BOARD = SYSTEM_BOARD;
+        this.SYSTEM_BOOTLOADER = SYSTEM_BOOTLOADER;
+        this.SYSTEM_DEVICE = SYSTEM_DEVICE;
+        this.SYSTEM_HARDWARE = SYSTEM_HARDWARE;
+        this.SYSTEM_MANUFACTURER = SYSTEM_MANUFACTURER;
     }
 	
     //Builder Class
     public static class OpenBuilder {
  
         // required parameters
-        private boolean RELEASE;
-        private boolean SDK_INT;
-        private boolean VERSION_CODENAME;
-        private boolean VERSION_INCREMENTAL;
-        private boolean BOARD;
-        private boolean BOOTLOADER;
-        private boolean DEVICE;
-        private boolean HARDWARE;
-        private boolean MANUFACTURER;
+        private String SYSTEM_RELEASE;
+        private String SYSTEM_SDK_INT;
+        private String SYSTEM_VERSION_CODENAME;
+        private String SYSTEM_VERSION_INCREMENTAL;
+        private String SYSTEM_BOARD;
+        private String SYSTEM_BOOTLOADER;
+        private String SYSTEM_DEVICE;
+        private String SYSTEM_HARDWARE;
+        private String SYSTEM_MANUFACTURER;
 
         // optional parameters
 
 
-        public OpenBuilder setRELEASE(boolean RELEASE) {
-            this.RELEASE = RELEASE;
+        public OpenBuilder setSYSTEM_RELEASE(String SYSTEM_RELEASE) {
+            this.SYSTEM_RELEASE = SYSTEM_RELEASE;
             return this;
         }
 
-        public OpenBuilder setSDK_INT(boolean SDK_INT) {
-            this.SDK_INT = SDK_INT;
+        public OpenBuilder setSYSTEM_SDK_INT(String SYSTEM_SDK_INT) {
+            this.SYSTEM_SDK_INT = SYSTEM_SDK_INT;
             return this;
         }
 
-        public OpenBuilder setVERSION_CODENAME(boolean VERSION_CODENAME) {
-            this.VERSION_CODENAME = VERSION_CODENAME;
+        public OpenBuilder setSYSTEM_VERSION_CODENAME(String SYSTEM_VERSION_CODENAME) {
+            this.SYSTEM_VERSION_CODENAME = SYSTEM_VERSION_CODENAME;
             return this;
         }
 
-        public OpenBuilder setVERSION_INCREMENTAL(boolean VERSION_INCREMENTAL) {
-            this.VERSION_INCREMENTAL = VERSION_INCREMENTAL;
+        public OpenBuilder setSYSTEM_VERSION_INCREMENTAL(String SYSTEM_VERSION_INCREMENTAL) {
+            this.SYSTEM_VERSION_INCREMENTAL = SYSTEM_VERSION_INCREMENTAL;
             return this;
         }
 
-        public OpenBuilder setBOARD(boolean BOARD) {
-            this.BOARD = BOARD;
+        public OpenBuilder setSYSTEM_BOARD(String SYSTEM_BOARD) {
+            this.SYSTEM_BOARD = SYSTEM_BOARD;
             return this;
         }
 
-        public OpenBuilder setBOOTLOADER(boolean BOOTLOADER) {
-            this.BOOTLOADER = BOOTLOADER;
+        public OpenBuilder setSYSTEM_BOOTLOADER(String SYSTEM_BOOTLOADER) {
+            this.SYSTEM_BOOTLOADER = SYSTEM_BOOTLOADER;
             return this;
         }
 
-        public OpenBuilder setDEVICE(boolean DEVICE) {
-            this.DEVICE = DEVICE;
+        public OpenBuilder setSYSTEM_DEVICE(String SYSTEM_DEVICE) {
+            this.SYSTEM_DEVICE = SYSTEM_DEVICE;
             return this;
         }
 
-        public OpenBuilder setHARDWARE(boolean HARDWARE) {
-            this.HARDWARE = HARDWARE;
+        public OpenBuilder setSYSTEM_HARDWARE(String SYSTEM_HARDWARE) {
+            this.SYSTEM_HARDWARE = SYSTEM_HARDWARE;
             return this;
         }
 
-        public OpenBuilder setMANUFACTURER(boolean MANUFACTURER) {
-            this.MANUFACTURER = MANUFACTURER;
+        public OpenBuilder setSYSTEM_MANUFACTURER(String SYSTEM_MANUFACTURER) {
+            this.SYSTEM_MANUFACTURER = SYSTEM_MANUFACTURER;
             return this;
         }
-		
+
         public Open build(){
             return new Open(this);
         }
