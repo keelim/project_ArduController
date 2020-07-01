@@ -1,24 +1,26 @@
 package com.keelim.hardware.making
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import com.keelim.hardware.R
 import java.util.*
 
 // ListViewAdapter의 생성자
-class ListViewAdapter : BaseAdapter() {
+class OpenAdapter(a: List<OpenItem>) : BaseAdapter() {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private var listViewItemList = ArrayList<OpenListVIewItem>()
+    private var openItemList = ArrayList<OpenItem>()
+
+    init {
+        openItemList.addAll(a)
+    }
 
     // Adapter에 사용되는 데이터의 개수를 리턴. : 필수 구현
     override fun getCount(): Int {
-        return listViewItemList.size
+        return openItemList.size
     }
 
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
@@ -28,21 +30,21 @@ class ListViewAdapter : BaseAdapter() {
 
         // "listview_item" Layout을 inflate하여 convertView 참조 획득.
         if (view == null) {
-            val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater =
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflater.inflate(R.layout.open_list, parent, false)
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        val iconImageView = view!!.findViewById(R.id.imageView1) as ImageView
-        val titleTextView = view.findViewById(R.id.textView1) as TextView
-        val descTextView = view.findViewById(R.id.textView2) as TextView
+        val titleTextView = view!!.findViewById(R.id.textView1) as TextView
+        val descTextView = view!!.findViewById(R.id.textView2) as TextView
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        val listViewItem = listViewItemList[position]
+        val listViewItem = openItemList[position]
 
         // 아이템 내 각 위젯에 데이터 반영
-        titleTextView.text = listViewItem.titleStr
-        descTextView.text = listViewItem.descStr
+        titleTextView.text = listViewItem.title
+        descTextView.text = listViewItem.desc
 
         return view
     }
@@ -54,16 +56,22 @@ class ListViewAdapter : BaseAdapter() {
 
     // 지정한 위치(position)에 있는 데이터 리턴 : 필수 구현
     override fun getItem(position: Int): Any {
-        return listViewItemList[position]
+        return openItemList[position]
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    fun addItem(icon: Drawable, title: String, desc: String) {
-        val item = OpenListVIewItem()
+    fun addLine(title: String, desc: String) {
+        val item = OpenItem()
 
-        item.titleStr = title
-        item.descStr = desc
+        item.title = title
+        item.desc = desc
 
-        listViewItemList.add(item)
+        openItemList.add(item)
     }
+
+    override fun notifyDataSetChanged() {
+        super.notifyDataSetChanged()
+    }
+
+
 }

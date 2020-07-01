@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.hardware.R
 import com.keelim.hardware.activity.base.BaseActivity
-import com.keelim.hardware.model.SimpleTextAdapter
+import com.keelim.hardware.model.TextAdapter
 import com.keelim.hardware.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
             arrayList.add(a)
         }
 
-        val adapter = SimpleTextAdapter(this, arrayList)
+        val adapter = TextAdapter(this, arrayList)
         recycler1.adapter = adapter
     }
 
