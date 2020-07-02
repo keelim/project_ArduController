@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapter.ViewHolder> {
+public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapter.ViewHolder> { //커스텀 adapter
     private final List<OpenItem> mData;
     private final Context mContext;
 
@@ -26,20 +26,21 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
             super(view);
 
 
+
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION) {
 //                    mData.set(pos, "item clicked. pos=" + pos);
                     Context context = v.getContext();
 
-                    switch (pos) {
-                    }
+
+
                     notifyItemChanged(pos);
                 }
             });
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            textView1 = view.findViewById(R.id.text1);
+            textView1 = view.findViewById(R.id.recycler_text1);
         }
     }
 
@@ -55,7 +56,7 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
     public OpenRecyclerAdapter.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.open_list, parent, false);
+        View view = inflater.inflate(R.layout.view_open, parent, false);
 
         return new ViewHolder(view);
     }

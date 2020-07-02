@@ -162,7 +162,7 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
             });
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            textView1 = view.findViewById(R.id.text1);
+            textView1 = view.findViewById(R.id.recycler_text1);
         }
     }
 

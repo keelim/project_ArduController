@@ -32,12 +32,12 @@ class OpenAdapter(a: List<OpenItem>) : BaseAdapter() {
         if (view == null) {
             val inflater =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.open_list, parent, false)
+            view = inflater.inflate(R.layout.view_open, parent, false)
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        val titleTextView = view!!.findViewById(R.id.textView1) as TextView
-        val descTextView = view!!.findViewById(R.id.textView2) as TextView
+        val titleTextView = view!!.findViewById(R.id.open_text1) as TextView
+        val descTextView = view!!.findViewById(R.id.open_text2) as TextView
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         val listViewItem = openItemList[position]
