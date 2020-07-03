@@ -1,4 +1,4 @@
-package com.keelim.hardware.making
+package com.keelim.aio.making
 
 class OpenItem {
     constructor(titleStr: String?, descStr: String?) {

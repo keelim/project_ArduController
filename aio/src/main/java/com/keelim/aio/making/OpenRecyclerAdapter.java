@@ -1,4 +1,4 @@
-package com.keelim.hardware.making;
+package com.keelim.aio.making;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.keelim.hardware.R;
+import com.keelim.aio.R;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,8 +25,6 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
         ViewHolder(View view) {
             super(view);
 
-
-
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION) {
@@ -40,7 +38,7 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
             });
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            textView1 = view.findViewById(R.id.recycler_text1);
+            textView1 = view.findViewById(R.id.open_text1);
         }
     }
 

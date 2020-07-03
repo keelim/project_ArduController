@@ -25,8 +25,7 @@
         android:icon="@drawable/customizationicon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".making.TempActivity"></activity>
-        <activity android:name=".activity.SettingActivity" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:label="@string/title_activity_splash">
