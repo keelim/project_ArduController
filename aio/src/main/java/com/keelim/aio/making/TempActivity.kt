@@ -2,7 +2,8 @@ package com.keelim.aio.making
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.keelim.hardware.R
+import com.keelim.aio.R
+
 
 class TempActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.keelim.hardware.R;
+import com.keelim.aio.R;
+
 
 public class OpenView extends ConstraintLayout {
     ConstraintLayout layout;
