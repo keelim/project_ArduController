@@ -32,6 +32,52 @@ utils -  like BackPressController and other library
 ### Builder Pattern 으로 구성된 -> 적용할 수 있는 Adapter 만들기
 ### 디자인 검토하기
 
+## 2020 07 05
+
+### application level --> hard application
+### library level ---> aio
+
+#### 라이브러리 구성 with kotlin + java
+
+    - class Open (user using this class)
+    - class OpenAdapter <- BaseAdapter (user using this class)
+    - class OpenRecyclerAdapter <- RecyclerView.Adapter (user usint this class <Recommend>)
+    - class OpenItem (Model)
+    - view_open.xml(custom view layout)
+    - attrs.xml (custom view declare)
+
+`TempActivity` is part of hardware information application in android
+
+#### library manual
+1. make a layout file in res\layout (if you want to use this view)
+
+2. writing a view (`OpenView`)
+    - like this (`please add a photo`)
+
+3. making a class Open and OpenAdapter(OpenAdapter or Open RecyclerAdapter)
+    - recommend RecyclerAdapter
+
+4. you making system datas and other hardware data with class `Open` and `OpenBuilder`
+    - OpenBuilder is inner class in the class Open
+
+5. you inject your data in RecyclerAdapter constructor or `setData` method in Activity onCreate method
+6.Building and installing your application and Testing your device
+    -  test your application in android studio with junit
+
+#### Example
+
+<please add photo about
+This project goal is using android knowledge and open source knowledge.
+I`m very happy if you give me some advices.
+if you have any question about this project, making a issue or sending a mail.
+
+Thank you!!
+
+mail: kimh00335@gmail.com
+
+
+
+
 
 
 
