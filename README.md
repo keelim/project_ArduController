@@ -48,6 +48,9 @@ utils -  like BackPressController and other library
 
 `TempActivity` is part of hardware information application in android
 
+## 2020 07
+- setting license about this project
+
 #### library manual
 1. make a layout file in res\layout (if you want to use this view)
 
