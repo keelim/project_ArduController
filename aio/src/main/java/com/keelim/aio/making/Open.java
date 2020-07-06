@@ -11,7 +11,6 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
     // 좀더 나은 코드가 있을 것 같다. 
     // 커스텀 뷰는 어떻게 작성을 하지 생각  -> 그냥 일반적인 리스트 뷰 작성인지 
     // 다른 옵션을 추가를 하여 작성을 하는 것인지
-
     private Context context;
     //SYSTEM
     private String SYSTEM_RELEASE = null;
