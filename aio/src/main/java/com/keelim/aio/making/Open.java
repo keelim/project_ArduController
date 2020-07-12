@@ -2,7 +2,6 @@ package com.keelim.aio.making;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,44 +42,44 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
         switch (s) {
             case "System":
                 if (SYSTEM_RELEASE != null)
-                    list.add(new OpenItem("System", Build.VERSION.RELEASE));
+                    list.add(new OpenItem("System", s));
 
                 if (SYSTEM_SDK_INT != null)
-                    list.add(new OpenItem("System", String.valueOf(Build.VERSION.SDK_INT)));
+                    list.add(new OpenItem("System", s));
 
 
                 if (SYSTEM_VERSION_CODENAME != null)
-                    list.add(new OpenItem("System", Build.VERSION.CODENAME));
+                    list.add(new OpenItem("System", s));
 
                 if (SYSTEM_VERSION_INCREMENTAL != null)
-                    list.add(new OpenItem("System", Build.VERSION.INCREMENTAL));
+                    list.add(new OpenItem("System", s));
 
-                if (SYSTEM_BOARD != null) list.add(new OpenItem("System", Build.BOARD));
+                if (SYSTEM_BOARD != null) list.add(new OpenItem("System", s));
 
                 if (SYSTEM_BOOTLOADER != null)
-                    list.add(new OpenItem("System", Build.BOOTLOADER));
+                    list.add(new OpenItem("System", s));
 
                 if (SYSTEM_DEVICE != null)
-                    list.add(new OpenItem("System", Build.DEVICE));
+                    list.add(new OpenItem("System", s));
 
                 if (SYSTEM_HARDWARE != null)
-                    list.add(new OpenItem("System", Build.HARDWARE));
+                    list.add(new OpenItem("System", s));
 
                 if (SYSTEM_MANUFACTURER != null)
-                    list.add(new OpenItem("System", Build.MANUFACTURER));
+                    list.add(new OpenItem("System", s));
 
                 return list;
 
             case "WIFI":
                 WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
                 if (WIFI_CONNECTION_INFO != null)
-                    list.add(new OpenItem("WIFI", String.valueOf(wifi.getConnectionInfo())));
+                    list.add(new OpenItem("WIFI", s));
 
                 if (WIFI_STATE != null)
-                    list.add(new OpenItem("WIFI", String.valueOf(wifi.getWifiState())));
+                    list.add(new OpenItem("WIFI", s));
 
                 if (WIFI_DHCP_INFO != null)
-                    list.add(new OpenItem("WIFI", String.valueOf(wifi.getDhcpInfo())));
+                    list.add(new OpenItem("WIFI", s));
                 ;
 
                 return list;

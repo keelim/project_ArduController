@@ -7,13 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.keelim.aio.R;
 
 
-public class OpenView extends ConstraintLayout {
-    ConstraintLayout layout;
+public class OpenView extends RecyclerView {
+    RecyclerView layout;
     TextView text1;
     TextView text2;
 
@@ -39,9 +39,9 @@ public class OpenView extends ConstraintLayout {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.view_open, this, false);
         addView(v);
-        layout= (ConstraintLayout) findViewById(R.id.open_layout);
-        text1 = (TextView) findViewById(R.id.open_text1);
-        text2 = (TextView) findViewById(R.id.open_text2);
+        layout= findViewById(R.id.open_layout);
+        text1 = findViewById(R.id.open_text1);
+        text2 = findViewById(R.id.open_text2);
 
     }
 

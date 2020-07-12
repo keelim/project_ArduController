@@ -20,7 +20,8 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView textView1;
+        final TextView openText1;
+        final TextView openText2;
 
         ViewHolder(View view) {
             super(view);
@@ -30,15 +31,13 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
                 if (pos != RecyclerView.NO_POSITION) {
 //                    mData.set(pos, "item clicked. pos=" + pos);
                     Context context = v.getContext();
-
-
-
                     notifyItemChanged(pos);
                 }
             });
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            textView1 = view.findViewById(R.id.open_text1);
+            openText1 = view.findViewById(R.id.open_text1);
+            openText2 = view.findViewById(R.id.open_text2);
         }
     }
 
@@ -62,8 +61,10 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     @Override
     public void onBindViewHolder(@NotNull OpenRecyclerAdapter.ViewHolder holder, int position) {
-//        String text = mData.get(position);
-//        holder.textView1.setText(text);
+        String text1 = mData.get(position).getTitle();
+        String text2 = mData.get(position).getDesc();
+        holder.openText1.setText(text1);
+        holder.openText2.setText(text2);
 
     }
 

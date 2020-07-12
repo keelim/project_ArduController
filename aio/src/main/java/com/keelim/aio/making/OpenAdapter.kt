@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.keelim.aio.R
-import com.keelim.hardware.R
+
 import java.util.*
 
 // ListViewAdapter의 생성자
