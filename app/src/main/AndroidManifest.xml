@@ -25,9 +25,13 @@
         android:icon="@drawable/customizationicon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.TestActivity"></activity>
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".view.fragments.FragmentMainActivity2"
+            android:label="@string/title_activity_hello"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.TestActivity" />
+        <activity
+            android:name=".view.SplashActivity"
             android:label="@string/title_activity_splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,13 +40,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".activity.AccelarometerActivity"
+            android:name=".view.AccelarometerActivity"
             android:label="@string/title_activity_accelarometer" />
         <activity
-            android:name=".activity.MagneticSensorActivity"
+            android:name=".view.MagneticSensorActivity"
             android:label="@string/title_activity_magneticsensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAGNETICSENSOR" />
@@ -51,58 +55,58 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.GyroscopeActivity"
+            android:name=".view.GyroscopeActivity"
             android:label="@string/title_activity_gyroscope" />
         <activity
-            android:name=".activity.BatteryindicatorActivity"
+            android:name=".view.BatteryindicatorActivity"
             android:label="@string/title_activity_batteryindicator" />
         <activity
-            android:name=".activity.GpslocActivity"
+            android:name=".view.GpslocActivity"
             android:label="@string/title_activity_gpsloc" />
         <activity
-            android:name=".activity.WifiActivity"
+            android:name=".view.WifiActivity"
             android:label="@string/title_activity_wifiaddress" />
         <activity
-            android:name=".activity.BluetoothAddActivity"
+            android:name=".view.BluetoothAddActivity"
             android:label="@string/title_activity_blueadd" />
         <activity
-            android:name=".activity.HeadphoneActivity"
+            android:name=".view.HeadphoneActivity"
             android:label="@string/title_activity_headphone" />
         <activity
-            android:name=".activity.VibrationActivity"
+            android:name=".view.VibrationActivity"
             android:label="@string/title_activity_vibration" />
         <activity
-            android:name=".activity.TeleActivity"
+            android:name=".view.TeleActivity"
             android:label="@string/title_activity_tele" />
         <activity
-            android:name=".activity.SystemInfoActivity"
+            android:name=".view.SystemInfoActivity"
             android:label="@string/title_activity_systeminfo" />
         <activity
-            android:name=".activity.TouchSensorActivity"
+            android:name=".view.TouchSensorActivity"
             android:label="@string/title_activity_touch_sensor" />
         <activity
-            android:name=".activity.DisplayActivity"
+            android:name=".view.DisplayActivity"
             android:label="@string/title_activity_button" />
         <activity
-            android:name=".activity.ProximitySensorActivity"
+            android:name=".view.ProximitySensorActivity"
             android:label="@string/title_activity_proximity_sensor" />
         <activity
-            android:name=".activity.LightSensorActivity"
+            android:name=".view.LightSensorActivity"
             android:label="@string/title_activity_lightsensor" />
         <activity
-            android:name=".activity.SoundButtonActivity"
+            android:name=".view.SoundButtonActivity"
             android:label="@string/title_activity_buttontesting" />
         <activity
-            android:name=".activity.MicActivity"
+            android:name=".view.MicActivity"
             android:label="@string/title_activity_mictesting" />
         <activity
-            android:name=".activity.PressureActivity"
+            android:name=".view.PressureActivity"
             android:label="@string/title_activity_pressure" />
         <activity
-            android:name=".activity.FlashActivity"
+            android:name=".view.FlashActivity"
             android:label="@string/title_activity_flash" />
         <activity
-            android:name=".activity.GravitySensorActivity"
+            android:name=".view.GravitySensorActivity"
             android:label="@string/title_activity_gravitysensor" />
     </application>
 
