@@ -25,7 +25,7 @@ class SettingActivity : AppCompatActivity(R.layout.activity_setting) {
 
         override fun onPreferenceTreeClick(preference: Preference): Boolean {
             when (preference.key) {
-                "developer" -> Toast.makeText(context, "개발 진행 중입니다.", Toast.LENGTH_SHORT).show()
+                "developer" -> Toast.makeText(context, "개발 중입니다.", Toast.LENGTH_SHORT).show()
             }
 
             return super.onPreferenceTreeClick(preference)

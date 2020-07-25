@@ -16,9 +16,7 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.arducon.R
-import com.microsoft.appcenter.AppCenter
-import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.Crashes
+
 import kotlinx.android.synthetic.main.activity_intro.*
 import java.util.*
 
@@ -39,10 +37,6 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Snackbar.make(container_splash, "아두콘에 오신 것을 환영 합니다.", Snackbar.LENGTH_SHORT).show()
-
-        AppCenter.start(application, getString(R.string.appcenter),
-                Analytics::class.java, Crashes::class.java)
-
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
@@ -89,15 +83,15 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 2) {
             when (resultCode) {
-                RESULT_OK -> {
-                    Snackbar.make(container_splash, "업데이트를 성공적으로 완료했습니다.", Snackbar.LENGTH_LONG)
-                }
-                Activity.RESULT_CANCELED -> {
-                    Snackbar.make(container_splash, "업데이트를 취소하였습니다.", Snackbar.LENGTH_LONG)
-                }
-                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> {
-                    Snackbar.make(container_splash, "시스템 오류가 발생했습니다.", Snackbar.LENGTH_LONG)
-                }
+                RESULT_OK ->
+                    Snackbar.make(container_splash, "업데이트를 성공적으로 완료했습니다.", Snackbar.LENGTH_LONG).show()
+
+                Activity.RESULT_CANCELED ->
+                    Snackbar.make(container_splash, "업데이트를 취소하였습니다.", Snackbar.LENGTH_LONG).show()
+
+                ActivityResult.RESULT_IN_APP_UPDATE_FAILED ->
+                    Snackbar.make(container_splash, "시스템 오류가 발생했습니다.", Snackbar.LENGTH_LONG).show()
+
             }
         }
     }

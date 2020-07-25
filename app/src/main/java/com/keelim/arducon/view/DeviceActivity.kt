@@ -9,17 +9,16 @@ import com.keelim.arducon.model.RecyclerAdapter
 import kotlinx.android.synthetic.main.activity_device.*
 
 class DeviceActivity : AppCompatActivity(R.layout.activity_device) {
-    private val adapter = RecyclerAdapter()
+    private lateinit var adapter:RecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         Toast.makeText(this, "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
 
-        device_recycler.run {
+        adapter = RecyclerAdapter()
+        device_recycler.apply {
             layoutManager = LinearLayoutManager(this@DeviceActivity)
         }
-
         getData()
     }
 
@@ -51,8 +50,8 @@ class DeviceActivity : AppCompatActivity(R.layout.activity_device) {
                 notifyDataSetChanged()
             }
         }
-
     }
+
 }
 
 
