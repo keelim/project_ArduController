@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.os.Bundle
 import android.widget.Toast

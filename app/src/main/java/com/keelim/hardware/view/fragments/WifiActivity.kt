@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context

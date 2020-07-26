@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDialog;
 
-import dagger.hilt.android.HiltAndroidApp;
-
-@HiltAndroidApp
 public class MyApplication extends Application {
     private static MyApplication myApplication;
     AppCompatDialog progressDialog;

@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -6,56 +6,56 @@ import android.content.pm.PackageManager
 import android.hardware.Camera
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.keelim.hardware.R
-import kotlinx.android.synthetic.main.activity_flash.*
 
-class FlashActivity : AppCompatActivity(R.layout.activity_flash) {
+import kotlinx.android.synthetic.main.fragment_flash.view.*
+
+
+class FlashFragment : Fragment() {
     private lateinit var camera: Camera
     private lateinit var params: Camera.Parameters
     private lateinit var mediaPlayer: MediaPlayer
     private var isFlashOn = false
     private var hasFlash = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        * First check if device is supporting flashlight or not
-        hasFlash = packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        var view = inflater.inflate(R.layout.fragment_flash, container, false)
+        hasFlash =
+            requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
 
         if (!hasFlash) {
             // device doesn't support flash
             // Show alert message and close the application
-            val alert = AlertDialog.Builder(this@FlashActivity)
+            val alert = AlertDialog.Builder(requireActivity())
                 .setTitle("Error")
                 .setMessage("Sorry, your device doesn't support flash light!")
                 .setPositiveButton("OK") { _: DialogInterface?, _: Int ->
-                    finish()
+                    requireActivity().finish()
                 }
                 .create()
-
-            alert.show()
+                .show()
         }
 
-        // get the camera
-        getCamera()
-        // displaying button image
-        toggleButtonImage()
+        toggleButtonImage(view)
 
-        /*
-        * Switch button click event to toggle flash on/off
-        */
-        btnSwitch.setOnClickListener {
+        view.btnSwitch.setOnClickListener {
             if (isFlashOn)
                 turnOffFlash() //turn off
             else
                 turnOnFlash() // turn on flash
         }
 
-    }
 
-    /*
-			 * Get the camera
-			 */
+        return view
+    }
 
 
     private fun getCamera() {
@@ -64,42 +64,33 @@ class FlashActivity : AppCompatActivity(R.layout.activity_flash) {
 
     }
 
-    /*
-			 * Turning On flash
-			 */
     private fun turnOnFlash() {
         if (!isFlashOn) {
             // play sound
             playSound()
-            params = camera!!.parameters
-            params!!.flashMode = Camera.Parameters.FLASH_MODE_TORCH
-            camera!!.parameters = params
-            camera!!.startPreview()
+            params = camera.parameters
+            params.flashMode = Camera.Parameters.FLASH_MODE_TORCH
+            camera.parameters = params
+            camera.startPreview()
             isFlashOn = true
 
             // changing button/switch image
-            toggleButtonImage()
+//            toggleButtonImage(view)
         }
     }
 
-    /*
-			 * Turning Off flash
-			 */
     private fun turnOffFlash() {
         if (isFlashOn) {
-            if (camera == null || params == null) {
-                return
-            }
             // play sound
             playSound()
-            params = camera!!.parameters
-            params!!.flashMode = Camera.Parameters.FLASH_MODE_OFF
-            camera!!.parameters = params
-            camera!!.stopPreview()
+            params = camera.parameters
+            params.flashMode = Camera.Parameters.FLASH_MODE_OFF
+            camera.parameters = params
+            camera.stopPreview()
             isFlashOn = false
 
             // changing button/switch image
-            toggleButtonImage()
+//            toggleButtonImage(view)
         }
     }
 
@@ -109,24 +100,20 @@ class FlashActivity : AppCompatActivity(R.layout.activity_flash) {
 			 * */
     private fun playSound() {
         mediaPlayer = if (isFlashOn) {
-            MediaPlayer.create(this@FlashActivity, R.raw.light_switch_off)
+            MediaPlayer.create(requireActivity(), R.raw.light_switch_off)
         } else {
-            MediaPlayer.create(this@FlashActivity, R.raw.light_switch_on)
+            MediaPlayer.create(requireActivity(), R.raw.light_switch_on)
         }.apply {
             setOnCompletionListener { obj: MediaPlayer -> obj.release() }
             start()
         }
     }
 
-    /*
-			 * Toggle switch button images
-			 * changing image states to on / off
-			 * */
-    private fun toggleButtonImage() {
+    private fun toggleButtonImage(view: View) {
         if (isFlashOn) {
-            btnSwitch!!.setImageResource(R.drawable.btn_switch_on)
+            view.btnSwitch!!.setImageResource(R.drawable.btn_switch_on)
         } else {
-            btnSwitch!!.setImageResource(R.drawable.btn_switch_off)
+            view.btnSwitch!!.setImageResource(R.drawable.btn_switch_off)
         }
     }
 

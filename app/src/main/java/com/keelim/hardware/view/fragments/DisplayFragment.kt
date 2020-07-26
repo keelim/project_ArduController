@@ -1,18 +1,21 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_display.*
 
-class DisplayActivity : AppCompatActivity(R.layout.activity_display) {
+class DisplayFragment : Fragment(), View.OnTouchListener {
     private lateinit var a: IntArray
 
-    override fun onCreate(savedInstanceState: Bundle?) { //TODO 색까를 좀더 다양하게 사용하기
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = inflater.inflate(R.layout.activity_display, container, false)
 
         a = IntArray(10).apply {
             this[0] = Color.parseColor("#f4c2c6")
@@ -27,11 +30,19 @@ class DisplayActivity : AppCompatActivity(R.layout.activity_display) {
             this[9] = Color.parseColor("#ecffef")
         }
 
+
+        return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) { //TODO 색까를 좀더 다양하게 사용하기
+        super.onCreate(savedInstanceState)
         Snackbar.make(display_container, "화면을 터치해주세요", Snackbar.LENGTH_SHORT).show()
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
         val x = (Math.random() * 10).toInt()
+
         display_layout!!.setBackgroundColor(a[x])
         return false
     }

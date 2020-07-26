@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.aio.Open
 import com.keelim.hardware.R
 
-class TestActivity : AppCompatActivity() {
-    lateinit var open :Open
+class OpenActivity : AppCompatActivity() {
+    private lateinit var open :Open
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.activity_open)
         open = Open.OpenSystemBuilder(this)
             .setSYSTEM_BOARD(true)
             .setSYSTEM_BOOTLOADER(true)

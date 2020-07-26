@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.content.Context
 import android.os.Build
@@ -18,18 +18,14 @@ class VibrationActivity : AppCompatActivity(R.layout.activity_vibration) {
         val v1 = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         vib_bt1.setOnClickListener {
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v1.vibrate(VibrationEffect.createOneShot(1500, VibrationEffect.DEFAULT_AMPLITUDE))
                 v1.vibrate(VibrationEffect.createWaveform(longArrayOf(500, 1000, 500, 2000), -1))
+                Toast.makeText(this, "화면이 진동하고 있습니다. ", Toast.LENGTH_SHORT).show()
             } else {
                 v1.vibrate(400)
                 v1.vibrate(longArrayOf(500, 1000, 500, 1000), -1)
             }
-
-
-            Toast.makeText(this, "Your Vibration Working Very Well", Toast.LENGTH_SHORT).show()
-
         }
     }
 }

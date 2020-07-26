@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.content.Context
 import android.os.Build
@@ -40,7 +40,7 @@ class SystemInfoActivity : AppCompatActivity(R.layout.activity_systeminfo) {
     override fun onStart() {
         super.onStart()
         val tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        var deviceid = tm!!.deviceId
+        var deviceid = tm.deviceId
         var phone = tm.phoneType
         Toast.makeText(this, deviceid + "and" + phone, Toast.LENGTH_SHORT).show();
     }

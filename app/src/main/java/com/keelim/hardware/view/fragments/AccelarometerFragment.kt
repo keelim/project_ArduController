@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.view.fragments
 
 import android.content.Context
 import android.hardware.Sensor
@@ -6,24 +6,38 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.keelim.hardware.R
 import kotlinx.android.synthetic.main.activity_accelarometer.*
 
-class AccelarometerActivity : AppCompatActivity(R.layout.activity_accelarometer), SensorEventListener {
+class AccelarometerFragment : Fragment(), SensorEventListener {
+    private lateinit var sensorValue: FloatArray
     private lateinit var sensmgr: SensorManager
     private lateinit var accsensor: Sensor
-    private lateinit var sensorValue: FloatArray
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.activity_accelarometer, container, false)
+        sensmgr = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
+        return view
     }
 
-    override fun onSensorChanged(event: SensorEvent) {
-        sensorValue = event.values
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        sensorValue = event!!.values
         val x = sensorValue[0]
         val y = sensorValue[1]
         val z = sensorValue[2]
@@ -32,7 +46,7 @@ class AccelarometerActivity : AppCompatActivity(R.layout.activity_accelarometer)
         acc_tvz.text = "z $z m/s^2"
 
         if (x > 15 || y > 15 || z > 15) {
-            Toast.makeText(this, "phone shaked", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "phone shaked", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -46,12 +60,5 @@ class AccelarometerActivity : AppCompatActivity(R.layout.activity_accelarometer)
         super.onPause()
     }
 
-    override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
-
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-    }
 }
+

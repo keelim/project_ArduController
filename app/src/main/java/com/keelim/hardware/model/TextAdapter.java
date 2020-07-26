@@ -1,3 +1,4 @@
+/*
 package com.keelim.hardware.model;
 
 import android.content.Context;
@@ -13,23 +14,23 @@ import com.keelim.hardware.R;
 import com.keelim.hardware.view.AccelarometerActivity;
 import com.keelim.hardware.view.BatteryindicatorActivity;
 import com.keelim.hardware.view.BluetoothAddActivity;
-import com.keelim.hardware.view.SoundButtonActivity;
-import com.keelim.hardware.view.DisplayActivity;
-import com.keelim.hardware.view.FlashActivity;
-import com.keelim.hardware.view.GpslocActivity;
+import com.keelim.hardware.view.fragments.SoundButtonActivity;
+import com.keelim.hardware.view.fragments.DisplayActivity;
+import com.keelim.hardware.view.fragments.FlashFragment;
+import com.keelim.hardware.view.fragments.GpsLocationFragment;
 import com.keelim.hardware.view.GravitySensorActivity;
 import com.keelim.hardware.view.GyroscopeActivity;
-import com.keelim.hardware.view.HeadphoneActivity;
-import com.keelim.hardware.view.LightSensorActivity;
-import com.keelim.hardware.view.MagneticSensorActivity;
-import com.keelim.hardware.view.MicActivity;
-import com.keelim.hardware.view.PressureActivity;
-import com.keelim.hardware.view.ProximitySensorActivity;
-import com.keelim.hardware.view.SystemInfoActivity;
-import com.keelim.hardware.view.TeleActivity;
-import com.keelim.hardware.view.TouchSensorActivity;
-import com.keelim.hardware.view.VibrationActivity;
-import com.keelim.hardware.view.WifiActivity;
+import com.keelim.hardware.view.fragments.HeadphoneActivity;
+import com.keelim.hardware.view.fragments.LightSensorActivity;
+import com.keelim.hardware.view.fragments.MagneticSensorActivity;
+import com.keelim.hardware.view.fragments.MicActivity;
+import com.keelim.hardware.view.fragments.PressureActivity;
+import com.keelim.hardware.view.fragments.ProximitySensorActivity;
+import com.keelim.hardware.view.fragments.SystemInfoActivity;
+import com.keelim.hardware.view.fragments.TeleActivity;
+import com.keelim.hardware.view.fragments.TouchSensorActivity;
+import com.keelim.hardware.view.fragments.VibrationActivity;
+import com.keelim.hardware.view.fragments.WifiActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -74,7 +75,7 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
 
                         case 4:
                             //not working
-                            mContext.startActivity(new Intent(context, FlashActivity.class));
+                            mContext.startActivity(new Intent(context, FlashFragment.class));
                             break;
 
                         case 5:
@@ -143,7 +144,7 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
                         case 17:
                             //test again
 
-                            mContext.startActivity(new Intent(context, GpslocActivity.class));
+                            mContext.startActivity(new Intent(context, GpsLocationFragment.class));
                             break;
 
 
@@ -195,4 +196,4 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder> {
     public int getItemCount() {
         return mData.size();
     }
-}
+}*/

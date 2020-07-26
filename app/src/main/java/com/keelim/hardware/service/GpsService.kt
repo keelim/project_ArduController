@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hardware.service
 
 import android.Manifest
 import android.app.Service
@@ -13,7 +13,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.ActivityCompat
 
-class GpslocateActivity(private val mContext: Context) : Service(), LocationListener {
+class GpsService(private val mContext: Context) : Service(), LocationListener {
 
     // flag for GPS status
     private var isGPSEnabled = false
@@ -167,7 +167,4 @@ class GpslocateActivity(private val mContext: Context) : Service(), LocationList
         private const val MIN_TIME_BW_UPDATES = 1000 * 60.toLong()
     }
 
-    init {
-
-    }
 }
