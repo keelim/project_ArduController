@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_mic.*
 import java.util.*
 
 class MicActivity : AppCompatActivity(R.layout.activity_mic), OnInitListener {
-    private lateinit var mTts: TextToSpeech
-    private val RANDOM = Random()
-    private val HELLOS = arrayOf(
+    private lateinit var speech: TextToSpeech
+    private val random = Random()
+    private val hellos = arrayOf(
         "Your Speaker working very well",
         "Your Speaker working very well",
         "Your Speaker working very well",
@@ -25,7 +25,7 @@ class MicActivity : AppCompatActivity(R.layout.activity_mic), OnInitListener {
         super.onCreate(savedInstanceState)
         // Initialize text-to-speech. This is an asynchronous operation.
         // The OnInitListener (second argument) is called after initialization completes.
-        mTts = TextToSpeech(this, this) // TextToSpeech.OnInitListener
+        speech = TextToSpeech(this, this) // TextToSpeech.OnInitListener
 
         mic_bt1!!.setOnClickListener {
             sayHello()
@@ -33,10 +33,9 @@ class MicActivity : AppCompatActivity(R.layout.activity_mic), OnInitListener {
     }
 
     public override fun onDestroy() {
-        // Don't forget to shutdown!
-        mTts.stop()
-        mTts.shutdown()
         super.onDestroy()
+        speech.stop()
+        speech.shutdown()
     }
 
     // Implements TextToSpeech.OnInitListener.
@@ -45,7 +44,7 @@ class MicActivity : AppCompatActivity(R.layout.activity_mic), OnInitListener {
         if (status == TextToSpeech.SUCCESS) {
             // Set preferred language to US english.
             // Note that a language may not be available, and the result will indicate this.
-            val result = mTts.setLanguage(Locale.US)
+            val result = speech.setLanguage(Locale.US)
             // Try this someday for some interesting results.
             // int result mTts.setLanguage(Locale.FRANCE);
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
@@ -67,10 +66,9 @@ class MicActivity : AppCompatActivity(R.layout.activity_mic), OnInitListener {
     }
 
     private fun sayHello() {
-        // Select a random hello.
-        val helloLength = HELLOS.size
-        val hello = HELLOS[RANDOM.nextInt(helloLength)]
-        mTts.speak(hello, TextToSpeech.QUEUE_FLUSH, null) // Drop all pending entries in the playback queue.
+        val helloLength = hellos.size
+        val hello = hellos[random.nextInt(helloLength)]
+        speech.speak(hello, TextToSpeech.QUEUE_FLUSH, null) // Drop all pending entries in the playback queue.
     }
 
 }

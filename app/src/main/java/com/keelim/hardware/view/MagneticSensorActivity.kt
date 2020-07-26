@@ -33,13 +33,13 @@ class MagneticSensorActivity : AppCompatActivity(R.layout.activity_magneticsenso
     }
 
     override fun onResume() {
-        sensmgr.registerListener(this, magsensor, SensorManager.SENSOR_DELAY_NORMAL)
         super.onResume()
+        sensmgr.registerListener(this, magsensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     override fun onPause() {
-        sensmgr.unregisterListener(this)
         super.onPause()
+        sensmgr.unregisterListener(this)
     }
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {

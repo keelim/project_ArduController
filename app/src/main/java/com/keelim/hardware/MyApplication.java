@@ -25,24 +25,19 @@ public class MyApplication extends Application {
     }
 
     public void progressON(Activity activity, String message) {
-
         if (activity == null || activity.isFinishing()) {
             return;
         }
 
-
         if (progressDialog != null && progressDialog.isShowing()) {
             progressSET(message);
         } else {
-
             progressDialog = new AppCompatDialog(activity);
             progressDialog.setCancelable(false);
             progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             progressDialog.setContentView(R.layout.progress_loading);
             progressDialog.show();
-
         }
-
 
         final ImageView img_loading_frame = (ImageView) progressDialog.findViewById(R.id.iv_frame_loading);
         final AnimationDrawable frameAnimation = (AnimationDrawable) img_loading_frame.getBackground();
@@ -52,22 +47,17 @@ public class MyApplication extends Application {
         if (!TextUtils.isEmpty(message)) {
             tv_progress_message.setText(message);
         }
-
-
     }
 
     public void progressSET(String message) {
-
         if (progressDialog == null || !progressDialog.isShowing()) {
             return;
         }
-
 
         TextView tv_progress_message = (TextView) progressDialog.findViewById(R.id.tv_progress_message);
         if (!TextUtils.isEmpty(message)) {
             tv_progress_message.setText(message);
         }
-
     }
 
     public void progressOFF() {
@@ -75,6 +65,4 @@ public class MyApplication extends Application {
             progressDialog.dismiss();
         }
     }
-
-
 }

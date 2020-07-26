@@ -13,7 +13,6 @@ class SystemInfoActivity : AppCompatActivity(R.layout.activity_systeminfo) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         val release = Build.VERSION.RELEASE
         val sdkVersion = Build.VERSION.SDK_INT
         val q = Build.VERSION.CODENAME

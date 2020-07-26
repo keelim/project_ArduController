@@ -18,9 +18,9 @@ class HeadphoneActivity : AppCompatActivity(R.layout.activity_headphone) {
     }
 
     override fun onResume() {
+        super.onResume()
         val filter = IntentFilter(Intent.ACTION_HEADSET_PLUG)
         registerReceiver(myReceiver, filter)
-        super.onResume()
     }
 
     private inner class MusicIntentReceiver : BroadcastReceiver() {
@@ -36,8 +36,8 @@ class HeadphoneActivity : AppCompatActivity(R.layout.activity_headphone) {
     }
 
     override fun onPause() {
-        unregisterReceiver(myReceiver)
         super.onPause()
+        unregisterReceiver(myReceiver)
     }
 
 }

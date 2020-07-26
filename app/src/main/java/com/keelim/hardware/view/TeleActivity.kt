@@ -11,9 +11,7 @@ class TeleActivity : AppCompatActivity(R.layout.activity_tele) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-
 
         when (telephonyManager.simState) {
             TelephonyManager.SIM_STATE_ABSENT -> Toast.makeText(this, "Sim State Absent", Toast.LENGTH_SHORT).show()

@@ -15,7 +15,5 @@ class OpenActivity : AppCompatActivity() {
             .setSYSTEM_BOARD(true)
             .setSYSTEM_BOOTLOADER(true)
             .build()
-
-
     }
 }

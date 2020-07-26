@@ -29,13 +29,13 @@ class LightSensorActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onResume() {
-        sensmgr.registerListener(this, accsensor, SensorManager.SENSOR_DELAY_NORMAL)
         super.onResume()
+        sensmgr.registerListener(this, accsensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     override fun onPause() {
-        sensmgr.unregisterListener(this)
         super.onPause()
+        sensmgr.unregisterListener(this)
     }
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
