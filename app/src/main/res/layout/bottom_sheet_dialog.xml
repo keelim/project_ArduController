@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/msgLo"
+        android:id="@+id/make"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?attr/selectableItemBackground"
@@ -30,7 +30,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/emailLo"
+        android:id="@+id/check"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?attr/selectableItemBackground"
@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/cloudLo"
+        android:id="@+id/parser"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?attr/selectableItemBackground"
@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/bluetoothLo"
+        android:id="@+id/share"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?attr/selectableItemBackground"

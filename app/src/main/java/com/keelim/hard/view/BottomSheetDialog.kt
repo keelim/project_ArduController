@@ -15,19 +15,19 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.bottom_sheet_dialog, container, false)
 
-        view.bluetoothLo!!.setOnClickListener(this)
-        view.emailLo!!.setOnClickListener(this)
-        view.cloudLo!!.setOnClickListener(this)
-        view.msgLo!!.setOnClickListener(this)
+        view.share!!.setOnClickListener(this)
+        view.check!!.setOnClickListener(this)
+        view.parser!!.setOnClickListener(this)
+        view.make!!.setOnClickListener(this)
         return view
     }
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.msgLo -> Toast.makeText(context, "Message", Toast.LENGTH_SHORT).show()
-            R.id.emailLo -> Toast.makeText(context, "Email", Toast.LENGTH_SHORT).show()
-            R.id.cloudLo -> Toast.makeText(context, "Cloud", Toast.LENGTH_SHORT).show()
-            R.id.bluetoothLo -> Toast.makeText(context, "Bluetooth", Toast.LENGTH_SHORT).show()
+            R.id.make -> Toast.makeText(context, "준비 중 입니다.", Toast.LENGTH_SHORT).show()
+            R.id.check -> Toast.makeText(context, "준비 중 입니다.", Toast.LENGTH_SHORT).show()
+            R.id.parser -> Toast.makeText(context, "준비 중 입니다.", Toast.LENGTH_SHORT).show()
+            R.id.share -> Toast.makeText(context, "준비 중 입니다.", Toast.LENGTH_SHORT).show() // 파이어 베이스 저장 및 보내기
         }
         dismiss()
     }
