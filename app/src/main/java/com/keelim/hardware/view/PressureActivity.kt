@@ -1,4 +1,4 @@
-package com.keelim.hardware.view.fragments
+package com.keelim.hardware.view
 
 import android.content.Context
 import android.hardware.Sensor

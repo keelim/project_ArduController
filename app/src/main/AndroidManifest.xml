@@ -37,7 +37,7 @@
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.OpenActivity" />
         <activity
-            android:name=".view.fragments.MagneticSensorActivity"
+            android:name=".view.MagneticSensorActivity"
             android:label="@string/title_activity_magneticsensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAGNETICSENSOR" />
