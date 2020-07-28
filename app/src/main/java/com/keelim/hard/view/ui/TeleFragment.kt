@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 
 
-class TeleActivity : Fragment() {
+class TeleFragment : Fragment() {
     private lateinit var telephonyManager: TelephonyManager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         telephonyManager = requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
