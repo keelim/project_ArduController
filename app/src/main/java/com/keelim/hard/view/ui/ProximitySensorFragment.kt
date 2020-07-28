@@ -6,36 +6,36 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import com.keelim.hardware.R
-import kotlinx.android.synthetic.main.activity_proximity_sensor.*
+import kotlinx.android.synthetic.main.fragment_proximity_sensor.*
 
-class ProximitySensorActivity : AppCompatActivity(R.layout.activity_proximity_sensor), SensorEventListener {
+class ProximitySensorFragment : Fragment(), SensorEventListener {
     private var sensorManager: SensorManager? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //create instance of sensor manager and get system service to interact with Sensor
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = inflater.inflate(R.layout.fragment_proximity_sensor, container, false)
+
+        sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
         val proximitySensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_PROXIMITY)
         if (proximitySensor == null) {
-            Toast.makeText(this, "No Proximity Sensor Found! ", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "No Proximity Sensor Found! ", Toast.LENGTH_LONG).show()
         }
+
+        return view
     }
 
     override fun onResume() {
         super.onResume()
-        // register this class as a listener for the Proximity Sensor
-        sensorManager!!.registerListener(this,
-                sensorManager!!.getDefaultSensor(Sensor.TYPE_PROXIMITY),
-                SensorManager.SENSOR_DELAY_NORMAL)
+        sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     override fun onPause() {
-        // unregister listener
         super.onPause()
         sensorManager!!.unregisterListener(this)
     }
@@ -48,7 +48,7 @@ class ProximitySensorActivity : AppCompatActivity(R.layout.activity_proximity_se
             if (event.values[0].equals(0.0f)) {
                 prox_tv1!!.text = "You are Near: ${event.values[0]}"
             } else {
-                prox_tv1!!.text = "You are Far: ${event.values[0]}"
+                prox_tv2!!.text = "You are Far: ${event.values[0]}"
             }
         }
     }

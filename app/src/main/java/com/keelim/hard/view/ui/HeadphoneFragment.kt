@@ -1,18 +1,24 @@
-package com.keelim.hardware.view
+package com.keelim.hard.view.ui
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import com.keelim.hardware.R
-import kotlinx.android.synthetic.main.activity_headphone.*
+import kotlinx.android.synthetic.main.fragment_headphone.*
 
-class HeadphoneActivity : AppCompatActivity(R.layout.activity_headphone) {
+class HeadphoneFragment : Fragment() {
     private lateinit var myReceiver: MusicIntentReceiver
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_headphone, container, false)
+        return view
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         myReceiver = MusicIntentReceiver()
@@ -20,7 +26,7 @@ class HeadphoneActivity : AppCompatActivity(R.layout.activity_headphone) {
 
     override fun onResume() {
         val filter = IntentFilter(Intent.ACTION_HEADSET_PLUG)
-        registerReceiver(myReceiver, filter)
+        requireActivity().registerReceiver(myReceiver, filter)
         super.onResume()
     }
 
@@ -37,7 +43,7 @@ class HeadphoneActivity : AppCompatActivity(R.layout.activity_headphone) {
     }
 
     override fun onPause() {
-        unregisterReceiver(myReceiver)
+        requireActivity().unregisterReceiver(myReceiver)
         super.onPause()
     }
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.hard.R
-import com.keelim.hardware.R
+
 import kotlinx.android.synthetic.main.activity_display.*
 
 class DisplayFragment : Fragment(), View.OnTouchListener {

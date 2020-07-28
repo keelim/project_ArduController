@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hard.view.ui
 
 import android.content.Context
 import android.hardware.Sensor
@@ -6,21 +6,29 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import com.keelim.hardware.R
-import kotlinx.android.synthetic.main.activity_pressure.*
+import kotlinx.android.synthetic.main.fragment_pressure.*
 
-class PressureActivity : AppCompatActivity(R.layout.activity_pressure), SensorEventListener {
+
+class PressureFragment : Fragment(), SensorEventListener {
 
     private var sensmgr: SensorManager? = null
     private var accsensor: Sensor? = null
     private lateinit var sensorvalues: FloatArray
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = inflater.inflate(R.layout.fragment_pressure,container, false)
+        return view
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensmgr = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr!!.getDefaultSensor(Sensor.TYPE_PRESSURE)
     }
 

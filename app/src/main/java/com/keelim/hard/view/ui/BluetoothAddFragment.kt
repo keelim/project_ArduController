@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import com.keelim.hardware.R
+
 import kotlinx.android.synthetic.main.activity_blueadd.view.*
 
 class BluetoothAddFragment : Fragment() {

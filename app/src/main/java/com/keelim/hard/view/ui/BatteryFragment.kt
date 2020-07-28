@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.keelim.hard.R
+import kotlinx.android.synthetic.main.fragment_batteryindicator.*
 
 
+class BatteryFragment : Fragment() {
 
-class BatteryindicatorFragment : Fragment(R.layout.fragment_batteryindicator) {
+
     private val mBatInfoReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(c: Context, i: Intent) {
             val level = i.getIntExtra("level", 0)

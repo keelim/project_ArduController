@@ -6,22 +6,24 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import com.keelim.hardware.R
-import kotlinx.android.synthetic.main.activity_magneticsensor.*
+import kotlinx.android.synthetic.main.fragment_magneticsensor.*
 
-class MagneticSensorActivity : AppCompatActivity(R.layout.activity_magneticsensor), SensorEventListener {
+class MagneticSensorFragment: Fragment(), SensorEventListener {
     private lateinit var sensmgr: SensorManager
     private lateinit var magsensor: Sensor
     private lateinit var sensorvalues: FloatArray
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sensmgr = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_magneticsensor, container, false)
+        sensmgr = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         magsensor = sensmgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+        return view
     }
-
 
     override fun onSensorChanged(event: SensorEvent) {
         sensorvalues = event.values
