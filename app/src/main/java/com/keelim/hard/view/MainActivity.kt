@@ -77,9 +77,12 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawer_layout)
+                R.id.nav_setting, R.id.nav_acc, R.id.nav_battery, R.id.nav_bluetooth, R.id.nav_display, R.id.nav_headphone,
+                R.id.nav_light, R.id.nav_magnetic, R.id.nav_proximity, R.id.nav_pressure, R.id.nav_sound, R.id.nav_system,
+                R.id.nav_tele, R.id.nav_touch, R.id.nav_wifi, R.id.nav_slideshow), drawer_layout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         nav_view.setupWithNavController(navController)
+        
     }
 
     fun makeJson() {

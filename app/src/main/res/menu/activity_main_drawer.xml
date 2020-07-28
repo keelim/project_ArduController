@@ -4,17 +4,67 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_setting"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="setting" />
+
+        <item
+            android:id="@+id/nav_acc"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="acc" />
+        <item
+            android:id="@+id/nav_battery"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="battery" />
+        <item
+            android:id="@+id/nav_bluetooth"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="bluetooth" />
+        <item
+            android:id="@+id/nav_display"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="display" />
+        <item
+            android:id="@+id/nav_headphone"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="headphone" />
+        <item
+            android:id="@+id/nav_light"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="light" />
+        <item
+            android:id="@+id/nav_magnetic"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="magnetic" />
+        <item
+            android:id="@+id/nav_proximity"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="proximity" />
+        <item
+            android:id="@+id/nav_pressure"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="pressure" />
+        <item
+            android:id="@+id/nav_sound"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="sound" />
+        <item
+            android:id="@+id/nav_system"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="system" />
+        <item
+            android:id="@+id/nav_tele"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="tele" />
+        <item
+            android:id="@+id/nav_touch"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="touch" />
+        <item
+            android:id="@+id/nav_wifi"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="wifi" />
     </group>
 </menu>

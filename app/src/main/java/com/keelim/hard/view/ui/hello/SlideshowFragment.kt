@@ -1,4 +1,4 @@
-package com.keelim.hard.view.ui.slideshow
+package com.keelim.hard.view.ui.hello
 
 import android.os.Bundle
 import android.view.LayoutInflater

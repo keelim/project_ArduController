@@ -1,4 +1,4 @@
-package com.keelim.hard.view.ui.slideshow
+package com.keelim.hard.view.ui.hello
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
