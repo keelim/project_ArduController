@@ -2,6 +2,9 @@ package com.keelim.hard.model;
 
 import android.hardware.Sensor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //            list.append("").append(i++).append(" name: ").append(s.name).append("\n")
 //                    .append("power: ").append(s.power).append("\n").
 //                    append("resolution: ").append(s.resolution).append("\n")
@@ -71,6 +74,17 @@ public class DTO {
         this.range = String.valueOf(s.getMaximumRange());
         this.vendor = s.getVendor();
         this.mindelay = String.valueOf(s.getMinDelay());
+    }
+
+    public Map<String, String> toMap() {
+        HashMap<String, String> result = new HashMap<>();
+        result.put("name", name);
+        result.put("power", power);
+        result.put("resolution", resolution);
+        result.put("range", range);
+        result.put("vendor", vendor);
+        result.put("mindelay", mindelay);
+        return result;
     }
 }
 

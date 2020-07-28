@@ -10,8 +10,6 @@ import org.json.JSONObject
 
 class ManageJson {
     companion object {
-
-
         fun makeList(sensors: List<Sensor>): String {
             val jsonArray = JSONArray()
 
