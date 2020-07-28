@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_slideshow">
+    app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.keelim.hard.view.ui.hello.SlideshowFragment"
+        android:id="@+id/nav_home"
+        android:name="com.keelim.hard.view.ui.HomeFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_acc"
         android:name="com.keelim.hardware.view.fragments.AccelarometerFragment"
@@ -20,7 +20,7 @@
         android:label="BatteryFragment" />
     <fragment
         android:id="@+id/nav_bluetooth"
-        android:name="com.keelim.hardware.view.fragments.BluetoothAddFragment"
+        android:name="com.keelim.hardware.view.fragments.BluetoothFragment"
         android:label="BluetoothAddFragment" />
     <fragment
         android:id="@+id/nav_display"
@@ -48,7 +48,7 @@
         android:label="ProximitySensorFragment" />
     <fragment
         android:id="@+id/nav_setting"
-        android:name="com.keelim.hard.view.SettingsFragment"
+        android:name="com.keelim.hard.view.ui.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/nav_sound"

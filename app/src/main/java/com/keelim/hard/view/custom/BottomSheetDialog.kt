@@ -38,7 +38,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         when (view.id) {
             R.id.make -> {
                 (requireActivity() as (MainActivity)).apply {
-                    makeJson()
+//                    makeJson()
                 }
             }
             R.id.check -> checkingFile()
@@ -72,7 +72,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     private fun checkingFile() {
         file = File(requireActivity().application.filesDir, getString(R.string.file))
         val message: String = if (file.exists()) "정상적으로 존재합니다. . " else "파일이 존재 하지 않습니다.  "
-        Snackbar.make(main_container, message, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
 //    private fun fileUpload() { // json 올리는 버튼이 있을 것

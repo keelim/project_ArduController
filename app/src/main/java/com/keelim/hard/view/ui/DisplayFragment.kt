@@ -9,14 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.hard.R
+import kotlinx.android.synthetic.main.fragment_display.*
 
-import kotlinx.android.synthetic.main.activity_display.*
 
 class DisplayFragment : Fragment(), View.OnTouchListener {
     private lateinit var a: IntArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.activity_display, container, false)
+        var view = inflater.inflate(R.layout.fragment_display, container, false)
 
         a = IntArray(10).apply {
             this[0] = Color.parseColor("#f4c2c6")
@@ -37,7 +37,7 @@ class DisplayFragment : Fragment(), View.OnTouchListener {
 
     override fun onCreate(savedInstanceState: Bundle?) { //TODO 색까를 좀더 다양하게 사용하기
         super.onCreate(savedInstanceState)
-        Snackbar.make(display_container, "화면을 터치해주세요", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(requireView(), "화면을 터치해주세요", Snackbar.LENGTH_SHORT).show()
     }
 
 

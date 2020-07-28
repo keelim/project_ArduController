@@ -13,15 +13,11 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        MyApplication.getInstance().progressON(this, "Thank you for your attending ")
-
-        Handler(Looper.myLooper()!!).postDelayed( {
-            MyApplication.getInstance().progressOFF()
+        Handler(Looper.myLooper()!!).postDelayed({
+            Intent(this, MainActivity::class.java).apply {
+                startActivity(this)
+                finish()
+            }
         }, 3000)
-
-        Intent(this, MainActivity::class.java).apply {
-            startActivity(this)
-            finish()
-        }
     }
 }
