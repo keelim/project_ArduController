@@ -5,12 +5,6 @@ import android.hardware.Sensor;
 import java.util.HashMap;
 import java.util.Map;
 
-//            list.append("").append(i++).append(" name: ").append(s.name).append("\n")
-//                    .append("power: ").append(s.power).append("\n").
-//                    append("resolution: ").append(s.resolution).append("\n")
-//                    .append("range: ").append(s.maximumRange).append("\n").
-//                    append("vendor: ").append(s.vendor).append("\n")
-//                    .append("min delay: ").append(s.minDelay).append("\n\n")
 public class DTO {
     String name;
     String power;
