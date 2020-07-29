@@ -1,5 +1,6 @@
 package com.keelim.hard.view.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_wifi.*
 
 class WifiFragment : Fragment() {
 
+    @SuppressLint("HardwareIds")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_wifi, container, false)
 
@@ -25,8 +27,8 @@ class WifiFragment : Fragment() {
         val n = WifiInfo.LINK_SPEED_UNITS
         val y = wInfo.ssid
 
-        wifi_tv1!!.text = "mac address $macAddress"
-        wifi_tv2!!.text = "ssid $y"
+        wifi_tv1.text = "mac address: $macAddress"
+        wifi_tv2.text = "ssid $y"
         wifi_tv3.text = "LINK_SPEED_UNITS $n"
 
         return view

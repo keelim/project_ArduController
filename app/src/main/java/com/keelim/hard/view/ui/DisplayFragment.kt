@@ -12,7 +12,7 @@ import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_display.*
 
 
-class DisplayFragment : Fragment(), View.OnTouchListener {
+class DisplayFragment : Fragment() {
     private lateinit var a: IntArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,20 +31,11 @@ class DisplayFragment : Fragment(), View.OnTouchListener {
             this[9] = Color.parseColor("#ecffef")
         }
 
+//        display_button.setOnClickListener {
+//            val x = (Math.random() * 10).toInt()
+//            display_layout!!.setBackgroundColor(a[x])
+//        }
 
         return view
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) { //TODO 색까를 좀더 다양하게 사용하기
-        super.onCreate(savedInstanceState)
-        Snackbar.make(requireView(), "화면을 터치해주세요", Snackbar.LENGTH_SHORT).show()
-    }
-
-
-    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-        val x = (Math.random() * 10).toInt()
-
-        display_layout!!.setBackgroundColor(a[x])
-        return false
     }
 }

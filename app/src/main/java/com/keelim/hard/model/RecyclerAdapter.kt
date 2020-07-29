@@ -2,6 +2,7 @@ package com.keelim.hard.model
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.recycler_content.view.*

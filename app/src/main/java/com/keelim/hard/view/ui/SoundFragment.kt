@@ -26,8 +26,8 @@ class SoundFragment : Fragment(), FrKeyEventListener {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun FrtKeyEvent(event: KeyEvent): Boolean {
-        val action = event.action
+    override fun FrtKeyEvent(event: KeyEvent?): Boolean {
+        val action = event!!.action
         return when (event.keyCode) {
             KeyEvent.KEYCODE_VOLUME_UP -> {
                 if (action == KeyEvent.ACTION_UP) {

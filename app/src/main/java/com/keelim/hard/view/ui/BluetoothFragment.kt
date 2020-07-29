@@ -1,5 +1,6 @@
 package com.keelim.hard.view.ui
 
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,23 +16,21 @@ class BluetoothFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.fragment_blue, container, false)
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         view.blue_tv1.text = "name ${nameOrAddress("name")}"
         view.blue_tv2.text = "address ${nameOrAddress("address")}"
         return view
     }
 
+    @SuppressLint("HardwareIds")
     private fun nameOrAddress(s: String): String? {
-        if (mBluetoothAdapter == null) {
-            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        }
 
         return when (s) {
             "name" -> {
                 mBluetoothAdapter.name
             }
             "address" -> {
-//                mBluetoothAdapter.addressha
-                "hard"
+                mBluetoothAdapter.address
             }
             else -> null
         }

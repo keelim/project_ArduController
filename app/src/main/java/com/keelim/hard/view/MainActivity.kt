@@ -10,6 +10,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.KeyEvent
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -66,6 +67,8 @@ class MainActivity : AppCompatActivity() {
 //        if (makeFile(jsonString)) Toast.makeText(this, "JSON 파일 성공적으로 만들었습니다.", Toast.LENGTH_SHORT).show()
 //        else Toast.makeText(this, "실패하였습니다.", Toast.LENGTH_SHORT).show()
     }
+
+
 
 
     private fun makeFile(s: String?): Boolean {
