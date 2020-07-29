@@ -17,11 +17,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.snackbar.Snackbar
 import com.keelim.hard.MyApplication
 import com.keelim.hard.R
 import com.keelim.hard.model.FrKeyEventListener
-import com.keelim.hard.utils.ManageJson
 import com.keelim.hard.view.custom.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -97,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startProgress() {
         progressOn("Loading...")
-        Handler(Looper.myLooper()!!).postDelayed(Runnable { progressOff() }, 3500)
+        Handler(Looper.myLooper()!!).postDelayed({ progressOff() }, 3500)
     }
 
     private fun progressOn() {
@@ -124,12 +122,12 @@ class MainActivity : AppCompatActivity() {
 
 
     fun setFrKeyEventListener(fragmentKeyEventListener: FrKeyEventListener) {
-        this.frKeyEventListener = fragmentKeyEventListener;
+        this.frKeyEventListener = fragmentKeyEventListener
     }
 
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         frKeyEventListener.FrtKeyEvent(event)
-        return true;
+        return true
     }
 
 

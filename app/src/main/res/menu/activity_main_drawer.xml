@@ -6,65 +6,65 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="setting" />
-
-        <item
             android:id="@+id/nav_acc"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="acc" />
+            android:title="ACC" />
         <item
             android:id="@+id/nav_battery"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="battery" />
+            android:title="배터리" />
         <item
             android:id="@+id/nav_bluetooth"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="bluetooth" />
+            android:title="블루투스" />
         <item
             android:id="@+id/nav_display"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="display" />
+            android:title="디스플레이" />
         <item
             android:id="@+id/nav_headphone"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="headphone" />
+            android:title="헤드폰" />
         <item
             android:id="@+id/nav_light"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="light" />
+            android:title="광도" />
         <item
             android:id="@+id/nav_magnetic"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="magnetic" />
+            android:title="자기" />
         <item
             android:id="@+id/nav_proximity"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="proximity" />
+            android:title="근접" />
         <item
             android:id="@+id/nav_pressure"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="pressure" />
+            android:title="압력" />
         <item
             android:id="@+id/nav_sound"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="sound" />
+            android:title="소리" />
         <item
             android:id="@+id/nav_system"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="system" />
+            android:title="시스템 환경" />
         <item
             android:id="@+id/nav_tele"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="tele" />
+            android:title="전화설정" />
         <item
             android:id="@+id/nav_touch"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="touch" />
+            android:title="터치센서" />
         <item
             android:id="@+id/nav_wifi"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="wifi" />
+            android:title="와이파이" />
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="설정" />
     </group>
 </menu>

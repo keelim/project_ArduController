@@ -1,4 +1,4 @@
-package com.keelim.hardware.view.fragments
+package com.keelim.hard.view.ui
 
 import android.content.BroadcastReceiver
 import android.content.Context

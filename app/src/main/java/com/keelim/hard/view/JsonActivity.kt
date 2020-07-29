@@ -22,9 +22,9 @@ class JsonActivity : AppCompatActivity() {
         var json = ""
 
         try {
-            var input = openFileInput(application.filesDir.absolutePath + getString(R.string.file))
+            val input = openFileInput(application.filesDir.absolutePath + getString(R.string.file))
             val fileSize: Int = input.available()
-            var buffer = ByteArray(fileSize)
+            val buffer = ByteArray(fileSize)
             input.read(buffer)
             input.close()
 

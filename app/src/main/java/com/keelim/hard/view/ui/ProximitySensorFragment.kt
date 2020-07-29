@@ -18,7 +18,7 @@ class ProximitySensorFragment : Fragment(), SensorEventListener {
     private var sensorManager: SensorManager? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.fragment_proximity_sensor, container, false)
+        val view = inflater.inflate(R.layout.fragment_proximity_sensor, container, false)
 
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
 

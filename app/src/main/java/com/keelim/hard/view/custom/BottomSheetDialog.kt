@@ -1,5 +1,7 @@
 package com.keelim.hard.view.custom
 
+//import com.google.firebase.storage.FirebaseStorage
+//import com.google.firebase.storage.StorageReference
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -10,12 +12,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
-//import com.google.firebase.storage.FirebaseStorage
-//import com.google.firebase.storage.StorageReference
 import com.keelim.hard.R
 import com.keelim.hard.view.JsonActivity
 import com.keelim.hard.view.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import java.io.File
 

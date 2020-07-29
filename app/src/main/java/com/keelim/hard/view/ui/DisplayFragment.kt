@@ -1,4 +1,4 @@
-package com.keelim.hardware.view.fragments
+package com.keelim.hard.view.ui
 
 import android.graphics.Color
 import android.os.Bundle
@@ -16,7 +16,7 @@ class DisplayFragment : Fragment(), View.OnTouchListener {
     private lateinit var a: IntArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.fragment_display, container, false)
+        val view = inflater.inflate(R.layout.fragment_display, container, false)
 
         a = IntArray(10).apply {
             this[0] = Color.parseColor("#f4c2c6")

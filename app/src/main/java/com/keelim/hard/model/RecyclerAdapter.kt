@@ -25,6 +25,6 @@ class RecyclerAdapter(makeList: MutableList<String>) : RecyclerView.Adapter<Recy
     }
 
     inner class MainViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_content, parent, false)) {
-        val tvTitle = itemView.recycler_content_text
+        val tvTitle: TextView = itemView.recycler_content_text
     }
 }

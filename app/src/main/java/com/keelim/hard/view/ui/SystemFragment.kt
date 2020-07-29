@@ -1,4 +1,4 @@
-package com.keelim.hardware.view
+package com.keelim.hard.view.ui
 
 import android.os.Build
 import android.os.Bundle

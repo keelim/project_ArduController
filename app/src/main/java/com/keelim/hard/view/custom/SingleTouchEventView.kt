@@ -1,4 +1,4 @@
-package com.keelim.hardware.view.customs
+package com.keelim.hard.view.custom
 
 import android.content.Context
 import android.graphics.Canvas
