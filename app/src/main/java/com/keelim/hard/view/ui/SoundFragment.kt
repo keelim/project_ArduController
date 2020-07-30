@@ -23,7 +23,7 @@ class SoundFragment : Fragment(), FrKeyEventListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_sound, container, false)
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
     override fun FrtKeyEvent(event: KeyEvent?): Boolean {
