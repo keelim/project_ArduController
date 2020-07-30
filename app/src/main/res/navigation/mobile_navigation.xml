@@ -26,20 +26,11 @@
             android:id="@+id/action_nav_home_to_nav_battery"
             app:destination="@id/nav_battery" />
         <action
-            android:id="@+id/action_nav_home_to_nav_system"
-            app:destination="@id/nav_system" />
-        <action
             android:id="@+id/action_nav_home_to_nav_bluetooth"
             app:destination="@id/nav_bluetooth" />
         <action
             android:id="@+id/action_nav_home_to_nav_pressure"
             app:destination="@id/nav_pressure" />
-        <action
-            android:id="@+id/action_nav_home_to_nav_tele"
-            app:destination="@id/nav_tele" />
-        <action
-            android:id="@+id/action_nav_home_to_nav_display"
-            app:destination="@id/nav_display" />
         <action
             android:id="@+id/action_nav_home_to_nav_proximity"
             app:destination="@id/nav_proximity" />
@@ -47,73 +38,98 @@
             android:id="@+id/action_nav_home_to_nav_touch"
             app:destination="@id/nav_touch" />
         <action
-            android:id="@+id/action_nav_home_to_nav_headphone"
-            app:destination="@id/nav_headphone" />
-        <action
             android:id="@+id/action_nav_home_to_nav_setting"
             app:destination="@id/nav_setting" />
         <action
-            android:id="@+id/action_nav_home_to_nav_wifi"
-            app:destination="@id/nav_wifi" />
+            android:id="@+id/action_nav_home_to_nav_tele"
+            app:destination="@id/nav_tele" />
     </fragment>
     <fragment
         android:id="@+id/nav_acc"
         android:name="com.keelim.hard.view.ui.AccelarometerFragment"
-        android:label="AccelarometerFragment" />
+        android:label="AccelarometerFragment" >
+        <action
+            android:id="@+id/action_nav_acc_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_battery"
         android:name="com.keelim.hard.view.ui.BatteryFragment"
-        android:label="BatteryFragment" />
+        android:label="BatteryFragment" >
+        <action
+            android:id="@+id/action_nav_battery_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_bluetooth"
         android:name="com.keelim.hard.view.ui.BluetoothFragment"
-        android:label="BluetoothAddFragment" />
-    <fragment
-        android:id="@+id/nav_display"
-        android:name="com.keelim.hard.view.ui.DisplayFragment"
-        android:label="DisplayFragment" />
-    <fragment
-        android:id="@+id/nav_headphone"
-        android:name="com.keelim.hard.view.ui.HeadphoneFragment"
-        android:label="HeadphoneFragment" />
+        android:label="BluetoothAddFragment" >
+        <action
+            android:id="@+id/action_nav_bluetooth_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_light"
         android:name="com.keelim.hard.view.ui.LightSensorFragment"
-        android:label="LightSensorFragment" />
+        android:label="LightSensorFragment" >
+        <action
+            android:id="@+id/action_nav_light_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_magnetic"
         android:name="com.keelim.hard.view.ui.MagneticSensorFragment"
-        android:label="MagneticSensorFragment" />
+        android:label="MagneticSensorFragment" >
+        <action
+            android:id="@+id/action_nav_magnetic_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_pressure"
         android:name="com.keelim.hard.view.ui.PressureFragment"
-        android:label="PressureFragment" />
+        android:label="PressureFragment" >
+        <action
+            android:id="@+id/action_nav_pressure_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_proximity"
         android:name="com.keelim.hard.view.ui.ProximitySensorFragment"
-        android:label="ProximitySensorFragment" />
+        android:label="ProximitySensorFragment" >
+        <action
+            android:id="@+id/action_nav_proximity_to_nav_home2"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_setting"
         android:name="com.keelim.hard.view.ui.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_nav_setting_to_nav_home2"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_sound"
         android:name="com.keelim.hard.view.ui.SoundFragment"
-        android:label="SoundFragment" />
-    <fragment
-        android:id="@+id/nav_system"
-        android:name="com.keelim.hard.view.ui.SystemFragment"
-        android:label="SystemFragment" />
+        android:label="SoundFragment" >
+        <action
+            android:id="@+id/action_nav_sound_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_tele"
         android:name="com.keelim.hard.view.ui.TeleFragment"
-        android:label="TeleFragment" />
+        android:label="TeleFragment" >
+        <action
+            android:id="@+id/action_nav_tele_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_touch"
         android:name="com.keelim.hard.view.ui.TouchSensorFragment"
-        android:label="TouchSensorFragment" />
-    <fragment
-        android:id="@+id/nav_wifi"
-        android:name="com.keelim.hard.view.ui.WifiFragment"
-        android:label="WifiFragment" />
+        android:label="TouchSensorFragment" >
+        <action
+            android:id="@+id/action_nav_touch_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

@@ -12,6 +12,7 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     //    private lateinit var storage: FirebaseStorage
 //    private lateinit var ref: StorageReference
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var listener: NavController.OnDestinationChangedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +54,15 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_setting, R.id.nav_acc, R.id.nav_battery, R.id.nav_bluetooth, R.id.nav_display, R.id.nav_headphone,
-                R.id.nav_light, R.id.nav_magnetic, R.id.nav_proximity, R.id.nav_pressure, R.id.nav_sound, R.id.nav_system,
-                R.id.nav_tele, R.id.nav_touch, R.id.nav_wifi ), drawer_layout)
+        /*appBarConfiguration = AppBarConfiguration(setOf(
+                R.id.nav_home, R.id.nav_setting, R.id.nav_acc, R.id.nav_battery, R.id.nav_bluetooth,
+                R.id.nav_light, R.id.nav_magnetic, R.id.nav_proximity, R.id.nav_pressure, R.id.nav_sound,
+                R.id.nav_tele, R.id.nav_touch ), drawer_layout)*/
+
+        appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         nav_view.setupWithNavController(navController)
-        
+
     }
 
     fun makeJson() {
