@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hard">
         <activity
-            android:name=".view.AllInfoActivity"
-            android:label="@string/title_activity_all_info"
-            android:theme="@style/Theme.Hard.NoActionBar"></activity>
+            android:name=".view.OpenSourceActivity"
+            android:label="@string/title_open_source"
+            android:theme="@style/Theme.Hard.NoActionBar" />
         <activity
             android:name=".view.MainActivity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Hard.NoActionBar"></activity>
+            android:theme="@style/Theme.Hard.NoActionBar" />
         <activity
             android:name=".view.SplashActivity"
             android:label="@string/title_activity_splash"
