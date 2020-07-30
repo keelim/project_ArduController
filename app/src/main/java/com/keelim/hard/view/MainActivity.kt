@@ -6,8 +6,6 @@ package com.keelim.hard.view
 //import com.google.firebase.storage.ktx.storage
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.KeyEvent
 import android.view.Menu
 import android.widget.Toast
@@ -18,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.keelim.hard.MyApplication
 import com.keelim.hard.R
 import com.keelim.hard.model.FrKeyEventListener
 import com.keelim.hard.view.custom.BottomSheetDialog
@@ -95,23 +92,6 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
         return boolean
-    }
-
-    private fun startProgress() {
-        progressOn("Loading...")
-        Handler(Looper.myLooper()!!).postDelayed({ progressOff() }, 3500)
-    }
-
-    private fun progressOn() {
-        MyApplication.getInstance().progressON(this, null)
-    }
-
-    private fun progressOn(message: String?) {
-        MyApplication.getInstance().progressON(this, message)
-    }
-
-    private fun progressOff() {
-        MyApplication.getInstance().progressOFF()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
