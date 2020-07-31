@@ -8,23 +8,17 @@
         <item
             android:id="@+id/nav_acc"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="ACC" />
-        <item
-            android:id="@+id/nav_battery"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="배터리" />
+            android:title="가속도" />
         <item
             android:id="@+id/nav_bluetooth"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="블루투스" />
+
         <item
-            android:id="@+id/nav_display"
+            android:id="@+id/nav_battery"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="디스플레이" />
-        <item
-            android:id="@+id/nav_headphone"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="헤드폰" />
+            android:title="배터리" />
+
         <item
             android:id="@+id/nav_light"
             android:icon="@drawable/ic_menu_slideshow"
@@ -45,10 +39,7 @@
             android:id="@+id/nav_sound"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="소리" />
-        <item
-            android:id="@+id/nav_system"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="시스템 환경" />
+
         <item
             android:id="@+id/nav_tele"
             android:icon="@drawable/ic_menu_slideshow"
@@ -57,10 +48,6 @@
             android:id="@+id/nav_touch"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="터치센서" />
-        <item
-            android:id="@+id/nav_wifi"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="와이파이" />
 
         <item
             android:id="@+id/nav_setting"

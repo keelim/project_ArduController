@@ -17,10 +17,7 @@
     <style name="Theme.Hard.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="MyTheme">
-
+        <item name="background">@color/main1</item>
     </style>
 
     <style name="Theme.Hard.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

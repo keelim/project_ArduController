@@ -14,14 +14,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.hard.R
 import com.keelim.hard.view.JsonActivity
-import com.keelim.hard.view.MainActivity
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import java.io.File
 
 
 class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
-    private lateinit var file : File
-
+    private lateinit var file: File
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.bottom_sheet_dialog, container, false)
@@ -29,17 +27,11 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         view.share!!.setOnClickListener(this)
         view.check!!.setOnClickListener(this)
         view.parser!!.setOnClickListener(this)
-        view.make!!.setOnClickListener(this)
         return view
     }
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.make -> {
-                (requireActivity() as (MainActivity)).apply {
-//                    makeJson()
-                }
-            }
             R.id.check -> checkingFile()
             R.id.parser -> {
                 Intent(requireActivity(), JsonActivity::class.java).apply {
@@ -50,7 +42,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
                 AlertDialog.Builder(requireActivity())
                         .setMessage("정말로 파일을 업로드 하시겠습니까?")
                         .setPositiveButton("네") { _: DialogInterface, _: Int ->
-                            if(file.exists()){
+                            if (file.exists()) {
                                 Toast.makeText(requireContext(), "업로드를 시작합니다.", Toast.LENGTH_SHORT).show()
 //                                fileUpload()
                             } else {
@@ -88,9 +80,6 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
 //            Toast.makeText(requireContext(), download.toString(), Toast.LENGTH_SHORT).show()
 //        }
 //    }
-
-
-
 
 
 }

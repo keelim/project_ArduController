@@ -22,7 +22,8 @@ class ProximitySensorFragment : Fragment(), SensorEventListener {
 
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-        val proximitySensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+        val proximitySensor = sensorManager?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+
         if (proximitySensor == null) {
             Toast.makeText(requireContext(), "No Proximity Sensor Found! ", Toast.LENGTH_LONG).show()
         }
