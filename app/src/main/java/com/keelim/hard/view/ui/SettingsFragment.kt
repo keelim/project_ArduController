@@ -18,7 +18,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         when (preference!!.key) {
             "github" -> {
                 Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/keelim/TestingHardWare")).apply {
-                    startActivity(this);
+                    startActivity(this)
                 }
                 return true
             }

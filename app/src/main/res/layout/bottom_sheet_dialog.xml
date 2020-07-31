@@ -5,31 +5,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/make"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:padding="12dp"
-            android:src="@drawable/make" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="JSON 파일 만들기"
-            android:textColor="#838383"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/check"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -104,31 +79,5 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    
-
-    <LinearLayout
-        android:id="@+id/allinfo"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:padding="12dp"
-            android:src="@drawable/share" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="모든 정보 출력"
-            android:textColor="#838383"
-            android:textSize="16sp" />
-    </LinearLayout>
 
 </LinearLayout>
