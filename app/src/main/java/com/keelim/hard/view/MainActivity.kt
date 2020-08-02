@@ -1,10 +1,5 @@
 package com.keelim.hard.view
 
-//import com.google.firebase.ktx.Firebase
-//import com.google.firebase.storage.FirebaseStorage
-//import com.google.firebase.storage.StorageReference
-//import com.google.firebase.storage.ktx.storage
-
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
@@ -19,7 +14,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -46,9 +40,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fabClose: Animation
     private lateinit var fabOpen: Animation
     private lateinit var list: MutableList<Sensor>
-    private lateinit var filePath: Uri;
     private lateinit var ref: StorageReference
     private lateinit var file: File
+
+
+    private lateinit var injectionFile: File
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
