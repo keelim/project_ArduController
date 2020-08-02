@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
-//    id 'com.google.gms.google-services'
+    id 'com.google.gms.google-services'
 //    id 'com.google.firebase.firebase-perf'
 //    id 'dagger.hilt.android.plugin'
 //    id 'com.google.firebase.crashlytics'
@@ -16,7 +16,7 @@ android {
     
 
     defaultConfig {
-        applicationId "com.keelim.hardware"
+        applicationId "com.keelim.hard"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
@@ -65,11 +65,11 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.annotation:annotation:1.1.0'
 
-//    implementation 'com.google.firebase:firebase-analytics:17.4.4'
-//    implementation 'com.google.firebase:firebase-core:17.4.4'
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    implementation 'com.google.firebase:firebase-core:17.4.4'
 //    implementation 'com.google.firebase:firebase-perf:19.0.8'
 //    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
-//    implementation 'com.google.firebase:firebase-storage-ktx:19.1.1'
+    implementation 'com.google.firebase:firebase-storage-ktx:19.1.1'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
@@ -92,6 +92,7 @@ dependencies {
 
 
     implementation 'com.github.jrvansuita:MaterialAbout:0.2.4'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
 
 
 }

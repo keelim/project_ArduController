@@ -4,10 +4,15 @@ package com.keelim.hard.view
 //import com.google.firebase.storage.FirebaseStorage
 //import com.google.firebase.storage.StorageReference
 //import com.google.firebase.storage.ktx.storage
+
+import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.animation.Animation
@@ -20,6 +25,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.keelim.hard.R
 import com.keelim.hard.utils.ManageJson
 import com.keelim.hard.view.custom.BottomSheetDialog
@@ -29,26 +36,29 @@ import java.io.File
 import java.io.OutputStream
 import java.nio.charset.Charset
 
+
 class MainActivity : AppCompatActivity() {
 
-    //    private lateinit var storage: FirebaseStorage
-//    private lateinit var ref: StorageReference
+
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var listener: NavController.OnDestinationChangedListener
     private lateinit var sm: SensorManager
     private var isFabOpen: Boolean = false
     private lateinit var fabClose: Animation
     private lateinit var fabOpen: Animation
     private lateinit var list: MutableList<Sensor>
+    private lateinit var filePath: Uri;
+    private lateinit var ref: StorageReference
+    private lateinit var file: File
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        file = File(application.filesDir, getString(R.string.file))
+        ref = FirebaseStorage.getInstance().reference
 
-//        storage = Firebase.storage //init
-//        ref = storage.reference
 
 
         floating1.setOnClickListener {
@@ -69,6 +79,21 @@ class MainActivity : AppCompatActivity() {
             Intent(this, OpenSourceActivity::class.java).apply {
                 startActivity(this)
             }
+        }
+
+        floating5.setOnClickListener{
+            AlertDialog.Builder(this)
+                    .setMessage("정말로 파일을 업로드 하시겠습니까?")
+                    .setPositiveButton("네") { _: DialogInterface, _: Int ->
+                        if (file.exists()) {
+                            Toast.makeText(this, "파일을 전송 합니다.", Toast.LENGTH_SHORT).show()
+                            uploadToServer()
+                        } else {
+                            Toast.makeText(this, "파일을 다시 확인 해주세요", Toast.LENGTH_SHORT).show()
+                        }
+                    }.create()
+                    .show()
+
         }
 
 
@@ -100,6 +125,7 @@ class MainActivity : AppCompatActivity() {
         floating2.startAnimation(fabClose)
         floating3.startAnimation(fabClose)
         floating4.startAnimation(fabClose)
+        floating5.startAnimation(fabClose)
     }
 
     private fun toggleFab() {
@@ -108,18 +134,22 @@ class MainActivity : AppCompatActivity() {
             floating2.startAnimation(fabClose)
             floating3.startAnimation(fabClose)
             floating4.startAnimation(fabClose)
+            floating5.startAnimation(fabClose)
             floating2.isClickable = false
             floating3.isClickable = false
             floating4.isClickable = false
+            floating5.isClickable = false
             isFabOpen = false
         } else {
             floating1.text = "close"
             floating2.startAnimation(fabOpen)
             floating3.startAnimation(fabOpen)
             floating4.startAnimation(fabOpen)
+            floating5.startAnimation(fabOpen)
             floating2.isClickable = true
             floating3.isClickable = true
             floating4.isClickable = true
+            floating5.isClickable = true
             isFabOpen = true
         }
     }
@@ -165,6 +195,32 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    private fun uploadToServer() {
+        //if there is a file to upload
+        val filePath = Uri.fromFile(File(application.filesDir, getString(R.string.file)))
+        //displaying a progress dialog while upload is going on
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Uploading...")
+        progressDialog.show()
+
+        val riversRef: StorageReference = ref.child("jsonFile/sample.json")
+        riversRef.putFile(filePath)
+                .addOnSuccessListener {
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "File Uploaded", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { exception ->
+                    progressDialog.dismiss()
+                    Toast.makeText(this, exception.message, Toast.LENGTH_LONG).show()
+                }
+                .addOnProgressListener { taskSnapshot ->
+
+                    val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
+                    progressDialog.setMessage("Uploaded " + progress.toInt() + "%...")
+                }
+    }
+
 
 
 
