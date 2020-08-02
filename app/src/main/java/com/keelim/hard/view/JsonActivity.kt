@@ -1,11 +1,15 @@
 package com.keelim.hard.view
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hard.R
 import com.keelim.hard.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_json.*
+import java.io.File
+import java.io.FileInputStream
 import java.io.IOException
 import java.nio.charset.Charset
 
@@ -17,8 +21,12 @@ class JsonActivity : AppCompatActivity() {
 
         onBackPressCloseHandler = BackPressCloseHandler(this)
 
+
+        json_tv.movementMethod = ScrollingMovementMethod()
+
         json_btn.setOnClickListener {
             json_tv.text = getJsonString()
+            json_btn.visibility = View.INVISIBLE
         }
     }
 
@@ -26,7 +34,7 @@ class JsonActivity : AppCompatActivity() {
         var json = ""
 
         try {
-            val input = openFileInput(application.filesDir.absolutePath + getString(R.string.file))
+            val input = FileInputStream(File(application.filesDir, getString(R.string.file)))
             val fileSize: Int = input.available()
             val buffer = ByteArray(fileSize)
             input.read(buffer)

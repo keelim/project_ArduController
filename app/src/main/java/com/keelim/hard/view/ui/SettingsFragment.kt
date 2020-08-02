@@ -3,6 +3,7 @@ package com.keelim.hard.view.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.keelim.hard.R
@@ -10,6 +11,7 @@ import com.keelim.hard.R
 class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
     }
 

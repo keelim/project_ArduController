@@ -8,11 +8,4 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="라이선스 고지">
-        <Preference
-            app:key="opensource"
-            app:title="오픈소스 라이선스 고지" />
-    </PreferenceCategory>
-
-
 </PreferenceScreen>

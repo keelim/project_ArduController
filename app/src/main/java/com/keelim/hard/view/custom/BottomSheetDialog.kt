@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
 import com.keelim.hard.R
 import com.keelim.hard.view.JsonActivity
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
@@ -34,7 +33,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         when (view.id) {
             R.id.check -> checkingFile()
             R.id.parser -> {
-                Intent(requireActivity(), JsonActivity::class.java).apply {
+                Intent(requireContext(), JsonActivity::class.java).apply {
                     startActivity(this)
                 }
             }
@@ -63,7 +62,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
     private fun checkingFile() {
         file = File(requireActivity().application.filesDir, getString(R.string.file))
         val message: String = if (file.exists()) "정상적으로 존재합니다. . " else "파일이 존재 하지 않습니다.  "
-        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 //    private fun fileUpload() { // json 올리는 버튼이 있을 것

@@ -10,9 +10,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import kotlinx.android.synthetic.main.fragment_lightsensor.*
+import kotlinx.android.synthetic.main.fragment_light.*
+
 
 class LightSensorFragment : Fragment(), SensorEventListener {
     private lateinit var sensmgr: SensorManager
@@ -20,7 +22,8 @@ class LightSensorFragment : Fragment(), SensorEventListener {
     private lateinit var sensorvalues: FloatArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_lightsensor, container, false)
+        val view = inflater.inflate(R.layout.fragment_light, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
         sensmgr = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accsensor = sensmgr.getDefaultSensor(Sensor.TYPE_LIGHT)
 

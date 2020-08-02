@@ -9,8 +9,6 @@ import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -23,18 +21,15 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.keelim.hard.R
-import com.keelim.hard.model.FrKeyEventListener
 import com.keelim.hard.utils.ManageJson
 import com.keelim.hard.view.custom.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.File
 import java.io.OutputStream
 import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var frKeyEventListener: FrKeyEventListener
 
     //    private lateinit var storage: FirebaseStorage
 //    private lateinit var ref: StorageReference
@@ -76,13 +71,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_setting, R.id.nav_acc, R.id.nav_battery, R.id.nav_bluetooth,
-                R.id.nav_light, R.id.nav_magnetic, R.id.nav_proximity, R.id.nav_pressure, R.id.nav_sound,
-                R.id.nav_tele, R.id.nav_touch ), drawer_layout)*/
 
         appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -92,24 +82,24 @@ class MainActivity : AppCompatActivity() {
 
         list = sm.getSensorList(Sensor.TYPE_ALL)
 
-        val i = 0
         val str = StringBuilder()
                 .append("전체 센서 수: ").append(list.size).append("\n")
 
-        for (s in list) {
+        for ((i, s) in list.withIndex()) {
             str.append("").append(i).append(" name: ").append(s.name).append("\n")
                     .append("power: ").append(s.power).append("\n").append("resolution: ").append(s.resolution).append("\n")
                     .append("range: ").append(s.maximumRange).append("\n").append("vendor: ").append(s.vendor).append("\n")
                     .append("min delay: ").append(s.minDelay).append("\n\n")
         }
 
-        after_text.movementMethod = ScrollingMovementMethod()
-        after_text.text = str.toString()
 
         fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
         fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
 
-
+        floating1.text = "Adding"
+        floating2.startAnimation(fabClose)
+        floating3.startAnimation(fabClose)
+        floating4.startAnimation(fabClose)
     }
 
     private fun toggleFab() {
@@ -129,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             floating4.startAnimation(fabOpen)
             floating2.isClickable = true
             floating3.isClickable = true
-            floating4.isClickable = false
+            floating4.isClickable = true
             isFabOpen = true
         }
     }
@@ -176,15 +166,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
-    fun setFrKeyEventListener(fragmentKeyEventListener: FrKeyEventListener) {
-        this.frKeyEventListener = fragmentKeyEventListener
-    }
-
-    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
-        frKeyEventListener.FrtKeyEvent(event)
-        return true
-    }
 
 
 }

@@ -13,9 +13,9 @@ class ManageJson {
         fun makeList(sensors: List<Sensor>): String {
             val jsonArray = JSONArray()
 
-            for(i in 0..sensors.size){
-                val dto = DTO(sensors[i])
-                val jsonObject : JSONObject = JSONObject() .apply {
+            for (element in sensors) {
+                val dto = DTO(element)
+                val jsonObject: JSONObject = JSONObject().apply {
                     put("name", dto.name)
                     put("power", dto.power)
                     put("resolution", dto.resolution)

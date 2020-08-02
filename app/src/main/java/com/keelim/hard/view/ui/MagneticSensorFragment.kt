@@ -9,17 +9,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import kotlinx.android.synthetic.main.fragment_magneticsensor.*
+import kotlinx.android.synthetic.main.fragment_magnetic.*
 
-class MagneticSensorFragment: Fragment(), SensorEventListener {
+
+class MagneticSensorFragment : Fragment(), SensorEventListener {
     private lateinit var sensmgr: SensorManager
     private lateinit var magsensor: Sensor
     private lateinit var sensorvalues: FloatArray
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_magneticsensor, container, false)
+        val view = inflater.inflate(R.layout.fragment_magnetic, container, false)
+        (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
         sensmgr = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         magsensor = sensmgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
         return view

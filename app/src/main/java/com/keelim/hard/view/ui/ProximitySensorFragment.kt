@@ -10,17 +10,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.keelim.hard.R
-import kotlinx.android.synthetic.main.fragment_proximity_sensor.*
+import kotlinx.android.synthetic.main.fragment_proximity.*
 
 class ProximitySensorFragment : Fragment(), SensorEventListener {
     private var sensorManager: SensorManager? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_proximity_sensor, container, false)
+        val view = inflater.inflate(R.layout.fragment_proximity, container, false)
 
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
 
         val proximitySensor = sensorManager?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
 

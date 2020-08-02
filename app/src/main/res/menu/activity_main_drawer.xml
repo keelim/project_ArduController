@@ -35,10 +35,6 @@
             android:id="@+id/nav_pressure"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="압력" />
-        <item
-            android:id="@+id/nav_sound"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="소리" />
 
         <item
             android:id="@+id/nav_tele"
