@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.keelim.hard.R
+import com.keelim.hard.view.LibraryActivity
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -22,6 +23,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     startActivity(this)
                 }
                 true
+            }
+
+            "library" -> {
+                Intent(requireActivity(), LibraryActivity::class.java).apply {
+                    startActivity(this)
+                }
+                return true
             }
             else -> false
         }

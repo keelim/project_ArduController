@@ -105,4 +105,7 @@ To apply the Apache License to your work, attach the following boilerplate notic
    limitations under the License.
 
 ======================================</string>
+    <string name="title_activity_library">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
