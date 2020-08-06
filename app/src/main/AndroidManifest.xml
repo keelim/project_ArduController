@@ -8,7 +8,7 @@
 
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -16,17 +16,17 @@
         android:theme="@style/AppTheme">
 
         <service
-            android:name=".service.AWindowService"
+            android:name=".services.CustomWindowService"
             android:enabled="true"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW">
         </service>
 
 
-        <activity android:name=".result.ResultActivity" />
-        <activity android:name=".test2.Test2Activity" />
-        <activity android:name=".test1.Test1Activity" />
-        <activity android:name=".main.MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.keelim.testing.view.ResultActivity" />
+        <activity android:name="com.keelim.testing.view.Test2Activity" />
+        <activity android:name="com.keelim.testing.view.Test1Activity" />
+        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.keelim.testing.main
+package com.keelim.testing.view
 
 import android.content.Intent
 import android.net.Uri
@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.testing.R
-import com.keelim.testing.test1.Test1Activity
-import com.keelim.testing.test2.Test2Activity
 import com.keelim.testing.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -19,7 +17,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1
-    lateinit var backPressCloseHandler: BackPressCloseHandler
+    private lateinit var backPressCloseHandler: BackPressCloseHandler
 
     private val permissionListener = object : PermissionListener {
         override fun onPermissionGranted() {
@@ -80,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         btn_test2.setOnClickListener {
             val test2 = Intent(this, Test2Activity::class.java)
             startActivity(test2)
-            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
 
 
             finish()

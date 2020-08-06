@@ -1,4 +1,4 @@
-package com.keelim.testing.result
+package com.keelim.testing.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.activity_result.*
 import java.util.*
 
 class ResultActivity : AppCompatActivity() {
-    lateinit var resultArray: ArrayList<Long>
-    lateinit var backPressCloseHandler: BackPressCloseHandler
+    private lateinit var resultArray: ArrayList<Long>
+    private lateinit var backPressCloseHandler: BackPressCloseHandler
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,24 +58,9 @@ class ResultActivity : AppCompatActivity() {
         result_progress.visibility = View.GONE
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun onBackPressed() {
         backPressCloseHandler.onBackPressed()
     }
 
 
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 }

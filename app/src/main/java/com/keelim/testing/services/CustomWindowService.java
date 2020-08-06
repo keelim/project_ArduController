@@ -1,4 +1,4 @@
-package com.keelim.testing.service;
+package com.keelim.testing.services;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -20,7 +20,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.keelim.testing.R;
 
-public class AWindowService extends Service {
+public class CustomWindowService extends Service {
     private WindowManager wm;
     private View mView;
 
@@ -48,7 +48,7 @@ public class AWindowService extends Service {
         Notification notification = new NotificationCompat.Builder(this, strId).build();
         startForeground(1, notification);
 
-        LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // inflater 를 사용하여 layout 을 가져오자
         wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         // 윈도우매니저 설정
@@ -66,7 +66,7 @@ public class AWindowService extends Service {
         params.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
         // 위치 지정
 
-        mView = inflate.inflate(R.layout.view_in_service, null);
+        mView = inflater.inflate(R.layout.view_in_service, null);
         // view_in_service.xml layout 불러오기
         // mView.setOnTouchListener(onTouchListener);
         // Android O 이상의 버전에서는 터치리스너가 동작하지 않는다. ( TYPE_APPLICATION_OVERLAY 터치 미지원)

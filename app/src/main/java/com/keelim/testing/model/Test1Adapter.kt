@@ -1,4 +1,4 @@
-package com.keelim.testing.result
+package com.keelim.testing.model
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,8 +13,8 @@ import com.keelim.testing.R
 import kotlinx.android.synthetic.main.content_main_recycler_item.view.*
 
 
-class ResultAdapter internal constructor(list: ArrayList<String>?) :
-    RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
+class Test1Adapter internal constructor(list: ArrayList<String>?) :
+    RecyclerView.Adapter<Test1Adapter.ViewHolder>() {
     private var mData: ArrayList<String>? = null
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
@@ -38,8 +38,8 @@ class ResultAdapter internal constructor(list: ArrayList<String>?) :
 
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     override fun onBindViewHolder(
-        holder: ViewHolder,
-        position: Int
+            holder: ViewHolder,
+            position: Int
     ) {
         val text = mData!![position]
         holder.textView1.text = text

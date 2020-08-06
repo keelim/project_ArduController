@@ -1,4 +1,4 @@
-package com.keelim.testing.test1
+package com.keelim.testing.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +8,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.R
-import com.keelim.testing.result.ResultActivity
 import com.keelim.testing.utils.BackPressCloseHandler
+import com.keelim.testing.model.Test1Adapter
 import kotlinx.android.synthetic.main.activity_test1.*
 
 
 class Test1Activity : AppCompatActivity() {
-    lateinit var test1Adapter: Test1Adapter
-    lateinit var sampleDialog: AlertDialog
-    lateinit var backPressCloseHandler: BackPressCloseHandler
-    var resultArray = ArrayList<Long>()
+    private lateinit var test1Adapter: Test1Adapter
+    private lateinit var sampleDialog: AlertDialog
+    private lateinit var backPressCloseHandler: BackPressCloseHandler
+    private var resultArray = ArrayList<Long>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
@@ -90,11 +90,11 @@ class Test1Activity : AppCompatActivity() {
             val meanTime = time * 1000
             Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             Thread.sleep(100)
-            resultArray.add(time);
+            resultArray.add(time)
         }
 
         Snackbar.make(test1_container, "테스트를 종료 합니다. ", Snackbar.LENGTH_SHORT).show()
-        Thread.sleep(100);
+        Thread.sleep(100)
 
         endTest()
     }
@@ -104,7 +104,7 @@ class Test1Activity : AppCompatActivity() {
             putExtra("test1", "data1")
             putExtra("result", resultArray)
             startActivity(this)
-            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
             finish()
         }
     }
