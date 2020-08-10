@@ -1,4 +1,4 @@
-package com.keelim.arducon.view
+package com.keelim.arducon.view.ui.home
 
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
@@ -18,6 +18,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.keelim.arducon.R
 import com.keelim.arducon.utils.BackPressCloseHandler
+import com.keelim.arducon.view.ui.controller.ControllerActivity
+import com.keelim.arducon.view.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_drawer.*
 import java.io.InputStream

@@ -30,7 +30,5 @@ class SettingActivity : AppCompatActivity(R.layout.activity_setting) {
 
             return super.onPreferenceTreeClick(preference)
         }
-
-
     }
 }
