@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.keelim.arducon.view.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_controller"
+            app:destination="@id/nav_controller" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_device"
+            app:destination="@id/nav_device" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_controller"
+        android:name="com.keelim.arducon.view.ui.controller.ControllerFragment"
+        android:label="@string/menu_device"
+        tools:layout="@layout/fragment_controller" >
+        <action
+            android:id="@+id/action_nav_controller_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_device"
+        android:name="com.keelim.arducon.view.ui.device.DeviceFragment"
+        android:label="@string/menu_controller"
+        tools:layout="@layout/fragment_device" >
+        <action
+            android:id="@+id/action_nav_device_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+</navigation>
