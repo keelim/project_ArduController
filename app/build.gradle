@@ -10,7 +10,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.keelim.nandadiagnosis"
+        applicationId "com.keelim.arducon"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
@@ -55,6 +55,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     implementation 'androidx.preference:preference-ktx:1.1.1'
+
     kapt 'com.google.dagger:hilt-android-compiler:2.28.3-alpha'
 
 
