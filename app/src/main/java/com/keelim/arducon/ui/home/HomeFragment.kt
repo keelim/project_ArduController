@@ -1,4 +1,4 @@
-package com.keelim.arducon.view.ui.home
+package com.keelim.arducon.ui.home
 
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
@@ -8,26 +8,21 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.Menu
-import android.view.MenuItem
+import android.os.Looper
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
+import androidx.fragment.app.Fragment
 import com.keelim.arducon.R
-import com.keelim.arducon.utils.BackPressCloseHandler
-import com.keelim.arducon.view.ui.controller.ControllerActivity
-import com.keelim.arducon.view.SettingActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_drawer.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class HomeFragment : Fragment() {
     private lateinit var mDevices: Set<BluetoothDevice>
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private lateinit var mSocket: BluetoothSocket
@@ -36,44 +31,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var mCharDelimiter: String
     private lateinit var mWorkerThread: Thread
     private lateinit var readBuffer: ByteArray
-    private lateinit var backPressCloseHandler: BackPressCloseHandler
     private var readBufferPosition = 0
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        backPressCloseHandler = BackPressCloseHandler(this)
-
-        MobileAds.initialize(this) {
-            Toast.makeText(this, "complete loading ads", Toast.LENGTH_SHORT).show()
-        }
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
-
-        setSupportActionBar(main_toolbar)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        main_sendButton.setOnClickListener {
-            sendData(main_sendString.text.toString())
+        view.main_sendButton.setOnClickListener {
+            sendData(view.main_sendString.text.toString())
             checkBluetooth()
         }
 
-
-        navigationView.setNavigationItemSelectedListener { menuItem: MenuItem ->
-            when (menuItem.itemId) {
-
-                R.id.drawer_setting -> {
-                    Toast.makeText(this, " 기능 준비 중입니다.", Toast.LENGTH_SHORT).show()
-
-                    startActivity(Intent(this, SettingActivity::class.java))
-                }
-
-                R.id.drawer_controller -> startActivity(Intent(this, ControllerActivity::class.java))
-            }
-            false
-        }
+        return view
     }
+
 
     private fun sendData(msg: String) {
         val msgData = "${msg}\n"
@@ -82,14 +52,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
             mOutputStream.write(msgData.toByteArray()) // 문자열 전송.
         } catch (e: Exception) { // 문자열 전송 도중 오류가 발생한 경우
-            Toast.makeText(this, "데이터 전송 오류 발생", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), "데이터 전송 오류 발생", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun checkBluetooth() { //블루투스가 활성화 되어 있는 지를 확인
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if (!bluetoothAdapter.isEnabled) { // 블루투스 지원하며 비활성 상태인 경우.
-            Toast.makeText(this, "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show()
             startActivityForResult(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1) //블루투스를 요청한다.
 
         } else { // 블루투스 지원하며 활성 상태인 경우.
@@ -101,25 +71,25 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         mDevices = bluetoothAdapter.bondedDevices
 
         if (mDevices.isEmpty()) // 페어링된 장치가 없는 경우.
-            Toast.makeText(this, "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show() else { // 페어링된 장치가 있는 경우.
+            Toast.makeText(requireActivity(), "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show() else { // 페어링된 장치가 있는 경우.
 
             val deviceList: MutableList<String> = ArrayList()
-            for (device in mDevices){
+            for (device in mDevices) {
                 deviceList.add(device.name)
             }
 
             deviceList.add("취소") // 취소 항목 추가.
             val items = arrayOfNulls<String>(deviceList.size)
 
-            for (i in deviceList.indices){
+            for (i in deviceList.indices) {
                 items[i] = deviceList[i]
             }
 
-            AlertDialog.Builder(this)
+            AlertDialog.Builder(requireContext())
                     .setTitle("블루투스 장치 선택")
                     .setItems(items) { _: DialogInterface?, item: Int ->
                         if (item == mDevices.size) { // 연결할 장치를 선택하지 않고 '취소' 를 누른 경우.
-                            Toast.makeText(this, "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireActivity(), "연결할 장치를 선택하지 않았습니다.", Toast.LENGTH_LONG).show()
                         } else { // 연결할 장치를 선택한 경우, 선택한 장치와 연결을 시도함.
                             connectToSelectedDevice(items[item].toString())
                         }
@@ -142,11 +112,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
     private fun connectToSelectedDevice(selectedDeviceName: String) { // BluetoothDevice 원격 블루투스 기기를 나타냄.
-        /**
-         * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다.
-         * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
-         * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
-         */
+//        *
+//        * BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다 .
+//        * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
+//        * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용 .
+
+
         val uuid = UUID.randomUUID() //UUID 를 랜덤으로 만든다.
         try { // 소켓 생성, RFCOMM 채널을 통한 연결.
             // createRfcommSocketToServiceRecord(uuid) : 이 함수를 사용하여 원격 블루투스 장치와 통신할 수 있는 소켓을 생성함.
@@ -158,15 +129,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             mInputStream = mSocket.inputStream
             beginListenForData()
         } catch (e: Exception) { // 블루투스 연결 중 오류 발생
-            Toast.makeText(this, "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun beginListenForData() {
-        val handler = Handler(mainLooper) //쓰레드 사용에 있어서 필요함
+        val handler = Handler(Looper.getMainLooper()) //쓰레드 사용에 있어서 필요함
         readBufferPosition = 0 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = ByteArray(1024) // 수신 버퍼.
-        mWorkerThread = Thread(Runnable {  // 문자열 수신 쓰레드.
+        mWorkerThread = Thread {  // 문자열 수신 쓰레드.
 
             while (!Thread.currentThread().isInterrupted) {
                 try { // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.
@@ -188,7 +159,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                                 readBufferPosition = 0
                                 // 수신된 문자열 데이터에 대한 처리.
                                 handler.post {
-                                    main_receive_string.text = "${data}\n"
+                                    requireView().main_receiveString.text = "${data}\n"
                                 }
                             } else {
                                 readBuffer[readBufferPosition++] = aByte
@@ -196,56 +167,28 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         }
                     }
                 } catch (e: Exception) { // 데이터 수신 중 오류 발생.
-                    Toast.makeText(this, "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireActivity(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show()
                 }
             }
-        })
+        }
     } // 데이터 수신(쓰레드 사용 수신된 메시지를 계속 검사함)
-
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 1) {
             when (resultCode) {
                 Activity.RESULT_OK -> selectDevice()
-                Activity.RESULT_CANCELED -> Toast.makeText(this, "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show()
+                Activity.RESULT_CANCELED -> Toast.makeText(requireActivity(), "블루투스를 사용할 수 없어 프로그램을 종료합니다", Toast.LENGTH_LONG).show()
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
 
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                if (drawerlayout.isDrawerOpen(GravityCompat.START))
-                    drawerlayout.closeDrawer(GravityCompat.START)
-                else
-                    drawerlayout.openDrawer(GravityCompat.START)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun onDestroy() {
         mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
         mInputStream.close()
         mSocket.close()
-
-        finish()
         super.onDestroy()
     }
 
-    override fun onBackPressed() {
-        if (drawerlayout.isDrawerOpen(GravityCompat.START)) {
-            drawerlayout.closeDrawer(GravityCompat.START)
-        } else
-            backPressCloseHandler.onBackPressed()
-    }
 }
