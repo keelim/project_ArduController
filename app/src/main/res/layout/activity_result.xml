@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/result_container"
-    tools:context=".view.ResultActivity">
+    tools:context=".ui.result.ResultActivity">
 
     <ProgressBar
         android:id="@+id/result_progress"

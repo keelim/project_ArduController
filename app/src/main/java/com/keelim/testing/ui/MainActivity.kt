@@ -1,4 +1,4 @@
-package com.keelim.testing.view
+package com.keelim.testing.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.testing.R
+import com.keelim.testing.ui.test1.Test1Activity
+import com.keelim.testing.ui.test2.Test2Activity
 import com.keelim.testing.utils.BackPressCloseHandler
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -83,27 +83,27 @@ class MainActivity : AppCompatActivity() {
 
     private fun overayCheck() {
         if (!Settings.canDrawOverlays(this)) {
-            val intent = Intent(
+            Intent(
                     Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                     Uri.parse("package:$packageName")
-            )
-            startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE)
+            ).apply {
+                startActivityForResult(this, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE)
+            }
+
         }
     }
 
 
-    override fun onActivityResult(
-            requestCode: Int,
-            resultCode: Int,
-            data: Intent?
-    ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
             if (!Settings.canDrawOverlays(this)) {
                 Toast.makeText(this, "요구조건이 충족되지 않아 테스트를 할 수 없습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
-                Thread.sleep(3000)
-                finish()
 
+                intent.apply { //restart activity
+                    finish()
+                    startActivity(this)
+                }
             }
         }
     }

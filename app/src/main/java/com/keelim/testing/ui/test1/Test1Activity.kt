@@ -1,4 +1,4 @@
-package com.keelim.testing.view
+package com.keelim.testing.ui.test1
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.R
 import com.keelim.testing.utils.BackPressCloseHandler
-import com.keelim.testing.model.Test1Adapter
+import com.keelim.testing.ui.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_test1.*
 
 

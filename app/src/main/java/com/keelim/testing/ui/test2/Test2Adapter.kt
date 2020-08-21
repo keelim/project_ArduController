@@ -1,4 +1,4 @@
-package com.keelim.testing.model
+package com.keelim.testing.ui.test2
 
 import android.content.Context
 import android.view.LayoutInflater

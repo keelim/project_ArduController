@@ -1,4 +1,4 @@
-package com.keelim.testing.view
+package com.keelim.testing.ui
 
 import android.content.Intent
 import android.os.Bundle
