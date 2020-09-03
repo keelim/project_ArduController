@@ -12,6 +12,9 @@ import com.keelim.testing.utils.BackPressCloseHandler
 import com.keelim.testing.ui.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_test2.*
 
+
+//todo 서비스 잘 작동을 하는지 확인을 할 것
+
 class Test2Activity : AppCompatActivity() {
     private lateinit var test2Adapter: Test2Adapter
     private lateinit var backPressCloseHandler: BackPressCloseHandler
@@ -38,8 +41,7 @@ class Test2Activity : AppCompatActivity() {
             Toast.makeText(this, "샘플 테스트를 종료 합니다.  adb shell 을 확인해주세요", Toast.LENGTH_SHORT).show()
             handleService()
         }
-
-
+        
     }
 
     private fun test2Start() {
@@ -50,15 +52,14 @@ class Test2Activity : AppCompatActivity() {
 
     private fun measureTest2() {
         for (x in 1..10000) {
-            val start = System.currentTimeMillis()
+            val start = System.nanoTime()
             Log.d("test2_start", "dialog start time: $start")
-
 
             startForegroundService(Intent(this, CustomWindowService::class.java))
             Thread.sleep(1000)
             handleService()
 
-            val end = System.currentTimeMillis()
+            val end = System.nanoTime()
             Log.d("test1_start", "dialog end time: $end")
 
             val time = end - start

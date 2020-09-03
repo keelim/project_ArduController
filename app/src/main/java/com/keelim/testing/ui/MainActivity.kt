@@ -3,6 +3,8 @@ package com.keelim.testing.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,42 +14,33 @@ import com.keelim.testing.R
 import com.keelim.testing.ui.test1.Test1Activity
 import com.keelim.testing.ui.test2.Test2Activity
 import com.keelim.testing.utils.BackPressCloseHandler
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
-import javax.inject.Named
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1
+    private val ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE = 1
     private lateinit var backPressCloseHandler: BackPressCloseHandler
 
-    @Inject
-    @Named("permission")
-    private lateinit var permissionListener:PermissionListener
-
-/*
     private val permissionListener = object : PermissionListener {
         override fun onPermissionGranted() {
             Toast.makeText(this@MainActivity, "모든 권한이 승인 되었습니다.", Toast.LENGTH_SHORT).show()
         }
 
         override fun onPermissionDenied(deniedPermissions: ArrayList<String>?) {
-            Toast.makeText(this@MainActivity, "모든 권한이 승인 되지 않았습니다. 종료합니다.", Toast.LENGTH_SHORT)
-                    .show()
-            Thread.sleep(3000)
-            finish()
+            Handler(Looper.getMainLooper()).postDelayed(
+                    {
+                        Toast.makeText(this@MainActivity, "모든 권한이 승인 되지 않았습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }, 3000
+            )
         }
 
     }
-*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         backPressCloseHandler = BackPressCloseHandler(this)
         Toast.makeText(this, "권한 확인 중입니다.", Toast.LENGTH_SHORT).show()
-
 
         TedPermission.with(this)
                 .setPermissionListener(permissionListener)
@@ -83,11 +76,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun overayCheck() {
         if (!Settings.canDrawOverlays(this)) {
-            Intent(
-                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                    Uri.parse("package:$packageName")
+            Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")
             ).apply {
-                startActivityForResult(this, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE)
+                startActivityForResult(this, ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE)
             }
 
         }
@@ -96,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
+        if (requestCode == ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE) {
             if (!Settings.canDrawOverlays(this)) {
                 Toast.makeText(this, "요구조건이 충족되지 않아 테스트를 할 수 없습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
 
