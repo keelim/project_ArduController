@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.R
 import com.keelim.testing.services.CustomWindowService
-import com.keelim.testing.utils.BackPressCloseHandler
 import com.keelim.testing.ui.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_test2.*
 
@@ -17,14 +16,13 @@ import kotlinx.android.synthetic.main.activity_test2.*
 
 class Test2Activity : AppCompatActivity() {
     private lateinit var test2Adapter: Test2Adapter
-    private lateinit var backPressCloseHandler: BackPressCloseHandler
     private var result_array = ArrayList<Long>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test2)
 
-        backPressCloseHandler = BackPressCloseHandler(this)
+
         Toast.makeText(this, "테스트2 액티비티 입니다.", Toast.LENGTH_SHORT).show()
         test2Adapter = Test2Adapter(arrayListOf())
 
@@ -84,10 +82,6 @@ class Test2Activity : AppCompatActivity() {
             overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
             finish()
         }
-    }
-
-    override fun onBackPressed() {
-        backPressCloseHandler.onBackPressed()
     }
 
     private fun handleService() {
