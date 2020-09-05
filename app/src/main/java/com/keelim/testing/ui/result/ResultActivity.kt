@@ -1,5 +1,7 @@
 package com.keelim.testing.ui.result
 
+import android.app.ProgressDialog
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
@@ -7,8 +9,15 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.keelim.testing.R
 import kotlinx.android.synthetic.main.activity_result.*
+import java.io.BufferedWriter
+import java.io.File
+import java.io.OutputStreamWriter
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -17,10 +26,15 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var fab_open: Animation
     private lateinit var fab_close: Animation
     private var isFabOpen = true
+    private lateinit var ref: StorageReference
+    private lateinit var writer: BufferedWriter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+
+        ref = FirebaseStorage.getInstance().reference // 파이어베이스 스토리지지
 
         fab_open = AnimationUtils.loadAnimation(applicationContext, R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(applicationContext, R.anim.fab_close);
@@ -46,15 +60,12 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
         when (id) {
             R.id.fab1 -> {
                 anim()
-                Toast.makeText(this, "Floating Action Button", Toast.LENGTH_SHORT).show()
             }
             R.id.fab2 -> {
-                anim()
-                Toast.makeText(this, "Button1", Toast.LENGTH_SHORT).show()
+                makingData()
             }
             R.id.fab3 -> {
-                anim()
-                Toast.makeText(this, "Button2", Toast.LENGTH_SHORT).show()
+                uploadToServer()
             }
         }
     }
@@ -73,6 +84,67 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
             fab3.isClickable = true
             isFabOpen = true
         }
+    }
+
+    private fun uploadToServer() { // 서버에 올린다 파이어 스토어
+        //if there is a file to upload
+        val file = File(application.filesDir, getString(R.string.file))
+
+        if (!file.exists()) {
+            Toast.makeText(this, "데이터 파일을 확인해세요", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val filePath = Uri.fromFile(file)
+        //displaying a progress dialog while upload is going on
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Uploading...")
+        progressDialog.show()
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
+        val riversRef: StorageReference = ref.child("data/data${timestamp}.csv")
+
+        riversRef.putFile(filePath)
+                .addOnSuccessListener {
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "File Uploaded", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { exception ->
+                    progressDialog.dismiss()
+                    Toast.makeText(this, exception.message, Toast.LENGTH_LONG).show()
+                }
+                .addOnProgressListener { taskSnapshot ->
+
+                    val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
+                    progressDialog.setMessage("Uploaded " + progress.toInt() + "%...")
+                }
+    }
+
+
+    //todo progressing button 달기
+    private fun makingData() {
+        val separator = System.getProperty("line.separator")
+        val fOut = openFileOutput(getString(R.string.file), MODE_PRIVATE)
+        val osw = OutputStreamWriter(fOut)
+
+
+        for (i in resultArray) {
+            osw.apply {
+                write(i.toString())
+                osw.append(separator) // this will add new line ;
+            }
+
+        }
+
+        Toast.makeText(this, "파일 생성에 오류가 있습니다. 재실행해주세요", Toast.LENGTH_SHORT).show()
+
+        osw.flush()
+        osw.close()
+        fOut.close()
+
+
+        val file = File(application.filesDir, getString(R.string.file))
+        if (file.exists()) Snackbar.make(result_container, "파일이 정상적으로 생성되었습니다. ", Snackbar.LENGTH_SHORT).show()
+        else Snackbar.make(result_container, "파일 생성에 오류가 있습니다.", Snackbar.LENGTH_SHORT).show()
     }
 }
 

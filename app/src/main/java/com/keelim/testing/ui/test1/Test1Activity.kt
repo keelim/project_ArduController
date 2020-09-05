@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.TextViewCompat
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.testing.R
 import com.keelim.testing.ui.result.ResultActivity
@@ -31,6 +32,9 @@ class Test1Activity : AppCompatActivity() {
         Toast.makeText(this, "샘플 버튼을 눌러 기능을 확인 하세요", Toast.LENGTH_SHORT).show()
 
         sampleDialog = makingDialog()
+        value.text = "" + counter
+
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(value, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
         btn_result1.setOnClickListener {
             Toast.makeText(this, "3초 뒤 테스트를 시작합니다.", Toast.LENGTH_SHORT).show()
@@ -49,17 +53,17 @@ class Test1Activity : AppCompatActivity() {
             sampleDialog.dismiss()
         }
 
-        value.text = "" + counter
+
 
         plusBtn.setOnClickListener {
-            counter+=500
+            counter += 500
             value.text = "" + counter
         }
 
         minusBtn.setOnClickListener {
 
-            counter-=500
-            if(counter<0) counter=0
+            counter -= 500
+            if (counter < 0) counter = 0
 
             value.text = "" + counter
         }
@@ -111,7 +115,7 @@ class Test1Activity : AppCompatActivity() {
             Log.d("test1 time", "test1 time:$time")
 
             val meanTime = time / 1000000000 //초
-            Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             resultArray.add(time)
             Thread.sleep(1)
         }
