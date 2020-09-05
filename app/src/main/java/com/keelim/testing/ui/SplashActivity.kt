@@ -23,8 +23,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
                         startActivity(this)
                         overridePendingTransition(
                                 R.anim.anim_slide_in_left,
-                                R.anim.anim_slide_out_right
-                        )
+                                R.anim.anim_slide_out_right)
                         finish()
                     }
                 }, 3000

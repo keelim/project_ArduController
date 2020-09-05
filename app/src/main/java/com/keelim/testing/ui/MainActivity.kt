@@ -13,12 +13,11 @@ import com.gun0912.tedpermission.TedPermission
 import com.keelim.testing.R
 import com.keelim.testing.ui.test1.Test1Activity
 import com.keelim.testing.ui.test2.Test2Activity
-import com.keelim.testing.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE = 1
-    private lateinit var backPressCloseHandler: BackPressCloseHandler
+
 
     private val permissionListener = object : PermissionListener {
         override fun onPermissionGranted() {
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        backPressCloseHandler = BackPressCloseHandler(this)
+
         Toast.makeText(this, "권한 확인 중입니다.", Toast.LENGTH_SHORT).show()
 
         TedPermission.with(this)
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 .setPermissions(android.Manifest.permission.FOREGROUND_SERVICE)
                 .check()
 
-        overayCheck()
+        overlayCheck()
 
         btn_test1.setOnClickListener {
             Intent(this, Test1Activity::class.java).apply {
@@ -70,17 +69,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        backPressCloseHandler.onBackPressed()
-    }
-
-    private fun overayCheck() {
+    private fun overlayCheck() {
         if (!Settings.canDrawOverlays(this)) {
-            Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")
-            ).apply {
+            Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")).apply {
                 startActivityForResult(this, ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE)
             }
-
         }
     }
 
@@ -90,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE) {
             if (!Settings.canDrawOverlays(this)) {
                 Toast.makeText(this, "요구조건이 충족되지 않아 테스트를 할 수 없습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
-
                 intent.apply { //restart activity
                     finish()
                     startActivity(this)
