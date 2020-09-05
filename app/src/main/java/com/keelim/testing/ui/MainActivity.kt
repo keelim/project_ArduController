@@ -2,11 +2,13 @@ package com.keelim.testing.ui
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -35,11 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        Toast.makeText(this, "권한 확인 중입니다.", Toast.LENGTH_SHORT).show()
 
         TedPermission.with(this)
                 .setPermissionListener(permissionListener)
@@ -74,6 +75,8 @@ class MainActivity : AppCompatActivity() {
             Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")).apply {
                 startActivityForResult(this, ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE)
             }
+        } else {
+            Toast.makeText(this, "오버레이 권한이 승인 되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -81,12 +84,12 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ACTIONMANAGEOVERLAYPERMISSIONREQUESTCODE) {
-            if (!Settings.canDrawOverlays(this)) {
-                Toast.makeText(this, "요구조건이 충족되지 않아 테스트를 할 수 없습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
-                intent.apply { //restart activity
-                    finish()
-                    startActivity(this)
-                }
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(this, "권한이 승인 되었습니다.", Toast.LENGTH_SHORT).show()
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "재시작 합니다. ", Toast.LENGTH_SHORT).show()
+                finish()
+                startActivity(Intent(this, SplashActivity::class.java))
             }
         }
     }

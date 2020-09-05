@@ -21,14 +21,12 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
                 {
                     Intent(this@SplashActivity, MainActivity::class.java).apply {
                         startActivity(this)
-                        overridePendingTransition(
-                                R.anim.anim_slide_in_left,
-                                R.anim.anim_slide_out_right)
+                        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
                         finish()
                     }
                 }, 3000
         )
     }
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {} //
 }
