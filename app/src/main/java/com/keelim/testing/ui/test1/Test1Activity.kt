@@ -20,17 +20,16 @@ import kotlinx.android.synthetic.main.activity_test1.*
 // todo 어차피 PC 연결이니 컴퓨터 옮기자
 
 class Test1Activity : AppCompatActivity() {
-    private lateinit var test1Adapter: Test1Adapter
+
     private lateinit var sampleDialog: AlertDialog
     private var resultArray = ArrayList<Long>()
+    var counter = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
-
         Toast.makeText(this, "샘플 버튼을 눌러 기능을 확인 하세요", Toast.LENGTH_SHORT).show()
 
-        test1Adapter = Test1Adapter(arrayListOf())
         sampleDialog = makingDialog()
 
         btn_result1.setOnClickListener {
@@ -50,16 +49,30 @@ class Test1Activity : AppCompatActivity() {
             sampleDialog.dismiss()
         }
 
+        value.text = "" + counter
+
+        plusBtn.setOnClickListener {
+            counter+=500
+            value.text = "" + counter
+        }
+
+        minusBtn.setOnClickListener {
+
+            counter-=500
+            if(counter<0) counter=0
+
+            value.text = "" + counter
+        }
+
     }
 
     private fun test1Start() {
-        Toast.makeText(this, "테스트1을 시작 합니다. ", Toast.LENGTH_SHORT).show()
         firstChecking()
     }
 
     private fun firstChecking() {
         AlertDialog.Builder(this)
-                .setMessage("첫 테스트는 실행을 확인 합니다. ")
+                .setMessage("리얼 테스트를 실행 합니다. 카운터 횟수 인 $counter 만큼 실행합니다")
                 .setPositiveButton("YES") { _, _ ->
                     run {
                         Toast.makeText(this@Test1Activity, "테스트를 실행합니다. ", Toast.LENGTH_SHORT).show()
@@ -82,17 +95,16 @@ class Test1Activity : AppCompatActivity() {
                 .setMessage("테스트 진행 중")
                 .create()
 
-        for (x in 0..10000) {
+        for (x in 0..counter) {
 
             val start = System.nanoTime()
             Log.d("test1_start", "dialog start time: $start")
 
 
             alert.show()
-            Thread.sleep(1000)
             alert.dismiss()
 
-            val end = System.nanoTime() - 1000 * 1000000
+            val end = System.nanoTime()
             Log.d("test1_start", "dialog end time: $end")
 
             val time = end - start
@@ -101,12 +113,13 @@ class Test1Activity : AppCompatActivity() {
             val meanTime = time / 1000000000 //초
             Toast.makeText(this, "측정 시간 입니다. $meanTime", Toast.LENGTH_SHORT).show()
             resultArray.add(time)
+            Thread.sleep(1)
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
             Toast.makeText(this, "테스트를 종료 합니다. ", Toast.LENGTH_SHORT).show()
             endTest()
-        }, 3000)
+        }, 1000)
     }
 
     private fun endTest() {

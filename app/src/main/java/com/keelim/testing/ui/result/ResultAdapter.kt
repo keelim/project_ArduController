@@ -22,11 +22,12 @@ class ResultAdapter(private val myDataset: ArrayList<Long>) : RecyclerView.Adapt
         return MyViewHolder(textView)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Replace the contents of a view (invoked by the
+    // layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.text = myDataset[position].toString()
+        holder.textView.text = position.toString()+": "+myDataset[position].toString()
     }
 
     // Return the size of your dataset (invoked by the layout manager)
