@@ -16,7 +16,7 @@ import com.keelim.testing.R
 import kotlinx.android.synthetic.main.activity_result.*
 import java.io.BufferedWriter
 import java.io.File
-import java.io.OutputStreamWriter
+import java.nio.charset.Charset
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -122,25 +122,19 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
 
     //todo progressing button 달기
     private fun makingData() {
-        val separator = System.getProperty("line.separator")
         val fOut = openFileOutput(getString(R.string.file), MODE_PRIVATE)
-        val osw = OutputStreamWriter(fOut)
+
 
 
         for (i in resultArray) {
-            osw.apply {
-                write(i.toString())
-                osw.append(separator) // this will add new line ;
+            fOut.apply {
+                write(i.toString().toByteArray(Charset.defaultCharset()))
+                println()
             }
-
         }
 
-        Toast.makeText(this, "파일 생성에 오류가 있습니다. 재실행해주세요", Toast.LENGTH_SHORT).show()
-
-        osw.flush()
-        osw.close()
+        fOut.flush()
         fOut.close()
-
 
         val file = File(application.filesDir, getString(R.string.file))
         if (file.exists()) Snackbar.make(result_container, "파일이 정상적으로 생성되었습니다. ", Snackbar.LENGTH_SHORT).show()
