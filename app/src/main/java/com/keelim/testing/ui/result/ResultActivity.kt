@@ -122,6 +122,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
 
     //todo progressing button 달기
     private fun makingData() {
+        val lineSeparator = System.getProperty("line.separator")
         val fOut = openFileOutput(getString(R.string.file), MODE_PRIVATE)
 
 
@@ -129,11 +130,12 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
         for (i in resultArray) {
             fOut.apply {
                 write(i.toString().toByteArray(Charset.defaultCharset()))
-                println()
+                write(lineSeparator.toByteArray(Charset.defaultCharset()))
+                fOut.flush()
             }
         }
 
-        fOut.flush()
+
         fOut.close()
 
         val file = File(application.filesDir, getString(R.string.file))

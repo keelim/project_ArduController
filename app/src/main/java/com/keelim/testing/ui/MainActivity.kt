@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             Intent(this, Test1Activity::class.java).apply {
                 startActivity(this)
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
+                finish()
             }
         }
 

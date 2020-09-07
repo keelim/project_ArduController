@@ -37,10 +37,10 @@ class Test1Activity : AppCompatActivity() {
         TextViewCompat.setAutoSizeTextTypeWithDefaults(value, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
         btn_result1.setOnClickListener {
-            Toast.makeText(this, "3초 뒤 테스트를 시작합니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "초 뒤 테스트를 시작합니다.", Toast.LENGTH_SHORT).show()
             Handler(Looper.getMainLooper()).postDelayed({
                 test1Start()
-            }, 3000);
+            }, 1000);
         }
 
         btn_result2.setOnClickListener {
@@ -52,8 +52,6 @@ class Test1Activity : AppCompatActivity() {
             Snackbar.make(test1_container, "샘플 다이알로그를 종료 합니다", Snackbar.LENGTH_SHORT).show()
             sampleDialog.dismiss()
         }
-
-
 
         plusBtn.setOnClickListener {
             counter += 500
@@ -120,10 +118,7 @@ class Test1Activity : AppCompatActivity() {
             Thread.sleep(1)
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            Toast.makeText(this, "테스트를 종료 합니다. ", Toast.LENGTH_SHORT).show()
-            endTest()
-        }, 1000)
+        endTest()
     }
 
     private fun endTest() {
@@ -131,8 +126,6 @@ class Test1Activity : AppCompatActivity() {
         Intent(this, ResultActivity::class.java).apply {
             putExtra("result", resultArray)
             startActivity(this)
-            overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
-            finish()
         }
     }
 
