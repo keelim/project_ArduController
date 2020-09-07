@@ -21,7 +21,7 @@
 
 
         <activity android:name="com.keelim.testing.ui.result.ResultActivity" />
-        <activity android:name="com.keelim.testing.ui.test1.Test1Activity" />
+        <activity android:name="com.keelim.testing.ui.addwindowtest.AddWindowTestActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.SplashActivity"
             android:theme="@style/NoActionBar">
