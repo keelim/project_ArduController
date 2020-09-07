@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         override fun onPermissionDenied(deniedPermissions: ArrayList<String>?) {
             Handler(Looper.getMainLooper()).postDelayed(
                     {
-
                         Toast.makeText(this@MainActivity, "모든 권한이 승인 되지 않았습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
                         finish()
                     }, 3000

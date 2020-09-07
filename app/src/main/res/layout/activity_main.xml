@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
-        android:text="WindowManager\nService\nTest"
+        android:text="Handler\nTest"
         android:textColor="#ffffff"
         android:textSize="32sp"
         android:textStyle="italic|bold"
