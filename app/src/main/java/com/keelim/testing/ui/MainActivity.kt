@@ -12,7 +12,6 @@ import com.keelim.testing.R
 import com.keelim.testing.ui.addwindowtest.AddWindowTestActivity
 import com.keelim.testing.ui.handlertest.HandlerTestActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_test1.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btn_result2.setOnClickListener {
+        btn_test2.setOnClickListener {
             Intent(this, HandlerTestActivity::class.java).apply {
                 startActivity(this)
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)

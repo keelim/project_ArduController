@@ -37,7 +37,7 @@ class AddWindowTestActivity : AppCompatActivity() {
         TextViewCompat.setAutoSizeTextTypeWithDefaults(value, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
         btn_result1.setOnClickListener {
-            Toast.makeText(this, "초 뒤 테스트를 시작합니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "1 초 뒤 테스트를 시작합니다.", Toast.LENGTH_SHORT).show()
             Handler(Looper.getMainLooper()).postDelayed({
                 test1Start()
             }, 1000);
@@ -83,8 +83,9 @@ class AddWindowTestActivity : AppCompatActivity() {
                 }
                 .setNegativeButton("No") { _, _ ->
                     run {
-                        Toast.makeText(this@AddWindowTestActivity, "어플리케이션을 재 실행해주세요", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AddWindowTestActivity, "어플리케이션을 재실행 합니다", Toast.LENGTH_SHORT).show()
                         finish()
+                        startActivity(Intent(this, AddWindowTestActivity::class.java))
                     }
                 }
                 .create()
