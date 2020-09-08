@@ -1,4 +1,4 @@
-package com.keelim.testing.view
+package com.keelim.testing.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,6 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loading()
-
         Snackbar.make(splash_container, "AOSP(Android Open Source Project) 개선 프로젝트 측정.", Snackbar.LENGTH_SHORT).show()
     }
 
@@ -22,16 +21,12 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
                 {
                     Intent(this@SplashActivity, MainActivity::class.java).apply {
                         startActivity(this)
-                        overridePendingTransition(
-                                R.anim.anim_slide_in_left,
-                                R.anim.anim_slide_out_right
-                        )
+                        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
                         finish()
                     }
-                }
-                , 3000
+                }, 3000
         )
     }
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {} //
 }

@@ -8,7 +8,6 @@
 
 
     <application
-        android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,11 +22,11 @@
         </service>
 
 
-        <activity android:name="com.keelim.testing.view.ResultActivity" />
-        <activity android:name="com.keelim.testing.view.Test2Activity" />
-        <activity android:name="com.keelim.testing.view.Test1Activity" />
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.SplashActivity">
+        <activity android:name="com.keelim.testing.ui.result.ResultActivity" />
+        <activity android:name="com.keelim.testing.ui.test2.Test2Activity" />
+        <activity android:name="com.keelim.testing.ui.test1.Test1Activity" />
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
