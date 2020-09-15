@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.testing.R
-import com.keelim.testing.ui.test1.Test1Activity
+import com.keelim.testing.ui.addwindowtest.AddWindowTestActivity
+import com.keelim.testing.ui.handlertest.HandlerTestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         override fun onPermissionDenied(deniedPermissions: ArrayList<String>?) {
             Handler(Looper.getMainLooper()).postDelayed(
                     {
-
                         Toast.makeText(this@MainActivity, "모든 권한이 승인 되지 않았습니다. 종료합니다.", Toast.LENGTH_SHORT).show()
                         finish()
                     }, 3000
@@ -43,7 +43,15 @@ class MainActivity : AppCompatActivity() {
                 .check()
 
         btn_test1.setOnClickListener {
-            Intent(this, Test1Activity::class.java).apply {
+            Intent(this, AddWindowTestActivity::class.java).apply {
+                startActivity(this)
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
+                finish()
+            }
+        }
+
+        btn_test2.setOnClickListener {
+            Intent(this, HandlerTestActivity::class.java).apply {
                 startActivity(this)
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
                 finish()

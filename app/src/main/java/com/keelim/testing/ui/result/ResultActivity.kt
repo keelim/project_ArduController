@@ -26,8 +26,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var fab_open: Animation
     private lateinit var fab_close: Animation
     private var isFabOpen = true
-    private lateinit var ref: StorageReference
-    private lateinit var writer: BufferedWriter
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +84,9 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
             isFabOpen = true
         }
     }
+
+    private lateinit var writer: BufferedWriter
+    private lateinit var ref: StorageReference
 
     private fun uploadToServer() { // 서버에 올린다 파이어 스토어
         //if there is a file to upload
