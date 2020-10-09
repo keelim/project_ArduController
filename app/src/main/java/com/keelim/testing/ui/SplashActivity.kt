@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.activity_splash.*
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loading()
         Snackbar.make(splash_container, "AOSP(Android Open Source Project) 개선 프로젝트 측정.", Snackbar.LENGTH_SHORT).show()
+        loading()
     }
 
     private fun loading() {
