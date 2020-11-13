@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.arducon.R
-import kotlinx.android.synthetic.main.activity_error.*
+//import kotlinx.android.synthetic.main.activity_error.*
 
 
-class ErrorActivity : AppCompatActivity(R.layout.activity_error) {
+class ErrorActivity : AppCompatActivity() {
 
     private val lastActivityIntent by lazy { intent.getParcelableExtra<Intent>(EXTRA_INTENT) }
     private val errorText by lazy { intent.getStringExtra(EXTRA_ERROR_TEXT) }
@@ -15,13 +15,13 @@ class ErrorActivity : AppCompatActivity(R.layout.activity_error) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        tv_error_log.text = errorText
-
-
-        btn_reload.setOnClickListener {
-            startActivity(lastActivityIntent)
-            finish()
-        }
+//        tv_error_log.text = errorText
+//
+//
+//        btn_reload.setOnClickListener {
+//            startActivity(lastActivityIntent)
+//            finish()
+//        }
     }
 
 
