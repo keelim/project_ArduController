@@ -1,4 +1,4 @@
-package com.keelim.arducon.view
+package com.keelim.arducon.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -16,13 +16,13 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.arducon.R
-import com.keelim.arducon.view.ui.home.MainActivity
+import com.keelim.arducon.ui.home.HomeFragment
 
-import kotlinx.android.synthetic.main.activity_intro.*
+import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
 
 
-class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
+class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     private lateinit var appUpdateManager: AppUpdateManager
 
     var listener = object : PermissionListener {
@@ -72,7 +72,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
                 .check()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this, MainActivity::class.java).apply {
+            Intent(this, HomeFragment::class.java).apply {
                 startActivity(this)
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                 finish()
@@ -98,7 +98,6 @@ class SplashActivity : AppCompatActivity(R.layout.activity_intro) {
     private fun popupSnackBarForCompleteUpdate() { // 이 부분은 다시 적용할 수 있을 것 같다.
         Snackbar.make(container_splash, "업데이트를 다운로드 하고 있습니다.", Snackbar.LENGTH_INDEFINITE).apply {
             setAction("RESTART") { appUpdateManager.completeUpdate() }
-            setActionTextColor(resources.getColor(R.color.colorAccent, this@SplashActivity.theme))
             show()
         }
     }

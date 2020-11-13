@@ -1,25 +1,28 @@
-package com.keelim.arducon.view.ui.device
+package com.keelim.arducon.ui.device
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.arducon.R
-import com.keelim.arducon.model.RecyclerAdapter
-import kotlinx.android.synthetic.main.activity_device.*
+import kotlinx.android.synthetic.main.activity_device.view.*
 
-class DeviceActivity : AppCompatActivity(R.layout.activity_device) {
-    private lateinit var adapter:RecyclerAdapter
+class DeviceFragment : Fragment() {
+    private lateinit var adapter: RecyclerAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Toast.makeText(this, "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.activity_device, container, false)
+        Toast.makeText(requireActivity(), "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
 
-        adapter = RecyclerAdapter()
-        device_recycler.apply {
-            layoutManager = LinearLayoutManager(this@DeviceActivity)
+        view.device_recycler.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = RecyclerAdapter()
         }
         getData()
+        return view
     }
 
     private fun getData() {

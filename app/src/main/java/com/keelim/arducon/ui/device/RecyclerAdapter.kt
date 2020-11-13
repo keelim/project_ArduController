@@ -1,4 +1,4 @@
-package com.keelim.arducon.model
+package com.keelim.arducon.ui.device
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

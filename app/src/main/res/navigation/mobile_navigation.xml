@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.keelim.arducon.view.ui.home.HomeFragment"
+        android:name="com.keelim.arducon.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/nav_controller"
-        android:name="com.keelim.arducon.view.ui.controller.ControllerFragment"
+        android:name="com.keelim.arducon.ui.controller.ControllerFragment"
         android:label="@string/menu_device"
         tools:layout="@layout/fragment_controller" >
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/nav_device"
-        android:name="com.keelim.arducon.view.ui.device.DeviceFragment"
+        android:name="com.keelim.arducon.ui.device.DeviceFragment"
         android:label="@string/menu_controller"
         tools:layout="@layout/fragment_device" >
         <action
