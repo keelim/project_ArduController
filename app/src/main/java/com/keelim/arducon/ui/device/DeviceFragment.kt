@@ -1,28 +1,30 @@
 package com.keelim.arducon.ui.device
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.arducon.R
-import kotlinx.android.synthetic.main.activity_device.view.*
+import com.keelim.arducon.databinding.FragmentDeviceBinding
 
-class DeviceFragment : Fragment() {
+
+class DeviceFragment : Fragment(R.layout.fragment_device) {
     private lateinit var adapter: RecyclerAdapter
+    private var fragmentDeviceFragment: FragmentDeviceBinding? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_device, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentDeviceBinding.bind(view)
+        fragmentDeviceFragment = binding
+
         Toast.makeText(requireActivity(), "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
 
-        view.device_recycler.apply {
+        binding.deviceRecycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = RecyclerAdapter()
         }
         getData()
-        return view
     }
 
     private fun getData() {
@@ -53,6 +55,11 @@ class DeviceFragment : Fragment() {
                 notifyDataSetChanged()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        fragmentDeviceFragment = null
+        super.onDestroyView()
     }
 
 }
