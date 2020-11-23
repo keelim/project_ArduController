@@ -9,20 +9,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.keelim.arducon.R
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import com.keelim.arducon.databinding.FragmentHomeBinding
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var mDevices: Set<BluetoothDevice>
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private lateinit var mSocket: BluetoothSocket
@@ -33,15 +31,16 @@ class HomeFragment : Fragment() {
     private lateinit var readBuffer: ByteArray
     private var readBufferPosition = 0
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    private var fragmentHomeBinding: FragmentHomeBinding? = null
 
-        view.main_sendButton.setOnClickListener {
-            sendData(view.main_sendString.text.toString())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentHomeBinding.bind(view)
+        fragmentHomeBinding = binding
+        binding.mainSendButton.setOnClickListener {
+            sendData(binding.mainSendString.text.toString())
             checkBluetooth()
         }
-
-        return view
     }
 
 
@@ -159,7 +158,7 @@ class HomeFragment : Fragment() {
                                 readBufferPosition = 0
                                 // 수신된 문자열 데이터에 대한 처리.
                                 handler.post {
-                                    requireView().main_receiveString.text = "${data}\n"
+                                    fragmentHomeBinding!!.mainReceiveString.text = "${data}\n"
                                 }
                             } else {
                                 readBuffer[readBufferPosition++] = aByte
@@ -183,6 +182,10 @@ class HomeFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onDestroyView() {
+        fragmentHomeBinding = null
+        super.onDestroyView()
+    }
 
     override fun onDestroy() {
         mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
@@ -190,5 +193,4 @@ class HomeFragment : Fragment() {
         mSocket.close()
         super.onDestroy()
     }
-
 }

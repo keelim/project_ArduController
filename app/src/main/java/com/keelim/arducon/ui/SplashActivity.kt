@@ -16,6 +16,7 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.arducon.R
+import com.keelim.arducon.databinding.ActivitySplashBinding
 import com.keelim.arducon.ui.home.HomeFragment
 
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -24,10 +25,11 @@ import java.util.*
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     private lateinit var appUpdateManager: AppUpdateManager
+    private lateinit var binding: ActivitySplashBinding
 
     var listener = object : PermissionListener {
         override fun onPermissionGranted() {
-            Snackbar.make(container_splash, "모든 권한이 승인 되었습니다. ", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(binding.containerSplash, "모든 권한이 승인 되었습니다. ", Snackbar.LENGTH_SHORT).show()
         }
 
         override fun onPermissionDenied(deniedPermissions: ArrayList<String>?) {
@@ -37,6 +39,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         Toast.makeText(this, "welcome to arducon", Toast.LENGTH_SHORT).show()
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
@@ -45,20 +48,11 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
                     appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                appUpdateManager.startUpdateFlowForResult(
-                        // Pass the intent that is returned by 'getAppUpdateInfo()'.
-                        appUpdateInfo,
-                        // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
-                        AppUpdateType.FLEXIBLE,
-                        // The current activity making the update request.
-                        this,
-                        // Include a request code to later monitor this update request.
-                        2
-                )
-                Snackbar.make(container_splash, "업데이트를 시작합니다.", Snackbar.LENGTH_SHORT).show()
+                appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.FLEXIBLE, this, 2)
+                Snackbar.make(binding.containerSplash, "업데이트를 시작합니다.", Snackbar.LENGTH_SHORT).show()
                 popupSnackBarForCompleteUpdate()
             } else
-                Snackbar.make(container_splash, "최신 버전 어플리케이션 사용해주셔서 감사합니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.containerSplash, "최신 버전 어플리케이션 사용해주셔서 감사합니다.", Snackbar.LENGTH_SHORT).show()
         }
 
 
@@ -85,18 +79,18 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 2) {
             when (resultCode) {
-                RESULT_OK -> Snackbar.make(container_splash, "업데이트를 성공적으로 완료했습니다.", Snackbar.LENGTH_LONG).show()
+                RESULT_OK -> Snackbar.make(binding.containerSplash, "업데이트를 성공적으로 완료했습니다.", Snackbar.LENGTH_LONG).show()
 
-                Activity.RESULT_CANCELED -> Snackbar.make(container_splash, "업데이트를 취소하였습니다.", Snackbar.LENGTH_LONG).show()
+                Activity.RESULT_CANCELED -> Snackbar.make(binding.containerSplash, "업데이트를 취소하였습니다.", Snackbar.LENGTH_LONG).show()
 
-                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> Snackbar.make(container_splash, "시스템 오류가 발생했습니다.", Snackbar.LENGTH_LONG).show()
+                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> Snackbar.make(binding.containerSplash, "시스템 오류가 발생했습니다.", Snackbar.LENGTH_LONG).show()
             }
         }
     }
 
 
     private fun popupSnackBarForCompleteUpdate() { // 이 부분은 다시 적용할 수 있을 것 같다.
-        Snackbar.make(container_splash, "업데이트를 다운로드 하고 있습니다.", Snackbar.LENGTH_INDEFINITE).apply {
+        Snackbar.make(binding.containerSplash, "업데이트를 다운로드 하고 있습니다.", Snackbar.LENGTH_INDEFINITE).apply {
             setAction("RESTART") { appUpdateManager.completeUpdate() }
             show()
         }
