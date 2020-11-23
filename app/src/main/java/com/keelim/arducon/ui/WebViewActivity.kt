@@ -10,14 +10,17 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.arducon.R
-import kotlinx.android.synthetic.main.activity_web.*
+import com.keelim.arducon.databinding.ActivityWebBinding
 
 
 class WebViewActivity : AppCompatActivity(R.layout.activity_web) {
+    private lateinit var binding: ActivityWebBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        webview.run {
+        binding = ActivityWebBinding.inflate(layoutInflater)
+
+        binding.webview.run {
             loadUrl(getString(R.string.bugurl))
             webViewClient = WebViewClient() // 클릭시 새창이 뜨지 않는다.?
             webChromeClient = WebChromeClient() //웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 알림 뜨지 않음
@@ -29,7 +32,7 @@ class WebViewActivity : AppCompatActivity(R.layout.activity_web) {
             setLayerType(View.LAYER_TYPE_HARDWARE, null)
         }
 
-        webview.settings.run {
+        binding.webview.settings.run {
             loadWithOverviewMode = true
             useWideViewPort = true
             setSupportZoom(true)
@@ -42,8 +45,8 @@ class WebViewActivity : AppCompatActivity(R.layout.activity_web) {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webview!!.canGoBack()) {
-            webview!!.goBack()
+        if (keyCode == KeyEvent.KEYCODE_BACK && binding.webview.canGoBack()) {
+            binding.webview.goBack()
             return true
         }
         return super.onKeyDown(keyCode, event)

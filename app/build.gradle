@@ -13,15 +13,12 @@ plugins {
 android {
     compileSdkVersion 30
 
-
-
-
     defaultConfig {
         applicationId "com.keelim.arducon"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 1907310125
-        versionName "2.0.29"
+        versionCode 1907310126
+        versionName "2.0.30"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
