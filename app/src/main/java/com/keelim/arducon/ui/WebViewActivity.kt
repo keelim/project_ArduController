@@ -24,9 +24,6 @@ class WebViewActivity : AppCompatActivity(R.layout.activity_web) {
             loadUrl(getString(R.string.bugurl))
             webViewClient = WebViewClient() // 클릭시 새창이 뜨지 않는다.?
             webChromeClient = WebChromeClient() //웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 알림 뜨지 않음
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                isForceDarkAllowed = true
-            }
             scrollBarStyle = WebView.SCROLLBARS_OUTSIDE_OVERLAY
             isScrollbarFadingEnabled = true
             setLayerType(View.LAYER_TYPE_HARDWARE, null)

@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setSupportActionBar(toolbar)
 
-
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
         setupActionBarWithNavController(navController, appBarConfiguration)
