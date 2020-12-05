@@ -1,19 +1,20 @@
 package com.keelim.arducon
 
 import android.app.Application
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.initialization.InitializationStatus
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.keelim.arducon.error.ExceptionHandler
+import com.keelim.arducon.utils.AppOpenManager
 
 class MyApplication : Application() {
+    private lateinit var appOpenManager: AppOpenManager
     override fun onCreate() {
         super.onCreate()
         setCrashHandler()
 
         MobileAds.initialize(this) {
-            object : OnInitializationCompleteListener {
-                override fun onInitializationComplete(p0: InitializationStatus?) {
-
-                }
-            }
+            OnInitializationCompleteListener { }
         }
 
         appOpenManager = AppOpenManager(this) // 콜드 부팅에서 복귀시 ad
