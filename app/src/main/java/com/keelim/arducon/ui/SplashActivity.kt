@@ -17,13 +17,15 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.ActivitySplashBinding
-import com.keelim.arducon.ui.home.HomeFragment
-
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
 
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
+    companion object {
+        const val appupdate = 2
+    }
+
     private lateinit var appUpdateManager: AppUpdateManager
     private lateinit var binding: ActivitySplashBinding
 
@@ -41,7 +43,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
-//        appUpdate()
+        appUpdate()
 
         TedPermission.with(this)
                 .setPermissionListener(listener)
@@ -52,8 +54,9 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
                         android.Manifest.permission.BLUETOOTH_ADMIN)
                 .check()
 
+
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this, HomeFragment::class.java).apply {
+            Intent(this, MainActivity::class.java).apply {
                 startActivity(this)
                 finish()
             }
@@ -65,9 +68,8 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
 
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
-                    appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.FLEXIBLE, this, 2)
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.FLEXIBLE, this, appupdate)
                 Snackbar.make(binding.containerSplash, "업데이트를 시작합니다.", Snackbar.LENGTH_SHORT).show()
                 popupSnackBarForCompleteUpdate()
             } else
@@ -78,7 +80,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 2) {
+        if (requestCode == appupdate) {
             when (resultCode) {
                 RESULT_OK -> Snackbar.make(binding.containerSplash, "업데이트를 성공적으로 완료했습니다.", Snackbar.LENGTH_LONG).show()
 
