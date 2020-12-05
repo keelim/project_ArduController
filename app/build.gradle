@@ -11,7 +11,7 @@ plugins {
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def googleMapApiKey = properties.getProperty('api_key_name')
+def ad_application = properties.getProperty('ad_application')
 
 
 android {
@@ -22,12 +22,12 @@ android {
         applicationId "com.keelim.arducon"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 1907310127
-        versionName "2.0.31"
+        versionCode 1907310128
+        versionName "2.0.32"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-//        manifestPlaceholders = [api_key_name: googleMapApiKey]
-        buildConfigField "String", "API_KEY", properties['api_key_name']
+        buildConfigField "String", "API_KEY", properties['ad_unit']
+        manifestPlaceholders = [ad_application: ad_application]
     }
     buildTypes {
         release {
@@ -42,6 +42,9 @@ android {
 
     buildFeatures {
         viewBinding = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
