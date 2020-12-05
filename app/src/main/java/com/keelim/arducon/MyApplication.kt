@@ -7,6 +7,16 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         setCrashHandler()
+
+        MobileAds.initialize(this) {
+            object : OnInitializationCompleteListener {
+                override fun onInitializationComplete(p0: InitializationStatus?) {
+
+                }
+            }
+        }
+
+        appOpenManager = AppOpenManager(this) // 콜드 부팅에서 복귀시 ad
     }
 
     private fun setCrashHandler() {
@@ -27,4 +37,4 @@ class MyApplication : Application() {
     }
 
 
-} 
+}
