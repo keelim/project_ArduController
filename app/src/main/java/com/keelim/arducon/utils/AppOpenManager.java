@@ -18,12 +18,9 @@ import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.keelim.arducon.BuildConfig;
 import com.keelim.arducon.MyApplication;
 
-
 import java.util.Date;
 
-/**
- * Prefetches App Open Ads.
- */
+
 public class AppOpenManager implements LifecycleObserver, Application.ActivityLifecycleCallbacks {
     private static final String LOG_TAG = "AppOpenManager";
     private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/3419835294";
@@ -37,9 +34,7 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
 
     private long loadTime = 0;
 
-    /**
-     * Constructor
-     */
+
     public AppOpenManager(MyApplication myApplication) {
         this.myApplication = myApplication;
         this.myApplication.registerActivityLifecycleCallbacks(this);
@@ -53,9 +48,7 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
 
     }
 
-    /**
-     * Request an ad
-     */
+
     public void fetchAd() {
         if (isAdAvailable()) {
             return;
@@ -63,23 +56,16 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
 
         loadCallback =
                 new AppOpenAd.AppOpenAdLoadCallback() {
-                    /**
-                     * Called when an app open ad has loaded.
-                     *
-                     * @param ad the loaded app open ad.
-                     */
+
+
                     @Override
                     public void onAppOpenAdLoaded(AppOpenAd ad) {
                         AppOpenManager.this.appOpenAd = ad;
                         AppOpenManager.this.loadTime = (new Date()).getTime();
                     }
 
-                    /**
-                     * Called when an app open ad has failed to load.
-                     *
-                     * @param loadAdError the error
-                     */
                     @Override
+
                     public void onAppOpenAdFailedToLoad(LoadAdError loadAdError) {
                         // Handle the error.
                     }
@@ -92,16 +78,12 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
 
     }
 
-    /**
-     * Creates and returns ad request.
-     */
+
     private AdRequest getAdRequest() {
         return new AdRequest.Builder().build();
     }
 
-    /**
-     * Utility method that checks if ad exists and can be shown.
-     */
+
     public boolean isAdAvailable() {
         return appOpenAd != null && wasLoadTimeLessThanNHoursAgo(4);
     }
@@ -166,9 +148,6 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
         }
     }
 
-    /**
-     * Utility method to check if ad was loaded more than n hours ago.
-     */
     private boolean wasLoadTimeLessThanNHoursAgo(long numHours) {
         long dateDifference = (new Date()).getTime() - this.loadTime;
         long numMilliSecondsPerHour = 3600000;

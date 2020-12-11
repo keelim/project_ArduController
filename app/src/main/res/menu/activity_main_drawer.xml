@@ -8,10 +8,14 @@
             android:id="@+id/nav_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_controller"
+            android:id="@+id/nav_device"
             android:title="@string/menu_device" />
         <item
-            android:id="@+id/nav_device"
+            android:id="@+id/nav_controller"
             android:title="@string/menu_controller" />
+        <item
+            android:id="@+id/nav_setting"
+            android:title="설정" />
+
     </group>
 </menu>
