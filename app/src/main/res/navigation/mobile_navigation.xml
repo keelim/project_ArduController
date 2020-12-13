@@ -9,20 +9,23 @@
         android:id="@+id/nav_home"
         android:name="com.keelim.arducon.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_nav_controller"
             app:destination="@id/nav_controller" />
         <action
             android:id="@+id/action_nav_home_to_nav_device"
             app:destination="@id/nav_device" />
+        <action
+            android:id="@+id/action_nav_home_to_settingsFragment"
+            app:destination="@id/nav_setting" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_controller"
         android:name="com.keelim.arducon.ui.controller.ControllerFragment"
         android:label="@string/menu_device"
-        tools:layout="@layout/fragment_controller" >
+        tools:layout="@layout/fragment_controller">
         <action
             android:id="@+id/action_nav_controller_to_nav_home"
             app:destination="@id/nav_home" />
@@ -32,9 +35,17 @@
         android:id="@+id/nav_device"
         android:name="com.keelim.arducon.ui.device.DeviceFragment"
         android:label="@string/menu_controller"
-        tools:layout="@layout/fragment_device" >
+        tools:layout="@layout/fragment_device">
         <action
             android:id="@+id/action_nav_device_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.keelim.arducon.ui.setting.SettingFragment"
+        android:label="SettingsFragment">
+        <action
+            android:id="@+id/action_settingsFragment_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
 </navigation>

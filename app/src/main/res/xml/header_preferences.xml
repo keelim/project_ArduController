@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:fragment="com.keelim.arducon.ui.setting.SettingsActivity$MessagesFragment"
+        app:icon="@drawable/ic_baseline_settings_24"
+        app:key="messages_header"
+        app:title="@string/messages_header" />
+
+
+</PreferenceScreen>

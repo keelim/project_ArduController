@@ -1,0 +1,11 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <Preference
+            app:key="review"
+            app:title="앱 리뷰하기" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
