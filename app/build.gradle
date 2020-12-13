@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-//    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.firebase-perf'
@@ -15,23 +14,15 @@ def ad = properties.getProperty('ad')
 
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('C:\\Users\\h0033\\Desktop\\keystore.jks')
-            storePassword 'kimjaehyun08!'
-            keyAlias 'arducon'
-            keyPassword 'kimjaehyun08!'
-        }
-    }
     compileSdkVersion 30
-    buildToolsVersion '30.0.2'
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.keelim.arducon"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 1907310128
-        versionName "2.0.32"
+        versionCode 1907310129
+        versionName "2.0.33"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_KEY", properties['unit']
@@ -41,6 +32,7 @@ android {
     }
     buildTypes {
         release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
