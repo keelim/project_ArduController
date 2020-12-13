@@ -2,7 +2,7 @@
 
     <PreferenceCategory app:title="@string/messages_header">
 
-        <EditTextPreference
+        <Preference
             app:key="review"
             app:title="앱 리뷰하기" />
 
