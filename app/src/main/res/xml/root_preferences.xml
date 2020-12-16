@@ -3,8 +3,8 @@
     <PreferenceCategory app:title="@string/messages_header">
 
         <Preference
-            app:key="review"
-            app:title="앱 리뷰하기" />
+            app:key="update"
+            app:title="인앱 업데이트" />
 
     </PreferenceCategory>
 
