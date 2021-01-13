@@ -9,6 +9,7 @@ import com.keelim.arducon.databinding.FragmentControllerBinding
 
 class ControllerFragment : Fragment(R.layout.fragment_controller) {
     private var fragmentControllerFragment: FragmentControllerBinding? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentControllerBinding.bind(view)
