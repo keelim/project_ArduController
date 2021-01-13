@@ -22,11 +22,6 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    companion object {
-        const val blue = 1
-        const val TAG = "HomeFragment"
-    }
-
     private lateinit var mDevices: Set<BluetoothDevice>
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private lateinit var mSocket: BluetoothSocket
@@ -126,7 +121,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             // createRfcommSocketToServiceRecord(uuid) : 이 함수를 사용하여 원격 블루투스 장치와 통신할 수 있는 소켓을 생성함.
             // 이 메소드가 성공하면 스마트폰과 페어링 된 디바이스간 통신 채널에 대응하는 BluetoothSocket 오브젝트를 리턴함.
 
-            mSocket = getDeviceFromBondedList(selectedDeviceName)!!.createRfcommSocketToServiceRecord(uuid)
+            mSocket = getDeviceFromBondedList(selectedDeviceName).createRfcommSocketToServiceRecord(uuid)
             mSocket.connect() // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
 
             mOutputStream = mSocket.outputStream
@@ -198,14 +193,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     override fun onDestroyView() {
+        mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
+        mInputStream.close()
+        mSocket.close()
         fragmentHomeBinding = null
         super.onDestroyView()
     }
 
-    override fun onDestroy() {
-        mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
-        mInputStream.close()
-        mSocket.close()
-        super.onDestroy()
+    companion object {
+        const val blue = 1
+        const val TAG = "HomeFragment"
     }
 }
