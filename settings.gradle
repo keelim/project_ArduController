@@ -1,3 +1,5 @@
 rootProject.name = 'ArduController'
-include ':app'
+include (':app'
+        ,':feature:bus'
+)
 
