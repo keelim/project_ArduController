@@ -1,11 +1,22 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/messages_header">
-
+    <PreferenceCategory app:title="기능">
         <Preference
-            app:key="review"
-            app:title="앱 리뷰하기" />
+            app:key="update"
+            app:title="업데이트" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark"
+            android:title="다크모드 활성화" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:key="other_category"
+        app:title="약관">
+        <Preference
+            app:key="opensource"
+            app:title="오픈소스 라이선스" />
+    </PreferenceCategory>
 </PreferenceScreen>
