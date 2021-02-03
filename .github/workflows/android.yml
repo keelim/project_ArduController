@@ -54,5 +54,5 @@ jobs:
         packageName: com.keelim.arducon
         releaseFiles: app/build/outputs/bundle/release/app-release.aab
         track: beta
-        whatsNewDirectory: whatsnew/ko-KR
+    
       
