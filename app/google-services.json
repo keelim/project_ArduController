@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "1002101093137",
+    "firebase_url": "https://arducon-657f0.firebaseio.com",
+    "project_id": "arducon-657f0",
+    "storage_bucket": "arducon-657f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002101093137:android:05ae7bd368ac99ff",
+        "android_client_info": {
+          "package_name": "com.keelim.arducon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002101093137-g8ums8sl94bcd5scbjiq1bbukhheejn8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keelim.arducon",
+            "certificate_hash": "0b699db109e35add5c71cb4c877275ee1af1d453"
+          }
+        },
+        {
+          "client_id": "1002101093137-5cataj107g2f3rjtrt5em1v2ovvgtkit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtlO8K25cunz3ZYHXJDRUTHy-QZPfw6Iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002101093137-jofjf9vkgek1c7blbp5947apgeovjk4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-3115620439518585~1159685929"
+    }
+  ],
+  "configuration_version": "1"
+}
