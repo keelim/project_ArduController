@@ -8,10 +8,6 @@ plugins {
 //    id 'dagger.hilt.android.plugin'
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def ad = properties.getProperty('ad')
-
 
 android {
     compileSdkVersion 30
@@ -24,11 +20,6 @@ android {
         versionCode 1907310129
         versionName "2.0.33"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "String", "API_KEY", properties['unit']
-        buildConfigField "String", "API_KEY2", properties['unit2']
-        manifestPlaceholders = [ad: ad]
-        signingConfig signingConfigs.debug
     }
     buildTypes {
         release {

@@ -61,7 +61,7 @@ class SplashActivity : AppCompatActivity() {
                     Snackbar.make(binding.root, "모든 권한이 승인 되었습니다. ", Snackbar.LENGTH_SHORT).show()
 
                     interstitialAd = InterstitialAd(this@SplashActivity)
-                    interstitialAd.adUnitId = test or BuildConfig.API_KEY2
+                    interstitialAd.adUnitId = test or "ca-app-pub-3115620439518585/4870874805"
                     interstitialAd.adListener = object : AdListener() {
                         override fun onAdLoaded() { interstitialAd.show() }
                         override fun onAdClosed() {}
