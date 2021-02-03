@@ -8,7 +8,6 @@ plugins {
 //    id 'dagger.hilt.android.plugin'
 }
 
-
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
@@ -34,7 +33,7 @@ android {
     }
 
     buildFeatures {
-        DataBinding true
+        dataBinding true
         viewBinding true
     }
     kotlinOptions {
