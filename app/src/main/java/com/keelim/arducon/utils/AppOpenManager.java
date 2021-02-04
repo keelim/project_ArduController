@@ -3,7 +3,6 @@ package com.keelim.arducon.utils;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
@@ -15,10 +14,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
-import com.keelim.arducon.BuildConfig;
 import com.keelim.arducon.MyApplication;
 
 import java.util.Date;
+
+import timber.log.Timber;
 
 
 public class AppOpenManager implements LifecycleObserver, Application.ActivityLifecycleCallbacks {
@@ -44,7 +44,7 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStart() {
         showAdIfAvailable();
-        Log.d(LOG_TAG, "onStart");
+        Timber.d("onStart");
 
     }
 
@@ -121,7 +121,7 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
 
     public void showAdIfAvailable() {
         if (!isShowingAd && isAdAvailable()) {
-            Log.d(LOG_TAG, "will show ad");
+            Timber.d( "will show ad");
 
             FullScreenContentCallback fullScreenContentCallback = new FullScreenContentCallback() {
                 @Override
@@ -143,7 +143,7 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
 
             appOpenAd.show(currentActivity, fullScreenContentCallback);
         } else {
-            Log.d(LOG_TAG, "Can not show ad. ");
+            Timber.d( "Can not show ad. ");
             fetchAd();
         }
     }

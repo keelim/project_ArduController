@@ -3,6 +3,7 @@ package com.keelim.arducon
 import android.app.Application
 import com.google.android.gms.ads.MobileAds
 import com.keelim.arducon.utils.AppOpenManager
+import timber.log.Timber
 
 class MyApplication : Application() {
     private lateinit var appOpenManager: AppOpenManager
@@ -11,5 +12,9 @@ class MyApplication : Application() {
 
         MobileAds.initialize(this) { }
         appOpenManager = AppOpenManager(this) // 콜드 부팅에서 복귀시 ad*/
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 }
