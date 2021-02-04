@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +24,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.util.*
 
 
@@ -48,8 +48,11 @@ class SplashActivity : AppCompatActivity() {
         addShortcut()
 
         //권한이 있는 경우
-        if (hasPermissions(permissions)) { goNext() }
-        else { ActivityCompat.requestPermissions(this, permissions, MULTIPLE_PERMISSIONS) }
+        if (hasPermissions(permissions)) {
+            goNext()
+        } else {
+            ActivityCompat.requestPermissions(this, permissions, MULTIPLE_PERMISSIONS)
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -63,11 +66,14 @@ class SplashActivity : AppCompatActivity() {
                     interstitialAd = InterstitialAd(this@SplashActivity)
                     interstitialAd.adUnitId = test or "ca-app-pub-3115620439518585/4870874805"
                     interstitialAd.adListener = object : AdListener() {
-                        override fun onAdLoaded() { interstitialAd.show() }
+                        override fun onAdLoaded() {
+                            interstitialAd.show()
+                        }
+
                         override fun onAdClosed() {}
                         override fun onAdFailedToLoad(errorCode: Int) {
                             Toast.makeText(this@SplashActivity, "ad load fail $errorCode", Toast.LENGTH_SHORT).show()
-                            Log.e("Error code", "admob $errorCode")
+                            Timber.e("Error code")
                         }
                     } //전면광고 셋팅
                     interstitialAd.loadAd(AdRequest.Builder().build())
