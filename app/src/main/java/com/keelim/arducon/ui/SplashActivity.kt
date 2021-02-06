@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
-import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.BuildConfig
 import com.keelim.arducon.R
@@ -30,10 +31,11 @@ import java.util.*
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
-    private lateinit var interstitialAd: InterstitialAd
     private val test = "ca -app-pub-3940256099942544/1033173712"
     private infix fun String.or(that: String): String = if (BuildConfig.DEBUG) this else that
     private lateinit var settings: SharedPreferences
+    private var mInterstitialAd: InterstitialAd? = null
+
 
     private val permissions = arrayOf(
             Manifest.permission.INTERNET,
@@ -49,6 +51,7 @@ class SplashActivity : AppCompatActivity() {
 
         //권한이 있는 경우
         if (hasPermissions(permissions)) {
+            showAd()
             goNext()
         } else {
             ActivityCompat.requestPermissions(this, permissions, MULTIPLE_PERMISSIONS)
@@ -62,22 +65,7 @@ class SplashActivity : AppCompatActivity() {
             MULTIPLE_PERMISSIONS -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Snackbar.make(binding.root, "모든 권한이 승인 되었습니다. ", Snackbar.LENGTH_SHORT).show()
-
-                    interstitialAd = InterstitialAd(this@SplashActivity)
-                    interstitialAd.adUnitId = test or "ca-app-pub-3115620439518585/4870874805"
-                    interstitialAd.adListener = object : AdListener() {
-                        override fun onAdLoaded() {
-                            interstitialAd.show()
-                        }
-
-                        override fun onAdClosed() {}
-                        override fun onAdFailedToLoad(errorCode: Int) {
-                            Toast.makeText(this@SplashActivity, "ad load fail $errorCode", Toast.LENGTH_SHORT).show()
-                            Timber.e("Error code")
-                        }
-                    } //전면광고 셋팅
-                    interstitialAd.loadAd(AdRequest.Builder().build())
-
+                    showAd()
                     goNext()
                 } else {
                     // 하나라도 거부한다면.
@@ -97,8 +85,6 @@ class SplashActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun onBackPressed() {}
 
     private fun hasPermissions(permissions: Array<String>): Boolean {
         permissions.forEach { permission ->
@@ -135,9 +121,32 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    private fun showAd() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, test or "ca-app-pub-3115620439518585/4870874805", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Timber.d(adError.message)
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Timber.d("Ad was loaded.")
+                mInterstitialAd = interstitialAd
+
+                if (mInterstitialAd != null) {
+                    mInterstitialAd!!.show(this@SplashActivity)
+                } else {
+                    Timber.d("The interstitial ad wasn't ready yet.");
+                }
+            }
+        })
+    }
+
     companion object {
         const val PREF_FIRST_START = "AppFirstLaunch"
         const val MULTIPLE_PERMISSIONS = 8888
     }
+
+    override fun onBackPressed() {}
 }
 
