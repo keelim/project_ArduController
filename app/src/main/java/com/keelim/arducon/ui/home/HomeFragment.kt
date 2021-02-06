@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentHomeBinding
+import timber.log.Timber
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.charset.StandardCharsets
@@ -24,12 +25,12 @@ import java.util.*
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var mDevices: Set<BluetoothDevice>
     private lateinit var bluetoothAdapter: BluetoothAdapter
-    private lateinit var mSocket: BluetoothSocket
-    private lateinit var mOutputStream: OutputStream
-    private lateinit var mInputStream: InputStream
     private lateinit var mCharDelimiter: String
-    private lateinit var mWorkerThread: Thread
     private lateinit var readBuffer: ByteArray
+    private var mSocket: BluetoothSocket? = null
+    private var mInputStream: InputStream? = null
+    private var mOutputStream: OutputStream? = null
+    private var mWorkerThread: Thread? = null
     private var readBufferPosition = 0
 
     private var fragmentHomeBinding: FragmentHomeBinding? = null
@@ -51,7 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         try {
             // getBytes() : String을 byte로 변환
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
-            mOutputStream.write(msgData.toByteArray()) // 문자열 전송.
+            mOutputStream?.write(msgData.toByteArray()) // 문자열 전송.
         } catch (e: Exception) { // 문자열 전송 도중 오류가 발생한 경우
             Toast.makeText(requireActivity(), "데이터 전송 오류 발생", Toast.LENGTH_LONG).show()
         }
@@ -122,15 +123,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             // 이 메소드가 성공하면 스마트폰과 페어링 된 디바이스간 통신 채널에 대응하는 BluetoothSocket 오브젝트를 리턴함.
 
             mSocket = getDeviceFromBondedList(selectedDeviceName).createRfcommSocketToServiceRecord(uuid)
-            mSocket.connect() // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
+            mSocket?.connect() // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
 
-            mOutputStream = mSocket.outputStream
-            mInputStream = mSocket.inputStream
+            mOutputStream = mSocket?.outputStream
+            mInputStream = mSocket?.inputStream
             beginListenForData()
 
         } catch (e: Exception) { // 블루투스 연결 중 오류 발생
             Toast.makeText(requireActivity(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
-            Log.e(TAG, e.message.toString())
+            Timber.e(e.message.toString())
         }
     }
 
@@ -142,13 +143,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             while (!Thread.currentThread().isInterrupted) {
                 try { // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.
-                    val byteAvailable = mInputStream.available() // 수신 데이터 확인
+                    val byteAvailable = mInputStream!!.available() // 수신 데이터 확인
 
                     if (byteAvailable > 0) { // 데이터가 수신된 경우.
                         val packetBytes = ByteArray(byteAvailable)
                         // read(buf[]) : 입력스트림에서 buf[] 크기만큼 읽어서 저장 없을 경우에 -1 리턴.
 
-                        mInputStream.read(packetBytes)
+                        mInputStream?.read(packetBytes)
                         for (i in 0 until byteAvailable) {
                             val aByte = packetBytes[i]
 
@@ -171,7 +172,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     }
                 } catch (e: Exception) { // 데이터 수신 중 오류 발생.
                     Toast.makeText(requireActivity(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show()
-                    Log.e(TAG, e.message.toString())
+                    Timber.e( e.message.toString())
                 }
             }
         }
@@ -193,15 +194,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     override fun onDestroyView() {
-        mWorkerThread.interrupt() // 데이터 수신 쓰레드 종료
-        mInputStream.close()
-        mSocket.close()
         fragmentHomeBinding = null
+        mWorkerThread?.interrupt() // 데이터 수신 쓰레드 종료
+        mInputStream?.close()
+        mSocket?.close()
         super.onDestroyView()
     }
 
     companion object {
         const val blue = 1
-        const val TAG = "HomeFragment"
     }
 }

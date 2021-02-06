@@ -12,7 +12,5 @@ class OpenSourceActivity : AppCompatActivity() {
         binding = ActivityOpenSourceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
-        binding.toolbarLayout.title = title
     }
 }
