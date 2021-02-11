@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.keelim.benchmark"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".BenchmarkActivity" />
+        <activity android:name=".ChartActivity" />
+        <activity android:name=".HttpActivity" />
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".StorageActivity" />
+        <activity android:name=".ViewStackActivity" />
+    </application>
+</manifest>

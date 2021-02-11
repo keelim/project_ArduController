@@ -12,10 +12,9 @@ import com.google.android.play.core.review.ReviewManagerFactory
 import com.keelim.arducon.R
 import com.keelim.arducon.ui.OpenSourceActivity
 import com.keelim.arducon.utils.ThemeHelper
+import com.keelim.benchmark.BenchmarkActivity
 
 class SettingFragment : PreferenceFragmentCompat() {
-    private lateinit var manager: ReviewManager
-    private lateinit var reviewInfo: ReviewInfo
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
@@ -36,6 +35,10 @@ class SettingFragment : PreferenceFragmentCompat() {
             "update" -> Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(getString(R.string.uriarducon))
                 startActivity(this)
+            }
+
+            "lab" -> {
+                startActivity(Intent(requireContext(), BenchmarkActivity::class.java))
             }
 
         }
