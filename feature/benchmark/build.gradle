@@ -4,7 +4,8 @@ plugins{
     id 'kotlin-kapt'
 }
 
-apply from: rootProject.file('/gradle/android.gradle')
+apply from: rootProject.file('./gradle/android.gradle')
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
