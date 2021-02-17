@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_acc"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="가속도" />
+        <item
+            android:id="@+id/nav_bluetooth"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="블루투스" />
+
+        <item
+            android:id="@+id/nav_battery"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="배터리" />
+
+        <item
+            android:id="@+id/nav_light"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="광도" />
+        <item
+            android:id="@+id/nav_magnetic"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="자기" />
+        <item
+            android:id="@+id/nav_proximity"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="근접" />
+        <item
+            android:id="@+id/nav_pressure"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="압력" />
+
+        <item
+            android:id="@+id/nav_tele"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="전화설정" />
+        <item
+            android:id="@+id/nav_touch"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="터치센서" />
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="설정" />
+    </group>
+</menu>
