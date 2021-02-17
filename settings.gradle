@@ -2,7 +2,8 @@ rootProject.name = 'ArduController'
 include (':app',
         ':feature:bus',
         ':feature:benchmark',
-        
+        ':feature:aosptesting',
+        ':feature:hardwaretesting',
 )
 
 //include ':base'
