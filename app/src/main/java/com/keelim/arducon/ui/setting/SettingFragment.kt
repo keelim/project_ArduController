@@ -6,8 +6,6 @@ import android.os.Bundle
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.google.android.play.core.review.ReviewInfo
-import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.keelim.arducon.R
 import com.keelim.arducon.ui.OpenSourceActivity
@@ -37,7 +35,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 startActivity(this)
             }
 
-            "lab" -> {
+            "lab1" -> {
                 startActivity(Intent(requireContext(), BenchmarkActivity::class.java))
             }
 
