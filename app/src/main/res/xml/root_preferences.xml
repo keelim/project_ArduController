@@ -17,6 +17,10 @@
         <Preference
             app:key="lab"
             app:title="실험 기능" />
+
+        <Preference
+            app:key="lab2"
+            app:title="실험 기능" />
     </PreferenceCategory>
 
     <PreferenceCategory
