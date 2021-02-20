@@ -1,6 +1,5 @@
 package com.keelim.hard.view.ui
 
-
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -14,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_light.*
-
 
 class LightSensorFragment : Fragment(), SensorEventListener {
     private lateinit var sensmgr: SensorManager

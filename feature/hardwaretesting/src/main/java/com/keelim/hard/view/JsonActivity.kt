@@ -21,7 +21,6 @@ class JsonActivity : AppCompatActivity() {
 
         onBackPressCloseHandler = BackPressCloseHandler(this)
 
-
         json_tv.movementMethod = ScrollingMovementMethod()
 
         json_btn.setOnClickListener {

@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_tele.view.*
 
-
 class TeleFragment : Fragment() {
     private lateinit var telephonyManager: TelephonyManager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -19,7 +18,6 @@ class TeleFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_tele, container, false)
         (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
-
 
         when (telephonyManager.simState) {
             TelephonyManager.SIM_STATE_NETWORK_LOCKED -> view.tele_tv.text = "Sim State network Locked"

@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_magnetic.*
 
-
 class MagneticSensorFragment : Fragment(), SensorEventListener {
     private lateinit var sensmgr: SensorManager
     private lateinit var magsensor: Sensor

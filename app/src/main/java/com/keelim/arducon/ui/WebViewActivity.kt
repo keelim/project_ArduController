@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.ActivityWebBinding
 
-
 class WebViewActivity : AppCompatActivity(R.layout.activity_web) {
     private lateinit var binding: ActivityWebBinding
 

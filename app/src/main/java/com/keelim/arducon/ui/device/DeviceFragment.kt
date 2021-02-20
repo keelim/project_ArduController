@@ -8,7 +8,6 @@ import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentDeviceBinding
 import com.keelim.common.toast
 
-
 class DeviceFragment : Fragment(R.layout.fragment_device) {
     private var fragmentDeviceFragment: FragmentDeviceBinding? = null
 
@@ -25,14 +24,10 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
         }
     }
 
-
     override fun onDestroyView() {
         fragmentDeviceFragment = null
         super.onDestroyView()
     }
 
 }
-
-
-
 

@@ -6,7 +6,6 @@ import com.keelim.benchmark.databinding.ActivityStorageBinding
 import io.paperdb.Paper
 import timber.log.Timber
 
-
 class StorageActivity : AppCompatActivity() {
 
     private data class Data(var id: Int, var body: String)
@@ -19,7 +18,6 @@ class StorageActivity : AppCompatActivity() {
         title = "Storage Benchmark"
 
         Paper.init(applicationContext)
-
 
         binding.btnStoreAll.setOnClickListener {
             val items = ArrayList<Data>()

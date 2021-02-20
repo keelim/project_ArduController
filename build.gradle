@@ -14,28 +14,36 @@ buildscript {
 //        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
 //        classpath "com.diffplug.spotless:spotless-plugin-gradle:$versions.spotlessGradle"
     }
-    ext{
-        ktlintVersion = '0.38.1'
-    }
 }
-
-plugins {
-    id "com.diffplug.spotless" version "5.2.0"
-}
-
 allprojects {
     repositories {
         google()
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-
     }
 }
 
-spotless {
-    kotlin {
-        target "**/*.kt"
-        ktlint(ktlintVersion).userData(['max_line_length' : '100', 'indent_size': '2', 'continuation_indent_size': '2'])
+subprojects {
+    configurations {
+        ktlint
+    }
+
+    dependencies {
+        ktlint 'com.github.shyiko:ktlint:0.2.0'
+    }
+
+    // 스타일을 검사하는 태스크
+    task ktlint(type: JavaExec) {
+        main = 'com.github.shyiko.ktlint.Main'
+        classpath = configurations.ktlint
+        args 'src/**/*.kt'
+    }
+
+    // 스타일을 검사하고 맞지 않는 부분을 수정해주는 태스크
+    task ktlintFormat(type: JavaExec) {
+        main = 'com.github.shyiko.ktlint.Main'
+        classpath = configurations.ktlint
+        args '-F', 'src/**/*.kt'
     }
 }

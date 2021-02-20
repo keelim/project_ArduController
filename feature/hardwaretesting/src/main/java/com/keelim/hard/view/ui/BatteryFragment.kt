@@ -13,9 +13,7 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_battery.*
 
-
 class BatteryFragment : Fragment() {
-
 
     private val mBatInfoReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(c: Context, i: Intent) {

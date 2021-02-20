@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_blue.view.*
 
-
 class BluetoothFragment : Fragment() {
     private lateinit var mBluetoothAdapter: BluetoothAdapter
 

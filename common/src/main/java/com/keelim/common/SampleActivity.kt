@@ -15,7 +15,6 @@ class SampleActivity : Activity() {
         // 이벤트를 보낼 때
         RxEventBus.getInstance().sendEvent("testEvent")
 
-
         // 이벤트를 받을 때
         compositeDisposable = CompositeDisposable()
 

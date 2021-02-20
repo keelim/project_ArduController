@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.keelim.testing.R
 
-
 class ResultAdapter : RecyclerView.Adapter<ResultAdapter.MyViewHolder>() {
     private var list: List<Long> = listOf()
 

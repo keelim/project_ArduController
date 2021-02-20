@@ -40,7 +40,6 @@ class LibraryActivity : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
-
     }
     private val showPart2Runnable = Runnable {
         // Delayed display of UI elements
@@ -48,7 +47,6 @@ class LibraryActivity : AppCompatActivity() {
         fullscreenContentControls.visibility = View.VISIBLE
     }
     private var isFullscreen: Boolean = false
-
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
@@ -75,7 +73,6 @@ class LibraryActivity : AppCompatActivity() {
         library_recycler.adapter = OpRecyclerAdapter(list!!)
 //        library_recycler.adapter = OpenRecyclerAdapter(this, list, R.layout.view_open)
         library_recycler.layoutManager = LinearLayoutManager(this)
-
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away

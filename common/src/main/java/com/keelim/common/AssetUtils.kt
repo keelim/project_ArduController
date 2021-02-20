@@ -3,7 +3,6 @@ package com.keelim.common
 import android.content.Context
 import com.google.gson.Gson
 
-
 inline fun <reified ENTITY> Context.loadJson(gson: Gson, fileName: String): ENTITY {
     val result = assets.open(fileName)
             .bufferedReader()
