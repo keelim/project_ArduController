@@ -28,14 +28,12 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.*
 
-
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
     private val test = "ca -app-pub-3940256099942544/1033173712"
     private infix fun String.or(that: String): String = if (BuildConfig.DEBUG) this else that
     private lateinit var settings: SharedPreferences
     private var mInterstitialAd: InterstitialAd? = null
-
 
     private val permissions = arrayOf(
             Manifest.permission.INTERNET,
@@ -105,7 +103,7 @@ class SplashActivity : AppCompatActivity() {
     private fun addShortcut() {
         settings = getSharedPreferences(PREF_FIRST_START, 0)
 
-        if (settings.getBoolean("AppFirstLaunch", true)) {  // 아이콘이 두번 추가 안되도록 하기 위해서 필요한 체크입니다.
+        if (settings.getBoolean("AppFirstLaunch", true)) { // 아이콘이 두번 추가 안되도록 하기 위해서 필요한 체크입니다.
             settings.edit().putBoolean("AppFirstLaunch", false).apply()
 
             if (ShortcutManagerCompat.isRequestPinShortcutSupported(this)) {

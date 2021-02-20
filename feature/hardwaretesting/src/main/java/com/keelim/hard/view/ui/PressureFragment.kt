@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_pressure.*
 
-
 class PressureFragment : Fragment(), SensorEventListener {
 
     private var sensmgr: SensorManager? = null

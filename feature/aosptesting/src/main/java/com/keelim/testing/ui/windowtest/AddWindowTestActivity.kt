@@ -16,7 +16,6 @@ import com.keelim.testing.ui.result.ResultActivity
 
 import timber.log.Timber
 
-
 class AddWindowTestActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddWindowBinding
     private lateinit var sampleDialog: AlertDialog
@@ -83,7 +82,6 @@ class AddWindowTestActivity : AppCompatActivity() {
 
             val start = System.nanoTime()
             Timber.d("dialog start time: $start")
-
 
             alert.show()
             alert.dismiss()

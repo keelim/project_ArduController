@@ -15,10 +15,8 @@ import com.keelim.hard.view.JsonActivity
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import java.io.File
 
-
 class BottomSheetDialog() : BottomSheetDialogFragment(), View.OnClickListener {
     private lateinit var file: File
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +48,6 @@ class BottomSheetDialog() : BottomSheetDialogFragment(), View.OnClickListener {
         val instance: BottomSheetDialog
             get() = BottomSheetDialog()
     }
-
 
     private fun checkingFile() {
         file = File(requireActivity().application.filesDir, getString(R.string.file))

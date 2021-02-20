@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.keelim.arducon.R
 import com.keelim.arducon.data.Data
-import java.util.*
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // adapter에 들어갈 list 입니다.
@@ -23,13 +22,11 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder = ItemViewHolder(parent)
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? ItemViewHolder)?.onBind(listData[position])
     }
 
     override fun getItemCount(): Int = listData.size
-
 
     fun addItem(data: Data) { // 외부에서 item을 추가시킬 함수입니다.
         listData.add(data)
