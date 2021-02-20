@@ -8,8 +8,6 @@ plugins {
 //    id 'dagger.hilt.android.plugin'
 }
 
-
-
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
@@ -40,12 +38,10 @@ android {
         viewBinding true
         mlModelBinding true
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-
-
 }
 
 dependencies {
@@ -98,5 +94,3 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation("com.google.guava:guava:30.1-android")
 }
-
-
