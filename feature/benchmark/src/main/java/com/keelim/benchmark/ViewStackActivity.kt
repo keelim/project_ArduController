@@ -11,6 +11,6 @@ class ViewStackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityViewStackBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        title ="View Stack Benchmark"
+        title = "View Stack Benchmark"
     }
 }

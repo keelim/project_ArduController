@@ -18,6 +18,6 @@ abstract class DataBindingAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>, pri
     }
 
     override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {
-        return holder.bind(getItem(position))
+//        return holder.bind(getItem(position))
     }
 }

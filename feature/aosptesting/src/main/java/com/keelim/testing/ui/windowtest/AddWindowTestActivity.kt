@@ -1,4 +1,4 @@
-package com.keelim.testing.ui.handlertest
+package com.keelim.testing.ui.windowtest
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,34 +8,51 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.snackbar.Snackbar
 import com.keelim.common.toast
 import com.keelim.testing.R
-import com.keelim.testing.databinding.ActivityHandlerTestBinding
+import com.keelim.testing.databinding.ActivityAddWindowBinding
 import com.keelim.testing.ui.result.ResultActivity
+
 import timber.log.Timber
 
 
-class HandlerTestActivity : AppCompatActivity() {
-    private var resultArray = ArrayList<Long>()
+class AddWindowTestActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAddWindowBinding
+    private lateinit var sampleDialog: AlertDialog
+    private val viewModel by viewModels<AddWinodwViewModel>()
 
-    private val viewModel by viewModels<HandlerTestViewModel>()
-    private lateinit var binding: ActivityHandlerTestBinding
-    
+    private var resultArray = ArrayList<Long>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_handler_test)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_window)
         binding.lifecycleOwner = this
         binding.vm = viewModel
 
         toast("샘플 버튼을 눌러 기능을 확인 하세요")
 
-        binding.btnResult2.setOnClickListener {
-            Timber.d("start")
-            toast("1초 뒤 테스트를 시작합니다.")
+        sampleDialog = makingDialog()
+
+        binding.btnResult1.setOnClickListener {
+            toast("1 초 뒤 테스트를 시작합니다.")
             Handler(Looper.getMainLooper()).postDelayed({
-                firstChecking()
+                test1Start()
             }, 1000)
         }
+
+        binding.btnResult2.setOnClickListener {
+            Snackbar.make(binding.root, "샘플 다이알로그를 실행 합니다.", Snackbar.LENGTH_SHORT).show()
+            sampleDialog.show()
+        }
+
+        binding.btnResult3.setOnClickListener {
+            Snackbar.make(binding.root, "샘플 다이알로그를 종료 합니다", Snackbar.LENGTH_SHORT).show()
+            sampleDialog.dismiss()
+        }
+    }
+
+    private fun test1Start() {
+        firstChecking()
     }
 
     private fun firstChecking() {
@@ -58,14 +75,15 @@ class HandlerTestActivity : AppCompatActivity() {
     }
 
     private fun measureTest1() {
-        Timber.d("calculate performance data")
         val alert = AlertDialog.Builder(this)
                 .setMessage("테스트 진행 중")
                 .create()
 
         for (x in 0..viewModel.counter.value!!) {
+
             val start = System.nanoTime()
             Timber.d("dialog start time: $start")
+
 
             alert.show()
             alert.dismiss()
@@ -77,9 +95,11 @@ class HandlerTestActivity : AppCompatActivity() {
             Timber.d("test1 time:$time")
 
             val meanTime = time / 1000000000 //초
+
             resultArray.add(time)
             Thread.sleep(1)
         }
+
         endTest()
     }
 
@@ -90,5 +110,15 @@ class HandlerTestActivity : AppCompatActivity() {
             putExtra("result", resultArray)
             startActivity(this)
         }
+    }
+
+    private fun makingDialog(): AlertDialog {
+        return AlertDialog.Builder(this)
+                .setMessage("샘플 메시지를 눌려주셔서 감사합니다")
+                .setPositiveButton("YES") { _, _ -> }
+                .setNegativeButton("No") { _, _ ->
+                    Snackbar.make(binding.root, "샘플 다이알로그를 종료 합니다", Snackbar.LENGTH_SHORT).show()
+                }
+                .create()
     }
 }

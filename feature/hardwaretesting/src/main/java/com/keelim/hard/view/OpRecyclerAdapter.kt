@@ -1,4 +1,4 @@
-package com.keelim.hard.model
+package com.keelim.hard.view
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,8 +10,10 @@ import com.keelim.aio.Open.OpenItem
 import com.keelim.hard.R
 
 class OpRecyclerAdapter // 생성자에서 데이터 리스트 객체를 전달받음.
-(//리사이클러 뷰를 사용을 하기위 커스터 어댑터
-        private val mData: MutableList<OpenItem>) : RecyclerView.Adapter<OpRecyclerAdapter.ViewHolder>() {
+(
+//리사이클러 뷰를 사용을 하기위 커스터 어댑터
+        private val mData: MutableList<OpenItem>,
+) : RecyclerView.Adapter<OpRecyclerAdapter.ViewHolder>() {
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

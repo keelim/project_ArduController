@@ -2,11 +2,11 @@ package com.keelim.arducon.ui.device
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentDeviceBinding
+import com.keelim.common.toast
 
 
 class DeviceFragment : Fragment(R.layout.fragment_device) {
@@ -17,7 +17,7 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
         val binding = FragmentDeviceBinding.bind(view)
         fragmentDeviceFragment = binding
 
-        Toast.makeText(requireActivity(), "디바이스 목록 입니다.", Toast.LENGTH_SHORT).show()
+        requireActivity().toast("디바이스 목록 입니다.")
 
         binding.deviceRecycler.apply {
             layoutManager = LinearLayoutManager(requireActivity())

@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.net.Uri
@@ -71,13 +70,7 @@ class MainActivity : AppCompatActivity() {
             bottomSheetDialog.show(supportFragmentManager, "bottomSheet")
         }
 
-        floating4.setOnClickListener {
-            Intent(this, OpenSourceActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
-
-        floating5.setOnClickListener{
+        floating5.setOnClickListener {
             AlertDialog.Builder(this)
                     .setMessage("정말로 파일을 업로드 하시겠습니까?")
                     .setPositiveButton("네") { _: DialogInterface, _: Int ->
@@ -216,8 +209,6 @@ class MainActivity : AppCompatActivity() {
                     progressDialog.setMessage("Uploaded " + progress.toInt() + "%...")
                 }
     }
-
-
 
 
 }

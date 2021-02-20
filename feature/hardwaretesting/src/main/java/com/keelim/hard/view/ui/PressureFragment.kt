@@ -23,7 +23,7 @@ class PressureFragment : Fragment(), SensorEventListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
-        return inflater.inflate(R.layout.fragment_pressure,container, false)
+        return inflater.inflate(R.layout.fragment_pressure, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

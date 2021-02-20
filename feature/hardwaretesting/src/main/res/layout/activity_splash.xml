@@ -24,9 +24,9 @@
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
-        android:indeterminateTint="@color/main3"
         android:layout_width="77dp"
         android:layout_height="62dp"
+        android:indeterminateTint="@color/main3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

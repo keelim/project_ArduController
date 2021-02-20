@@ -17,7 +17,7 @@ import java.util.*
 class ChartActivity : AppCompatActivity() {
 
     private val valsComp1 = (0..1000).map { Entry(it.toFloat(), random(1, 100).toFloat()) }
-    private lateinit var binding : ActivityChartBinding
+    private lateinit var binding: ActivityChartBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChartBinding.inflate(layoutInflater)

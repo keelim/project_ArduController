@@ -13,6 +13,15 @@ public class DTO {
     String vendor;
     String mindelay;
 
+    public DTO(Sensor s) {
+        this.name = s.getName();
+        this.power = String.valueOf(s.getPower());
+        this.resolution = String.valueOf(s.getResolution());
+        this.range = String.valueOf(s.getMaximumRange());
+        this.vendor = s.getVendor();
+        this.mindelay = String.valueOf(s.getMinDelay());
+    }
+
     public String getName() {
         return name;
     }
@@ -59,15 +68,6 @@ public class DTO {
 
     public void setMindelay(String mindelay) {
         this.mindelay = mindelay;
-    }
-
-    public DTO(Sensor s) {
-        this.name = s.getName();
-        this.power = String.valueOf(s.getPower());
-        this.resolution = String.valueOf(s.getResolution());
-        this.range = String.valueOf(s.getMaximumRange());
-        this.vendor = s.getVendor();
-        this.mindelay = String.valueOf(s.getMinDelay());
     }
 
     public Map<String, String> toMap() {
