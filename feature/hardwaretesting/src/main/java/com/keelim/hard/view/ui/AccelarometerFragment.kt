@@ -15,12 +15,10 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_accelarometer.*
 
-
 class AccelarometerFragment : Fragment(), SensorEventListener {
     private lateinit var sensorValue: FloatArray
     private lateinit var sensmgr: SensorManager
     private lateinit var accsensor: Sensor
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_accelarometer, container, false)

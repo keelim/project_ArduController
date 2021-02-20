@@ -18,7 +18,6 @@ import java.nio.charset.Charset
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class ResultActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var resultArray: ArrayList<Long>
     private lateinit var fabOpen: Animation
@@ -39,7 +38,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
 
         resultArray = intent.getSerializableExtra("result") as ArrayList<Long>
 
-        binding.resultRecycler.adapter = ResultAdapter().apply{
+        binding.resultRecycler.adapter = ResultAdapter().apply {
             setItem(resultArray.toList())
         }
 
@@ -84,7 +83,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
 
-        val progressDialog = ProgressDialog(this).apply{
+        val progressDialog = ProgressDialog(this).apply {
             setTitle("Uploading...")
             show()
         }
@@ -132,5 +131,4 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
             toast("파일 생성에 오류가 있습니다.")
     }
 }
-
 

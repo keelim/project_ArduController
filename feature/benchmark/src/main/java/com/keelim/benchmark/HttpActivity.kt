@@ -10,7 +10,6 @@ import com.github.kittinunf.fuel.httpPut
 import com.keelim.benchmark.databinding.ActivityHttpBinding
 import timber.log.Timber
 
-
 class HttpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHttpBinding
     override fun onCreate(savedInstanceState: Bundle?) {

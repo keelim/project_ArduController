@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-
 class HomeFragment : Fragment() {
     private lateinit var list: MutableList<Sensor>
     private lateinit var sm: SensorManager

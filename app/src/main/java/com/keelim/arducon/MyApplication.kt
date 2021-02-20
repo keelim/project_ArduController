@@ -7,7 +7,6 @@ import com.keelim.arducon.utils.AppOpenManager
 import com.keelim.arducon.utils.ThemeHelper
 import timber.log.Timber
 
-
 class MyApplication : Application() {
     private lateinit var appOpenManager: AppOpenManager
     override fun onCreate() {

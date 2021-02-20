@@ -5,9 +5,9 @@ import androidx.lifecycle.Observer
 open class Event<out T> (private val content: T) {
     var flag = false
 
-    fun getContentIfNotHandled(): T?{
-        return if(flag) null
-        else{
+    fun getContentIfNotHandled(): T? {
+        return if (flag) null
+        else {
             flag = true
             content
         }
@@ -15,9 +15,9 @@ open class Event<out T> (private val content: T) {
 
     fun peekContent(): T = content
 
-    class EventObserver<T>(private val onEventUnhandledContent: (T)->Unit): Observer<Event<T>>{
+    class EventObserver<T>(private val onEventUnhandledContent: (T) -> Unit) : Observer<Event<T>> {
         override fun onChanged(t: Event<T>?) {
-            t?.getContentIfNotHandled()?.let{ value ->
+            t?.getContentIfNotHandled()?.let { value ->
                 onEventUnhandledContent(value)
             }
         }

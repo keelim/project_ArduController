@@ -45,7 +45,6 @@ class ProximitySensorFragment : Fragment(), SensorEventListener {
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
 
-
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_PROXIMITY) {
             if (event.values[0].equals(0.0f)) {

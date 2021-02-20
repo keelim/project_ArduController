@@ -1,6 +1,5 @@
 package com.keelim.benchmark
 
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
@@ -12,7 +11,6 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.keelim.benchmark.databinding.ActivityChartBinding
 import java.util.*
-
 
 class ChartActivity : AppCompatActivity() {
 
@@ -27,7 +25,6 @@ class ChartActivity : AppCompatActivity() {
         val chart = findViewById<LineChart>(R.id.chart)
 
         binding.btnRenderChart.setOnClickListener {
-
 
             val setComp1 = LineDataSet(valsComp1, "Data")
             setComp1.axisDependency = AxisDependency.LEFT

@@ -14,13 +14,12 @@ import com.keelim.testing.databinding.ActivityHandlerTestBinding
 import com.keelim.testing.ui.result.ResultActivity
 import timber.log.Timber
 
-
 class HandlerTestActivity : AppCompatActivity() {
     private var resultArray = ArrayList<Long>()
 
     private val viewModel by viewModels<HandlerTestViewModel>()
     private lateinit var binding: ActivityHandlerTestBinding
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_handler_test)

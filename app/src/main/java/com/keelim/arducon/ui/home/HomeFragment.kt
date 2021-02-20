@@ -46,7 +46,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-
     private fun sendData(msg: String) {
         val msgData = "${msg}\n"
         try {
@@ -111,7 +110,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         return mDevices.first { p -> p.name == name }
     }
 
-
     private fun connectToSelectedDevice(selectedDeviceName: String) { // BluetoothDevice 원격 블루투스 기기를 나타냄.
         /** BluetoothDevice 로 기기의 장치정보를 알아낼 수 있는 자세한 메소드 및 상태값을 알아낼 수 있다 .
          * 연결하고자 하는 다른 블루투스 기기의 이름, 주소, 연결 상태 등의 정보를 조회할 수 있는 클래스.
@@ -140,7 +138,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         readBufferPosition = 0 // 버퍼 내 수신 문자 저장 위치.
         readBuffer = ByteArray(1024) // 수신 버퍼.
-        mWorkerThread = Thread {  // 문자열 수신 쓰레드.
+        mWorkerThread = Thread { // 문자열 수신 쓰레드.
 
             while (!Thread.currentThread().isInterrupted) {
                 try { // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.

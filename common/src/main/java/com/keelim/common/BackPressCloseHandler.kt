@@ -3,7 +3,6 @@ package com.keelim.common
 import android.app.Activity
 import android.widget.Toast
 
-
 class BackPressCloseHandler(private val activity: Activity) {
     private var backKeyPressedTime: Long = 0
     private lateinit var toast: Toast

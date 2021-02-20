@@ -29,9 +29,7 @@ import java.io.File
 import java.io.OutputStream
 import java.nio.charset.Charset
 
-
 class MainActivity : AppCompatActivity() {
-
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var sm: SensorManager
@@ -42,9 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ref: StorageReference
     private lateinit var file: File
 
-
     private lateinit var injectionFile: File
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         file = File(application.filesDir, getString(R.string.file))
         ref = FirebaseStorage.getInstance().reference
-
-
 
         floating1.setOnClickListener {
             toggleFab()
@@ -85,7 +79,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
         val navController = findNavController(R.id.nav_host_fragment)
 
         appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
@@ -105,7 +98,6 @@ class MainActivity : AppCompatActivity() {
                     .append("range: ").append(s.maximumRange).append("\n").append("vendor: ").append(s.vendor).append("\n")
                     .append("min delay: ").append(s.minDelay).append("\n\n")
         }
-
 
         fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
         fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
@@ -148,7 +140,6 @@ class MainActivity : AppCompatActivity() {
         if (makeFile(jsonString)) Toast.makeText(this, "JSON 파일 성공적으로 만들었습니다.", Toast.LENGTH_SHORT).show()
         else Toast.makeText(this, "실패하였습니다.", Toast.LENGTH_SHORT).show()
     }
-
 
     private fun makeFile(s: String?): Boolean {
         val filename = getString(R.string.file)
@@ -209,6 +200,5 @@ class MainActivity : AppCompatActivity() {
                     progressDialog.setMessage("Uploaded " + progress.toInt() + "%...")
                 }
     }
-
 
 }

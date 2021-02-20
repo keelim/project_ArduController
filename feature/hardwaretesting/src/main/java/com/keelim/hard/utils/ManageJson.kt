@@ -1,6 +1,5 @@
 package com.keelim.hard.utils
 
-
 import android.hardware.Sensor
 import com.keelim.hard.model.DTO
 

@@ -10,7 +10,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
