@@ -2,35 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.keelim.testing">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-
-    <application
-        android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-        <service
-            android:name=".services.CustomWindowService"
-            android:enabled="true"
-            android:permission="android.permission.SYSTEM_ALERT_WINDOW"></service>
-
-
+    <application>
         <activity android:name="com.keelim.testing.ui.result.ResultActivity" />
-        <activity android:name="com.keelim.testing.ui.addwindowtest.AddWindowTestActivity" />
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name="com.keelim.testing.ui.windowtest.AddWindowTestActivity" />
+        <activity android:name=".ui.AospActivity" />
         <activity
-            android:name=".ui.SplashActivity"
-            android:theme="@style/NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".ui.AospSplashActivity"
+            android:theme="@style/NoActionBar" />
     </application>
-
 </manifest>
