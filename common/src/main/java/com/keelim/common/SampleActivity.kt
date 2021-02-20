@@ -1,4 +1,4 @@
-package com.keelim.bus
+package com.keelim.common
 
 import android.app.Activity
 import android.os.Bundle
