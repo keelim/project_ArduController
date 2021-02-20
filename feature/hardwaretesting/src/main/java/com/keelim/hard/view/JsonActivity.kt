@@ -5,6 +5,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.keelim.common.BackPressCloseHandler
 import com.keelim.hard.R
 import kotlinx.android.synthetic.main.activity_json.*
 import java.io.File
@@ -49,6 +50,4 @@ class JsonActivity : AppCompatActivity() {
     override fun onBackPressed() {
         onBackPressCloseHandler.onBackPressed()
     }
-
-
 }

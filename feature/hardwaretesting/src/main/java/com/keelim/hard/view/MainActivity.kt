@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.net.Uri
@@ -69,12 +68,6 @@ class MainActivity : AppCompatActivity() {
         floating3.setOnClickListener {
             val bottomSheetDialog: BottomSheetDialog = BottomSheetDialog.instance
             bottomSheetDialog.show(supportFragmentManager, "bottomSheet")
-        }
-
-        floating4.setOnClickListener {
-            Intent(this, OpenSourceActivity::class.java).apply {
-                startActivity(this)
-            }
         }
 
         floating5.setOnClickListener {

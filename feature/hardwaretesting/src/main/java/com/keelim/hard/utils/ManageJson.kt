@@ -7,7 +7,6 @@ import com.keelim.hard.model.DTO
 import org.json.JSONArray
 import org.json.JSONObject
 
-
 class ManageJson {
     companion object {
         fun makeList(sensors: List<Sensor>): String {
@@ -27,9 +26,6 @@ class ManageJson {
             }
             return jsonArray.toString()
         }
-
     }
-
-
 }
 
