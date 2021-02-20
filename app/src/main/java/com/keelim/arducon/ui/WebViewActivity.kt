@@ -1,6 +1,5 @@
 package com.keelim.arducon.ui
 
-import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View

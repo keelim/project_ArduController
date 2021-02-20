@@ -8,6 +8,11 @@ plugins {
 //    id 'dagger.hilt.android.plugin'
 }
 
+repositories {
+    mavenCentral()
+    google()
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
@@ -47,6 +52,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':feature:benchmark')
+    implementation project(':feature:aosptesting')
+    implementation project(':feature:hardwaretesting')
+    implementation project(':common')
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

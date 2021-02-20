@@ -1,8 +1,7 @@
 package com.keelim.arducon.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.keelim.arducon.R
+import androidx.appcompat.app.AppCompatActivity
 import com.keelim.arducon.databinding.ActivityOpenSourceBinding
 
 class OpenSourceActivity : AppCompatActivity() {

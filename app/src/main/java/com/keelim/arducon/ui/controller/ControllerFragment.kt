@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentControllerBinding
-import com.keelim.arducon.utils.toast
+import com.keelim.common.toast
 
 class ControllerFragment : Fragment(R.layout.fragment_controller) {
     private var fragmentControllerFragment: FragmentControllerBinding? = null

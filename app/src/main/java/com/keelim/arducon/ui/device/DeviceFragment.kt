@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentDeviceBinding
-import com.keelim.arducon.utils.toast
+import com.keelim.common.toast
 
 
 class DeviceFragment : Fragment(R.layout.fragment_device) {

@@ -15,7 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentHomeBinding
-import com.keelim.arducon.utils.toast
+import com.keelim.common.toast
 import timber.log.Timber
 import java.io.InputStream
 import java.io.OutputStream

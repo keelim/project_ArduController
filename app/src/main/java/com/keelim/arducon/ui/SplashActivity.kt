@@ -20,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.BuildConfig
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.ActivitySplashBinding
-import com.keelim.arducon.utils.toast
+import com.keelim.common.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -136,7 +136,7 @@ class SplashActivity : AppCompatActivity() {
                 if (mInterstitialAd != null) {
                     mInterstitialAd!!.show(this@SplashActivity)
                 } else {
-                    Timber.d("The interstitial ad wasn't ready yet.");
+                    Timber.d("The interstitial ad wasn't ready yet.")
                 }
             }
         })
