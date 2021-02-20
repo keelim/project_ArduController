@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.keelim.testing">
+
+    <application>
+        <activity android:name="com.keelim.testing.ui.result.ResultActivity" />
+        <activity android:name="com.keelim.testing.ui.windowtest.AddWindowTestActivity" />
+        <activity android:name=".ui.AospActivity" />
+        <activity
+            android:name=".ui.AospSplashActivity"
+            android:theme="@style/NoActionBar" />
+    </application>
+</manifest>

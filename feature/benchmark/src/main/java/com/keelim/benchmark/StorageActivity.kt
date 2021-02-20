@@ -10,10 +10,11 @@ import timber.log.Timber
 class StorageActivity : AppCompatActivity() {
 
     private data class Data(var id: Int, var body: String)
+
     private lateinit var binding: ActivityStorageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=  ActivityStorageBinding.inflate(layoutInflater)
+        binding = ActivityStorageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "Storage Benchmark"
 
@@ -34,7 +35,7 @@ class StorageActivity : AppCompatActivity() {
             val stopTime = System.currentTimeMillis()
             val elapsedTime = stopTime - startTime
 
-            Timber.d( elapsedTime.toString())
+            Timber.d(elapsedTime.toString())
         }
 
         binding.btnStoreSingle.setOnClickListener {
@@ -48,7 +49,7 @@ class StorageActivity : AppCompatActivity() {
             val stopTime = System.currentTimeMillis()
             val elapsedTime = stopTime - startTime
 
-            Timber.d( elapsedTime.toString())
+            Timber.d(elapsedTime.toString())
         }
 
         binding.btnReadAll.setOnClickListener {
@@ -59,7 +60,7 @@ class StorageActivity : AppCompatActivity() {
             val stopTime = System.currentTimeMillis()
             val elapsedTime = stopTime - startTime
 
-            Timber.d( elapsedTime.toString())
+            Timber.d(elapsedTime.toString())
         }
 
         binding.btnReadSingle.setOnClickListener {
@@ -72,7 +73,7 @@ class StorageActivity : AppCompatActivity() {
             val stopTime = System.currentTimeMillis()
             val elapsedTime = stopTime - startTime
 
-            Timber.d( elapsedTime.toString())
+            Timber.d(elapsedTime.toString())
         }
 
     }

@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -21,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.keelim.arducon.BuildConfig
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.ActivitySplashBinding
+import com.keelim.common.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -116,7 +116,7 @@ class SplashActivity : AppCompatActivity() {
                         .build()
 
                 ShortcutManagerCompat.requestPinShortcut(this, shortcutInfo, null)
-                Toast.makeText(this, "홈 화면에 바로가기를 추가하였습니다. ", Toast.LENGTH_SHORT).show()
+                toast("홈 화면에 바로가기를 추가하였습니다.")
             }
         }
     }
@@ -136,7 +136,7 @@ class SplashActivity : AppCompatActivity() {
                 if (mInterstitialAd != null) {
                     mInterstitialAd!!.show(this@SplashActivity)
                 } else {
-                    Timber.d("The interstitial ad wasn't ready yet.");
+                    Timber.d("The interstitial ad wasn't ready yet.")
                 }
             }
         })
