@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.keelim.arducon.R
 import com.keelim.arducon.data.Data
-import java.util.*
+
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // adapter에 들어갈 list 입니다.
