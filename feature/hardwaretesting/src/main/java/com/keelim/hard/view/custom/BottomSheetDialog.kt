@@ -1,11 +1,5 @@
 package com.keelim.hard.view.custom
 
-//import com.google.firebase.storage.FirebaseStorage
-//import com.google.firebase.storage.StorageReference
-import android.app.Activity
-import android.app.AlertDialog
-import android.app.ProgressDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,7 +12,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.keelim.hard.R
 import com.keelim.hard.view.JsonActivity
-import com.keelim.hard.view.MainActivity
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import java.io.File
 
@@ -30,7 +23,6 @@ class BottomSheetDialog() : BottomSheetDialogFragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         file = File(requireActivity().application.filesDir, getString(R.string.file))
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,6 +45,7 @@ class BottomSheetDialog() : BottomSheetDialogFragment(), View.OnClickListener {
         }
         dismiss()
     }
+
     companion object {
         val instance: BottomSheetDialog
             get() = BottomSheetDialog()
@@ -65,21 +58,18 @@ class BottomSheetDialog() : BottomSheetDialogFragment(), View.OnClickListener {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-//    private fun fileUpload() { // json 올리는 버튼이 있을 것
-//        val file = Uri.fromFile(File(requireActivity().application.filesDir.absolutePath + getString(R.string.file)))
-//        val storage = FirebaseStorage.getInstance()
-//
-//        val jsonReference: StorageReference = storage.reference.child("data/" + file.lastPathSegment)
-//        val uploadTask = jsonReference.putFile(file)
-//
-//        uploadTask.addOnFailureListener {
-//
-//        }.addOnSuccessListener {
-//            val download = it.uploadSessionUri
-//            Toast.makeText(requireContext(), download.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//    }
+    private fun fileUpload() { // json 올리는 버튼이 있을 것
+        val file = Uri.fromFile(File(requireActivity().application.filesDir.absolutePath + getString(R.string.file)))
+        val storage = FirebaseStorage.getInstance()
 
+        val jsonReference: StorageReference = storage.reference.child("data/" + file.lastPathSegment)
+        val uploadTask = jsonReference.putFile(file)
 
+        uploadTask.addOnFailureListener {
 
+        }.addOnSuccessListener {
+            val download = it.uploadSessionUri
+            Toast.makeText(requireContext(), download.toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
 }

@@ -10,9 +10,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="라이브러리">
-        <Preference android:key="library"
+        <Preference
+            android:key="library"
             app:title="라이브러리"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 

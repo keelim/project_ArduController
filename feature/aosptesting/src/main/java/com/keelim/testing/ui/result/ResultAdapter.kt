@@ -12,8 +12,10 @@ class ResultAdapter(private val myDataset: ArrayList<Long>) : RecyclerView.Adapt
     class MyViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
 
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ResultAdapter.MyViewHolder {
+    override fun onCreateViewHolder(
+            parent: ViewGroup,
+            viewType: Int,
+    ): ResultAdapter.MyViewHolder {
         // create a new view
         val textView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.recycler_item_view, parent, false) as TextView
@@ -27,7 +29,7 @@ class ResultAdapter(private val myDataset: ArrayList<Long>) : RecyclerView.Adapt
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.text = position.toString()+": "+myDataset[position].toString()
+        holder.textView.text = position.toString() + ": " + myDataset[position].toString()
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -33,7 +33,7 @@ class HttpActivity : AppCompatActivity() {
                     if (counter == 100) {
                         val stopTime = System.currentTimeMillis()
                         val elapsedTime = stopTime - startTime
-                        Timber.d( elapsedTime.toString())
+                        Timber.d(elapsedTime.toString())
                     }
                 }
             }
@@ -51,7 +51,7 @@ class HttpActivity : AppCompatActivity() {
                     if (counter == 100) {
                         val stopTime = System.currentTimeMillis()
                         val elapsedTime = stopTime - startTime
-                        Timber.d( elapsedTime.toString())
+                        Timber.d(elapsedTime.toString())
                     }
                 }
             }
@@ -85,7 +85,7 @@ class HttpActivity : AppCompatActivity() {
                     if (counter == 100) {
                         val stopTime = System.currentTimeMillis()
                         val elapsedTime = stopTime - startTime
-                        Timber.d( elapsedTime.toString())
+                        Timber.d(elapsedTime.toString())
                     }
                 }
             }

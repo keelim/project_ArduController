@@ -14,6 +14,5 @@ class TouchSensorFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar!!.hide()
         Toast.makeText(requireContext(), "원하는 그림을 그려주세요", Toast.LENGTH_SHORT).show()
         return SingleTouchEventView(container!!.context, null)
-
     }
 }

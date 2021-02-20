@@ -9,13 +9,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.keelim.arducon.R
 import com.keelim.arducon.databinding.FragmentHomeBinding
+import com.keelim.arducon.utils.toast
 import timber.log.Timber
 import java.io.InputStream
 import java.io.OutputStream
@@ -54,14 +54,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
             mOutputStream?.write(msgData.toByteArray()) // 문자열 전송.
         } catch (e: Exception) { // 문자열 전송 도중 오류가 발생한 경우
-            Toast.makeText(requireActivity(), "데이터 전송 오류 발생", Toast.LENGTH_LONG).show()
+            requireActivity().toast("데이터 전송 오류 발생")
         }
     }
 
     private fun checkBluetooth() { //블루투스가 활성화 되어 있는 지를 확인
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if (!bluetoothAdapter.isEnabled) { // 블루투스 지원하며 비활성 상태인 경우.
-            Toast.makeText(requireActivity(), "현재 블루투스가 비활성 상태입니다.", Toast.LENGTH_LONG).show()
+            requireActivity().toast("현재 블루투스가 비활성 상태입니다.")
             startActivityForResult(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), blue) //블루투스를 요청한다.
         } else { // 블루투스 지원하며 활성 상태인 경우.
             selectDevice()
@@ -71,8 +71,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun selectDevice() { // 블루 투스 권한을 확인 한다.
         mDevices = bluetoothAdapter.bondedDevices
 
-        if (mDevices.isEmpty()) Toast.makeText(requireActivity(), "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show()
-        else { // 페어링된 장치가 있는 경우.
+        if (mDevices.isEmpty()) {
+            requireActivity().toast("페어링된 장치가 없습니다.")
+        } else { // 페어링된 장치가 있는 경우.
             val deviceList: MutableList<String> = ArrayList()
 
             for (device in mDevices) deviceList.add(device.name)
@@ -172,7 +173,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     }
                 } catch (e: Exception) { // 데이터 수신 중 오류 발생.
                     Toast.makeText(requireActivity(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show()
-                    Timber.e( e.message.toString())
+                    Timber.e(e.message.toString())
                 }
             }
         }

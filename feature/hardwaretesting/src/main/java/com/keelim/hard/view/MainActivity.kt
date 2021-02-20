@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        floating5.setOnClickListener{
+        floating5.setOnClickListener {
             AlertDialog.Builder(this)
                     .setMessage("정말로 파일을 업로드 하시겠습니까?")
                     .setPositiveButton("네") { _: DialogInterface, _: Int ->
@@ -216,8 +216,6 @@ class MainActivity : AppCompatActivity() {
                     progressDialog.setMessage("Uploaded " + progress.toInt() + "%...")
                 }
     }
-
-
 
 
 }

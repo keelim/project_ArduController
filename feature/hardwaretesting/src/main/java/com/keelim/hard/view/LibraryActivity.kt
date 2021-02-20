@@ -4,18 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.keelim.aio.Open
-import com.keelim.aio.OpenRecyclerAdapter
 import com.keelim.aio.OpenUtil
 import com.keelim.hard.R
-import com.keelim.hard.model.OpRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_library.*
 
 /**
@@ -43,7 +39,6 @@ class LibraryActivity : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
                         View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-
 
 
     }
@@ -80,7 +75,6 @@ class LibraryActivity : AppCompatActivity() {
         library_recycler.adapter = OpRecyclerAdapter(list!!)
 //        library_recycler.adapter = OpenRecyclerAdapter(this, list, R.layout.view_open)
         library_recycler.layoutManager = LinearLayoutManager(this)
-
 
 
         // Upon interacting with UI controls, delay any scheduled hide()

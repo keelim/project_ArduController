@@ -19,7 +19,11 @@ public class RxEventBus {
         return mRxEventBus;
     }
 
-    public void sendEvent(String string) {mSubject.onNext(string);}
+    public void sendEvent(String string) {
+        mSubject.onNext(string);
+    }
 
-    public Observable<String> getEvents() {return mSubject;}
+    public Observable<String> getEvents() {
+        return mSubject;
+    }
 }

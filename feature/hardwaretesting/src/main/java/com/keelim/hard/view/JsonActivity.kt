@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.keelim.hard.R
-import com.keelim.hard.utils.BackPressCloseHandler
 import kotlinx.android.synthetic.main.activity_json.*
 import java.io.File
 import java.io.FileInputStream
