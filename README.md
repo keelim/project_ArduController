@@ -1,44 +1,63 @@
-# 블루투스 통신 컨트롤러
+<h1 align="center">project Arducontroller</h1>
 
-## IoT 보드를 활용하여 블루투스 통신을 하는 어플리케이션
-IoT 보드 저전력 블루투스 모듈을 사용하고 테스트하기 위하여 만든 어플리케이션
-
-`블루투스` : UHF 단파 통신 (2.4 mHz) 을 사용해서 낮은 속도로 디지털 정보를 통신하는 방법
-`저전력 블루투스`: 블루투스 통신에서 duty cycle 을 밀리초로 구현하여 가벼운 구동 방식을 취하여 대부분 슬립 모드로 있어 전력 소모가 적음
-
-##
-대상 객체는 아두이노 보드가 아니라 삼성 artik 모듈을 사용하여 저전력 블루투스 모듈을 사용하여 통신
-특이 사항 디폴트 통신 모듈이 아닌 저전력 모듈을 사용하여 구성한 점
-
-## 블루투스 통신을 위해 안드로이드 앱 구성
-1. 안드로이드 블루투스 서비스를 이용하여 어댑터를 구성하고 가능한 목록을 구현
-2. 연결 로직을 구현 본인이 배정 받은 파트는 블루트스를 통하여 연결을 확인을 하고 명령어 셋 문자열을 통신하는 것
-
-## 4
-
-1. 연결은 테스트를 해봤으나 좀 더 다양한 통신 방법을 사용하는 것이 유리한 것을 확인 비콘을 이용한 통신 방법이나
-NFC 를 이용해서 구현을 했으면 좀 더 좋았을 것이라는 생각
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat"/></a>
+  <a href="https://github.com/keelim/project_ArduController/actions"><img alt="Build Status" src="https://github.com/keelim/project_ArduController/actions/workflows/android.yml/badge.svg"/></a> 
+</p>
+<p align="center">  
+기존 아두이노를 조작하는 어플리케이션에서 프로젝트가 시작을 하였으나 안드로이드 OS 에서 하드웨어 기능을 살리는 여러가지 Feature 를 중심으로 안드로이드 서브 프로젝트를 구성하여 멀티 모듈을 통해 통합을 진행하고 있다. 또한, 기존 WindowManager 에 관한 연구에서 사용된 성능 측정 앱 또한, 통합 과정 진행 중이다.
+</p>
 
 
-# AOSP TESTING APPLICATION
+![poster](previews/Poster.png)
 
-made by keelim (JAEHYUN KIM)
+![Paper](previews/Paper.png)
 
-## 테스트 만들기
-1. Alert DIalog 를 활용을 하여 성능 측정을 할 것
-2. 파일은 csv 파일을 만들고 어디에 넣어야 하는가?
-3. handle 메시지는 찾아보기
+![awards](https://computer.cnu.ac.kr/_attach/image/editor_image/2021/02/KfcWKoXMuvTFzBhaPRdG.JPG)
+
+## Tech stack & Open-source libraries
+- Minimum SDK level 24
+- [Kotlin](https://kotlinlang.org/) based, [introducing Coroutines](https://github.com/Kotlin/kotlinx.coroutines) 
+- JetPack
+  - LiveData - notify domain layer data to views.
+  - Lifecycle - dispose of observing data when lifecycle state changes.
+  - ViewModel - UI related data holder, lifecycle aware.
+  - RecyclerView 
+  - navigation 
+- Architecture
+  - MVVM Architecture (View - DataBinding - ViewModel - Model)
+  - etc ViewBinding
+- [Timber](https://github.com/JakeWharton/timber) - logging.1
+- [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
+- [Firebase](https://firebase.google.com/) - save lab data with FireStore 
+- [spotless](https://github.com/diffplug/spotless) - for ktlint
+- [Git](https://git-scm.com/) - for scm with Git flow strategy
+- [Github Actions](https://docs.github.com/en/actions) - for CI/CD (automated playstore(aab))
+
+## MAD Score
+![summary](previews/summary.PNG)
+![kotlin](previews/kotlin.PNG)
 
 
-## addWindow test 10000 어플리케이션 구성 완료
-1. 10000 이상 메모리 부족으로 데이터 저장 안됨
-2. 내부 storage 데이터 값을 저장하고 -> firebase storage 저장
-3. 데이터 값 확인 완료 HashMap version 성능 좋은 것 확인
+## Architecture
+Pokedex is based on MVVM architecture and a repository pattern.
 
-## Handler Message 구현 확인 하기
-1. Handler 어떻게 써야 하는지 확인을 할 필요가 있다.
-2. PhoneWindowManager -> PolicyHandler 에서 어느 부분을 콜을 해야 하는지 확인할 필요가 있다.
-3. firebase storage 코드는 잘 간직을 할 것
-4. window policy 를 만지는 코드라 성능 측정이 어렵다. -> 호출 코드를 찾아보니 안드로이드 맨 위 상단에 상태바
-recentApps() 함수를 호출을 하는데 성능 측정이 무리가 있지 않을까?
+![architecture](https://user-images.githubusercontent.com/24237865/77502018-f7d36000-6e9c-11ea-92b0-1097240c8689.png)
 
+# License
+```xml
+Designed and developed by 2019 keelim (Jaehyun Kim)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
