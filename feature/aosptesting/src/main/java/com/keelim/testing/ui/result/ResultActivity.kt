@@ -32,9 +32,8 @@ import java.io.File
 import java.nio.charset.Charset
 import java.text.SimpleDateFormat
 import java.util.ArrayList
-import java.util.Locale
 import java.util.Date
-
+import java.util.Locale
 
 class ResultActivity : AppCompatActivity(), View.OnClickListener {
   private lateinit var resultArray: ArrayList<Long>
