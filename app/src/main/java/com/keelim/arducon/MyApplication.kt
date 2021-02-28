@@ -1,10 +1,8 @@
 package com.keelim.arducon
 
 import android.app.Application
-import androidx.preference.PreferenceManager
 import com.google.android.gms.ads.MobileAds
 import com.keelim.arducon.utils.AppOpenManager
-import com.keelim.arducon.utils.ThemeHelper
 import timber.log.Timber
 
 class MyApplication : Application() {
@@ -19,8 +17,21 @@ class MyApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val themePref = sharedPreferences.getString("themePref", ThemeHelper.DEFAULT_MODE)
-        ThemeHelper.applyTheme(themePref!!)
+//        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+//        val themePref = sharedPreferences.getString("themePref", ThemeHelper.DEFAULT_MODE)
+//        ThemeHelper.applyTheme(themePref!!)
+
+//        applyTheme()
     }
+
+//    private fun applyTheme(){
+//        val migrationManger = MigrationManager(this)
+//        GlobalScope.launch{
+//            migrationManger.dataFlow.collect {
+//                withContext(Dispatchers.Main){
+//                    ThemeHelper.applyTheme(it)
+//                }
+//            }
+//        }
+//    }
 }
