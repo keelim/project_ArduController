@@ -13,26 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keelim.testing.ui.windowtest
+package com.keelim.testing.model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-
-class AddWinodwViewModel : ViewModel() {
-  private var _counter = MutableLiveData<Int>()
-  val counter: LiveData<Int> = _counter
-
-  init {
-    _counter.value = 0
-  }
-
-  fun increase() {
-    _counter.value = _counter.value!! + 500
-  }
-
-  fun decrease() {
-    _counter.value = _counter.value!! - 500
-    if (_counter.value!! < 0) _counter.value = 0
-  }
-}
+data class
+TestInfo(var time: String?, var content: String?)
