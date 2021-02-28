@@ -16,8 +16,8 @@ android {
         applicationId "com.keelim.arducon"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 1907310133
-        versionName "2.0.37"
+        versionCode 1907310134
+        versionName "2.0.38"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
