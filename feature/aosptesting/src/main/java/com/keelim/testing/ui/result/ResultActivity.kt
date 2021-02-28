@@ -31,7 +31,10 @@ import timber.log.Timber
 import java.io.File
 import java.nio.charset.Charset
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.ArrayList
+import java.util.Locale
+import java.util.Date
+
 
 class ResultActivity : AppCompatActivity(), View.OnClickListener {
   private lateinit var resultArray: ArrayList<Long>
