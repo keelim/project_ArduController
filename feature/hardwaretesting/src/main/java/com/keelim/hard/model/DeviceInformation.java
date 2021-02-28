@@ -5,7 +5,7 @@ import android.hardware.Sensor;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DTO {
+public class DeviceInformation {
     String name;
     String power;
     String resolution;
@@ -13,7 +13,7 @@ public class DTO {
     String vendor;
     String mindelay;
 
-    public DTO(Sensor s) {
+    public DeviceInformation(Sensor s) {
         this.name = s.getName();
         this.power = String.valueOf(s.getPower());
         this.resolution = String.valueOf(s.getResolution());

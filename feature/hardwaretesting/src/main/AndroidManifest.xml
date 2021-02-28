@@ -2,23 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.keelim.hard">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <application>
-        <activity
-            android:name=".view.LibraryActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_library" />
 
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.HardWareActivity"
             android:label="@string/title_activity_main2" />
-        <activity
-            android:name=".view.SplashActivity"
-            android:label="@string/title_activity_splash" />
 
-        <activity android:name=".view.JsonActivity" />
+        <activity android:name=".ui.JsonActivity" />
     </application>
 </manifest>
