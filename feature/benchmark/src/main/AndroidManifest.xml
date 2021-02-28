@@ -8,6 +8,5 @@
         <activity android:name=".HttpActivity" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".StorageActivity" />
-        <activity android:name=".ViewStackActivity" />
     </application>
 </manifest>

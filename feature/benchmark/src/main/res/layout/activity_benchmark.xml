@@ -39,17 +39,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btnHttp" />
 
     <Button
-        android:id="@+id/btnViewStack"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="View Stack Benchmark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStorage" />
-
-    <Button
         android:id="@+id/btnChart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -58,5 +47,5 @@
         android:text="Chart Benchmark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewStack" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStorage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
