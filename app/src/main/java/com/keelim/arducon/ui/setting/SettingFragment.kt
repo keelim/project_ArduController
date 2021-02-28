@@ -8,7 +8,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.keelim.arducon.R
-import com.keelim.arducon.ui.OpenSourceActivity
+import com.keelim.arducon.ui.setting.license.OpenSourceActivity
 import com.keelim.arducon.utils.ThemeHelper
 import com.keelim.benchmark.BenchmarkActivity
 
