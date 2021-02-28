@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.keelim.hard.view.ui.HomeFragment"
+        android:name="com.keelim.hard.ui.fragments.HomeFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_home">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_acc"
-        android:name="com.keelim.hard.view.ui.AccelarometerFragment"
+        android:name="com.keelim.hard.ui.fragments.AccelarometerFragment"
         android:label="AccelarometerFragment">
         <action
             android:id="@+id/action_nav_acc_to_nav_home"
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_battery"
-        android:name="com.keelim.hard.view.ui.BatteryFragment"
+        android:name="com.keelim.hard.ui.fragments.battery.BatteryFragment"
         android:label="BatteryFragment">
         <action
             android:id="@+id/action_nav_battery_to_nav_home"
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_bluetooth"
-        android:name="com.keelim.hard.view.ui.BluetoothFragment"
+        android:name="com.keelim.hard.ui.fragments.BluetoothFragment"
         android:label="BluetoothAddFragment">
         <action
             android:id="@+id/action_nav_bluetooth_to_nav_home"
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_light"
-        android:name="com.keelim.hard.view.ui.LightSensorFragment"
+        android:name="com.keelim.hard.ui.fragments.LightSensorFragment"
         android:label="LightSensorFragment">
         <action
             android:id="@+id/action_nav_light_to_nav_home"
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_magnetic"
-        android:name="com.keelim.hard.view.ui.MagneticSensorFragment"
+        android:name="com.keelim.hard.ui.fragments.MagneticSensorFragment"
         android:label="MagneticSensorFragment">
         <action
             android:id="@+id/action_nav_magnetic_to_nav_home"
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_pressure"
-        android:name="com.keelim.hard.view.ui.PressureFragment"
+        android:name="com.keelim.hard.ui.fragments.PressureFragment"
         android:label="PressureFragment">
         <action
             android:id="@+id/action_nav_pressure_to_nav_home"
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_proximity"
-        android:name="com.keelim.hard.view.ui.ProximitySensorFragment"
+        android:name="com.keelim.hard.ui.fragments.ProximitySensorFragment"
         android:label="ProximitySensorFragment">
         <action
             android:id="@+id/action_nav_proximity_to_nav_home2"
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_setting"
-        android:name="com.keelim.hard.view.ui.SettingsFragment"
+        android:name="com.keelim.hard.ui.fragments.SettingsFragment"
         android:label="SettingsFragment">
         <action
             android:id="@+id/action_nav_setting_to_nav_home2"
@@ -109,7 +109,7 @@
 
     <fragment
         android:id="@+id/nav_tele"
-        android:name="com.keelim.hard.view.ui.TeleFragment"
+        android:name="com.keelim.hard.ui.fragments.TeleFragment"
         android:label="TeleFragment">
         <action
             android:id="@+id/action_nav_tele_to_nav_home"
@@ -117,7 +117,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_touch"
-        android:name="com.keelim.hard.view.ui.TouchSensorFragment"
+        android:name="com.keelim.hard.ui.fragments.TouchSensorFragment"
         android:label="TouchSensorFragment">
         <action
             android:id="@+id/action_nav_touch_to_nav_home"
