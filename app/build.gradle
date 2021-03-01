@@ -46,6 +46,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
     }
+    
+     lintOptions{
+        abortOnError false
+    }
 }
 
 dependencies {
