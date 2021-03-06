@@ -3,10 +3,10 @@
     package="com.keelim.benchmark">
 
     <application>
-        <activity android:name=".BenchmarkActivity" />
-        <activity android:name=".ChartActivity" />
-        <activity android:name=".HttpActivity" />
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".StorageActivity" />
+        <activity android:name=".ui.benchmark.BenchmarkActivity" />
+        <activity android:name=".ui.ChartActivity" />
+        <activity android:name=".ui.HttpActivity" />
+        <activity android:name=".ui.ListViewActivity" />
+        <activity android:name=".ui.StorageActivity" />
     </application>
 </manifest>

@@ -10,7 +10,7 @@ import com.google.android.play.core.review.ReviewManagerFactory
 import com.keelim.arducon.R
 import com.keelim.arducon.ui.setting.license.OpenSourceActivity
 import com.keelim.arducon.utils.ThemeHelper
-import com.keelim.benchmark.BenchmarkActivity
+import com.keelim.benchmark.ui.benchmark.BenchmarkActivity
 
 class SettingFragment : PreferenceFragmentCompat() {
 
