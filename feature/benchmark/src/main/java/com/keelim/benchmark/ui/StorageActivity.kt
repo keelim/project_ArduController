@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keelim.benchmark
+package com.keelim.benchmark.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.keelim.benchmark.data.Data
 import com.keelim.benchmark.databinding.ActivityStorageBinding
-import com.keelim.model.Data
 import io.paperdb.Paper
 import timber.log.Timber
 
