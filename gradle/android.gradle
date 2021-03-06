@@ -1,5 +1,5 @@
 android {
-    compileSdkVersion 30
+    compileSdkVersion 'android-S'
     buildToolsVersion "30.0.3"
 
     defaultConfig {
